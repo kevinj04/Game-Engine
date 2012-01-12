@@ -1345,6 +1345,7 @@
 		};
 		0A249B8114A2750D00D5D7D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A71914814BF690800071DBE /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1367,6 +1368,7 @@
 		};
 		0A249B8214A2750D00D5D7D3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A71914814BF690800071DBE /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
