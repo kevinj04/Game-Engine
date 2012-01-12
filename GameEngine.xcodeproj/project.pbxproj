@@ -206,6 +206,18 @@
 		0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9514A267D200D5D7D3 /* CCTransitionPageTurn.h */; };
 		0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9814A267D200D5D7D3 /* CCTransitionRadial.h */; };
 		0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9B14A267D200D5D7D3 /* ccTypes.h */; };
+		0A718E8D14BB653B00071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
+		0A718E9014BB654E00071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
+		0A718E9414BB65E400071DBE /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9314BB65E400071DBE /* ObjectManager.m */; };
+		0A718E9714BB65F600071DBE /* ObjectSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9614BB65F600071DBE /* ObjectSelector.m */; };
+		0A718E9814BB660A00071DBE /* ObjectManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E9214BB65E400071DBE /* ObjectManager.h */; };
+		0A718E9914BB660A00071DBE /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9314BB65E400071DBE /* ObjectManager.m */; };
+		0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E9514BB65F600071DBE /* ObjectSelector.h */; };
+		0A718E9B14BB660A00071DBE /* ObjectSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9614BB65F600071DBE /* ObjectSelector.m */; };
+		0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8B14BB653B00071DBE /* LevelLoader.h */; };
+		0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
+		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; };
+		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -463,6 +475,14 @@
 		0A249B5C14A274D600D5D7D3 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = ../../UIModule/UIModule/Config.xcconfig; sourceTree = "<group>"; };
 		0A249B6214A2750C00D5D7D3 /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A249B7014A2750C00D5D7D3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0A718E8B14BB653B00071DBE /* LevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelLoader.h; sourceTree = "<group>"; };
+		0A718E8C14BB653B00071DBE /* LevelLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelLoader.m; sourceTree = "<group>"; };
+		0A718E8E14BB654E00071DBE /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
+		0A718E8F14BB654E00071DBE /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
+		0A718E9214BB65E400071DBE /* ObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectManager.h; sourceTree = "<group>"; };
+		0A718E9314BB65E400071DBE /* ObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectManager.m; sourceTree = "<group>"; };
+		0A718E9514BB65F600071DBE /* ObjectSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSelector.h; sourceTree = "<group>"; };
+		0A718E9614BB65F600071DBE /* ObjectSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectSelector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -878,6 +898,8 @@
 		0A249B3A14A267EB00D5D7D3 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				0A718E9114BB65AF00071DBE /* ObjectManager */,
+				0A718E8914BB651900071DBE /* Level */,
 				0A249B4614A26AA600D5D7D3 /* GameObjects */,
 				0A249B3B14A267FF00D5D7D3 /* StackManager */,
 				0A249B5A14A273F800D5D7D3 /* CGExtensions.h */,
@@ -926,6 +948,28 @@
 				0A249B5C14A274D600D5D7D3 /* Config.xcconfig */,
 			);
 			name = Configurations;
+			sourceTree = "<group>";
+		};
+		0A718E8914BB651900071DBE /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				0A718E8B14BB653B00071DBE /* LevelLoader.h */,
+				0A718E8C14BB653B00071DBE /* LevelLoader.m */,
+				0A718E8E14BB654E00071DBE /* Level.h */,
+				0A718E8F14BB654E00071DBE /* Level.m */,
+			);
+			name = Level;
+			sourceTree = "<group>";
+		};
+		0A718E9114BB65AF00071DBE /* ObjectManager */ = {
+			isa = PBXGroup;
+			children = (
+				0A718E9214BB65E400071DBE /* ObjectManager.h */,
+				0A718E9314BB65E400071DBE /* ObjectManager.m */,
+				0A718E9514BB65F600071DBE /* ObjectSelector.h */,
+				0A718E9614BB65F600071DBE /* ObjectSelector.m */,
+			);
+			name = ObjectManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1004,6 +1048,10 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
+				0A718E9814BB660A00071DBE /* ObjectManager.h in Headers */,
+				0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */,
+				0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */,
+				0A718E9E14BB661000071DBE /* Level.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1200,6 +1248,10 @@
 				0A249B4D14A26AE900D5D7D3 /* PhysicsObject.m in Sources */,
 				0A249B5014A26B0C00D5D7D3 /* StackManager.m in Sources */,
 				0A249B5514A272F000D5D7D3 /* Spawner.m in Sources */,
+				0A718E8D14BB653B00071DBE /* LevelLoader.m in Sources */,
+				0A718E9014BB654E00071DBE /* Level.m in Sources */,
+				0A718E9414BB65E400071DBE /* ObjectManager.m in Sources */,
+				0A718E9714BB65F600071DBE /* ObjectSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1213,6 +1265,10 @@
 				0A249B8914A275CF00D5D7D3 /* SortedStack.m in Sources */,
 				0A249B8A14A275CF00D5D7D3 /* StackObject.m in Sources */,
 				0A249B8B14A275CF00D5D7D3 /* StackManager.m in Sources */,
+				0A718E9914BB660A00071DBE /* ObjectManager.m in Sources */,
+				0A718E9B14BB660A00071DBE /* ObjectSelector.m in Sources */,
+				0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */,
+				0A718E9F14BB661000071DBE /* Level.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1348,6 +1404,7 @@
 				0A249B3914A267D400D5D7D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0A249B8014A2750D00D5D7D3 /* Build configuration list for PBXNativeTarget "Engine" */ = {
 			isa = XCConfigurationList;
@@ -1356,6 +1413,7 @@
 				0A249B8214A2750D00D5D7D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
