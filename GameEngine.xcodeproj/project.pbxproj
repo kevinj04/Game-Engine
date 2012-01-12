@@ -129,7 +129,6 @@
 		0A249B4D14A26AE900D5D7D3 /* PhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4C14A26AE900D5D7D3 /* PhysicsObject.m */; };
 		0A249B5014A26B0C00D5D7D3 /* StackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4F14A26B0C00D5D7D3 /* StackManager.m */; };
 		0A249B5514A272F000D5D7D3 /* Spawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B5414A272F000D5D7D3 /* Spawner.m */; };
-		0A249B5D14A274D600D5D7D3 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A249B5C14A274D600D5D7D3 /* Config.xcconfig */; };
 		0A249B6314A2750C00D5D7D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499D214A267D000D5D7D3 /* Foundation.framework */; };
 		0A249B8614A275CF00D5D7D3 /* Spawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B5414A272F000D5D7D3 /* Spawner.m */; };
 		0A249B8714A275CF00D5D7D3 /* PhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4C14A26AE900D5D7D3 /* PhysicsObject.m */; };
@@ -218,6 +217,7 @@
 		0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
 		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; };
 		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
+		0A71914914BF690800071DBE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A71914814BF690800071DBE /* Config.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -472,7 +472,6 @@
 		0A249B5314A272EF00D5D7D3 /* Spawner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spawner.h; sourceTree = "<group>"; };
 		0A249B5414A272F000D5D7D3 /* Spawner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spawner.m; sourceTree = "<group>"; };
 		0A249B5A14A273F800D5D7D3 /* CGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGExtensions.h; sourceTree = "<group>"; };
-		0A249B5C14A274D600D5D7D3 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Config.xcconfig; path = ../../UIModule/UIModule/Config.xcconfig; sourceTree = "<group>"; };
 		0A249B6214A2750C00D5D7D3 /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A249B7014A2750C00D5D7D3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0A718E8B14BB653B00071DBE /* LevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelLoader.h; sourceTree = "<group>"; };
@@ -483,6 +482,7 @@
 		0A718E9314BB65E400071DBE /* ObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectManager.m; sourceTree = "<group>"; };
 		0A718E9514BB65F600071DBE /* ObjectSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSelector.h; sourceTree = "<group>"; };
 		0A718E9614BB65F600071DBE /* ObjectSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectSelector.m; sourceTree = "<group>"; };
+		0A71914814BF690800071DBE /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -945,7 +945,7 @@
 		0A249B5B14A274BC00D5D7D3 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				0A249B5C14A274D600D5D7D3 /* Config.xcconfig */,
+				0A71914814BF690800071DBE /* Config.xcconfig */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -1132,7 +1132,7 @@
 				0A2499E514A267D100D5D7D3 /* Icon.png in Resources */,
 				0A2499E714A267D100D5D7D3 /* Icon@2x.png in Resources */,
 				0A2499EA14A267D100D5D7D3 /* iTunesArtwork in Resources */,
-				0A249B5D14A274D600D5D7D3 /* Config.xcconfig in Resources */,
+				0A71914914BF690800071DBE /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1345,7 +1345,6 @@
 		};
 		0A249B8114A2750D00D5D7D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A249B5C14A274D600D5D7D3 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1368,7 +1367,6 @@
 		};
 		0A249B8214A2750D00D5D7D3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0A249B5C14A274D600D5D7D3 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
