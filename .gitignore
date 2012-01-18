@@ -1,5 +1,5 @@
 *~.nib
- 
+.DS_Store
 # Xcode
 build/
 *.pbxuser
