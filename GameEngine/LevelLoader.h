@@ -7,7 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Level.h"
 
-@interface LevelLoader : NSObject
+/**
+ 
+ The LevelLoader reads in a dictionary (from a plist or other source) and creates a level object that can be more readily used by other game elements.
+
+ */
+
+@interface LevelLoader : NSObject {
+    
+}
+
+- (id) init;
++ (id) loader;
+- (void) dealloc;
+
+- (Level *) loadLevelFromDictionary:(NSDictionary *) dict;
 
 @end

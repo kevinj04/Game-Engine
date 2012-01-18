@@ -218,6 +218,15 @@
 		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; };
 		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 		0A71914914BF690800071DBE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A71914814BF690800071DBE /* Config.xcconfig */; };
+		0AF8B51314C763E8005FCBF7 /* BackgroundTile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */; };
+		0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
+		0AF8B51514C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
+		0AF8B51914C76989005FCBF7 /* CameraObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51714C76988005FCBF7 /* CameraObject.h */; };
+		0AF8B51A14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
+		0AF8B51B14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
+		0AF8B51E14C76A7A005FCBF7 /* HUDObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */; };
+		0AF8B51F14C76A7A005FCBF7 /* HUDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */; };
+		0AF8B52014C76A7A005FCBF7 /* HUDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -483,6 +492,12 @@
 		0A718E9514BB65F600071DBE /* ObjectSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSelector.h; sourceTree = "<group>"; };
 		0A718E9614BB65F600071DBE /* ObjectSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectSelector.m; sourceTree = "<group>"; };
 		0A71914814BF690800071DBE /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTile.h; sourceTree = "<group>"; };
+		0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTile.m; sourceTree = "<group>"; };
+		0AF8B51714C76988005FCBF7 /* CameraObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraObject.h; sourceTree = "<group>"; };
+		0AF8B51814C76988005FCBF7 /* CameraObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraObject.m; sourceTree = "<group>"; };
+		0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDObject.h; sourceTree = "<group>"; };
+		0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -930,6 +945,12 @@
 				0A249B4C14A26AE900D5D7D3 /* PhysicsObject.m */,
 				0A249B4714A26AD400D5D7D3 /* GameElement.h */,
 				0A249B4814A26AD400D5D7D3 /* GameElement.m */,
+				0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */,
+				0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */,
+				0AF8B51714C76988005FCBF7 /* CameraObject.h */,
+				0AF8B51814C76988005FCBF7 /* CameraObject.m */,
+				0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */,
+				0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */,
 			);
 			name = GameObjects;
 			sourceTree = "<group>";
@@ -1052,6 +1073,9 @@
 				0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */,
 				0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */,
 				0A718E9E14BB661000071DBE /* Level.h in Headers */,
+				0AF8B51314C763E8005FCBF7 /* BackgroundTile.h in Headers */,
+				0AF8B51914C76989005FCBF7 /* CameraObject.h in Headers */,
+				0AF8B51E14C76A7A005FCBF7 /* HUDObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1252,6 +1276,9 @@
 				0A718E9014BB654E00071DBE /* Level.m in Sources */,
 				0A718E9414BB65E400071DBE /* ObjectManager.m in Sources */,
 				0A718E9714BB65F600071DBE /* ObjectSelector.m in Sources */,
+				0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */,
+				0AF8B51A14C76989005FCBF7 /* CameraObject.m in Sources */,
+				0AF8B51F14C76A7A005FCBF7 /* HUDObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,6 +1296,9 @@
 				0A718E9B14BB660A00071DBE /* ObjectSelector.m in Sources */,
 				0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */,
 				0A718E9F14BB661000071DBE /* Level.m in Sources */,
+				0AF8B51514C763E8005FCBF7 /* BackgroundTile.m in Sources */,
+				0AF8B51B14C76989005FCBF7 /* CameraObject.m in Sources */,
+				0AF8B52014C76A7A005FCBF7 /* HUDObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
