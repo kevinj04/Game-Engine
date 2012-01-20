@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GraphicsProtocol.h"
 
 extern NSString *const spriteObjectParts;
 extern NSString *const spriteObjectAnimations;
@@ -22,7 +23,6 @@ extern NSString *const spriteObjectRunningAnimation;
     
     @private
     NSDictionary *parts;
-    NSDictionary *runningAnimations;
     
 }
 
@@ -35,5 +35,7 @@ extern NSString *const spriteObjectRunningAnimation;
 
 - (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName;
 - (void) runAnimation:(NSString *) animationName;
+
+- (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep forPart:(NSString *) partName;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KeyFrame.h"
 
 /**
  
@@ -25,6 +26,8 @@ extern NSString *const timeLineDuration;
     double currentPosition;
     double duration;
     
+    int keyFrameIndex;
+    
 }
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
@@ -33,5 +36,10 @@ extern NSString *const timeLineDuration;
 - (void) dealloc;
 
 - (void) update:(double) dt;
+- (void) reset;
+
+- (KeyFrame *) currentKeyFrame;
+- (KeyFrame *) nextKeyFrame;
+- (float) percentThroughCurrentFrame;
 
 @end

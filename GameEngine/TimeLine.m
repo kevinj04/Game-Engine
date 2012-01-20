@@ -7,11 +7,24 @@
 //
 
 #import "TimeLine.h"
-#import "KeyFrame.h"
 
 NSString *const timeLineKeyFrames = @"keyFrames";
 NSString *const timeLineCurrentPosition = @"currentPosition";
 NSString *const timeLineDuration = @"duration";
+
+@interface TimeLine (private)
+- (void) updateKeyFrames;
+@end
+
+@implementation TimeLine (private)
+- (void) updateKeyFrames {
+    
+    while (currentPosition > [[keyFrames objectAtIndex:keyFrameIndex] timePoint]) {
+        keyFrameIndex = (keyFrameIndex + 1) % [keyFrames count];
+    }
+    
+}
+@end
 
 @implementation TimeLine
 
@@ -35,6 +48,7 @@ NSString *const timeLineDuration = @"duration";
     keyFrames = [[NSArray alloc] init];
     currentPosition = 0.0;
     duration = 1.0;
+    keyFrameIndex = 0;
     
     if ([dictionary objectForKey:timeLineCurrentPosition] != nil) {
         currentPosition = [[dictionary objectForKey:timeLineCurrentPosition] floatValue];
@@ -64,6 +78,15 @@ NSString *const timeLineDuration = @"duration";
         
     }
     
+    // if the last keyFrame's timePoint is less than the duration, we will have an infinite loop down the line...
+    
+    if ([[keyFrames lastObject] timePoint] < duration) {
+        
+        // this will create odd behavior, but should signify a bug -- 
+        NSLog(@"TIMELINE SETUP ERROR: KEYFRAME TIME POINTS MAY BE OUT OF ORDER!");
+        duration = [[keyFrames lastObject] timePoint];
+    }
+    
 }
 - (void) dealloc {
     if (keyFrames != nil) { [keyFrames release]; keyFrames = nil; }
@@ -77,6 +100,32 @@ NSString *const timeLineDuration = @"duration";
         currentPosition -= duration;
     }
     
+    [self updateKeyFrames];
+    
+}
+
+- (void) reset {
+    currentPosition = 0.0;
+}
+
+- (KeyFrame *) currentKeyFrame {
+    if ([keyFrames count] == 0) return nil;
+    return [keyFrames objectAtIndex:keyFrameIndex];
+}
+- (KeyFrame *) nextKeyFrame {
+    if ([keyFrames count] == 0) return nil;
+    return [keyFrames objectAtIndex:(keyFrameIndex+1)%[keyFrames count]];
+}
+- (float) percentThroughCurrentFrame {
+    double base = currentPosition - [[self currentKeyFrame] timePoint];
+    double startOfNext = [[self currentKeyFrame] timePoint];
+    
+    // check looping/mod condition
+    if (startOfNext <= base) {
+        startOfNext = duration;
+    }
+    
+    return base/duration;
 }
 
 @end

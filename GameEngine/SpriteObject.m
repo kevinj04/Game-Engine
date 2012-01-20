@@ -8,6 +8,7 @@
 
 #import "SpriteObject.h"
 #import "TimeLine.h"
+#import "SpritePart.h"
 
 NSString *const spriteObjectParts = @"parts";
 NSString *const spriteObjectAnimations = @"animations";
@@ -40,27 +41,9 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
         
         for (NSString *partName in [partsDictionary allKeys]) {
             
-            NSDictionary *animationsDictionary = [[partsDictionary objectForKey:partName] objectForKey:spriteObjectAnimations];
+            SpritePart *part = [SpritePart partWithDictionary:[partsDictionary objectForKey:partName]];
             
-            NSMutableDictionary *timeLines = [NSMutableDictionary dictionaryWithCapacity:[animationsDictionary count]];
-            
-            for (NSString *timeLineName in [animationsDictionary allKeys]) {
-                
-                NSDictionary *timeLineDictionary = [animationsDictionary objectForKey:timeLineName];
-                TimeLine *tl = [TimeLine timeLineWithDictionary:timeLineDictionary];
-                
-                [timeLines setObject:tl forKey:timeLineName];
-                
-            }
-            
-            NSMutableDictionary *tempPart = [NSMutableDictionary dictionaryWithCapacity:2];
-            [tempPart setObject:timeLines forKey:spriteObjectAnimations];
-            
-            if ([[partsDictionary objectForKey:partName] objectForKey:spriteObjectRunningAnimation] != nil) {
-                [tempPart setObject:[[partsDictionary objectForKey:partName] objectForKey:spriteObjectRunningAnimation] forKey:spriteObjectRunningAnimation];
-            }
-            
-            [tempParts setObject:tempPart forKey:partName];
+            [tempParts setObject:part forKey:partName];
         }
         
         parts = [[NSDictionary alloc] initWithDictionary:tempParts];
@@ -74,7 +57,6 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 - (void) dealloc {
     
     if (parts != nil) { [parts release]; parts = nil; }
-    if (runningAnimations != nil) { [runningAnimations release]; runningAnimations = nil; }
     
     [super dealloc];
 }
@@ -99,29 +81,22 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
         
     // make sure the part exists
     if ([parts objectForKey:partName] != nil) {
-        // make sure the animation exists for this part
-        if ([[[parts objectForKey:partName] objectForKey:spriteObjectAnimations] 
-             objectForKey:animationName] != nil) {
-            
-            [[parts objectForKey:partName] setObject:animationName forKey:spriteObjectRunningAnimation];
-            
-        }
-        
+        [[parts objectForKey:partName] runAnimation:animationName];        
     }
     
 }
 - (void) runAnimation:(NSString *) animationName {
     
-    for (NSMutableDictionary *partDictionary in parts) {
-        
-        if ([partDictionary objectForKey:animationName] != nil) {
-            
-            [partDictionary setObject:animationName forKey:spriteObjectRunningAnimation];
-            
-        }
-        
+    for (SpritePart *part in parts) {
+        [part runAnimation:animationName];
     }
     
+}
+
+- (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep forPart:(NSString *) partName {
+    if ([parts objectForKey:partName] != nil) {
+        [[parts objectForKey:partName] setSpriteRep:rep];
+    }
 }
 
 @end

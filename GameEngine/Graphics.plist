@@ -4,11 +4,11 @@
 <dict>
 	<key>ObjectName</key>
 	<dict>
-		<key>Parts</key>
+		<key>parts</key>
 		<dict>
 			<key>PartName1</key>
 			<dict>
-				<key>Animations</key>
+				<key>animations</key>
 				<dict>
 					<key>AnimationName1</key>
 					<dict>
@@ -151,12 +151,12 @@
 						</array>
 					</dict>
 				</dict>
-				<key>RunningAnimation</key>
+				<key>runningAnimation</key>
 				<string>Animation1</string>
 			</dict>
 			<key>PartName2</key>
 			<dict>
-				<key>Animations</key>
+				<key>animations</key>
 				<dict>
 					<key>AnimationName1</key>
 					<dict>
@@ -299,7 +299,7 @@
 						</array>
 					</dict>
 				</dict>
-				<key>RunningAnimation</key>
+				<key>runningAnimation</key>
 				<string>Animation1</string>
 			</dict>
 		</dict>

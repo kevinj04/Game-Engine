@@ -237,6 +237,10 @@
 		0AF8B57114C8809D005FCBF7 /* TimeLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B56F14C8809C005FCBF7 /* TimeLine.h */; };
 		0AF8B57214C8809D005FCBF7 /* TimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B57014C8809C005FCBF7 /* TimeLine.m */; };
 		0AF8B57314C8809D005FCBF7 /* TimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B57014C8809C005FCBF7 /* TimeLine.m */; };
+		0AFA4D4A14C9F90F00077A83 /* GraphicsProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */; };
+		0AFA4D4D14C9FA7300077A83 /* SpritePart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFA4D4B14C9FA7300077A83 /* SpritePart.h */; };
+		0AFA4D4E14C9FA7300077A83 /* SpritePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA4D4C14C9FA7300077A83 /* SpritePart.m */; };
+		0AFA4D4F14C9FA7300077A83 /* SpritePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA4D4C14C9FA7300077A83 /* SpritePart.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -515,6 +519,9 @@
 		0AF8B56A14C87C1D005FCBF7 /* Graphics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Graphics.plist; sourceTree = "<group>"; };
 		0AF8B56F14C8809C005FCBF7 /* TimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLine.h; sourceTree = "<group>"; };
 		0AF8B57014C8809C005FCBF7 /* TimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLine.m; sourceTree = "<group>"; };
+		0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsProtocol.h; sourceTree = "<group>"; };
+		0AFA4D4B14C9FA7300077A83 /* SpritePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpritePart.h; sourceTree = "<group>"; };
+		0AFA4D4C14C9FA7300077A83 /* SpritePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpritePart.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1017,10 +1024,13 @@
 			children = (
 				0AF8B55A14C8793B005FCBF7 /* SpriteObject.h */,
 				0AF8B55B14C8793B005FCBF7 /* SpriteObject.m */,
+				0AFA4D4B14C9FA7300077A83 /* SpritePart.h */,
+				0AFA4D4C14C9FA7300077A83 /* SpritePart.m */,
 				0AF8B56F14C8809C005FCBF7 /* TimeLine.h */,
 				0AF8B57014C8809C005FCBF7 /* TimeLine.m */,
 				0AF8B56414C87968005FCBF7 /* KeyFrame.h */,
 				0AF8B56514C87968005FCBF7 /* KeyFrame.m */,
+				0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -1119,6 +1129,8 @@
 				0AF8B55C14C8793B005FCBF7 /* SpriteObject.h in Headers */,
 				0AF8B56614C87968005FCBF7 /* KeyFrame.h in Headers */,
 				0AF8B57114C8809D005FCBF7 /* TimeLine.h in Headers */,
+				0AFA4D4A14C9F90F00077A83 /* GraphicsProtocol.h in Headers */,
+				0AFA4D4D14C9FA7300077A83 /* SpritePart.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1326,6 +1338,7 @@
 				0AF8B55D14C8793B005FCBF7 /* SpriteObject.m in Sources */,
 				0AF8B56714C87968005FCBF7 /* KeyFrame.m in Sources */,
 				0AF8B57214C8809D005FCBF7 /* TimeLine.m in Sources */,
+				0AFA4D4E14C9FA7300077A83 /* SpritePart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1349,6 +1362,7 @@
 				0AF8B55E14C8793B005FCBF7 /* SpriteObject.m in Sources */,
 				0AF8B56814C87968005FCBF7 /* KeyFrame.m in Sources */,
 				0AF8B57314C8809D005FCBF7 /* TimeLine.m in Sources */,
+				0AFA4D4F14C9FA7300077A83 /* SpritePart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
