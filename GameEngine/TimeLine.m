@@ -70,4 +70,13 @@ NSString *const timeLineDuration = @"duration";
     [super dealloc];
 }
 
+- (void) update:(double) dt {
+    
+    currentPosition += dt;
+    if (currentPosition > duration) {
+        currentPosition -= duration;
+    }
+    
+}
+
 @end

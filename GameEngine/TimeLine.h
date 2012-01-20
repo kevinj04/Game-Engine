@@ -32,4 +32,6 @@ extern NSString *const timeLineDuration;
 - (void) setupWithDictionary:(NSDictionary *) dictionary;
 - (void) dealloc;
 
+- (void) update:(double) dt;
+
 @end
