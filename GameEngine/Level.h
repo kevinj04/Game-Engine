@@ -28,8 +28,8 @@ extern NSString *const levelMP3;
     NSString *name;
     NSString *backgroundMusic;
     
-    CGPoint *startCoordinates;
-    CGPoint *startCameraCoordinates;
+    CGPoint startCoordinates;
+    CGPoint startCameraCoordinates;
     
     int length;
     
@@ -51,9 +51,9 @@ extern NSString *const levelMP3;
 @property (nonatomic, retain) NSString *backgroundMusic;
 
 /** @brief The initial coordinates of the main character. */
-@property CGPoint *startCoordinates;
+@property CGPoint startCoordinates;
 /** @brief The initial coordinates of the main camera. */
-@property CGPoint *startCameraCoordinates;
+@property CGPoint startCameraCoordinates;
 
 /** @brief The length of the level in pixels. */
 @property int length;
