@@ -209,38 +209,36 @@
 		0A718E9014BB654E00071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 		0A718E9414BB65E400071DBE /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9314BB65E400071DBE /* ObjectManager.m */; };
 		0A718E9714BB65F600071DBE /* ObjectSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9614BB65F600071DBE /* ObjectSelector.m */; };
-		0A718E9814BB660A00071DBE /* ObjectManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E9214BB65E400071DBE /* ObjectManager.h */; };
+		0A718E9814BB660A00071DBE /* ObjectManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E9214BB65E400071DBE /* ObjectManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A718E9914BB660A00071DBE /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9314BB65E400071DBE /* ObjectManager.m */; };
-		0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E9514BB65F600071DBE /* ObjectSelector.h */; };
+		0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E9514BB65F600071DBE /* ObjectSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A718E9B14BB660A00071DBE /* ObjectSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9614BB65F600071DBE /* ObjectSelector.m */; };
-		0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8B14BB653B00071DBE /* LevelLoader.h */; };
+		0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8B14BB653B00071DBE /* LevelLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
-		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; };
+		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 		0A71914914BF690800071DBE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A71914814BF690800071DBE /* Config.xcconfig */; };
-		0AF8B51314C763E8005FCBF7 /* BackgroundTile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */; };
 		0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
 		0AF8B51514C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
-		0AF8B51914C76989005FCBF7 /* CameraObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51714C76988005FCBF7 /* CameraObject.h */; };
 		0AF8B51A14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
 		0AF8B51B14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
-		0AF8B51E14C76A7A005FCBF7 /* HUDObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */; };
 		0AF8B51F14C76A7A005FCBF7 /* HUDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */; };
 		0AF8B52014C76A7A005FCBF7 /* HUDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */; };
-		0AF8B55C14C8793B005FCBF7 /* SpriteObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B55A14C8793B005FCBF7 /* SpriteObject.h */; };
+		0AF8B55C14C8793B005FCBF7 /* SpriteObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B55A14C8793B005FCBF7 /* SpriteObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AF8B55D14C8793B005FCBF7 /* SpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B55B14C8793B005FCBF7 /* SpriteObject.m */; };
 		0AF8B55E14C8793B005FCBF7 /* SpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B55B14C8793B005FCBF7 /* SpriteObject.m */; };
-		0AF8B56614C87968005FCBF7 /* KeyFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B56414C87968005FCBF7 /* KeyFrame.h */; };
+		0AF8B56614C87968005FCBF7 /* KeyFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B56414C87968005FCBF7 /* KeyFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AF8B56714C87968005FCBF7 /* KeyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B56514C87968005FCBF7 /* KeyFrame.m */; };
 		0AF8B56814C87968005FCBF7 /* KeyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B56514C87968005FCBF7 /* KeyFrame.m */; };
 		0AF8B56B14C87C1D005FCBF7 /* Graphics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AF8B56A14C87C1D005FCBF7 /* Graphics.plist */; };
-		0AF8B57114C8809D005FCBF7 /* TimeLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B56F14C8809C005FCBF7 /* TimeLine.h */; };
+		0AF8B57114C8809D005FCBF7 /* TimeLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B56F14C8809C005FCBF7 /* TimeLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AF8B57214C8809D005FCBF7 /* TimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B57014C8809C005FCBF7 /* TimeLine.m */; };
 		0AF8B57314C8809D005FCBF7 /* TimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B57014C8809C005FCBF7 /* TimeLine.m */; };
-		0AFA4D4A14C9F90F00077A83 /* GraphicsProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */; };
-		0AFA4D4D14C9FA7300077A83 /* SpritePart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFA4D4B14C9FA7300077A83 /* SpritePart.h */; };
+		0AFA4D4A14C9F90F00077A83 /* GraphicsProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0AFA4D4D14C9FA7300077A83 /* SpritePart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFA4D4B14C9FA7300077A83 /* SpritePart.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AFA4D4E14C9FA7300077A83 /* SpritePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA4D4C14C9FA7300077A83 /* SpritePart.m */; };
 		0AFA4D4F14C9FA7300077A83 /* SpritePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA4D4C14C9FA7300077A83 /* SpritePart.m */; };
+		0AFA4F6D14CDC17900077A83 /* cocos2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9C14A267D200D5D7D3 /* cocos2d.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1053,11 +1051,21 @@
 				0A249B8C14A275F100D5D7D3 /* Spawnable.h in Headers */,
 				0A249B8D14A275F100D5D7D3 /* Spawner.h in Headers */,
 				0A249B8E14A275F100D5D7D3 /* PhysicsObject.h in Headers */,
+				0AFA4D4D14C9FA7300077A83 /* SpritePart.h in Headers */,
+				0AF8B55C14C8793B005FCBF7 /* SpriteObject.h in Headers */,
+				0AF8B57114C8809D005FCBF7 /* TimeLine.h in Headers */,
+				0A718E9814BB660A00071DBE /* ObjectManager.h in Headers */,
+				0A718E9E14BB661000071DBE /* Level.h in Headers */,
+				0AF8B56614C87968005FCBF7 /* KeyFrame.h in Headers */,
+				0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */,
+				0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */,
+				0AFA4D4A14C9F90F00077A83 /* GraphicsProtocol.h in Headers */,
 				0A249B8F14A275F100D5D7D3 /* GameElement.h in Headers */,
 				0A249B9014A275F100D5D7D3 /* SortedStack.h in Headers */,
 				0A249B9114A275F100D5D7D3 /* StackObject.h in Headers */,
 				0A249B9214A275F100D5D7D3 /* StackManager.h in Headers */,
 				0A249B9314A275F100D5D7D3 /* CGExtensions.h in Headers */,
+				0AFA4F6D14CDC17900077A83 /* cocos2d.h in Headers */,
 				0A249B9414A2760C00D5D7D3 /* CCAction.h in Headers */,
 				0A249B9514A2760C00D5D7D3 /* CCActionCamera.h in Headers */,
 				0A249B9614A2760C00D5D7D3 /* CCActionEase.h in Headers */,
@@ -1119,18 +1127,6 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
-				0A718E9814BB660A00071DBE /* ObjectManager.h in Headers */,
-				0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */,
-				0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */,
-				0A718E9E14BB661000071DBE /* Level.h in Headers */,
-				0AF8B51314C763E8005FCBF7 /* BackgroundTile.h in Headers */,
-				0AF8B51914C76989005FCBF7 /* CameraObject.h in Headers */,
-				0AF8B51E14C76A7A005FCBF7 /* HUDObject.h in Headers */,
-				0AF8B55C14C8793B005FCBF7 /* SpriteObject.h in Headers */,
-				0AF8B56614C87968005FCBF7 /* KeyFrame.h in Headers */,
-				0AF8B57114C8809D005FCBF7 /* TimeLine.h in Headers */,
-				0AFA4D4A14C9F90F00077A83 /* GraphicsProtocol.h in Headers */,
-				0AFA4D4D14C9FA7300077A83 /* SpritePart.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
