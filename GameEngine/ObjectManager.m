@@ -39,6 +39,8 @@
 
 @implementation ObjectManager
 
+@synthesize alwaysActiveObjects, activeObjects, inactiveObjects;
+
 - (id) init {
     
     if (( self = [super init] )) {
