@@ -7,10 +7,6 @@
 //
 
 #import "Level.h"
-#import "PhysicsObject.h"
-#import "BackgroundTile.h"
-#import "CameraObject.h"
-#import "HUDObject.h"
 
 @interface Level (private)
 - (void) loadObjectsFromDictionary:(NSDictionary *) dictionary;

@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "PhysicsObject.h"
+#import "BackgroundTile.h"
+#import "CameraObject.h"
+#import "HUDObject.h"
 
 extern NSString *const levelInfo;
 extern NSString *const levelName;
