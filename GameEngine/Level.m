@@ -27,15 +27,29 @@
     
     for (NSDictionary *objDictionary in objects) {
         
-        PhysicsObject *pObj = [PhysicsObject objectWithDictionary:objDictionary];
+        elementType et = (elementType)[[objDictionary objectForKey:geObjectType] intValue];
         
-        if ([pObj isKindOfClass:[CameraObject class]]) {
-            [tempCameraDictionary setObject:pObj forKey:[pObj objectId]];
-        }
+        PhysicsObject *pObj;
         
-        if ([pObj isKindOfClass:[HUDObject class]]) {
-            [tempHUDDictionary setObject:pObj forKey:[pObj objectId]];
-        }
+        switch (et) {
+            case etObject:
+                pObj = [PhysicsObject objectWithDictionary:objDictionary];
+                break;
+                
+            case etCamera:
+                pObj = [CameraObject objectWithDictionary:objDictionary];
+                [tempCameraDictionary setObject:pObj forKey:[pObj objectId]];
+                break;
+                
+            case etHUD:
+                pObj = [HUDObject objectWithDictionary:objDictionary];
+                [tempHUDDictionary setObject:pObj forKey:[pObj objectId]];
+                break;
+                                
+            default:
+                pObj = [PhysicsObject objectWithDictionary:objDictionary];
+                break;
+        }                
         
         // maybe someday split out non-camera, non-hud?
         
