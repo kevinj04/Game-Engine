@@ -75,6 +75,8 @@ extern NSString *const levelMP3;
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) levelWithDictionary:(NSDictionary *) dictionary;
 - (void) setupWithDictionary:(NSDictionary *) dictionary;
+- (void) loadObjectsFromDictionary:(NSDictionary *) dictionary;
+- (void) loadBackgroundTilesFromDictionary:(NSDictionary *) dictionary;
 - (void) dealloc;
 
 - (NSArray *) imageResources;

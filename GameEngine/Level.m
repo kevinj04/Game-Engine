@@ -9,68 +9,10 @@
 #import "Level.h"
 
 @interface Level (private)
-- (void) loadObjectsFromDictionary:(NSDictionary *) dictionary;
-- (void) loadBackgroundTilesFromDictionary:(NSDictionary *) dictionary;
 @end
 
 @implementation Level (private)
-- (void) loadObjectsFromDictionary:(NSDictionary *) dictionary {
-    NSDictionary *objects = [[dictionary objectForKey:levelObjects] retain];
-    
-    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
-    NSMutableDictionary *tempCameraDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
-    NSMutableDictionary *tempHUDDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
-    
-    for (NSDictionary *objDictionary in objects) {
-        
-        elementType et = (elementType)[[objDictionary objectForKey:geObjectType] intValue];
-        
-        PhysicsObject *pObj;
-        
-        switch (et) {
-            case etObject:
-                pObj = [PhysicsObject objectWithDictionary:objDictionary];
-                break;
-                
-            case etCamera:
-                pObj = [CameraObject objectWithDictionary:objDictionary];
-                [tempCameraDictionary setObject:pObj forKey:[pObj objectId]];
-                break;
-                
-            case etHUD:
-                pObj = [HUDObject objectWithDictionary:objDictionary];
-                [tempHUDDictionary setObject:pObj forKey:[pObj objectId]];
-                break;
-                                
-            default:
-                pObj = [PhysicsObject objectWithDictionary:objDictionary];
-                break;
-        }                
-        
-        // maybe someday split out non-camera, non-hud?
-        
-        [tempDictionary setObject:pObj forKey:[pObj objectId]];
-        
-    }
-    
-    objectDictionary = [[NSDictionary alloc] initWithDictionary:tempDictionary];
-    cameraDictionary = [[NSDictionary alloc] initWithDictionary:tempCameraDictionary];
-    hudDictionary = [[NSDictionary alloc] initWithDictionary:tempHUDDictionary];
-}
-- (void) loadBackgroundTilesFromDictionary:(NSDictionary *) dictionary {
-    NSDictionary *bgs = [[dictionary objectForKey:levelBgs] retain];
-    
-    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithCapacity:[bgs count]];
-    
-    for (NSDictionary *bgDictionary in bgs) {
-        
-        BackgroundTile *tile = [BackgroundTile tileWithDictionary:bgDictionary];
-        [tempDictionary setObject:tile forKey:[tile objectId]];
-        
-    }
-    
-    backgroundTileDictionary= [[NSDictionary alloc] initWithDictionary:tempDictionary];
-}
+
 @end
 
 
@@ -130,6 +72,65 @@ NSString *const levelMP3 = @"MP3";
     musicResources = [[[[dictionary objectForKey:levelResources] objectForKey:levelSound] objectForKey:levelMP3] retain];
     
 }
+
+- (void) loadObjectsFromDictionary:(NSDictionary *) dictionary {
+    NSDictionary *objects = [[dictionary objectForKey:levelObjects] retain];
+    
+    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
+    NSMutableDictionary *tempCameraDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
+    NSMutableDictionary *tempHUDDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
+    
+    for (NSDictionary *objDictionary in objects) {
+        
+        elementType et = (elementType)[[objDictionary objectForKey:geObjectType] intValue];
+        
+        PhysicsObject *pObj;
+        
+        switch (et) {
+            case etObject:
+                pObj = [PhysicsObject objectWithDictionary:objDictionary];
+                break;
+                
+            case etCamera:
+                pObj = [CameraObject objectWithDictionary:objDictionary];
+                [tempCameraDictionary setObject:pObj forKey:[pObj objectId]];
+                break;
+                
+            case etHUD:
+                pObj = [HUDObject objectWithDictionary:objDictionary];
+                [tempHUDDictionary setObject:pObj forKey:[pObj objectId]];
+                break;
+                
+            default:
+                pObj = [PhysicsObject objectWithDictionary:objDictionary];
+                break;
+        }                
+        
+        // maybe someday split out non-camera, non-hud?
+        
+        [tempDictionary setObject:pObj forKey:[pObj objectId]];
+        
+    }
+    
+    objectDictionary = [[NSDictionary alloc] initWithDictionary:tempDictionary];
+    cameraDictionary = [[NSDictionary alloc] initWithDictionary:tempCameraDictionary];
+    hudDictionary = [[NSDictionary alloc] initWithDictionary:tempHUDDictionary];
+}
+- (void) loadBackgroundTilesFromDictionary:(NSDictionary *) dictionary {
+    NSDictionary *bgs = [[dictionary objectForKey:levelBgs] retain];
+    
+    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithCapacity:[bgs count]];
+    
+    for (NSDictionary *bgDictionary in bgs) {
+        
+        BackgroundTile *tile = [BackgroundTile tileWithDictionary:bgDictionary];
+        [tempDictionary setObject:tile forKey:[tile objectId]];
+        
+    }
+    
+    backgroundTileDictionary= [[NSDictionary alloc] initWithDictionary:tempDictionary];
+}
+
 - (void) dealloc {
     
     if (name != nil) { [name release]; name = nil; }
