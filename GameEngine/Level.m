@@ -68,8 +68,8 @@
 
 NSString *const levelInfo = @"Info";
 NSString *const levelName = @"levelName";
-NSString *const levelLength = @"backgroundMusic";
-NSString *const levelBGMusic = @"length";
+NSString *const levelLength = @"length";
+NSString *const levelBGMusic = @"backgroundMusic";
 NSString *const levelStartPoint = @"startPoint";
 NSString *const levelBgs = @"Backgrounds";
 NSString *const levelCameras = @"Cameras";
