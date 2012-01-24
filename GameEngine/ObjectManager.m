@@ -101,4 +101,14 @@
     [self levelChanged];
 }
 
+- (void) update:(double) dt {
+    for (GameElement *ge in alwaysActiveObjects) {
+        [ge update:dt];
+    }
+    
+    for (GameElement *ge in activeObjects) {
+        [ge update:dt];
+    }
+}
+
 @end

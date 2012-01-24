@@ -36,4 +36,6 @@
 
 - (void) setLevel:(Level *) l;
 
+- (void) update:(double) dt;
+
 @end
