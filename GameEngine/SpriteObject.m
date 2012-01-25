@@ -63,7 +63,7 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 
 - (void) update:(double) dt {
 
-    for (SpritePart *part in parts) {
+    for (SpritePart *part in [parts allValues]) {
         [part update:dt];
     }
         
