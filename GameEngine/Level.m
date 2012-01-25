@@ -57,20 +57,23 @@ NSString *const levelMP3 = @"MP3";
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
     
-    NSDictionary *d = [dictionary objectForKey:levelInfo];
-    name = [[d objectForKey:levelName] retain];
-    backgroundMusic = [[d objectForKey:levelBGMusic] retain];
-    length = [[d objectForKey:levelLength] intValue];
+    [self setupLevel:dictionary];
     
     [self loadObjectsFromDictionary:dictionary];
     
     [self loadBackgroundTilesFromDictionary:dictionary];
     
+}
+- (void) setupLevel:(NSDictionary *) dictionary {
+    
+    NSDictionary *d = [dictionary objectForKey:levelInfo];
+    name = [[d objectForKey:levelName] retain];
+    backgroundMusic = [[d objectForKey:levelBGMusic] retain];
+    length = [[d objectForKey:levelLength] intValue];
     
     imageResources = [[[dictionary objectForKey:levelResources] objectForKey:levelGraphics] retain];
     soundFXResources = [[[[dictionary objectForKey:levelResources] objectForKey:levelSound] objectForKey:levelWAV] retain];
     musicResources = [[[[dictionary objectForKey:levelResources] objectForKey:levelSound] objectForKey:levelMP3] retain];
-    
 }
 
 - (void) loadObjectsFromDictionary:(NSDictionary *) dictionary {
