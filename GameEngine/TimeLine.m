@@ -119,7 +119,7 @@ NSString *const timeLineDuration = @"duration";
 }
 - (double) percentThroughCurrentFrame {
     double base = currentPosition - [[self currentKeyFrame] timePoint];
-    double startOfNext = [[self currentKeyFrame] timePoint];
+    double startOfNext = [[self nextKeyFrame] timePoint] - [[self currentKeyFrame] timePoint];
     
     // check looping/mod condition
     if (startOfNext <= base) {
