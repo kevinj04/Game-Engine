@@ -30,10 +30,10 @@ NSString *const partRunningAnimation = @"runningAnimation";
     [spriteRep setPosition:offset];
     
     float rotationRange = [nextKF rotation] - [currentKF rotation];
-    [spriteRep setRotation:rotationRange * percentTween];
+    [spriteRep setRotation:[currentKF rotation] + rotationRange * percentTween];
     
     float scaleRange = [nextKF scale] - [currentKF scale];
-    [spriteRep setScale:scaleRange * percentTween];
+    [spriteRep setScale:[currentKF scale] + (scaleRange * percentTween)];
     
 }
 @end
