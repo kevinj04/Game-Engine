@@ -126,7 +126,7 @@ NSString *const timeLineDuration = @"duration";
         startOfNext = duration;
     }
     
-    return base/duration;
+    return base/startOfNext;
 }
 
 @end

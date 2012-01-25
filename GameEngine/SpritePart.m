@@ -25,8 +25,10 @@ NSString *const partRunningAnimation = @"runningAnimation";
     
     double percentTween = [currentTimeLine percentThroughCurrentFrame];
     
-    CGPoint offset = CGPointMake(([nextKF position].x - [currentKF position].x) * percentTween, 
-                                 ([nextKF position].y - [currentKF position].y) * percentTween);
+    CGPoint offset = CGPointMake([currentKF position].x + 
+                                    (([nextKF position].x - [currentKF position].x) * percentTween), 
+                                 [currentKF position].y + 
+                                    (([nextKF position].y - [currentKF position].y) * percentTween));
     [spriteRep setPosition:offset];
     
     float rotationRange = [nextKF rotation] - [currentKF rotation];
