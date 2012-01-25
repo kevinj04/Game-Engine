@@ -19,8 +19,12 @@ NSString *const timeLineDuration = @"duration";
 @implementation TimeLine (private)
 - (void) updateKeyFrames {
     
-    while (currentPosition > [[keyFrames objectAtIndex:keyFrameIndex] timePoint]) {
+    while (currentPosition > [[self nextKeyFrame] timePoint]) {
         keyFrameIndex = (keyFrameIndex + 1) % [keyFrames count];
+        
+        if (currentPosition > duration) {
+            currentPosition -= duration;
+        }
     }
     
 }
@@ -96,9 +100,6 @@ NSString *const timeLineDuration = @"duration";
 - (void) update:(double) dt {
     
     currentPosition += dt;
-    if (currentPosition > duration) {
-        currentPosition -= duration;
-    }
     
     [self updateKeyFrames];
     
