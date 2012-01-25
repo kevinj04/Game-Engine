@@ -79,7 +79,7 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 }
 - (void) runAnimation:(NSString *) animationName {
     
-    for (SpritePart *part in parts) {
+    for (SpritePart *part in [parts allValues]) {
         [part runAnimation:animationName];
     }
     
