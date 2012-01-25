@@ -63,18 +63,10 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 
 - (void) update:(double) dt {
 
-    for (NSDictionary *partDictionary in parts) {
-        
-        if ([partDictionary objectForKey:spriteObjectRunningAnimation] != nil) {
-            
-            TimeLine *tl = [[partDictionary objectForKey:spriteObjectAnimations] objectForKey:[partDictionary objectForKey:spriteObjectRunningAnimation]];
-            [tl update:dt];
-            
-        }
-        
+    for (SpritePart *part in parts) {
+        [part update:dt];
     }
-    
-    
+        
 }
 
 - (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName {
