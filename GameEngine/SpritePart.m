@@ -110,5 +110,8 @@ NSString *const partRunningAnimation = @"runningAnimation";
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep {
     spriteRep = [rep retain];
 }
+- (NSObject<GraphicsProtocol> *) spriteRep {
+    return spriteRep;
+}
 
 @end

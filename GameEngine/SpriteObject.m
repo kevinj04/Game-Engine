@@ -91,4 +91,8 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
     }
 }
 
+- (NSDictionary *) parts {
+    return parts;
+}
+
 @end

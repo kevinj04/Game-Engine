@@ -37,5 +37,6 @@ extern NSString *const spriteObjectRunningAnimation;
 - (void) runAnimation:(NSString *) animationName;
 
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep forPart:(NSString *) partName;
+- (NSDictionary *) parts;
 
 @end
