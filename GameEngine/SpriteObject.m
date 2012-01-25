@@ -44,7 +44,7 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
         for (NSString *partName in [partsDictionary allKeys]) {
             
             SpritePart *part = [SpritePart partWithDictionary:[partsDictionary objectForKey:partName]];
-            
+            [part setParent:self];
             [tempParts setObject:part forKey:partName];
         }
         
