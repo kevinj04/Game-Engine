@@ -40,6 +40,6 @@ extern NSString *const timeLineDuration;
 
 - (KeyFrame *) currentKeyFrame;
 - (KeyFrame *) nextKeyFrame;
-- (float) percentThroughCurrentFrame;
+- (double) percentThroughCurrentFrame;
 
 @end

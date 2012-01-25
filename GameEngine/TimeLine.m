@@ -117,7 +117,7 @@ NSString *const timeLineDuration = @"duration";
     if ([keyFrames count] == 0) return nil;
     return [keyFrames objectAtIndex:(keyFrameIndex+1)%[keyFrames count]];
 }
-- (float) percentThroughCurrentFrame {
+- (double) percentThroughCurrentFrame {
     double base = currentPosition - [[self currentKeyFrame] timePoint];
     double startOfNext = [[self currentKeyFrame] timePoint];
     
