@@ -21,10 +21,18 @@ extern NSString *const spriteObjectRunningAnimation;
 
 @interface SpriteObject : NSObject {
     
+    CGPoint position;
+    float rotation;
+    float scale;
+    
     @private
     NSDictionary *parts;
     
 }
+
+@property CGPoint position;
+@property float rotation;
+@property float scale;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) objectWithDictionary:(NSDictionary *) dictionary;

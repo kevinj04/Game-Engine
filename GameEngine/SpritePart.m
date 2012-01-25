@@ -25,17 +25,25 @@ NSString *const partRunningAnimation = @"runningAnimation";
     
     double percentTween = [currentTimeLine percentThroughCurrentFrame];
     
+    CGPoint base = [parent position];
+    
     CGPoint offset = CGPointMake([currentKF position].x + 
                                     (([nextKF position].x - [currentKF position].x) * percentTween), 
                                  [currentKF position].y + 
                                     (([nextKF position].y - [currentKF position].y) * percentTween));
-    [spriteRep setPosition:offset];
+    [spriteRep setPosition:CGPointMake(base.x+offset.x,
+                                       base.y+offset.y)];
+    
+    // parent rotation gets confusing?
     
     float rotationRange = [nextKF rotation] - [currentKF rotation];
     [spriteRep setRotation:[currentKF rotation] + rotationRange * percentTween];
     
+    // parent scaling is multiplicative
+    float baseScale = [parent scale];
+    
     float scaleRange = [nextKF scale] - [currentKF scale];
-    [spriteRep setScale:[currentKF scale] + (scaleRange * percentTween)];
+    [spriteRep setScale:baseScale * ([currentKF scale] + (scaleRange * percentTween))];
     
 }
 @end
@@ -109,6 +117,9 @@ NSString *const partRunningAnimation = @"runningAnimation";
     }
 }
 
+- (void) setParent:(SpriteObject *) spriteObj {
+    parent = [spriteObj retain];
+}
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep {
     spriteRep = [rep retain];
 }

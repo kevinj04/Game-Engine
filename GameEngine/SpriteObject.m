@@ -16,6 +16,8 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 
 @implementation SpriteObject
 
+@synthesize position, rotation, scale;
+
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
     if (( self = [super init] )) {

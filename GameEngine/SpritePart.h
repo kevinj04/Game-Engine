@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TimeLine.h"
 #import "GraphicsProtocol.h"
-
+#import "SpriteObject.h"
 /**
  
  A SpritePart is a functional unit of a SpriteObject. These are single sprites that may be part of a complex entity. They contain a set of animations (represented by TimeLine objects) and can run a single animation.
@@ -29,6 +29,8 @@ extern NSString *const partRunningAnimation;
     TimeLine *currentTimeLine;
     NSDictionary *animations;
     
+    SpriteObject *parent;
+    
 }
 
 @property (nonatomic, retain) NSString *name;
@@ -41,6 +43,7 @@ extern NSString *const partRunningAnimation;
 - (void) update:(double) dt;
 - (void) runAnimation:(NSString *) animationName;
 
+- (void) setParent:(SpriteObject *) spriteObj;
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep;
 - (NSObject<GraphicsProtocol> *) spriteRep;
 
