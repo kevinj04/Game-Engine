@@ -33,7 +33,7 @@
     [super dealloc];
 }
 
-- (void) update:(ccTime)dt {
+- (void) update:(double)dt {
     [super update:dt];
 }
 

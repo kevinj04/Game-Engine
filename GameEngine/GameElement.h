@@ -46,7 +46,7 @@ typedef enum elementType {
 - (void) setupWithDictionary:(NSDictionary *)dictionary;
 - (void) dealloc;
 
-- (void) update:(ccTime) dt;
+- (void) update:(double) dt;
 
 - (void) spawnAt:(CGPoint) p;
 - (void) reclaim;

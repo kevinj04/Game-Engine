@@ -71,7 +71,7 @@ NSString *const paramImage = @"image";
     
 }
 
-- (void) update:(ccTime) dt {
+- (void) update:(double) dt {
     
     [super update:dt];
     

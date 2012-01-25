@@ -67,7 +67,7 @@ extern NSString *const physicsMassChange;
 - (void) setBoundary:(CGRect) r;
 
 - (void) applyImpulse:(CGPoint) f;
-- (void) update:(ccTime) dt;
+- (void) update:(double) dt;
 - (void) accelerate:(CGPoint) a;
 
 - (NSMutableDictionary *) dictionary;

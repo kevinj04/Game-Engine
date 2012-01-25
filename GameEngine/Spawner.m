@@ -136,7 +136,7 @@ NSString *const reclaimObject = @"reclaimObject";
     [spawnableObjects addObject:obj];
 }
 
-- (void) update:(ccTime) dt {
+- (void) update:(double) dt {
     
     if ([self isActive]) {
         delayCounter += dt;

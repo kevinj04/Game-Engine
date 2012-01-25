@@ -18,6 +18,6 @@
 - (void) setupWithDictionary:(NSDictionary *)dictionary;
 - (void) dealloc;
 
-- (void) update:(ccTime)dt;
+- (void) update:(double)dt;
 
 @end

@@ -137,7 +137,7 @@ NSString *const physicsMassChange = @"physicsMassChange";
     [self setAcceleration:ccpAdd(acceleration, a)];
 }
 
-- (void) update:(ccTime) dt {
+- (void) update:(double) dt {
     
     if ([self isActive]) {
         

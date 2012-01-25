@@ -28,7 +28,7 @@ extern NSString *const paramImage;
 - (void) setupWithDictionary:(NSDictionary *) dictionary;
 - (void) dealloc;
 
-- (void) update:(ccTime) dt;
+- (void) update:(double) dt;
 - (CGRect) boundingBox;
 
 @end

@@ -44,7 +44,7 @@ extern NSString *const reclaimObject;
 
 - (void) addToSpawnablePool:(GameElement<Spawnable> *) obj;
 
-- (void) update:(ccTime) dt;
+- (void) update:(double) dt;
 
 /** settings */
 - (void) setSpawnRegion:(CGRect) r;
