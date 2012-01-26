@@ -55,6 +55,7 @@ NSString *const geSelected = @"gameElementSelected";
     if (( self = [super init] )) {
         
         [self registerNotifications];
+        [self setup];
         
         return self;
     } else {
@@ -67,6 +68,7 @@ NSString *const geSelected = @"gameElementSelected";
     if (( self = [super init] )) {
         
         [self setupWithDictionary:dictionary];
+        
         return self;
     } else {
         return nil;

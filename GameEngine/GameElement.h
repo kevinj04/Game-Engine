@@ -19,7 +19,7 @@ extern NSString *const parameters;
 extern NSString *const geSelected;
 
 typedef enum elementType {
-    etObject, etCamera, etHUD
+    etObject, etSpriteObject, etCamera, etHUD
 } elementType;
 
 @interface GameElement : CCNode<Spawnable> {
