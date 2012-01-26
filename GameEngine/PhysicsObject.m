@@ -63,9 +63,9 @@ NSString *const physicsMassChange = @"physicsMassChange";
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
     
-    [super setupWithDictionary:dictionary];
-    
     [self setup];
+    
+    [super setupWithDictionary:dictionary];
     
     if ([dictionary objectForKey:physicsObjectSize] != nil) {
         [self setSize:CGSizeFromString([dictionary objectForKey:physicsObjectSize])];
