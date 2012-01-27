@@ -24,6 +24,7 @@ extern NSString *const spriteObjectRunningAnimation;
     CGPoint position;
     float rotation;
     float scale;
+    double animationSpeed;
     
     @private
     NSDictionary *parts;
@@ -33,6 +34,7 @@ extern NSString *const spriteObjectRunningAnimation;
 @property CGPoint position;
 @property float rotation;
 @property float scale;
+@property double animationSpeed;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) objectWithDictionary:(NSDictionary *) dictionary;

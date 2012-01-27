@@ -16,7 +16,7 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 
 @implementation SpriteObject
 
-@synthesize position, rotation, scale;
+@synthesize position, rotation, scale, animationSpeed;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -34,6 +34,8 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
     return [[[SpriteObject alloc] initWithDictionary:dictionary] autorelease];
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
+    
+    animationSpeed = 1.0;
     
     if ([dictionary objectForKey:spriteObjectParts] != nil) {
         
@@ -65,6 +67,8 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 
 - (void) update:(double) dt {
 
+    dt = dt * animationSpeed;
+    
     for (SpritePart *part in [parts allValues]) {
         [part update:dt];
     }
