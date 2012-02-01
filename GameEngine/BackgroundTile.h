@@ -7,21 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cocos2d.h"
+#import "SpriteObject.h"
 #import "GameElement.h"
 
 extern NSString *const paramImage;
 
 @interface BackgroundTile : GameElement {
     NSString *imageFileName;
-    
-    @private 
-    CCSprite *bgSprite;
 }
 
 /** The name of the .png image file that corresponds to this background object. */
 @property (nonatomic, retain) NSString *imageFileName;
-
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) tileWithDictionary:(NSDictionary *) dictionary;
@@ -29,6 +25,5 @@ extern NSString *const paramImage;
 - (void) dealloc;
 
 - (void) update:(double) dt;
-- (CGRect) boundingBox;
 
 @end
