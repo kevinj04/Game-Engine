@@ -35,7 +35,10 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
     
-    animationSpeed = 1.0;
+    position = CGPointMake(0.0, 0.0);
+    scale = 0.0;
+    rotation = 0.0;
+    animationSpeed = 1.0;    
     
     if ([dictionary objectForKey:spriteObjectParts] != nil) {
         
