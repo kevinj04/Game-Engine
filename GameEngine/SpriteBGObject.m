@@ -79,6 +79,7 @@
     [super setPosition:p];
 }
 - (CGPoint) position {
+    // this may be an issue!
     return CGPointMake(0.0,0.0);
 }
 
