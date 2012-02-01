@@ -221,7 +221,7 @@
 		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 		0A71914914BF690800071DBE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A71914814BF690800071DBE /* Config.xcconfig */; };
-		0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB984314D9A34100528DE7 /* SpriteBGObject.h */; };
+		0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB984314D9A34100528DE7 /* SpriteBGObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ACB984614D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
 		0ACB984714D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
 		0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
@@ -1068,6 +1068,7 @@
 				0A718E9E14BB661000071DBE /* Level.h in Headers */,
 				0AF8B56614C87968005FCBF7 /* KeyFrame.h in Headers */,
 				0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */,
+				0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */,
 				0A03D21114CF3DD1003191B0 /* HUDObject.h in Headers */,
 				0A03D20E14CF3DAB003191B0 /* BackgroundTile.h in Headers */,
 				0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */,
@@ -1140,7 +1141,6 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
-				0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
