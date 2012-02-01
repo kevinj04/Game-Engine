@@ -9,10 +9,11 @@
 #import "BackgroundTile.h"
 
 NSString *const paramImage = @"image";
+NSString *const paramPosition = @"position";
 
 @implementation BackgroundTile
 
-@synthesize imageFileName;
+@synthesize imageFileName, position;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -39,6 +40,11 @@ NSString *const paramImage = @"image";
         imageFileName = [[params objectForKey:paramImage] retain];
     } else {
         NSAssert(NO, @"Failed to load an image for this background object.");
+    }
+    
+    position = CGPointMake(0.0, 0.0);
+    if ([params objectForKey:paramPosition] != nil) {
+        position = CGPointFromString([params objectForKey:paramPosition]);
     }
 }
 - (void) dealloc {
