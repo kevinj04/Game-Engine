@@ -78,8 +78,7 @@
     [bgSprite setPosition:p];
     [super setPosition:p];
 }
-- (CGPoint) position {
-    // this may be an issue!
+- (CGPoint) childBasePosition {
     return CGPointMake(0.0,0.0);
 }
 

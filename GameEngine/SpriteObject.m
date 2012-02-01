@@ -104,4 +104,8 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
     return parts;
 }
 
+- (CGPoint) childBasePosition {
+    return position;
+}
+
 @end

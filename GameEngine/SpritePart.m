@@ -25,7 +25,7 @@ NSString *const partRunningAnimation = @"runningAnimation";
     
     double percentTween = [currentTimeLine percentThroughCurrentFrame];
     
-    CGPoint base = [parent position];
+    CGPoint base = [parent childBasePosition];
     
     CGPoint offset = CGPointMake([currentKF position].x + 
                                     (([nextKF position].x - [currentKF position].x) * percentTween), 

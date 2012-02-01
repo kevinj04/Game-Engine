@@ -49,4 +49,6 @@ extern NSString *const spriteObjectRunningAnimation;
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep forPart:(NSString *) partName;
 - (NSDictionary *) parts;
 
+- (CGPoint) childBasePosition;
+
 @end
