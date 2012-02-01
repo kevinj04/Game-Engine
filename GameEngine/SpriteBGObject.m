@@ -74,6 +74,10 @@
     return bgSprite;
 }
 
+- (void) setPosition:(CGPoint) p {
+    [bgSprite setPosition:p];
+    [super setPosition:p];
+}
 
 
 @end
