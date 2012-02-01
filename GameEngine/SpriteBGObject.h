@@ -16,7 +16,7 @@
 }
 
 - (void) setBackgroundSprite:(NSObject<GraphicsProtocol> *) newBGSprite;
-
+- (NSObject<GraphicsProtocol> *) bgSprite;
 
 
 @end

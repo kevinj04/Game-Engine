@@ -70,6 +70,9 @@
     [bgSprite setPosition:[self position]];
     
 }
+- (NSObject<GraphicsProtocol> *) bgSprite {
+    return bgSprite;
+}
 
 
 
