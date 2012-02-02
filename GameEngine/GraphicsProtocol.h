@@ -15,5 +15,6 @@
 - (void) setRotation:(float) r;
 - (void) setSpriteFrame:(NSString *) spriteFrameName;
 - (void) setScale:(float) s;
+- (void) setZIndex:(float) z;
 
 @end

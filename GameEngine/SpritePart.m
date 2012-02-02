@@ -10,6 +10,7 @@
 
 NSString *const partAnimations = @"animations";
 NSString *const partRunningAnimation = @"runningAnimation";
+NSString *const partZIndex = @"zIndex";
 
 @interface SpritePart (private)
 - (void) tween;
@@ -92,6 +93,14 @@ NSString *const partRunningAnimation = @"runningAnimation";
         [currentTimeLine reset];
     }
     
+    if ([dictionary objectForKey:partZIndex] != nil) {
+        
+        zIndex = [[dictionary objectForKey:partZIndex] floatValue];
+        
+    } else {
+        zIndex = 0.0;
+    }
+    
 }
 - (void) dealloc {
     
@@ -119,9 +128,17 @@ NSString *const partRunningAnimation = @"runningAnimation";
 
 - (void) setParent:(SpriteObject *) spriteObj {
     parent = [spriteObj retain];
+    
+    if (spriteRep != nil) {
+        [spriteRep setZIndex:[parent zIndex] + zIndex];
+    }
 }
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep {
     spriteRep = [rep retain];
+    
+    if (parent != nil) {
+        [spriteRep setZIndex:[parent zIndex] + zIndex];
+    }
 }
 - (NSObject<GraphicsProtocol> *) spriteRep {
     return spriteRep;

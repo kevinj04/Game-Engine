@@ -68,7 +68,7 @@
     bgSprite = [newBGSprite retain];
     
     [bgSprite setPosition:[self position]];
-    
+    [bgSprite setZIndex:zIndex];
 }
 - (NSObject<GraphicsProtocol> *) bgSprite {
     return bgSprite;

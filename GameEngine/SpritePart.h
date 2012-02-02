@@ -18,6 +18,7 @@
 
 extern NSString *const partAnimations;
 extern NSString *const partRunningAnimation;
+extern NSString *const partZIndex;
 
 @interface SpritePart : NSObject {
     
@@ -30,6 +31,8 @@ extern NSString *const partRunningAnimation;
     NSDictionary *animations;
     
     SpriteObject *parent;
+
+    float zIndex;
     
 }
 

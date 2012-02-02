@@ -13,10 +13,11 @@
 NSString *const spriteObjectParts = @"parts";
 NSString *const spriteObjectAnimations = @"animations";
 NSString *const spriteObjectRunningAnimation = @"runningAnimation";
+NSString *const spriteZIndex = @"zIndex";
 
 @implementation SpriteObject
 
-@synthesize position, rotation, scale, animationSpeed;
+@synthesize position, rotation, scale, animationSpeed, zIndex;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -38,7 +39,12 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
     position = CGPointMake(0.0, 0.0);
     scale = 1.0;
     rotation = 0.0;
-    animationSpeed = 1.0;    
+    animationSpeed = 1.0;   
+    zIndex = 0.0;
+    
+    if ([dictionary objectForKey:spriteZIndex] != nil) {
+        zIndex = [[dictionary objectForKey:spriteZIndex] floatValue];
+    }
     
     if ([dictionary objectForKey:spriteObjectParts] != nil) {
         
