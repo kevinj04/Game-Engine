@@ -11,6 +11,7 @@
 NSString *const partAnimations = @"animations";
 NSString *const partRunningAnimation = @"runningAnimation";
 NSString *const partZIndex = @"zIndex";
+NSString *const partZOrder = @"zOrder";
 
 @interface SpritePart (private)
 - (void) tween;
@@ -93,12 +94,16 @@ NSString *const partZIndex = @"zIndex";
         [currentTimeLine reset];
     }
     
-    if ([dictionary objectForKey:partZIndex] != nil) {
-        
-        zIndex = [[dictionary objectForKey:partZIndex] floatValue];
-        
+    if ([dictionary objectForKey:partZIndex] != nil) {        
+        zIndex = [[dictionary objectForKey:partZIndex] floatValue];        
     } else {
         zIndex = 0.0;
+    }
+    
+    if ([dictionary objectForKey:partZIndex] != nil) {        
+        zOrder = [[dictionary objectForKey:partZOrder] intValue];        
+    } else {
+        zOrder = 0;
     }
     
 }

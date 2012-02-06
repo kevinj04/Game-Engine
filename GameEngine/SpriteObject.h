@@ -13,6 +13,7 @@ extern NSString *const spriteObjectParts;
 extern NSString *const spriteObjectAnimations;
 extern NSString *const spriteObjectRunningAnimation; 
 extern NSString *const spriteZIndex;
+extern NSString *const spriteZOrder;
 
 /**
  
@@ -27,6 +28,7 @@ extern NSString *const spriteZIndex;
     float scale;
     double animationSpeed;
     float zIndex;
+    int zOrder;
     
     @private
     NSDictionary *parts;
@@ -38,6 +40,7 @@ extern NSString *const spriteZIndex;
 @property float scale;
 @property double animationSpeed;
 @property float zIndex;
+@property int zOrder;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) objectWithDictionary:(NSDictionary *) dictionary;

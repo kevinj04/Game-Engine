@@ -14,6 +14,7 @@ NSString *const spriteObjectParts = @"parts";
 NSString *const spriteObjectAnimations = @"animations";
 NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 NSString *const spriteZIndex = @"zIndex";
+NSString *const spriteZOrder = @"zOrder";
 
 @implementation SpriteObject
 
@@ -41,9 +42,14 @@ NSString *const spriteZIndex = @"zIndex";
     rotation = 0.0;
     animationSpeed = 1.0;   
     zIndex = 0.0;
+    zOrder = 0;
     
     if ([dictionary objectForKey:spriteZIndex] != nil) {
         zIndex = [[dictionary objectForKey:spriteZIndex] floatValue];
+    }
+    
+    if ([dictionary objectForKey:spriteZOrder] != nil) {
+        zOrder = [[dictionary objectForKey:spriteZOrder] intValue];
     }
     
     if ([dictionary objectForKey:spriteObjectParts] != nil) {

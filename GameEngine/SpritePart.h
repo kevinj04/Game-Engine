@@ -19,6 +19,7 @@
 extern NSString *const partAnimations;
 extern NSString *const partRunningAnimation;
 extern NSString *const partZIndex;
+extern NSString *const partZOrder;
 
 @interface SpritePart : NSObject {
     
@@ -33,6 +34,7 @@ extern NSString *const partZIndex;
     SpriteObject *parent;
 
     float zIndex;
+    int zOrder;
     
 }
 
