@@ -224,6 +224,27 @@
 		0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB984314D9A34100528DE7 /* SpriteBGObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ACB984614D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
 		0ACB984714D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
+		0ACB986814E1A1EB00528DE7 /* CocosBackgroundElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB985E14E1A1EB00528DE7 /* CocosBackgroundElement.h */; };
+		0ACB986914E1A1EB00528DE7 /* CocosBackgroundElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB985F14E1A1EB00528DE7 /* CocosBackgroundElement.m */; };
+		0ACB986A14E1A1EB00528DE7 /* CocosBackgroundElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB985F14E1A1EB00528DE7 /* CocosBackgroundElement.m */; };
+		0ACB986B14E1A1EB00528DE7 /* CocosBGSpriteRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB986014E1A1EB00528DE7 /* CocosBGSpriteRepresentation.h */; };
+		0ACB986C14E1A1EB00528DE7 /* CocosBGSpriteRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986114E1A1EB00528DE7 /* CocosBGSpriteRepresentation.m */; };
+		0ACB986D14E1A1EB00528DE7 /* CocosBGSpriteRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986114E1A1EB00528DE7 /* CocosBGSpriteRepresentation.m */; };
+		0ACB986E14E1A1EB00528DE7 /* CocosComplexSpriteElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB986214E1A1EB00528DE7 /* CocosComplexSpriteElement.h */; };
+		0ACB986F14E1A1EB00528DE7 /* CocosComplexSpriteElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986314E1A1EB00528DE7 /* CocosComplexSpriteElement.m */; };
+		0ACB987014E1A1EB00528DE7 /* CocosComplexSpriteElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986314E1A1EB00528DE7 /* CocosComplexSpriteElement.m */; };
+		0ACB987114E1A1EB00528DE7 /* CocosGraphicalGameElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB986414E1A1EB00528DE7 /* CocosGraphicalGameElement.h */; };
+		0ACB987214E1A1EB00528DE7 /* CocosGraphicalGameElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986514E1A1EB00528DE7 /* CocosGraphicalGameElement.m */; };
+		0ACB987314E1A1EB00528DE7 /* CocosGraphicalGameElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986514E1A1EB00528DE7 /* CocosGraphicalGameElement.m */; };
+		0ACB987414E1A1EB00528DE7 /* CocosSpriteRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB986614E1A1EB00528DE7 /* CocosSpriteRepresentation.h */; };
+		0ACB987514E1A1EB00528DE7 /* CocosSpriteRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986714E1A1EB00528DE7 /* CocosSpriteRepresentation.m */; };
+		0ACB987614E1A1EB00528DE7 /* CocosSpriteRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986714E1A1EB00528DE7 /* CocosSpriteRepresentation.m */; };
+		0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB987714E1A21100528DE7 /* GraphicalGameElement.h */; };
+		0ACB987C14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */; };
+		0ACB987D14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */; };
+		0ACB987E14E1A21100528DE7 /* SpriteRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB987914E1A21100528DE7 /* SpriteRepresentation.h */; };
+		0ACB987F14E1A21100528DE7 /* SpriteRepresentation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987A14E1A21100528DE7 /* SpriteRepresentation.mm */; };
+		0ACB988014E1A21100528DE7 /* SpriteRepresentation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987A14E1A21100528DE7 /* SpriteRepresentation.mm */; };
 		0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
 		0AF8B51514C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
 		0AF8B51A14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
@@ -512,6 +533,20 @@
 		0A71914814BF690800071DBE /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		0ACB984314D9A34100528DE7 /* SpriteBGObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBGObject.h; sourceTree = "<group>"; };
 		0ACB984414D9A34100528DE7 /* SpriteBGObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteBGObject.m; sourceTree = "<group>"; };
+		0ACB985E14E1A1EB00528DE7 /* CocosBackgroundElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosBackgroundElement.h; sourceTree = "<group>"; };
+		0ACB985F14E1A1EB00528DE7 /* CocosBackgroundElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosBackgroundElement.m; sourceTree = "<group>"; };
+		0ACB986014E1A1EB00528DE7 /* CocosBGSpriteRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosBGSpriteRepresentation.h; sourceTree = "<group>"; };
+		0ACB986114E1A1EB00528DE7 /* CocosBGSpriteRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosBGSpriteRepresentation.m; sourceTree = "<group>"; };
+		0ACB986214E1A1EB00528DE7 /* CocosComplexSpriteElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosComplexSpriteElement.h; sourceTree = "<group>"; };
+		0ACB986314E1A1EB00528DE7 /* CocosComplexSpriteElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosComplexSpriteElement.m; sourceTree = "<group>"; };
+		0ACB986414E1A1EB00528DE7 /* CocosGraphicalGameElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosGraphicalGameElement.h; sourceTree = "<group>"; };
+		0ACB986514E1A1EB00528DE7 /* CocosGraphicalGameElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosGraphicalGameElement.m; sourceTree = "<group>"; };
+		0ACB986614E1A1EB00528DE7 /* CocosSpriteRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosSpriteRepresentation.h; sourceTree = "<group>"; };
+		0ACB986714E1A1EB00528DE7 /* CocosSpriteRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosSpriteRepresentation.m; sourceTree = "<group>"; };
+		0ACB987714E1A21100528DE7 /* GraphicalGameElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicalGameElement.h; sourceTree = "<group>"; };
+		0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicalGameElement.mm; sourceTree = "<group>"; };
+		0ACB987914E1A21100528DE7 /* SpriteRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteRepresentation.h; sourceTree = "<group>"; };
+		0ACB987A14E1A21100528DE7 /* SpriteRepresentation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SpriteRepresentation.mm; sourceTree = "<group>"; };
 		0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTile.h; sourceTree = "<group>"; };
 		0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTile.m; sourceTree = "<group>"; };
 		0AF8B51714C76988005FCBF7 /* CameraObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraObject.h; sourceTree = "<group>"; };
@@ -1025,9 +1060,39 @@
 			name = ObjectManager;
 			sourceTree = "<group>";
 		};
+		0ACB985C14E1A1A900528DE7 /* Cocos2DObjectKit */ = {
+			isa = PBXGroup;
+			children = (
+				0ACB985E14E1A1EB00528DE7 /* CocosBackgroundElement.h */,
+				0ACB985F14E1A1EB00528DE7 /* CocosBackgroundElement.m */,
+				0ACB986014E1A1EB00528DE7 /* CocosBGSpriteRepresentation.h */,
+				0ACB986114E1A1EB00528DE7 /* CocosBGSpriteRepresentation.m */,
+				0ACB986214E1A1EB00528DE7 /* CocosComplexSpriteElement.h */,
+				0ACB986314E1A1EB00528DE7 /* CocosComplexSpriteElement.m */,
+				0ACB986414E1A1EB00528DE7 /* CocosGraphicalGameElement.h */,
+				0ACB986514E1A1EB00528DE7 /* CocosGraphicalGameElement.m */,
+				0ACB986614E1A1EB00528DE7 /* CocosSpriteRepresentation.h */,
+				0ACB986714E1A1EB00528DE7 /* CocosSpriteRepresentation.m */,
+			);
+			name = Cocos2DObjectKit;
+			sourceTree = "<group>";
+		};
+		0ACB985D14E1A1BE00528DE7 /* openGLObjectKit */ = {
+			isa = PBXGroup;
+			children = (
+				0ACB987714E1A21100528DE7 /* GraphicalGameElement.h */,
+				0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */,
+				0ACB987914E1A21100528DE7 /* SpriteRepresentation.h */,
+				0ACB987A14E1A21100528DE7 /* SpriteRepresentation.mm */,
+			);
+			name = openGLObjectKit;
+			sourceTree = "<group>";
+		};
 		0AF8B55714C8790A005FCBF7 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				0ACB985D14E1A1BE00528DE7 /* openGLObjectKit */,
+				0ACB985C14E1A1A900528DE7 /* Cocos2DObjectKit */,
 				0AF8B55A14C8793B005FCBF7 /* SpriteObject.h */,
 				0AF8B55B14C8793B005FCBF7 /* SpriteObject.m */,
 				0AFA4D4B14C9FA7300077A83 /* SpritePart.h */,
@@ -1141,6 +1206,13 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
+				0ACB986814E1A1EB00528DE7 /* CocosBackgroundElement.h in Headers */,
+				0ACB986B14E1A1EB00528DE7 /* CocosBGSpriteRepresentation.h in Headers */,
+				0ACB986E14E1A1EB00528DE7 /* CocosComplexSpriteElement.h in Headers */,
+				0ACB987114E1A1EB00528DE7 /* CocosGraphicalGameElement.h in Headers */,
+				0ACB987414E1A1EB00528DE7 /* CocosSpriteRepresentation.h in Headers */,
+				0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */,
+				0ACB987E14E1A21100528DE7 /* SpriteRepresentation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1350,6 +1422,13 @@
 				0AF8B57214C8809D005FCBF7 /* TimeLine.m in Sources */,
 				0AFA4D4E14C9FA7300077A83 /* SpritePart.m in Sources */,
 				0ACB984614D9A34100528DE7 /* SpriteBGObject.m in Sources */,
+				0ACB986914E1A1EB00528DE7 /* CocosBackgroundElement.m in Sources */,
+				0ACB986C14E1A1EB00528DE7 /* CocosBGSpriteRepresentation.m in Sources */,
+				0ACB986F14E1A1EB00528DE7 /* CocosComplexSpriteElement.m in Sources */,
+				0ACB987214E1A1EB00528DE7 /* CocosGraphicalGameElement.m in Sources */,
+				0ACB987514E1A1EB00528DE7 /* CocosSpriteRepresentation.m in Sources */,
+				0ACB987C14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */,
+				0ACB987F14E1A21100528DE7 /* SpriteRepresentation.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1375,6 +1454,13 @@
 				0AF8B57314C8809D005FCBF7 /* TimeLine.m in Sources */,
 				0AFA4D4F14C9FA7300077A83 /* SpritePart.m in Sources */,
 				0ACB984714D9A34100528DE7 /* SpriteBGObject.m in Sources */,
+				0ACB986A14E1A1EB00528DE7 /* CocosBackgroundElement.m in Sources */,
+				0ACB986D14E1A1EB00528DE7 /* CocosBGSpriteRepresentation.m in Sources */,
+				0ACB987014E1A1EB00528DE7 /* CocosComplexSpriteElement.m in Sources */,
+				0ACB987314E1A1EB00528DE7 /* CocosGraphicalGameElement.m in Sources */,
+				0ACB987614E1A1EB00528DE7 /* CocosSpriteRepresentation.m in Sources */,
+				0ACB987D14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */,
+				0ACB988014E1A21100528DE7 /* SpriteRepresentation.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
