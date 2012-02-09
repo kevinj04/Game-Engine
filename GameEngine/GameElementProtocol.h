@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "Spawnable.h"
-#import "GameElement.h"
+
+typedef enum elementType {
+    etObject, etSpriteObject, etCamera, etHUD
+} elementType;
 
 @protocol GameElementProtocol <NSObject, Spawnable>
 

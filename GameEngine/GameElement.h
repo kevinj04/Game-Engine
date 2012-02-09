@@ -19,10 +19,6 @@ extern NSString *const geObjectName;
 extern NSString *const parameters;
 extern NSString *const geSelected;
 
-typedef enum elementType {
-    etObject, etSpriteObject, etCamera, etHUD
-} elementType;
-
 @interface GameElement : CCNode<GameElementProtocol> {
     
     NSString *objectName;
