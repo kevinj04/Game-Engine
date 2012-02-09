@@ -245,7 +245,7 @@
 		0ACB987E14E1A21100528DE7 /* SpriteRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB987914E1A21100528DE7 /* SpriteRepresentation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ACB987F14E1A21100528DE7 /* SpriteRepresentation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987A14E1A21100528DE7 /* SpriteRepresentation.mm */; };
 		0ACB988014E1A21100528DE7 /* SpriteRepresentation.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987A14E1A21100528DE7 /* SpriteRepresentation.mm */; };
-		0ACB9B1E14E41D0700528DE7 /* GameElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB9B1D14E41D0700528DE7 /* GameElementProtocol.h */; };
+		0ACB9B1E14E41D0700528DE7 /* GameElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB9B1D14E41D0700528DE7 /* GameElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
 		0AF8B51514C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
 		0AF8B51A14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
@@ -1148,6 +1148,7 @@
 				0A249B9214A275F100D5D7D3 /* StackManager.h in Headers */,
 				0A249B9314A275F100D5D7D3 /* CGExtensions.h in Headers */,
 				0ACB986814E1A1EB00528DE7 /* CocosBackgroundElement.h in Headers */,
+				0ACB9B1E14E41D0700528DE7 /* GameElementProtocol.h in Headers */,
 				0ACB986B14E1A1EB00528DE7 /* CocosBGSpriteRepresentation.h in Headers */,
 				0ACB986E14E1A1EB00528DE7 /* CocosComplexSpriteElement.h in Headers */,
 				0ACB987114E1A1EB00528DE7 /* CocosGraphicalGameElement.h in Headers */,
@@ -1216,7 +1217,6 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
-				0ACB9B1E14E41D0700528DE7 /* GameElementProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
