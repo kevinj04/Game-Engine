@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Spawnable.h"
+#import "GameElement.h"
 
 @protocol GameElementProtocol <NSObject, Spawnable>
 
@@ -21,5 +22,12 @@
 
 - (bool) isActive;
 - (void) setActive:(bool) b;
+
+- (NSString *) objectName;
+- (void) setObjectName:(NSString *) objName;
+- (NSString *) objectId;
+- (void) setObjectId:(NSString *) objId;
+- (elementType) objectType;
+- (void) setObjectType:(elementType) t;
 
 @end
