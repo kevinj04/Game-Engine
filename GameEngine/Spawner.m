@@ -47,7 +47,7 @@ NSString *const reclaimObject = @"reclaimObject";
         
     }
 }
-- (void) reclaim:(id<Spawnable>) obj {
+- (void) reclaim:(id<GameElementProtocol>) obj {
     [obj reclaim];
     [spawnableObjects addObject:obj];
 }
@@ -131,7 +131,7 @@ NSString *const reclaimObject = @"reclaimObject";
 }
 
 
-- (void) addToSpawnablePool:(id<Spawnable>) obj {
+- (void) addToSpawnablePool:(id<GameElementProtocol>) obj {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reclaimHandler:) name:reclaimObject object:obj];
     [spawnableObjects addObject:obj];
 }

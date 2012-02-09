@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "Spawnable.h"
+#import "GameElementProtocol.h"
 #import "PhysicsObject.h"
 
 extern NSString *const pSpawnChance;
@@ -18,7 +18,7 @@ extern NSString *const pSpawnRegion;
 extern NSString *const spawnObject;
 extern NSString *const reclaimObject;
 
-@interface Spawner : PhysicsObject<Spawnable> {
+@interface Spawner : PhysicsObject {
     
 @private
     CGRect spawnRegion;

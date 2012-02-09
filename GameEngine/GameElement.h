@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "Spawnable.h"
+//#import "Spawnable.h"
+#import "GameElementProtocol.h"
 #import "CGExtensions.h"
 //#import "SneakyButton.h"
 
@@ -22,7 +23,7 @@ typedef enum elementType {
     etObject, etSpriteObject, etCamera, etHUD
 } elementType;
 
-@interface GameElement : CCNode<Spawnable> {
+@interface GameElement : CCNode<GameElementProtocol> {
     
     NSString *objectName;
     NSString *objectId;
