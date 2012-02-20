@@ -88,9 +88,9 @@
     
     rotationTemp++;
     
-    [self setRotation:rotationTemp];
+    //[self setRotation:rotationTemp];
     [batchNode setPosition:[self position]];
-    //[batchNode setRotation:[self rotation]];
+    [batchNode setRotation:[self rotation]];
     
     [self setPosition:ccp([self position].x, [self position].y)];
     
