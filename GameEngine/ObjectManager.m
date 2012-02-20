@@ -102,11 +102,11 @@
 }
 
 - (void) update:(double) dt {
-    for (GameElement *ge in alwaysActiveObjects) {
+    for (NSObject<GameElementProtocol> *ge in alwaysActiveObjects) {
         [ge update:dt];
     }
     
-    for (GameElement *ge in activeObjects) {
+    for (NSObject<GameElementProtocol> *ge in activeObjects) {
         [ge update:dt];
     }
 }
