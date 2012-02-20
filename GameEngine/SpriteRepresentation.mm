@@ -65,7 +65,7 @@
     [self updateColor];
     glPointSize(roundf(scale));
     ccDrawPoint(position);
-    NSLog(@"[DOT size=%2.0f] at %@", scale, NSStringFromCGPoint(position));
+    //NSLog(@"[DOT size=%2.0f] at %@", scale, NSStringFromCGPoint(position));
 }
 
 
