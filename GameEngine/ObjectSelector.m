@@ -24,4 +24,22 @@ static Level *currentLevel;
         
 }
 
++ (NSObject<GameElementProtocol> *) getBackgroundById:(NSString *)idString {
+    if (currentLevel == nil) { return  nil; }
+    
+    return [[currentLevel backgroundTileDictionary] objectForKey:idString];
+}
+
++ (NSObject<GameElementProtocol> *) getCameraById:(NSString *)idString {
+    if (currentLevel == nil) { return  nil; }
+    
+    return [[currentLevel cameraDictionary] objectForKey:idString];
+}
+
++ (NSObject<GameElementProtocol> *) getHUDById:(NSString *)idString {
+    if (currentLevel == nil) { return  nil; }
+    
+    return [[currentLevel hudDictionary] objectForKey:idString];
+}
+
 @end
