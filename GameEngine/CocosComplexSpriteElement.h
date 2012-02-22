@@ -11,6 +11,8 @@
 #import "SpriteObject.h"
 #import "cocos2d.h"
 
+extern NSString *const zOrderStr;
+
 /**
  
  A cocos2d based sprite element composed of multiple SpriteParts. This makes use of a CCSpriteBatch node to optimize drawing.

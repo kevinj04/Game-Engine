@@ -10,6 +10,8 @@
 #import "CocosSpriteRepresentation.h"
 #import "SpritePart.h"
 
+NSString *const zOrderStr = @"zIndex";
+
 @implementation CocosComplexSpriteElement
 
 - (id) initWithDictionary:(NSDictionary *)dictionary 
@@ -49,6 +51,8 @@
             
             CocosSpriteRepresentation *rep = [CocosSpriteRepresentation spriteRepresentationWithDictionary:animForPartDictionary];
             
+            float vertZ = [[animForPartDictionary objectForKey:zOrderStr] floatValue];
+            
             [graphics setSpriteRep:rep forPart:partName];
             
             // hook up sprite batch node
@@ -63,11 +67,14 @@
                 
             }
             
+            int zOrder;
             if (batchNode != nil) {         
                 // todo: handle z-indexing
-                [batchNode addChild:rep z:0];
+                zOrder = (int)(vertZ * 100);
+                [batchNode addChild:rep z:zOrder];
                 [rep setUsesBatchNode:YES];
                 [rep setBatchNode:batchNode];
+                [rep setVertexZ:[graphics zIndex] + vertZ];
             }
             
         }
