@@ -8,6 +8,20 @@
 
 #import "ObjectSelector.h"
 
+static Level *currentLevel;
+
 @implementation ObjectSelector
+
++ (void) setCurrentLevel:(Level *) level {
+    currentLevel = level;
+}
+
++ (NSObject<GameElementProtocol> *) getObjectById:(NSString *)idString {
+    
+    if (currentLevel == nil) { return  nil; }
+    
+    return [[currentLevel objectDictionary] objectForKey:idString];
+        
+}
 
 @end

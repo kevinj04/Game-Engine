@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GameElementProtocol.h"
+#import "Level.h"
 
-@interface ObjectSelector : NSObject
+@interface ObjectSelector : NSObject {
+    
+}
+
++ (void) setCurrentLevel:(Level *) level;
++ (NSObject<GameElementProtocol> *) getObjectById:(NSString *) idString;
 
 @end
