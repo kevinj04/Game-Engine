@@ -25,6 +25,9 @@ NSString *const partZOrder = @"zOrder";
     
     [spriteRep setSpriteFrame:[currentKF frame]];
     
+    [spriteRep setFlipX:[currentKF flipX]];
+    [spriteRep setFlipY:[currentKF flipY]];
+    
     double percentTween = [currentTimeLine percentThroughCurrentFrame];
     
     CGPoint base = [parent childBasePosition];

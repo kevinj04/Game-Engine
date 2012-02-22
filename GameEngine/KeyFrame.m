@@ -13,10 +13,12 @@ NSString *const keyFrameSpriteFrame = @"frame";
 NSString *const keyFrameSpritePosition = @"position";
 NSString *const keyFrameSpriteRotation = @"rotation";
 NSString *const keyFrameSpriteScale = @"scale";
+NSString *const keyFrameFlipX = @"flipX";
+NSString *const keyFrameFlipY = @"flipY";
 
 @implementation KeyFrame
 
-@synthesize timePoint, frame, position, rotation, scale;
+@synthesize timePoint, frame, position, rotation, scale, flipX, flipY;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -40,6 +42,8 @@ NSString *const keyFrameSpriteScale = @"scale";
     position = CGPointMake(0.0,0.0);
     rotation = 0.0;
     scale = 1.0;    
+    flipX = NO;
+    flipY = NO;
     
     if ([dictionary objectForKey:keyFrameTimePoint] != nil) {
         timePoint = [[dictionary objectForKey:keyFrameTimePoint] doubleValue];
@@ -59,6 +63,14 @@ NSString *const keyFrameSpriteScale = @"scale";
     
     if ([dictionary objectForKey:keyFrameSpriteScale] != nil) {
         scale = [[dictionary objectForKey:keyFrameSpriteScale] floatValue];
+    }
+    
+    if ([dictionary objectForKey:keyFrameFlipX] != nil) {
+        flipX = [[dictionary objectForKey:keyFrameFlipX] boolValue];
+    }
+    
+    if ([dictionary objectForKey:keyFrameFlipY] != nil) {
+        flipY = [[dictionary objectForKey:keyFrameFlipY] boolValue];
     }
 }
 - (void) dealloc {

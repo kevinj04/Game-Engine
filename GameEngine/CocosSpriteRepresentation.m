@@ -94,6 +94,12 @@
 - (void) setZIndex:(float)z {
     self.vertexZ = z;
 }
+- (void) setFlipX:(bool) fx {
+    [super setFlipX:fx];
+}
+- (void) setFlipY:(bool) fy {
+    [super setFlipY:fy];
+}
 
 
 @end

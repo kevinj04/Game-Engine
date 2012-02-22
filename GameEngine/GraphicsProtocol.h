@@ -16,5 +16,7 @@
 - (void) setSpriteFrame:(NSString *) spriteFrameName;
 - (void) setScale:(float) s;
 - (void) setZIndex:(float) z;
+- (void) setFlipX:(bool) fx;
+- (void) setFlipY:(bool) fy;
 
 @end

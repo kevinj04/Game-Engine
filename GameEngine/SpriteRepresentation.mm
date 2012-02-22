@@ -53,7 +53,9 @@
 - (void) setup {
     position = CGPointMake(0.0, 0.0);
     scale = 5.0;
-    rotation = 1.0;
+    rotation = 0.0;
+    flipX = 0.0;
+    flipY = 0.0;
     [self setSpriteFrame:@"BLUE"];
 }
 - (void) dealloc {
@@ -84,6 +86,12 @@
 }
 - (void) setZIndex:(float)z {
     self.vertexZ = z;
+}
+- (void) setFlipX:(bool)fx {
+    flipX = fx;;
+}
+- (void) setFlipY:(bool) fy {
+    flipY = fy;
 }
 
 @end

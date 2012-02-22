@@ -17,6 +17,8 @@
     CGPoint position;
     float rotation;
     float scale;
+    bool flipX;
+    bool flipY;
     
 }
 

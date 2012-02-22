@@ -14,6 +14,8 @@ extern NSString *const keyFrameSpriteFrame;
 extern NSString *const keyFrameSpritePosition;
 extern NSString *const keyFrameSpriteRotation;
 extern NSString *const keyFrameSpriteScale;
+extern NSString *const keyFrameFlipX;
+extern NSString *const keyFrameFlipY;
 
 @interface KeyFrame : NSObject {
     
@@ -23,6 +25,8 @@ extern NSString *const keyFrameSpriteScale;
     CGPoint position;
     float rotation;
     float scale;
+    bool flipX;
+    bool flipY;
     
 }
 
@@ -32,6 +36,8 @@ extern NSString *const keyFrameSpriteScale;
 @property CGPoint position;
 @property float rotation;
 @property float scale;
+@property bool flipX;
+@property bool flipY;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) frameWithDictionary:(NSDictionary *) dictionary;
