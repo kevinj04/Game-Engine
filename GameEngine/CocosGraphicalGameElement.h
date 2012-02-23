@@ -30,6 +30,6 @@
 - (void) attachToLayer:(CCLayer *) layer;
 - (void) runAnimation:(NSString *) animationName;
 - (void) runAnimation:(NSString *) animationName onPart:(NSString *)partName;
-
+- (void) setAnimationSpeed:(double) animSpeed;
 
 @end

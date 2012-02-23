@@ -41,5 +41,6 @@ extern NSString *const zOrderStr;
 - (void) runAnimation:(NSString *) animationName onPart:(NSString *)partName;
 
 - (void) setRotation:(float)rotation;
+- (void) setAnimationSpeed:(double) animSpeed;
 
 @end

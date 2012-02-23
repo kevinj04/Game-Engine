@@ -81,6 +81,8 @@
 - (void) runAnimation:(NSString *)animationName onPart:(NSString *)partName {
     [graphics runAnimation:animationName onPart:partName];
 }
-
+- (void) setAnimationSpeed:(double) animSpeed {
+    [graphics setAnimationSpeed:animSpeed];
+}
 
 @end

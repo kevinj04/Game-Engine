@@ -125,4 +125,8 @@ NSString *const zOrderStr = @"zIndex";
     [batchNode setRotation:rotation];
 }
 
+- (void) setAnimationSpeed:(double) animSpeed {
+    [graphics setAnimationSpeed:animSpeed];
+}
+
 @end
