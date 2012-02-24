@@ -26,6 +26,7 @@ extern NSString *const physicsMassChange;
     CGPoint velocity;
     CGPoint acceleration;
     CGPoint centerOfMass;
+    CGPoint anchorPoint;
     
     CGPoint force;
     

@@ -57,6 +57,7 @@ NSString *const physicsMassChange = @"physicsMassChange";
     
     size = CGSizeMake(5.0, 5.0);
     boundary = CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height);
+    anchorPoint = CGPointMake(0.5, 0.5); //todo: good default?
     
     mass = 1.0f;
 
@@ -106,11 +107,23 @@ NSString *const physicsMassChange = @"physicsMassChange";
 }
 - (void) setSize:(CGSize) s {
     size = s;
-    boundary = CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height);
+    [self setBoundary:CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height)];
 }
 - (void) setBoundary:(CGRect) r {    
+    boundary = r;
     size = CGSizeMake(r.size.width, r.size.height);
-    [self setSize:size];
+    
+    CGPoint newOrigin = [self position];
+    double xOffset = (self.anchorPoint.x - 0.5f) * self.boundingBox.size.width;
+    double yOffset = (self.anchorPoint.y - 0.5f) * self.boundingBox.size.height;
+    CGPoint offset = ccp(xOffset, yOffset);
+    
+    boundary.origin = ccpAdd(newOrigin, offset);
+    
+}
+- (void) setAnchorPoint:(CGPoint) ap {
+    anchorPoint = ap;
+    [self setBoundary:[self boundary]];
 }
 
 
@@ -125,6 +138,9 @@ NSString *const physicsMassChange = @"physicsMassChange";
     boundary.origin.x = position.x-((size.width-1.0)/2.0); 
     boundary.origin.y = position.y-((size.height-1.0)/2.0); 
     return boundary; 
+}
+- (CGPoint) anchorPoint {
+    return anchorPoint;
 }
 
 - (void) applyImpulse:(CGPoint) f {
