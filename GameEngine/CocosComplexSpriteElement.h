@@ -42,5 +42,6 @@ extern NSString *const zOrderStr;
 
 - (void) setRotation:(float)rotation;
 - (void) setAnimationSpeed:(double) animSpeed;
+- (void) setAnchorPoint:(CGPoint) ap;
 
 @end

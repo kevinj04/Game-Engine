@@ -128,5 +128,9 @@ NSString *const zOrderStr = @"zIndex";
 - (void) setAnimationSpeed:(double) animSpeed {
     [graphics setAnimationSpeed:animSpeed];
 }
-
+- (void) setAnchorPoint:(CGPoint) ap {
+    for (SpritePart *s in [graphics parts]) {
+        [[s spriteRep] setAnchorPoint:ap];
+    }
+}
 @end

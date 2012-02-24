@@ -19,5 +19,6 @@
 - (void) setFlipX:(bool) fx;
 - (void) setFlipY:(bool) fy;
 - (void) setVisible:(BOOL) v;
+- (void) setAnchorPoint:(CGPoint) ap;
 
 @end
