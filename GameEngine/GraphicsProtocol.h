@@ -18,5 +18,6 @@
 - (void) setZIndex:(float) z;
 - (void) setFlipX:(bool) fx;
 - (void) setFlipY:(bool) fy;
+- (void) setVisible:(BOOL) v;
 
 @end

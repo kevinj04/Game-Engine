@@ -93,4 +93,8 @@
     }    
 }
 
+- (void) setVisible:(BOOL)visible {
+    [[graphics bgSprite] setVisible:visible];
+}
+
 @end

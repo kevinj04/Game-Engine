@@ -24,5 +24,6 @@
 - (void) update:(double)dt;
 
 - (void) attachToLayer:(CCLayer *) layer;
+- (void) setVisible:(BOOL)visible;
 
 @end
