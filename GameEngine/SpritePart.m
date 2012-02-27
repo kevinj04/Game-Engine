@@ -32,8 +32,9 @@ NSString *const partZOrder = @"zOrder";
     
     // remove if fail
     CGPoint base = [parent childBasePosition];
-    double xOffset = ([parent anchorPoint].x - 0.5f) * [parent boundary].size.width;
-    double yOffset = ([parent anchorPoint].y - 0.5f) * [parent boundary].size.height;
+    // division by 2.0 here only needed if retina/ipad
+    double xOffset = ([parent anchorPoint].x - 0.5f) * [parent boundary].size.width/2.0;
+    double yOffset = ([parent anchorPoint].y - 0.5f) * [parent boundary].size.height/2.0;
     CGPoint offsetAP = CGPointMake(xOffset, yOffset);
     
     CGPoint offset = CGPointMake([currentKF position].x + 
