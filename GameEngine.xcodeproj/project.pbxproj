@@ -10,7 +10,7 @@
 		0A03D20E14CF3DAB003191B0 /* BackgroundTile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A03D21014CF3DCC003191B0 /* CameraObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51714C76988005FCBF7 /* CameraObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A03D21114CF3DD1003191B0 /* HUDObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A22614D14FBFF6B001C35FA /* Universalizer.h */; };
+		0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A22614D14FBFF6B001C35FA /* Universalizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A22615014FBFF6B001C35FA /* Universalizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A22614E14FBFF6B001C35FA /* Universalizer.mm */; };
 		0A22615114FBFF6B001C35FA /* Universalizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A22614E14FBFF6B001C35FA /* Universalizer.mm */; };
 		0A2499C714A267D000D5D7D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499C614A267D000D5D7D3 /* QuartzCore.framework */; };
@@ -1167,6 +1167,7 @@
 				0ACB986B14E1A1EB00528DE7 /* CocosBGSpriteRepresentation.h in Headers */,
 				0ACB986E14E1A1EB00528DE7 /* CocosComplexSpriteElement.h in Headers */,
 				0ACB987114E1A1EB00528DE7 /* CocosGraphicalGameElement.h in Headers */,
+				0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */,
 				0ACB987414E1A1EB00528DE7 /* CocosSpriteRepresentation.h in Headers */,
 				0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */,
 				0ACB987E14E1A21100528DE7 /* SpriteRepresentation.h in Headers */,
@@ -1232,7 +1233,6 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
-				0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
