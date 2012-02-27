@@ -40,8 +40,8 @@ NSString *const partZOrder = @"zOrder";
                                     (([nextKF position].x - [currentKF position].x) * percentTween), 
                                  [currentKF position].y + 
                                     (([nextKF position].y - [currentKF position].y) * percentTween));
-    [spriteRep setPosition:CGPointMake(base.x+offset.x+offsetAP.x,
-                                       base.y+offset.y+offsetAP.y)];
+    [spriteRep setPosition:CGPointMake(base.x+offset.x-offsetAP.x,
+                                       base.y+offset.y-offsetAP.y)];
     
     // parent rotation gets confusing?
     
