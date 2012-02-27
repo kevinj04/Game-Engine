@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/** Make sure that ccFileUtils has been set up to use -hd images for the ipad! */
+
 @interface Universalizer : NSObject {
     
 }
