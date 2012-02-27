@@ -10,6 +10,9 @@
 		0A03D20E14CF3DAB003191B0 /* BackgroundTile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A03D21014CF3DCC003191B0 /* CameraObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51714C76988005FCBF7 /* CameraObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A03D21114CF3DD1003191B0 /* HUDObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A22614D14FBFF6B001C35FA /* Universalizer.h */; };
+		0A22615014FBFF6B001C35FA /* Universalizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A22614E14FBFF6B001C35FA /* Universalizer.mm */; };
+		0A22615114FBFF6B001C35FA /* Universalizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A22614E14FBFF6B001C35FA /* Universalizer.mm */; };
 		0A2499C714A267D000D5D7D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499C614A267D000D5D7D3 /* QuartzCore.framework */; };
 		0A2499C914A267D000D5D7D3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499C814A267D000D5D7D3 /* OpenGLES.framework */; };
 		0A2499CB14A267D000D5D7D3 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499CA14A267D000D5D7D3 /* OpenAL.framework */; };
@@ -270,6 +273,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A22614D14FBFF6B001C35FA /* Universalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Universalizer.h; sourceTree = "<group>"; };
+		0A22614E14FBFF6B001C35FA /* Universalizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Universalizer.mm; sourceTree = "<group>"; };
 		0A2499C214A267D000D5D7D3 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A2499C614A267D000D5D7D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0A2499C814A267D000D5D7D3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -594,6 +599,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A22614B14FBFF59001C35FA /* Universal Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0A22614D14FBFF6B001C35FA /* Universalizer.h */,
+				0A22614E14FBFF6B001C35FA /* Universalizer.mm */,
+			);
+			name = "Universal Tools";
+			sourceTree = "<group>";
+		};
 		0A2499B714A267D000D5D7D3 = {
 			isa = PBXGroup;
 			children = (
@@ -1007,6 +1021,7 @@
 		0A249B4614A26AA600D5D7D3 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
+				0A22614B14FBFF59001C35FA /* Universal Tools */,
 				0A249B5114A26CE800D5D7D3 /* Protocols */,
 				0A249B5314A272EF00D5D7D3 /* Spawner.h */,
 				0A249B5414A272F000D5D7D3 /* Spawner.m */,
@@ -1217,6 +1232,7 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
+				0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1433,6 +1449,7 @@
 				0ACB987514E1A1EB00528DE7 /* CocosSpriteRepresentation.m in Sources */,
 				0ACB987C14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */,
 				0ACB987F14E1A21100528DE7 /* SpriteRepresentation.mm in Sources */,
+				0A22615014FBFF6B001C35FA /* Universalizer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1465,6 +1482,7 @@
 				0ACB987614E1A1EB00528DE7 /* CocosSpriteRepresentation.m in Sources */,
 				0ACB987D14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */,
 				0ACB988014E1A21100528DE7 /* SpriteRepresentation.mm in Sources */,
+				0A22615114FBFF6B001C35FA /* Universalizer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

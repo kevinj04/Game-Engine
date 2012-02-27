@@ -7,6 +7,7 @@
 //
 
 #import "Spawner.h"
+#import "Universalizer.h"
 #import "GameElement.h"
 
 NSString *const pSpawnChance = @"spawnChance";
@@ -107,7 +108,7 @@ NSString *const reclaimObject = @"reclaimObject";
         NSDictionary *params = [dictionary objectForKey:parameters];
         
         if ([params objectForKey:pSpawnRegion] != nil) {
-            spawnRegion = CGRectFromString([params objectForKey:pSpawnRegion]);
+            spawnRegion = [Universalizer scaleRectForIPad:CGRectFromString([params objectForKey:pSpawnRegion])];
         }
         
         if ([params objectForKey:pSpawnChance] != nil) {

@@ -7,6 +7,7 @@
 //
 
 #import "PhysicsObject.h"
+#import "Universalizer.h"
 
 NSString *const physicsObjectSize = @"size";
 NSString *const physicsObjectPosition = @"position";
@@ -55,8 +56,8 @@ NSString *const physicsMassChange = @"physicsMassChange";
     acceleration = CGPointMake(0.0f, 0.0f);
     centerOfMass = CGPointMake(0.0f, 0.0f);
     
-    size = CGSizeMake(5.0, 5.0);
-    boundary = CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height);
+    size = [Universalizer scaleSizeForIPad:CGSizeMake(5.0, 5.0)];
+    boundary = [Universalizer scaleRectForIPad:CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height)];
     anchorPoint = CGPointMake(0.5, 0.5); //todo: good default?
     
     mass = 1.0f;
