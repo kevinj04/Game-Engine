@@ -7,6 +7,7 @@
 //
 
 #import "KeyFrame.h"
+#import "Universalizer.h"
 
 NSString *const keyFrameTimePoint = @"timePoint";
 NSString *const keyFrameSpriteFrame = @"frame";
@@ -54,7 +55,7 @@ NSString *const keyFrameFlipY = @"flipY";
     }
     
     if ([dictionary objectForKey:keyFrameSpritePosition] != nil) {
-        position = CGPointFromString([dictionary objectForKey:keyFrameSpritePosition]);
+        position = [Universalizer scalePointForIPad:CGPointFromString([dictionary objectForKey:keyFrameSpritePosition])];
     }
     
     if ([dictionary objectForKey:keyFrameSpriteRotation] != nil) {
