@@ -18,7 +18,7 @@ NSString *const spriteZOrder = @"zOrder";
 
 @implementation SpriteObject
 
-@synthesize position, rotation, scale, animationSpeed, zIndex, zOrder;
+@synthesize position, rotation, scale, animationSpeed, zIndex, zOrder, anchorPoint, boundary;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -43,6 +43,8 @@ NSString *const spriteZOrder = @"zOrder";
     animationSpeed = 1.0;   
     zIndex = 0.0;
     zOrder = 0;
+    anchorPoint = CGPointMake(0.5,0.5);
+    boundary = CGRectMake(0.0, 0.0, 10.0, 10.0);
     
     if ([dictionary objectForKey:spriteZIndex] != nil) {
         zIndex = [[dictionary objectForKey:spriteZIndex] floatValue];

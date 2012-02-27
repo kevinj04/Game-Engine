@@ -40,6 +40,8 @@ NSString *const zOrderStr = @"zIndex";
     NSDictionary *animationEntry = [animationDictionary objectForKey:[self objectId]];
     
     graphics = [[SpriteObject objectWithDictionary:animationEntry] retain];
+    [graphics setBoundary:[self boundary]];
+    [graphics setAnchorPoint:[self anchorPoint]];
     
     if (animationEntry != nil) {
         
@@ -129,6 +131,8 @@ NSString *const zOrderStr = @"zIndex";
     [graphics setAnimationSpeed:animSpeed];
 }
 - (void) setAnchorPoint:(CGPoint) ap {
-    [batchNode setAnchorPoint:ap];
+    [graphics setAnchorPoint:ap];
+    [super setAnchorPoint:ap];
+    //[batchNode setAnchorPoint:ap];
 }
 @end

@@ -30,14 +30,18 @@ NSString *const partZOrder = @"zOrder";
     
     double percentTween = [currentTimeLine percentThroughCurrentFrame];
     
+    // remove if fail
     CGPoint base = [parent childBasePosition];
+    double xOffset = ([parent anchorPoint].x - 0.5f) * [parent boundary].size.width;
+    double yOffset = ([parent anchorPoint].y - 0.5f) * [parent boundary].size.height;
+    CGPoint offsetAP = CGPointMake(xOffset, yOffset);
     
     CGPoint offset = CGPointMake([currentKF position].x + 
                                     (([nextKF position].x - [currentKF position].x) * percentTween), 
                                  [currentKF position].y + 
                                     (([nextKF position].y - [currentKF position].y) * percentTween));
-    [spriteRep setPosition:CGPointMake(base.x+offset.x,
-                                       base.y+offset.y)];
+    [spriteRep setPosition:CGPointMake(base.x+offset.x+offsetAP.x,
+                                       base.y+offset.y+offsetAP.y)];
     
     // parent rotation gets confusing?
     

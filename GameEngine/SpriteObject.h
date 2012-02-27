@@ -29,6 +29,8 @@ extern NSString *const spriteZOrder;
     double animationSpeed;
     float zIndex;
     int zOrder;
+    CGPoint anchorPoint;
+    CGRect boundary;
     
     @private
     NSDictionary *parts;
@@ -41,6 +43,8 @@ extern NSString *const spriteZOrder;
 @property double animationSpeed;
 @property float zIndex;
 @property int zOrder;
+@property CGPoint anchorPoint;
+@property CGRect boundary;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) objectWithDictionary:(NSDictionary *) dictionary;
