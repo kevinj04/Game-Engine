@@ -7,6 +7,7 @@
 //
 
 #import "BackgroundTile.h"
+#import "Universalizer.h"
 
 NSString *const paramImage = @"image";
 NSString *const paramPosition = @"position";
@@ -44,7 +45,7 @@ NSString *const paramPosition = @"position";
     
     position = CGPointMake(0.0, 0.0);
     if ([params objectForKey:paramPosition] != nil) {
-        position = CGPointFromString([params objectForKey:paramPosition]);
+        position = [Universalizer scalePointForIPad:CGPointFromString([params objectForKey:paramPosition])];
     }
 }
 - (void) dealloc {
