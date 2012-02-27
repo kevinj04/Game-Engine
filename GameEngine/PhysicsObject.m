@@ -70,11 +70,11 @@ NSString *const physicsMassChange = @"physicsMassChange";
     [super setupWithDictionary:dictionary];
     
     if ([dictionary objectForKey:physicsObjectSize] != nil) {
-        [self setSize:CGSizeFromString([dictionary objectForKey:physicsObjectSize])];
+        [self setSize:[Universalizer scaleSizeForIPad:CGSizeFromString([dictionary objectForKey:physicsObjectSize])]];
     }
     
     if ([dictionary objectForKey:physicsObjectPosition] != nil) {
-        position = CGPointFromString([dictionary objectForKey:physicsObjectPosition]);
+        position = [Universalizer scalePointForIPad:CGPointFromString([dictionary objectForKey:physicsObjectPosition])];
     }
     
 }
