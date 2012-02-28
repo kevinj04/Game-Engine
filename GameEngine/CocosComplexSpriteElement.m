@@ -122,9 +122,10 @@ NSString *const zOrderStr = @"zIndex";
     [graphics runAnimation:animationName onPart:partName];
 }
 
-- (void) setRotation:(float)rotation {
+- (void) setRotation:(float) r {
     // todo: maybe better way to do this?
-    [batchNode setRotation:rotation];
+    [batchNode setRotation:r];
+    [super setRotation:r];
 }
 
 - (void) setAnimationSpeed:(double) animSpeed {

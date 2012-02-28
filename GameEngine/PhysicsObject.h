@@ -34,6 +34,7 @@ extern NSString *const physicsMassChange;
     CGSize size;
     
     float mass;
+    float rotation;
         
     
     @private
@@ -57,6 +58,7 @@ extern NSString *const physicsMassChange;
 - (float) mass;
 - (CGSize) size;
 - (CGRect) boundary;
+- (float) rotation;
 
 - (void) setPosition:(CGPoint) p;
 - (void) setVelocity:(CGPoint) v;
@@ -65,6 +67,7 @@ extern NSString *const physicsMassChange;
 - (void) setForce:(CGPoint) f;
 - (void) setMass:(float) m;
 - (void) setSize:(CGSize) s;
+- (void) setRotation:(float) r;
 - (void) setBoundary:(CGRect) r;
 
 - (void) applyImpulse:(CGPoint) f;

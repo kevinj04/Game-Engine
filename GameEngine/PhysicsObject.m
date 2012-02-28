@@ -122,6 +122,9 @@ NSString *const physicsMassChange = @"physicsMassChange";
     boundary.origin = ccpAdd(newOrigin, offset);
     
 }
+- (void) setRotation:(float) r {
+    rotation = r;
+}
 - (void) setAnchorPoint:(CGPoint) ap {
     anchorPoint = ap;
     [self setBoundary:[self boundary]];
@@ -139,6 +142,9 @@ NSString *const physicsMassChange = @"physicsMassChange";
     boundary.origin.x = position.x-((size.width-1.0)/2.0); 
     boundary.origin.y = position.y-((size.height-1.0)/2.0); 
     return boundary; 
+}
+- (float) rotation {
+    return rotation;
 }
 - (CGPoint) anchorPoint {
     return anchorPoint;
