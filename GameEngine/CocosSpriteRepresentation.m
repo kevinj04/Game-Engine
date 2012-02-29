@@ -86,10 +86,12 @@
 - (void) setRotation:(float)r {
     [super setRotation:r];
 }
-- (void) setScale:(float)s {
-    [super setScale:s];    
+- (void) setScaleX:(float)s {
+    [super setScaleX:s];    
 }
-
+- (void) setScaleY:(float)s {
+    [super setScaleY:s];    
+}
 - (NSString *) spriteFrameName {
     return spriteFrameName;
 }
