@@ -14,7 +14,8 @@
 - (void) setPosition:(CGPoint) p;
 - (void) setRotation:(float) r;
 - (void) setSpriteFrame:(NSString *) spriteFrameName;
-- (void) setScale:(float) s;
+- (void) setScaleX:(float) s;
+- (void) setScaleY:(float) s;
 - (void) setZIndex:(float) z;
 - (void) setFlipX:(bool) fx;
 - (void) setFlipY:(bool) fy;

@@ -39,7 +39,8 @@ extern NSString *const spriteZOrder;
 
 @property CGPoint position;
 @property float rotation;
-@property float scale;
+@property float scaleX;
+@property float scaleY;
 @property double animationSpeed;
 @property float zIndex;
 @property int zOrder;
@@ -60,5 +61,7 @@ extern NSString *const spriteZOrder;
 - (NSDictionary *) parts;
 
 - (CGPoint) childBasePosition;
+- (void) setScaleX:(float) sx;
+- (void) setScaleY:(float) sy;
 
 @end

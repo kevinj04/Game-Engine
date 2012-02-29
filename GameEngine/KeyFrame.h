@@ -13,7 +13,8 @@ extern NSString *const keyFrameTimePoint;
 extern NSString *const keyFrameSpriteFrame;
 extern NSString *const keyFrameSpritePosition;
 extern NSString *const keyFrameSpriteRotation;
-extern NSString *const keyFrameSpriteScale;
+extern NSString *const keyFrameSpriteScaleX;
+extern NSString *const keyFrameSpriteScaleY;
 extern NSString *const keyFrameFlipX;
 extern NSString *const keyFrameFlipY;
 
@@ -24,7 +25,8 @@ extern NSString *const keyFrameFlipY;
     NSString *frame;
     CGPoint position;
     float rotation;
-    float scale;
+    float scaleX;
+    float scaleY;
     bool flipX;
     bool flipY;
     
@@ -35,7 +37,8 @@ extern NSString *const keyFrameFlipY;
 @property (nonatomic, retain) NSString *frame;
 @property CGPoint position;
 @property float rotation;
-@property float scale;
+@property float scaleX;
+@property float scaleY;
 @property bool flipX;
 @property bool flipY;
 

@@ -50,10 +50,14 @@ NSString *const partZOrder = @"zOrder";
     [spriteRep setRotation:[currentKF rotation] + rotationRange * percentTween];
     
     // parent scaling is multiplicative
-    float baseScale = [parent scale];
+    float baseScaleX = [parent scaleX];
+    float baseScaleY = [parent scaleY];
     
-    float scaleRange = [nextKF scale] - [currentKF scale];
-    [spriteRep setScale:baseScale * ([currentKF scale] + (scaleRange * percentTween))];
+    float scaleRangeX = [nextKF scaleX] - [currentKF scaleX];
+    float scaleRangeY = [nextKF scaleY] - [currentKF scaleY];
+
+    [spriteRep setScaleX:baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween))];
+    [spriteRep setScaleY:baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween))];
     
 }
 @end

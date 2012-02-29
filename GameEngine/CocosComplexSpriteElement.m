@@ -105,7 +105,8 @@ NSString *const zOrderStr = @"zIndex";
     
     //[graphics setPosition:[self position]];
     //[graphics setRotation:[self rotation]];
-    [graphics setScale:[self scale]];
+    [graphics setScaleX:[self scaleX]];
+    [graphics setScaleY:[self scaleY]];
     
     [graphics update:dt];
     

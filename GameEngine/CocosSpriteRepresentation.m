@@ -40,12 +40,14 @@
     }
     
     CGPoint kf0Position = CGPointFromString([defaultKeyFrame0Dictionary objectForKey:keyFrameSpritePosition]);
-    float kf0Scale = [[defaultKeyFrame0Dictionary objectForKey:keyFrameSpriteScale] floatValue];
+    float kf0ScaleX = [[defaultKeyFrame0Dictionary objectForKey:keyFrameSpriteScaleX] floatValue];
+    float kf0ScaleY = [[defaultKeyFrame0Dictionary objectForKey:keyFrameSpriteScaleY] floatValue];
     float kf0Rotation = [[defaultKeyFrame0Dictionary objectForKey:keyFrameSpriteRotation] floatValue];
     NSString *kf0SpriteFrameName = [defaultKeyFrame0Dictionary objectForKey:keyFrameSpriteFrame];
     
     [self setPosition:kf0Position];
-    [self setScale:kf0Scale];
+    [self setScaleX:kf0ScaleX];
+    [self setScaleY:kf0ScaleY];
     [self setRotation:kf0Rotation];
     [self setSpriteFrame:kf0SpriteFrameName];
     
