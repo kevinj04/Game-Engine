@@ -224,8 +224,8 @@
 		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 		0A71914914BF690800071DBE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A71914814BF690800071DBE /* Config.xcconfig */; };
-		0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */; };
-		0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */; };
+		0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB984314D9A34100528DE7 /* SpriteBGObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ACB984614D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
 		0ACB984714D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
@@ -1144,6 +1144,8 @@
 				0ACB9B1E14E41D0700528DE7 /* GameElementProtocol.h in Headers */,
 				0ACB986E14E1A1EB00528DE7 /* CocosComplexSpriteElement.h in Headers */,
 				0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */,
+				0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */,
+				0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */,
 				0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */,
 				0AFA4F6D14CDC17900077A83 /* cocos2d.h in Headers */,
 				0A249B9414A2760C00D5D7D3 /* CCAction.h in Headers */,
@@ -1207,8 +1209,6 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
-				0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */,
-				0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
