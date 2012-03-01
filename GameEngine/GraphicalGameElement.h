@@ -7,30 +7,46 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GameElement.h"
-#import "PhysicsObject.h"
 #import "GraphicsProtocol.h"
 #import "SpriteObject.h"
-#import "cocos2d.h"
 
-@interface GraphicalGameElement : PhysicsObject {
+@interface GraphicalGameElement : NSObject<GraphicsProtocol> {    
     
+    CGPoint position;
+    float rotation;
     
-    @private
-    SpriteObject *graphics;
+    float scaleX;
+    float scaleY;
     
+    float vertexZ;
+    float zOrder;
     
+    CGPoint anchorPoint;
+    CGRect boundingBox;
+    
+    NSString *spriteFrameName;
+    
+    bool visible;        
 }
 
-- (id) initWithDictionary:(NSDictionary *)dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
-+ (id) graphicalGameElementWithDictionary:(NSDictionary *) dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
-- (void) setupWithDictionary:(NSDictionary *)dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
+@property CGPoint position;
+@property float rotation;
+@property float scaleX;
+@property float scaleY;
+@property float vertexZ;
+@property float zOrder;
+@property CGPoint anchorPoint;
+@property CGRect boundingBox;
+@property (nonatomic, retain) NSString *spriteFrameName;
+@property bool visible;    
+
+- (id) initWithSpriteObject:(SpriteObject *) sObj;
++ (id) elementWithSpriteObject:(SpriteObject *) sObj;
+- (void) setupWithSpriteObject:(SpriteObject *) sObj;
 - (void) dealloc;
 
-- (void) update:(double)dt;
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj;
+- (void) draw;
 
-- (void) attachToLayer:(CCLayer *) layer;
-- (void) runAnimation:(NSString *) animationName;
-- (void) runAnimation:(NSString *) animationName onPart:(NSString *)partName;
 
 @end

@@ -10,7 +10,7 @@
 
 NSString *const partAnimations = @"animations";
 NSString *const partRunningAnimation = @"runningAnimation";
-NSString *const partZIndex = @"zIndex";
+NSString *const partVertexZ = @"vertexZ";
 NSString *const partZOrder = @"zOrder";
 
 @interface SpritePart (private)
@@ -23,31 +23,40 @@ NSString *const partZOrder = @"zOrder";
     KeyFrame *currentKF = [currentTimeLine currentKeyFrame];
     KeyFrame *nextKF = [currentTimeLine nextKeyFrame];
     
-    [spriteRep setSpriteFrame:[currentKF frame]];
+    //[spriteRep setSpriteFrame:[currentKF frame]];
+    [self setSpriteFrameName:[currentKF frame]];
     
+    /*
     [spriteRep setFlipX:[currentKF flipX]];
     [spriteRep setFlipY:[currentKF flipY]];
+     */
+    [self setFlipX:[currentKF flipX]];
+    [self setFlipY:[currentKF flipY]];
     
     double percentTween = [currentTimeLine percentThroughCurrentFrame];
     
     // remove if fail
     CGPoint base = [parent childBasePosition];
     // division by 2.0 here only needed if retina/ipad
-    double xOffset = ([parent anchorPoint].x - 0.5f) * [parent boundary].size.width/2.0;
-    double yOffset = ([parent anchorPoint].y - 0.5f) * [parent boundary].size.height/2.0;
+    double xOffset = ([parent anchorPoint].x - 0.5f) * [parent boundingBox].size.width/2.0;
+    double yOffset = ([parent anchorPoint].y - 0.5f) * [parent boundingBox].size.height/2.0;
     CGPoint offsetAP = CGPointMake(xOffset, yOffset);
     
     CGPoint offset = CGPointMake([currentKF position].x + 
                                     (([nextKF position].x - [currentKF position].x) * percentTween), 
                                  [currentKF position].y + 
                                     (([nextKF position].y - [currentKF position].y) * percentTween));
-    [spriteRep setPosition:CGPointMake(base.x+offset.x-offsetAP.x,
-                                       base.y+offset.y-offsetAP.y)];
+    CGPoint newPosition = CGPointMake(base.x+offset.x-offsetAP.x,
+                                      base.y+offset.y-offsetAP.y);
+    [self setPosition:newPosition];
+    //[spriteRep setPosition:newPosition];
     
     // parent rotation gets confusing?
     
     float rotationRange = [nextKF rotation] - [currentKF rotation];
-    [spriteRep setRotation:[currentKF rotation] + rotationRange * percentTween];
+    float newRotation = [currentKF rotation] + rotationRange * percentTween;
+    [self setRotation:newRotation];
+    //[spriteRep setRotation:[currentKF rotation] + rotationRange * percentTween];
     
     // parent scaling is multiplicative
     float baseScaleX = [parent scaleX];
@@ -56,8 +65,12 @@ NSString *const partZOrder = @"zOrder";
     float scaleRangeX = [nextKF scaleX] - [currentKF scaleX];
     float scaleRangeY = [nextKF scaleY] - [currentKF scaleY];
 
-    [spriteRep setScaleX:baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween))];
-    [spriteRep setScaleY:baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween))];
+    float newScaleX = baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween));
+    float newScaleY = baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween));
+    [self setScaleX:newScaleX];
+    [self setScaleY:newScaleY];
+    //[spriteRep setScaleX:newScaleX];
+    //[spriteRep setScaleY:newScaleY];
     
 }
 @end
@@ -65,6 +78,7 @@ NSString *const partZOrder = @"zOrder";
 @implementation SpritePart
 
 @synthesize name;
+@synthesize spriteFrameName, position, rotation, scaleX, scaleY, vertexZ, zOrder, flipX, flipY, anchorPoint, boundingBox, visible;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -106,13 +120,13 @@ NSString *const partZOrder = @"zOrder";
         [currentTimeLine reset];
     }
     
-    if ([dictionary objectForKey:partZIndex] != nil) {        
-        zIndex = [[dictionary objectForKey:partZIndex] floatValue];        
+    if ([dictionary objectForKey:partVertexZ] != nil) {        
+        vertexZ = [[dictionary objectForKey:partVertexZ] floatValue];        
     } else {
-        zIndex = 0.0;
+        vertexZ = 0.0;
     }
     
-    if ([dictionary objectForKey:partZIndex] != nil) {        
+    if ([dictionary objectForKey:partZOrder] != nil) {        
         zOrder = [[dictionary objectForKey:partZOrder] intValue];        
     } else {
         zOrder = 0;
@@ -137,6 +151,11 @@ NSString *const partZOrder = @"zOrder";
     }
     
 }
+
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj {
+    [spriteRep updateWithPhysicsInfo:updateObj];
+}
+
 - (void) runAnimation:(NSString *) animationName {
     if ([animations objectForKey:animationName] != nil) {
         currentTimeLine = [animations objectForKey:animationName];
@@ -145,17 +164,11 @@ NSString *const partZOrder = @"zOrder";
 
 - (void) setParent:(SpriteObject *) spriteObj {
     parent = [spriteObj retain];
-    
-    if (spriteRep != nil) {
-        [spriteRep setZIndex:[parent zIndex] + zIndex];
-    }
+    [spriteRep updateWithPhysicsInfo:self];
 }
+
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep {
     spriteRep = [rep retain];
-    
-    if (parent != nil) {
-        [spriteRep setZIndex:[parent zIndex] + zIndex];
-    }
 }
 - (NSObject<GraphicsProtocol> *) spriteRep {
     return spriteRep;

@@ -19,7 +19,10 @@ NSString *const physicsForceChange = @"physicsForceChange";
 NSString *const physicsCenterOfMassChange = @"physicsCenterOfMassChange";
 NSString *const physicsMassChange = @"physicsMassChange";
 
+
 @implementation PhysicsObject
+
+@synthesize graphics;
 
 - (id) init {
     if (( self = [super init] )) {
@@ -57,10 +60,12 @@ NSString *const physicsMassChange = @"physicsMassChange";
     centerOfMass = CGPointMake(0.0f, 0.0f);
     
     size = [Universalizer scaleSizeForIPad:CGSizeMake(5.0, 5.0)];
-    boundary = [Universalizer scaleRectForIPad:CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height)];
+    boundingBox = [Universalizer scaleRectForIPad:CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height)];
     anchorPoint = CGPointMake(0.5, 0.5); //todo: good default?
     
     mass = 1.0f;
+    
+    graphics = nil; // to be set later
 
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
@@ -108,10 +113,10 @@ NSString *const physicsMassChange = @"physicsMassChange";
 }
 - (void) setSize:(CGSize) s {
     size = s;
-    [self setBoundary:CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height)];
+    [self setBoundingBox:CGRectMake(position.x-((size.width-1.0)/2.0), position.y-((size.height-1.0)/2.0), size.width, size.height)];
 }
-- (void) setBoundary:(CGRect) r {    
-    boundary = r;
+- (void) setBoundingBox:(CGRect) r {    
+    boundingBox = r;
     size = CGSizeMake(r.size.width, r.size.height);
     
     CGPoint newOrigin = [self position];
@@ -119,7 +124,7 @@ NSString *const physicsMassChange = @"physicsMassChange";
     double yOffset = (self.anchorPoint.y - 0.5f) * self.boundingBox.size.height;
     CGPoint offset = ccp(xOffset, yOffset);
     
-    boundary.origin = ccpAdd(newOrigin, offset);
+    boundingBox.origin = ccpAdd(newOrigin, offset);
     
 }
 - (void) setRotation:(float) r {
@@ -127,7 +132,7 @@ NSString *const physicsMassChange = @"physicsMassChange";
 }
 - (void) setAnchorPoint:(CGPoint) ap {
     anchorPoint = ap;
-    [self setBoundary:[self boundary]];
+    [self setBoundingBox:[self boundingBox]];
 }
 
 
@@ -138,10 +143,12 @@ NSString *const physicsMassChange = @"physicsMassChange";
 - (CGPoint) centerOfMass { return centerOfMass; }
 - (float) mass { return mass; }
 - (CGSize) size { return size; }
-- (CGRect) boundary { 
-    boundary.origin.x = position.x-((size.width-1.0)/2.0); 
-    boundary.origin.y = position.y-((size.height-1.0)/2.0); 
-    return boundary; 
+- (CGRect) boundingBox { 
+    /*
+    boundingBox.origin.x = position.x-((size.width-1.0)/2.0); 
+    boundingBox.origin.y = position.y-((size.height-1.0)/2.0); 
+     */
+    return boundingBox; 
 }
 - (float) rotation {
     return rotation;

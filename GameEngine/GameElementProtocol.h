@@ -13,7 +13,7 @@ typedef enum elementType {
     etObject, etSpriteObject, etCamera, etHUD
 } elementType;
 
-@protocol GameElementProtocol <NSObject, Spawnable>
+@protocol GameElementProtocol <NSObject>
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) elementWithDictionary:(NSDictionary *) dictionary;

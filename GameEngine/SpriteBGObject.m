@@ -10,6 +10,8 @@
 
 @implementation SpriteBGObject
 
+@synthesize backgroundFileName;
+
 - (id) initWithDictionary:(NSDictionary *) dictionary {
  
     if (( self = [super initWithDictionary:dictionary] )) {
@@ -34,50 +36,13 @@
 }
 - (void) dealloc {
     
-    if (bgSprite != nil) { [bgSprite release]; bgSprite = nil; }
+    if (backgroundFileName != nil) { [backgroundFileName release]; backgroundFileName = nil; }
     
     [super dealloc];
     
 }
 
-- (void) update:(double) dt {
-    [super update:dt];
-    
-    // update sprite position -- maybe someday with camera offset?
-    [bgSprite setPosition:[self position]];
-}
 
-- (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName {
-    [super runAnimation:animationName onPart:partName];
-}
-- (void) runAnimation:(NSString *) animationName {
-    [super runAnimation:animationName];
-}
-
-- (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep forPart:(NSString *) partName {
-    [super setSpriteRep:rep forPart:partName];
-}
-- (NSDictionary *) parts {
-    return [super parts];
-}
-
-
-- (void) setBackgroundSprite:(NSObject<GraphicsProtocol> *) newBGSprite {
-    
-    if (bgSprite != nil) { [bgSprite release]; bgSprite = nil; };
-    bgSprite = [newBGSprite retain];
-    
-    [bgSprite setPosition:[self position]];
-    [bgSprite setZIndex:zIndex];
-}
-- (NSObject<GraphicsProtocol> *) bgSprite {
-    return bgSprite;
-}
-
-- (void) setPosition:(CGPoint) p {
-    [bgSprite setPosition:p];
-    [super setPosition:p];
-}
 - (CGPoint) childBasePosition {
     return CGPointMake(0.0,0.0);
 }

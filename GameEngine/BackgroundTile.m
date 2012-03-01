@@ -14,7 +14,8 @@ NSString *const paramPosition = @"position";
 
 @implementation BackgroundTile
 
-@synthesize imageFileName, position;
+@synthesize graphics;
+@synthesize imageFileName, position, boundingBox;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -47,6 +48,8 @@ NSString *const paramPosition = @"position";
     if ([params objectForKey:paramPosition] != nil) {
         position = [Universalizer scalePointForIPad:CGPointFromString([params objectForKey:paramPosition])];
     }
+    
+    graphics = nil; // set later?
 }
 - (void) dealloc {
     

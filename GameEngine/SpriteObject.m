@@ -13,12 +13,12 @@
 NSString *const spriteObjectParts = @"parts";
 NSString *const spriteObjectAnimations = @"animations";
 NSString *const spriteObjectRunningAnimation = @"runningAnimation";
-NSString *const spriteZIndex = @"zIndex";
+NSString *const spriteVertexZ = @"vertexZ";
 NSString *const spriteZOrder = @"zOrder";
 
 @implementation SpriteObject
 
-@synthesize position, rotation, scaleX, scaleY, animationSpeed, zIndex, zOrder, anchorPoint, boundary;
+@synthesize position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -42,13 +42,14 @@ NSString *const spriteZOrder = @"zOrder";
     scaleY = 1.0;
     rotation = 0.0;
     animationSpeed = 1.0;   
-    zIndex = 0.0;
+    vertexZ = 0.0;
     zOrder = 0;
     anchorPoint = CGPointMake(0.5,0.5);
-    boundary = CGRectMake(0.0, 0.0, 10.0, 10.0);
+    boundingBox = CGRectMake(0.0, 0.0, 10.0, 10.0);   
+    visible = YES;
     
-    if ([dictionary objectForKey:spriteZIndex] != nil) {
-        zIndex = [[dictionary objectForKey:spriteZIndex] floatValue];
+    if ([dictionary objectForKey:spriteVertexZ] != nil) {
+        vertexZ = [[dictionary objectForKey:spriteVertexZ] floatValue];
     }
     
     if ([dictionary objectForKey:spriteZOrder] != nil) {
@@ -93,6 +94,26 @@ NSString *const spriteZOrder = @"zOrder";
         
 }
 
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) pObj {
+    
+    [self setPosition:[pObj position]];
+    [self setRotation:[pObj rotation]];
+    
+    [self setAnchorPoint:[pObj anchorPoint]];
+    
+    [self setScaleX:[pObj scaleX]];
+    [self setScaleY:[pObj scaleY]];
+    
+    [self setVertexZ:[pObj vertexZ]];
+    [self setZOrder:[pObj zOrder]];
+    
+    [self setBoundingBox:[pObj boundingBox]];
+    
+    for (SpritePart *part in [parts allValues]) {
+        [part updateWithPhysicsInfo:self];
+    }
+}
+
 - (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName {
         
     // make sure the part exists
@@ -109,11 +130,6 @@ NSString *const spriteZOrder = @"zOrder";
     
 }
 
-- (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep forPart:(NSString *) partName {
-    if ([parts objectForKey:partName] != nil) {
-        [[parts objectForKey:partName] setSpriteRep:rep];
-    }
-}
 
 - (NSDictionary *) parts {
     return parts;
@@ -121,6 +137,11 @@ NSString *const spriteZOrder = @"zOrder";
 
 - (CGPoint) childBasePosition {
     return position;
+}
+
+- (NSString *) spriteFrameName {
+    // this protocol method is ignored as sprites are parts
+    return nil;
 }
 
 @end

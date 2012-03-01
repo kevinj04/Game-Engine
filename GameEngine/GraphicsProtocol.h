@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "SpriteUpdateProtocol.h"
 
 @protocol GraphicsProtocol <NSObject>
 
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj;
+
+/*
 - (void) setPosition:(CGPoint) p;
 - (void) setRotation:(float) r;
 - (void) setSpriteFrame:(NSString *) spriteFrameName;
@@ -21,5 +25,6 @@
 - (void) setFlipY:(bool) fy;
 - (void) setVisible:(BOOL) v;
 - (void) setAnchorPoint:(CGPoint) ap;
+ */
 
 @end

@@ -7,16 +7,84 @@
 //
 
 #import "GraphicalGameElement.h"
-#import "SpriteRepresentation.h"
-#import "SpritePart.h"
+#import <UIKit/UIKit.h>
+#import <OpenGLES/ES1/gl.h>
+#import "Universalizer.h"
+
+typedef struct _ccVertex2F
+{
+	GLfloat x;
+	GLfloat y;
+} ccVertex2F;
+
+@interface GraphicalGameElement (hidden) 
+- (void) updateColor;
+- (void) updateGraphicsWithInfo:(NSObject<SpriteUpdateProtocol> *) p;
+- (void) drawPoint:(CGPoint) p;
+@end
+
+@implementation GraphicalGameElement (hidden)
+- (void) drawPoint:(CGPoint) p {
+    p = [Universalizer scalePointForIPad:p];
+	ccVertex2F p2 = (ccVertex2F) {p.x, p.y};
+	
+	// Default GL states: GL_TEXTURE_2D, GL_VERTEX_ARRAY, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY
+	// Needed states: GL_VERTEX_ARRAY, 
+	// Unneeded states: GL_TEXTURE_2D, GL_TEXTURE_COORD_ARRAY, GL_COLOR_ARRAY	
+	glDisable(GL_TEXTURE_2D);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
+	
+	glVertexPointer(2, GL_FLOAT, 0, &p2);	
+	glDrawArrays(GL_POINTS, 0, 1);
+    
+	// restore default state
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glEnable(GL_TEXTURE_2D);	
+}
+- (void) updateGraphicsWithInfo:(NSObject<SpriteUpdateProtocol> *) p {
+    [self setPosition:[p position]];
+    [self setRotation:[p rotation]];
+    
+    [self setScaleX:[p scaleX]];
+    [self setScaleY:[p scaleY]];
+    
+    [self setVertexZ:[p vertexZ]];
+    [self setZOrder:[p zOrder]]; // maybe slow?
+    [self setVisible:[p visible]];
+    
+    [self setAnchorPoint:[p anchorPoint]];
+}
+- (void) updateColor {
+    if ([spriteFrameName isEqualToString:@"BLUE"]) {
+        glColor4ub(0,0,255,255);
+    } else if ([spriteFrameName isEqualToString:@"PURPLE"]) {
+        glColor4ub(123,0,255,255);
+    } else if ([spriteFrameName isEqualToString:@"RED"]) {
+        glColor4ub(255,0,0,255);
+    } else if ([spriteFrameName isEqualToString:@"GREEN"]) {
+        glColor4ub(0,255,0,255);
+    } else if ([spriteFrameName isEqualToString:@"CYAN"]) {
+        glColor4ub(0,255,255,255);
+    } else if ([spriteFrameName isEqualToString:@"YELLOW"]) {
+        glColor4ub(255,255,0,255);
+    } else {
+        glColor4ub(255,255,255,255);
+    }
+}
+@end
+
 
 @implementation GraphicalGameElement
 
-- (id) initWithDictionary:(NSDictionary *) dictionary andAnimationDictionary:(NSDictionary *) animationDictionary {
+@synthesize position, rotation, scaleX, scaleY, vertexZ, zOrder, anchorPoint, boundingBox, spriteFrameName, visible;    
+
+- (id) initWithSpriteObject:(SpriteObject *) sObj {
     
-    if (( self = [super initWithDictionary:dictionary] )) {
+    if (( self = [super init] )) {
         
-        [self setupWithDictionary:dictionary andAnimationDictionary:animationDictionary];
+        [self setupWithSpriteObject:sObj];
         return self;
         
     } else {
@@ -24,63 +92,27 @@
     }
     
 }
-+ (id) graphicalGameElementWithDictionary:(NSDictionary *) dictionary andAnimationDictionary:(NSDictionary *) animationDictionary {
-    return [[[GraphicalGameElement alloc] initWithDictionary:dictionary andAnimationDictionary:animationDictionary] autorelease];
++ (id) elementWithSpriteObject:(SpriteObject *) sObj {
+    return [[[GraphicalGameElement alloc] initWithSpriteObject:sObj] autorelease];
 }
-- (void) setupWithDictionary:(NSDictionary *)dictionary andAnimationDictionary:(NSDictionary *) animationDictionary {
+- (void) setupWithSpriteObject:(SpriteObject *) sObj {
     
-    [super setupWithDictionary:dictionary];
-    
-    NSDictionary *animationEntry = [animationDictionary objectForKey:[self objectId]];
-    
-    graphics = [[SpriteObject objectWithDictionary:animationEntry] retain];
-    
-    if (animationEntry != nil) {
-        
-        NSDictionary *partsDictionary = [animationEntry objectForKey:spriteObjectParts];    
-        
-        for (NSString *partName in [partsDictionary allKeys]) {
-            
-            SpriteRepresentation *rep = [SpriteRepresentation spriteRepresentation];
-            
-            [graphics setSpriteRep:rep forPart:partName];
-            
-        }
-        
-    }
 }
 - (void) dealloc {
-    
-    if (graphics != nil) { [graphics release]; graphics = nil; }
-    
     [super dealloc];
 }
 
-- (void) update:(double) dt {
+
+- (void) draw {
     
-    [super update:dt];
-    
-    [self setPosition:ccp([self position].x, [self position].y)];
-    
-    [graphics setPosition:[self position]];
-    [graphics setRotation:[self rotation]];
-    [graphics setScaleX:[self scaleX]];
-    [graphics setScaleY:[self scaleY]];
-    
-    [graphics update:dt];
-    
+    [self updateColor];
+    glPointSize(roundf(scaleX));
+    [self drawPoint:(position)];
+    //NSLog(@"[DOT size=%2.0f] at %@", scale, NSStringFromCGPoint(position));
 }
 
-- (void) attachToLayer:(CCLayer *) layer {
-    for (SpritePart *part in [[graphics parts] allValues]) {
-        [layer addChild:(CCNode *)[part spriteRep] z:0];
-    }
-}
-- (void) runAnimation:(NSString *) animationName {
-    [graphics runAnimation:animationName];
-}
-- (void) runAnimation:(NSString *)animationName onPart:(NSString *)partName {
-    [graphics runAnimation:animationName onPart:partName];
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj {
+    
 }
 
 

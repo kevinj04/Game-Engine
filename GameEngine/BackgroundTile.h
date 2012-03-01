@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SpriteObject.h"
+#import "SpriteBGObject.h"
 #import "GameElement.h"
 
 extern NSString *const paramImage;
@@ -16,6 +16,8 @@ extern NSString *const paramPosition;
 @interface BackgroundTile : GameElement {
     NSString *imageFileName;
     CGPoint position;
+    
+    SpriteBGObject *graphics;
 }
 
 /** The name of the .png image file that corresponds to this background object. */
@@ -23,6 +25,9 @@ extern NSString *const paramPosition;
 
 /** The position of the background object. This is NOT a physics object. */
 @property CGPoint position;
+@property CGRect boundingBox;
+
+@property (nonatomic, retain) SpriteObject *graphics;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) tileWithDictionary:(NSDictionary *) dictionary;

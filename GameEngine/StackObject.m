@@ -13,7 +13,7 @@
 @synthesize above, below;
 
 #pragma mark Initialization
-- (id) initWithElement:(GameElement *) elt {
+- (id) initWithElement:(NSObject<StackElementProtocol> *) elt {
     
     if (( self = [super init] )) {
         
@@ -29,7 +29,7 @@
     }
     
 }
-+ (id) objectWithElement:(GameElement *) elt {
++ (id) objectWithElement:(NSObject<StackElementProtocol> *) elt {
     return [[[StackObject alloc] initWithElement:elt] autorelease];
 }
 - (void) reset {
@@ -46,7 +46,7 @@
 #pragma mark -
 
 #pragma mark Access Methods
-- (GameElement *) element {
+- (NSObject<StackElementProtocol> *) element {
     return element;
 }
 - (bool) isBase {

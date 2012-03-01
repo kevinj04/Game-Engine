@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cocos2d.h"
 #import "GameElement.h"
+#import "SpriteObject.h"
+#import "StackElementProtocol.h"
 
 extern NSString *const physicsObjectSize;
 extern NSString *const physicsObjectPosition;
@@ -20,7 +21,7 @@ extern NSString *const physicsForceChange;
 extern NSString *const physicsCenterOfMassChange;
 extern NSString *const physicsMassChange;
 
-@interface PhysicsObject : GameElement {
+@interface PhysicsObject : GameElement<StackElementProtocol> {
     
     CGPoint position;
     CGPoint velocity;
@@ -30,16 +31,20 @@ extern NSString *const physicsMassChange;
     
     CGPoint force;
     
-    CGRect boundary;
+    CGRect boundingBox;
     CGSize size;
     
     float mass;
     float rotation;
         
     
+    SpriteObject *graphics;
+    
     @private
     
 }
+
+@property (nonatomic, retain) SpriteObject *graphics;
 
 - (id) init;
 + (id) object;
@@ -57,7 +62,8 @@ extern NSString *const physicsMassChange;
 - (CGPoint) force;
 - (float) mass;
 - (CGSize) size;
-- (CGRect) boundary;
+- (CGRect) boundingBox;
+- (CGPoint) anchorPoint;
 - (float) rotation;
 
 - (void) setPosition:(CGPoint) p;
@@ -68,7 +74,8 @@ extern NSString *const physicsMassChange;
 - (void) setMass:(float) m;
 - (void) setSize:(CGSize) s;
 - (void) setRotation:(float) r;
-- (void) setBoundary:(CGRect) r;
+- (void) setBoundingBox:(CGRect) r;
+- (void) setAnchorPoint:(CGPoint) ap;
 
 - (void) applyImpulse:(CGPoint) f;
 - (void) update:(double) dt;

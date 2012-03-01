@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PhysicsObject.h"
 #import "SpriteObject.h"
 #import "cocos2d.h"
 
@@ -19,29 +18,22 @@ extern NSString *const zOrderStr;
  
  */
 
-@interface CocosComplexSpriteElement : PhysicsObject {
+@interface CocosComplexSpriteElement : NSObject<GraphicsProtocol> {
     
     @private
-    SpriteObject *graphics;
     CCSpriteBatchNode *batchNode;
-    
-    int rotationTemp;
+    NSDictionary *sprites;
     
 }
 
-- (id) initWithDictionary:(NSDictionary *)dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
-+ (id) graphicalGameElementWithDictionary:(NSDictionary *) dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
-- (void) setupWithDictionary:(NSDictionary *)dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
+- (id) initWithSpriteInfo:(SpriteObject *) sObj;
++ (id) spriteElementWithSpriteInfo:(SpriteObject *) sObj;
+- (void) setupWithSpriteInfo:(SpriteObject *) sObj;
 - (void) dealloc;
 
 - (void) update:(double)dt;
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj;
 
 - (void) attachToLayer:(CCLayer *) layer;
-- (void) runAnimation:(NSString *) animationName;
-- (void) runAnimation:(NSString *) animationName onPart:(NSString *)partName;
-
-- (void) setRotation:(float)rotation;
-- (void) setAnimationSpeed:(double) animSpeed;
-- (void) setAnchorPoint:(CGPoint) ap;
 
 @end

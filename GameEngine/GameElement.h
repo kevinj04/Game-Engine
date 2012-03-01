@@ -19,7 +19,7 @@ extern NSString *const geObjectName;
 extern NSString *const parameters;
 extern NSString *const geSelected;
 
-@interface GameElement : CCNode<GameElementProtocol> {
+@interface GameElement : NSObject<GameElementProtocol> {
     
     NSString *objectName;
     NSString *objectId;
@@ -44,9 +44,6 @@ extern NSString *const geSelected;
 - (void) dealloc;
 
 - (void) update:(double) dt;
-
-- (void) spawnAt:(CGPoint) p;
-- (void) reclaim;
 
 - (NSMutableDictionary *) dictionary;
 - (void) resetWithDictionary:(NSDictionary *) dictionary;

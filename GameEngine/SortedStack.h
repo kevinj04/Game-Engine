@@ -56,7 +56,7 @@ typedef enum sortedStackDirection {
 #pragma mark -
 
 #pragma mark Stack Methods
-- (void) push:(GameElement *) elt;
+- (void) push:(NSObject<StackElementProtocol> *) elt;
 - (NSSet *) popSet;
 - (StackObject *) pop;
 - (StackObject *) peek;

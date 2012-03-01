@@ -49,7 +49,7 @@ NSString *const reclaimObject = @"reclaimObject";
     }
 }
 - (void) reclaim:(id<GameElementProtocol>) obj {
-    [obj reclaim];
+    //[obj reclaim];
     [spawnableObjects addObject:obj];
 }
 @end

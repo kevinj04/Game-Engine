@@ -121,18 +121,6 @@ NSString *const geSelected = @"gameElementSelected";
     //[self updateButton];
 }
 
-/** Spawnable Code */
-- (void) spawnAt:(CGPoint) p {
-    [self setPosition:p];
-    [self setVisible:YES];
-    [self setActive:YES];
-}
-
-- (void) reclaim {
-    [self setVisible:NO];
-    [self setActive:NO];    
-}
-/** End Spawnable */
 
 - (NSMutableDictionary *) dictionary {
     NSMutableDictionary *d = [[NSMutableDictionary dictionary] retain];

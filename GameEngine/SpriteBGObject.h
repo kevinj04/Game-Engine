@@ -11,12 +11,11 @@
 
 @interface SpriteBGObject : SpriteObject {
     
-    @private
-    NSObject<GraphicsProtocol> *bgSprite;
+    NSString *backgroundFileName;
+    
 }
 
-- (void) setBackgroundSprite:(NSObject<GraphicsProtocol> *) newBGSprite;
-- (NSObject<GraphicsProtocol> *) bgSprite;
+@property (nonatomic, retain) NSString *backgroundFileName;
 
 
 @end

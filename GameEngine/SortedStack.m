@@ -258,7 +258,7 @@
 #pragma mark -
 
 #pragma mark Stack Methods
-- (void) push:(GameElement *) elt {
+- (void) push:(NSObject<StackElementProtocol> *) elt {
     count++;
     
     if (top == nil) { 

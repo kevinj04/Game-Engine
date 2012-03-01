@@ -18,10 +18,10 @@
 
 extern NSString *const partAnimations;
 extern NSString *const partRunningAnimation;
-extern NSString *const partZIndex;
+extern NSString *const partVertexZ;
 extern NSString *const partZOrder;
 
-@interface SpritePart : NSObject {
+@interface SpritePart : NSObject<GraphicsProtocol, SpriteUpdateProtocol> {
     
     NSString *name;
     
@@ -31,14 +31,49 @@ extern NSString *const partZOrder;
     TimeLine *currentTimeLine;
     NSDictionary *animations;
     
-    SpriteObject *parent;
+    SpriteObject *parent; 
 
-    float zIndex;
+    
+    /** Sprite Info */
+    NSString *spriteFrameName;    
+    CGPoint position;
+    CGRect boundingBox;
+    float rotation;
+    
+    float scaleX;
+    float scaleY;
+    
+    float vertexZ;
     int zOrder;
+    
+    bool flipX;
+    bool flipY;
+    CGPoint anchorPoint;
+    bool visible;
+
     
 }
 
 @property (nonatomic, retain) NSString *name;
+
+/** Sprite Representation Information **/
+@property (nonatomic, retain) NSString *spriteFrameName;    
+@property CGPoint position;
+@property float rotation;
+@property CGRect boundingBox;
+
+@property float scaleX;
+@property float scaleY;
+
+@property float vertexZ;
+@property int zOrder;
+
+@property bool flipX;
+@property bool flipY;
+@property CGPoint anchorPoint;
+@property bool visible;
+/** ------------------- **/
+
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) partWithDictionary:(NSDictionary *) dictionary;
@@ -46,6 +81,7 @@ extern NSString *const partZOrder;
 - (void) dealloc;
 
 - (void) update:(double) dt;
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj;
 - (void) runAnimation:(NSString *) animationName;
 
 - (void) setParent:(SpriteObject *) spriteObj;

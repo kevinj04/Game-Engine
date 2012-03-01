@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "GameElement.h"
+#import "StackElementProtocol.h"
 
 /**
  @brief A sorted stack object is doubly linked list node.
@@ -23,7 +23,7 @@
     StackObject *below;
     
     @private
-    GameElement *element;
+    NSObject<StackElementProtocol> *element;
 }
 
 
@@ -31,14 +31,14 @@
 @property (nonatomic, retain) StackObject *below;
 
 #pragma mark Initialization
-- (id) initWithElement:(GameElement *) elt;
-+ (id) objectWithElement:(GameElement *) elt;
+- (id) initWithElement:(NSObject<StackElementProtocol> *) elt;
++ (id) objectWithElement:(NSObject<StackElementProtocol> *) elt;
 - (void) reset;
 - (void) dealloc;
 #pragma mark -
 
 #pragma mark Insertion/Access Methods
-- (GameElement *) element;
+- (NSObject<StackElementProtocol> *) element;
 - (bool) isBase;
 - (bool) isTop;
 #pragma mark -

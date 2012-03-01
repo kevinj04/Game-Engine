@@ -18,10 +18,10 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 
 
 @interface StackManager (private)
-- (void) sortElement:(GameElement *) elt;
+- (void) sortElement:(NSObject<StackElementProtocol> *) elt;
 
-- (bool) didMoveToLeftOrRightStack:(GameElement *) elt;
-- (bool) didMoveToUpOrDownStack:(GameElement *) elt;
+- (bool) didMoveToLeftOrRightStack:(NSObject<StackElementProtocol> *) elt;
+- (bool) didMoveToUpOrDownStack:(NSObject<StackElementProtocol> *) elt;
 
 // Event handlers for camera movement notifications.
 - (void) updateWithLeftMovement:(NSNotification *) notification;
@@ -33,7 +33,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 @end
 
 @implementation StackManager (private)
-- (void) sortElement:(GameElement *) elt {
+- (void) sortElement:(NSObject<StackElementProtocol> *) elt {
     
     if ([self didMoveToLeftOrRightStack:elt] || [self didMoveToUpOrDownStack:elt]) {
         // There may be a problem here, check to make sure the above two functions only push the elt onto one stack.            
@@ -48,7 +48,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     
 }
 
-- (bool) didMoveToLeftOrRightStack:(GameElement *) elt {
+- (bool) didMoveToLeftOrRightStack:(NSObject<StackElementProtocol> *) elt {
     
     CGRect boundingBox = [elt boundingBox];        
     
@@ -70,7 +70,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     return NO;
     
 }
-- (bool) didMoveToUpOrDownStack:(GameElement *) elt {
+- (bool) didMoveToUpOrDownStack:(NSObject<StackElementProtocol> *) elt {
     
     CGRect boundingBox = [elt boundingBox];
     
@@ -97,7 +97,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     
     NSSet *maybeActivate = [leftStack popSet];
     
-    for (GameElement *elt in maybeActivate) {
+    for (NSObject<StackElementProtocol> *elt in maybeActivate) {
         
         if (![self didMoveToUpOrDownStack:elt]) {
             [elt setActive:YES];
@@ -113,7 +113,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     
     NSSet *maybeActivate = [rightStack popSet];
     
-    for (GameElement *elt in maybeActivate) {
+    for (NSObject<StackElementProtocol> *elt in maybeActivate) {
         
         if (![self didMoveToUpOrDownStack:elt]) {
             [elt setActive:YES];
@@ -128,7 +128,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     
     NSSet *maybeActivate = [upStack popSet];
     
-    for (GameElement *elt in maybeActivate) {
+    for (NSObject<StackElementProtocol> *elt in maybeActivate) {
         
         if (![self didMoveToLeftOrRightStack:elt]) {
             [elt setActive:YES];
@@ -143,7 +143,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     
     NSSet *maybeActivate = [downStack popSet];
     
-    for (GameElement *elt in maybeActivate) {
+    for (NSObject<StackElementProtocol> *elt in maybeActivate) {
         
         if (![self didMoveToLeftOrRightStack:elt]) {
             [elt setActive:YES];
@@ -250,7 +250,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     
     //[self updateActiveWindow:nil];
     
-    for (GameElement *elt in elementSet) {
+    for (NSObject<StackElementProtocol> *elt in elementSet) {
         
         // sortElement determines which stack and set to place the object into.
         [self sortElement:elt];
@@ -267,7 +267,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 - (void) updateWithTime:(ccTime) dt {
     
     // update all active game elements
-    for (GameElement *elt in activeObjects) {
+    for (NSObject<StackElementProtocol> *elt in activeObjects) {
         if ([elt respondsToSelector:@selector(updateWithTime:)]) {
             NSLog(@"Updating %@ at %@", elt, NSStringFromCGPoint([elt position]));
             [elt update:dt];
@@ -281,12 +281,12 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
         }
     }
     
-    for (GameElement *elt in inactiveObjects) {
+    for (NSObject<StackElementProtocol> *elt in inactiveObjects) {
         NSLog(@"Inactive: %@ at %@", elt, NSStringFromCGPoint([elt position]));
     }
     
     // update all elements in the always active set
-    for (GameElement *elt in alwaysUpdate) {
+    for (NSObject<StackElementProtocol> *elt in alwaysUpdate) {
         [elt update:dt];
     }
     

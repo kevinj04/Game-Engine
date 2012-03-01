@@ -12,7 +12,7 @@
 extern NSString *const spriteObjectParts;
 extern NSString *const spriteObjectAnimations;
 extern NSString *const spriteObjectRunningAnimation; 
-extern NSString *const spriteZIndex;
+extern NSString *const spriteVertexZ;
 extern NSString *const spriteZOrder;
 
 /**
@@ -21,18 +21,21 @@ extern NSString *const spriteZOrder;
  
  */
 
-@interface SpriteObject : NSObject {
+@interface SpriteObject : NSObject<SpriteUpdateProtocol> {
     
+    // SpriteObject is a 'container' of sprite parts.
     CGPoint position;
     float rotation;
-    float scale;
+    float scaleX;
+    float scaleY;
     double animationSpeed;
-    float zIndex;
+    float vertexZ;
     int zOrder;
     CGPoint anchorPoint;
-    CGRect boundary;
+    CGRect boundingBox;
+    bool visible;
     
-    @private
+    @private    
     NSDictionary *parts;
     
 }
@@ -42,10 +45,11 @@ extern NSString *const spriteZOrder;
 @property float scaleX;
 @property float scaleY;
 @property double animationSpeed;
-@property float zIndex;
+@property float vertexZ;
 @property int zOrder;
 @property CGPoint anchorPoint;
-@property CGRect boundary;
+@property CGRect boundingBox;
+@property bool visible;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) objectWithDictionary:(NSDictionary *) dictionary;
@@ -53,11 +57,11 @@ extern NSString *const spriteZOrder;
 - (void) dealloc;
 
 - (void) update:(double) dt;
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) pObj;
 
 - (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName;
 - (void) runAnimation:(NSString *) animationName;
 
-- (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep forPart:(NSString *) partName;
 - (NSDictionary *) parts;
 
 - (CGPoint) childBasePosition;

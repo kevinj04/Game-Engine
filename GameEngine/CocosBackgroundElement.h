@@ -10,20 +10,21 @@
 #import "BackgroundTile.h"
 #import "SpriteBGObject.h"
 
-@interface CocosBackgroundElement : BackgroundTile {
+@interface CocosBackgroundElement : NSObject<GraphicsProtocol> {
         
     @private
-    SpriteBGObject *graphics;
+    CCSprite *backgroundSprite;
+    NSDictionary *backgroundElements;
 }
 
-- (id) initWithDictionary:(NSDictionary *)dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
-+ (id) backgroundElementWithDictionary:(NSDictionary *) dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
-- (void) setupWithDictionary:(NSDictionary *)dictionary andAnimationDictionary:(NSDictionary *) animationDictionary;
+- (id) initWithSpriteBGObject:(SpriteBGObject *) bgObj;
++ (id) backgroundElementWithSpriteBGObject:(SpriteBGObject *) bgObj;
+- (void) setupWithSpriteBGObject:(SpriteBGObject *) bgObj;
 - (void) dealloc;
 
 - (void) update:(double)dt;
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj;
 
 - (void) attachToLayer:(CCLayer *) layer;
-- (void) setVisible:(BOOL)visible;
 
 @end
