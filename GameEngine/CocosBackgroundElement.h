@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "BackgroundTile.h"
 #import "SpriteBGObject.h"
+#import "CocosGraphicElement.h"
 
-@interface CocosBackgroundElement : NSObject<GraphicsProtocol> {
+@interface CocosBackgroundElement : CocosGraphicElement {
         
     @private
     CCSprite *backgroundSprite;

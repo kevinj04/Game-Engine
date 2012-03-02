@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SpriteObject.h"
-#import "cocos2d.h"
+#import "CocosGraphicElement.h"
 
 extern NSString *const zOrderStr;
 
@@ -18,7 +18,7 @@ extern NSString *const zOrderStr;
  
  */
 
-@interface CocosComplexSpriteElement : NSObject<GraphicsProtocol> {
+@interface CocosComplexSpriteElement : CocosGraphicElement {
     
     @private
     CCSpriteBatchNode *batchNode;
@@ -35,6 +35,5 @@ extern NSString *const zOrderStr;
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj;
 
 - (void) attachToLayer:(CCLayer *) layer;
-- (CCSpriteBatchNode *) batchNode;
 
 @end
