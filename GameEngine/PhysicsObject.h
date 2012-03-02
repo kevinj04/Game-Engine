@@ -20,6 +20,8 @@ extern NSString *const physicsAccelerationChange;
 extern NSString *const physicsForceChange;
 extern NSString *const physicsCenterOfMassChange;
 extern NSString *const physicsMassChange;
+extern NSString *const physicsRotationChange;
+extern NSString *const physicsAnchorPointChange;
 
 @interface PhysicsObject : GameElement<StackElementProtocol> {
     
@@ -35,8 +37,7 @@ extern NSString *const physicsMassChange;
     CGSize size;
     
     float mass;
-    float rotation;
-        
+    float rotation;    
     
     SpriteObject *graphics;
     

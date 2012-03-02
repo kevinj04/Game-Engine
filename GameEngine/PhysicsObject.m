@@ -18,6 +18,8 @@ NSString *const physicsAccelerationChange = @"physicsAccelerationChange";
 NSString *const physicsForceChange = @"physicsForceChange";
 NSString *const physicsCenterOfMassChange = @"physicsCenterOfMassChange";
 NSString *const physicsMassChange = @"physicsMassChange";
+NSString *const physicsRotationChange = @"physicsRotationChange";
+NSString *const physicsAnchorPointChange = @"physicsAnchorPointChange";
 
 
 @implementation PhysicsObject
@@ -89,6 +91,7 @@ NSString *const physicsMassChange = @"physicsMassChange";
 
 - (void) setPosition:(CGPoint) p {
     position = p;
+    [graphics setPosition:p];
     [[NSNotificationCenter defaultCenter] postNotificationName:physicsPositionChange object:self];
 }
 - (void) setVelocity:(CGPoint) v {
@@ -125,16 +128,21 @@ NSString *const physicsMassChange = @"physicsMassChange";
     CGPoint offset = ccp(xOffset, yOffset);
     
     boundingBox.origin = ccpAdd(newOrigin, offset);
+
+    [graphics setBoundingBox:boundingBox];
     
 }
 - (void) setRotation:(float) r {
     rotation = r;
+    [graphics setRotation:r];
+    [[NSNotificationCenter defaultCenter] postNotificationName:physicsRotationChange object:self];
 }
 - (void) setAnchorPoint:(CGPoint) ap {
     anchorPoint = ap;
     [self setBoundingBox:[self boundingBox]];
+    [graphics setAnchorPoint:ap];
+    [[NSNotificationCenter defaultCenter] postNotificationName:physicsAnchorPointChange object:self];
 }
-
 
 - (CGPoint) position { return position; }
 - (CGPoint) velocity { return velocity; }
@@ -184,6 +192,7 @@ NSString *const physicsMassChange = @"physicsMassChange";
         [self setAcceleration:ccp(force.x/mass, force.y/mass)];
         
     }
+
 }
 
 - (NSMutableDictionary *) dictionary {
