@@ -120,8 +120,5 @@
     [backgroundSprite setVisible:v];
 }
 
-- (CCNode *) rootNode {
-    return backgroundSprite;
-}
 
 @end
