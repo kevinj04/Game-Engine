@@ -119,13 +119,15 @@ NSString *const zOrderStr = @"zIndex";
         
     }
     
+    [self addChild:batchNode z:0];
+    
 }
 - (void) setVisible:(BOOL)v {
     [batchNode setVisible:v];
 }
 
 - (void) attachToLayer:(CCLayer *) layer {
-    [layer addChild:batchNode z:[batchNode zOrder]];
+    [layer addChild:self z:[batchNode zOrder]];
 }
 - (CCNode *) rootNode {
     return batchNode;

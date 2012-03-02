@@ -11,13 +11,10 @@
 @implementation CocosGraphicElement
 
 - (CCNode *) rootNode {
-    return nil;
+    return self;
 }
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj {
     // override me
-}
-- (void) setVisible:(BOOL)v {
-    if ([self rootNode] != nil) { [[self rootNode] setVisible:v]; }
 }
 
 @end

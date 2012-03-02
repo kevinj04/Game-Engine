@@ -10,7 +10,7 @@
 #import "GraphicsProtocol.h"
 #import "cocos2d.h"
 
-@interface CocosGraphicElement : NSObject<GraphicsProtocol>
+@interface CocosGraphicElement : CCNode<GraphicsProtocol>
 
 - (CCNode *) rootNode;
 
