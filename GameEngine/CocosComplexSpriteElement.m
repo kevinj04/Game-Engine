@@ -124,4 +124,7 @@ NSString *const zOrderStr = @"zIndex";
 - (void) attachToLayer:(CCLayer *) layer {
     [layer addChild:batchNode z:[batchNode zOrder]];
 }
+- (CCSpriteBatchNode *) batchNode {
+    return batchNode;
+}
 @end

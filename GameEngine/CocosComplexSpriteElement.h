@@ -35,5 +35,6 @@ extern NSString *const zOrderStr;
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj;
 
 - (void) attachToLayer:(CCLayer *) layer;
+- (CCSpriteBatchNode *) batchNode;
 
 @end
