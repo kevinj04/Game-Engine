@@ -116,4 +116,8 @@
     [layer addChild:backgroundSprite z:0];    
 }
 
+- (void) setVisible:(BOOL)v {
+    [backgroundSprite setVisible:v];
+}
+
 @end
