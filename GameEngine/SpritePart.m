@@ -27,8 +27,8 @@ NSString *const partZOrder = @"zOrder";
     [self setSpriteFrameName:[currentKF frame]];
     
     /*
-    [spriteRep setFlipX:[currentKF flipX]];
-    [spriteRep setFlipY:[currentKF flipY]];
+     [spriteRep setFlipX:[currentKF flipX]];
+     [spriteRep setFlipY:[currentKF flipY]];
      */
     [self setFlipX:[currentKF flipX]];
     [self setFlipY:[currentKF flipY]];
@@ -43,9 +43,9 @@ NSString *const partZOrder = @"zOrder";
     CGPoint offsetAP = CGPointMake(xOffset, yOffset);
     
     CGPoint offset = CGPointMake([currentKF position].x + 
-                                    (([nextKF position].x - [currentKF position].x) * percentTween), 
+                                 (([nextKF position].x - [currentKF position].x) * percentTween), 
                                  [currentKF position].y + 
-                                    (([nextKF position].y - [currentKF position].y) * percentTween));
+                                 (([nextKF position].y - [currentKF position].y) * percentTween));
     CGPoint newPosition = CGPointMake(base.x+offset.x-offsetAP.x,
                                       base.y+offset.y-offsetAP.y);
     [self setPosition:newPosition];
@@ -64,7 +64,7 @@ NSString *const partZOrder = @"zOrder";
     
     float scaleRangeX = [nextKF scaleX] - [currentKF scaleX];
     float scaleRangeY = [nextKF scaleY] - [currentKF scaleY];
-
+    
     float newScaleX = baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween));
     float newScaleY = baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween));
     [self setScaleX:newScaleX];
@@ -98,7 +98,7 @@ NSString *const partZOrder = @"zOrder";
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
     
     spriteRep = nil;
- 
+    
     NSDictionary *animationsDictionary = [dictionary objectForKey:partAnimations];
     
     NSMutableDictionary *timeLines = [NSMutableDictionary dictionaryWithCapacity:[animationsDictionary count]];
@@ -120,6 +120,23 @@ NSString *const partZOrder = @"zOrder";
         [currentTimeLine reset];
     }
     
+    // standard values
+    spriteFrameName = nil;    
+    position = CGPointMake(0.0, 0.0);
+    boundingBox = CGRectMake(0.0, 0.0, 1.0, 1.0);
+    rotation = 0.0f;
+    
+    scaleX = 1.0f;
+    scaleY = 1.0f;
+    
+    vertexZ = 1.0f;
+    zOrder = 1;
+    
+    flipX = NO;
+    flipY = NO;
+    anchorPoint = CGPointMake(0.5, 0.5);
+    visible = YES;
+    
     if ([dictionary objectForKey:partVertexZ] != nil) {        
         vertexZ = [[dictionary objectForKey:partVertexZ] floatValue];        
     } else {
@@ -131,6 +148,9 @@ NSString *const partZOrder = @"zOrder";
     } else {
         zOrder = 0;
     }
+    
+    // call tween to boot the image info
+    [self tween];
     
 }
 - (void) dealloc {
