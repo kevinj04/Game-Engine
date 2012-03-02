@@ -13,7 +13,7 @@
 @protocol GraphicsProtocol <NSObject>
 
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj;
-
+- (void) setVisible:(BOOL) v;
 /*
 - (void) setPosition:(CGPoint) p;
 - (void) setRotation:(float) r;
