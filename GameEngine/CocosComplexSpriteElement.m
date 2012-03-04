@@ -94,7 +94,7 @@ NSString *const zOrderStr = @"zIndex";
         [temp setObject:s forKey:[part name]];
         
     }
-    
+    [self addChild:batchNode z:0];
     sprites = [temp retain];
 
 }
@@ -117,9 +117,7 @@ NSString *const zOrderStr = @"zIndex";
         CCSprite *s = [sprites objectForKey:[part name]];
         [self updateSprite:s withInfo:part];
         
-    }
-    
-    [self addChild:batchNode z:0];
+    }        
     
 }
 - (void) setVisible:(BOOL)v {
