@@ -92,6 +92,7 @@ NSString *const zOrderStr = @"zIndex";
         }
         
         [temp setObject:s forKey:[part name]];
+        [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
         
     }
     [self addChild:batchNode z:0];
