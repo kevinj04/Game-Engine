@@ -193,6 +193,8 @@ NSString *const physicsAnchorPointChange = @"physicsAnchorPointChange";
         
     }
 
+    [graphics update:dt];
+    
 }
 
 - (NSMutableDictionary *) dictionary {
