@@ -173,7 +173,7 @@ NSString *const partZOrder = @"zOrder";
 }
 
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj {
-    [spriteRep updateWithPhysicsInfo:updateObj];
+    [spriteRep updateWithPhysicsInfo:self]; // changed? // CHECK THIS
 }
 
 - (void) runAnimation:(NSString *) animationName {
