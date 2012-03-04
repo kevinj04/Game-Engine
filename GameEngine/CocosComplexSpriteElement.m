@@ -112,7 +112,7 @@ NSString *const zOrderStr = @"zIndex";
     
     [self updateBatchNodeWithInfo:sObj];
     
-    for (SpritePart *part in [sObj parts]) {
+    for (SpritePart *part in [[sObj parts] allValues]) {
         
         CCSprite *s = [sprites objectForKey:[part name]];
         [self updateSprite:s withInfo:part];
