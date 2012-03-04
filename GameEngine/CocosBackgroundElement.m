@@ -80,6 +80,7 @@
         [backgroundSprite addChild:s z:[part zOrder]];
         
         [temp setObject:s forKey:[part name]];
+        [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
     }
     
     backgroundElements = [temp retain];
