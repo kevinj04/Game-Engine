@@ -24,8 +24,6 @@ NSString *const physicsAnchorPointChange = @"physicsAnchorPointChange";
 
 @implementation PhysicsObject
 
-@synthesize graphics;
-
 - (id) init {
     if (( self = [super init] )) {
         
@@ -143,6 +141,13 @@ NSString *const physicsAnchorPointChange = @"physicsAnchorPointChange";
     [graphics setAnchorPoint:ap];
     [[NSNotificationCenter defaultCenter] postNotificationName:physicsAnchorPointChange object:self];
 }
+- (void) setGraphics:(SpriteObject *) g {
+    graphics = [g retain];
+    [graphics setPosition:position];
+    [graphics setRotation:rotation];
+    [graphics setBoundingBox:boundingBox];
+    [graphics setAnchorPoint:anchorPoint];
+}
 
 - (CGPoint) position { return position; }
 - (CGPoint) velocity { return velocity; }
@@ -163,6 +168,10 @@ NSString *const physicsAnchorPointChange = @"physicsAnchorPointChange";
 }
 - (CGPoint) anchorPoint {
     return anchorPoint;
+}
+
+- (SpriteObject *) graphics {
+    return graphics;
 }
 
 - (void) applyImpulse:(CGPoint) f {
