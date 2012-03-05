@@ -24,6 +24,9 @@
 - (CGRect) boundingBox;
 - (NSString *) spriteFrameName;
 
+- (bool) flipX;
+- (bool) flipY;
+
 - (bool) visible;
 
 @end

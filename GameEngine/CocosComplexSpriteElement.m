@@ -46,6 +46,9 @@ NSString *const zOrderStr = @"zIndex";
     [s setZOrder:[p zOrder]]; // maybe slow?
     [s setVisible:[p visible]];
     
+    [s setFlipX:[p flipX]];
+    [s setFlipY:[p flipY]];
+    
     [s setAnchorPoint:[p anchorPoint]];
     
 }
