@@ -18,7 +18,7 @@ NSString *const spriteZOrder = @"zOrder";
 
 @implementation SpriteObject
 
-@synthesize position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible;
+@synthesize position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible, flipX, flipY;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -47,6 +47,8 @@ NSString *const spriteZOrder = @"zOrder";
     anchorPoint = CGPointMake(0.5,0.5);
     boundingBox = CGRectMake(0.0, 0.0, 10.0, 10.0);   
     visible = YES;
+    flipX = NO;
+    flipY = NO;
     
     if ([dictionary objectForKey:spriteVertexZ] != nil) {
         vertexZ = [[dictionary objectForKey:spriteVertexZ] floatValue];
@@ -109,6 +111,9 @@ NSString *const spriteZOrder = @"zOrder";
     [self setZOrder:[pObj zOrder]];
     
     [self setBoundingBox:[pObj boundingBox]];
+    
+    [self setFlipX:[pObj flipX]];
+    [self setFlipY:[pObj flipY]];
     
     for (SpritePart *part in [parts allValues]) {
         [part updateWithPhysicsInfo:self];

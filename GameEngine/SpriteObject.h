@@ -34,6 +34,8 @@ extern NSString *const spriteZOrder;
     CGPoint anchorPoint;
     CGRect boundingBox;
     bool visible;
+    bool flipX;
+    bool flipY;
     
     @private    
     NSDictionary *parts;
@@ -50,6 +52,8 @@ extern NSString *const spriteZOrder;
 @property CGPoint anchorPoint;
 @property CGRect boundingBox;
 @property bool visible;
+@property bool flipX;
+@property bool flipY;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) objectWithDictionary:(NSDictionary *) dictionary;
