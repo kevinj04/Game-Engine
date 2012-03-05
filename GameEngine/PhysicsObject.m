@@ -126,7 +126,7 @@ NSString *const physicsAnchorPointChange = @"physicsAnchorPointChange";
     double yOffset = (self.anchorPoint.y - 0.5f) * self.boundingBox.size.height;
     CGPoint offset = ccp(xOffset, yOffset);
     
-    boundingBox.origin = ccpAdd(newOrigin, offset);
+    boundingBox.origin = ccpSub(newOrigin, offset);
 
     [graphics setBoundingBox:boundingBox];
     
