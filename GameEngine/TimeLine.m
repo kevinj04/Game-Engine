@@ -19,6 +19,11 @@ NSString *const timeLineDuration = @"duration";
 @implementation TimeLine (private)
 - (void) updateKeyFrames {
     
+    if ([keyFrames count] == 1) {
+        keyFrameIndex = 0;
+        return; // avoids a loop below if we only have one keyframe
+    }
+    
     while (currentPosition > [[self nextKeyFrame] timePoint]) {
         keyFrameIndex = (keyFrameIndex + 1) % [keyFrames count];
         
@@ -83,14 +88,14 @@ NSString *const timeLineDuration = @"duration";
     }
     
     // if the last keyFrame's timePoint is less than the duration, we will have an infinite loop down the line...
-    
-    if ([[keyFrames lastObject] timePoint] < duration) {
-        
-        // this will create odd behavior, but should signify a bug -- 
-        NSLog(@"TIMELINE SETUP ERROR: KEYFRAME TIME POINTS MAY BE OUT OF ORDER!");
-        duration = [[keyFrames lastObject] timePoint];
-    }
-    
+    /*
+     if ([[keyFrames lastObject] timePoint] < duration) {
+     
+     // this will create odd behavior, but should signify a bug -- 
+     NSLog(@"TIMELINE SETUP ERROR: KEYFRAME TIME POINTS MAY BE OUT OF ORDER!");
+     duration = [[keyFrames lastObject] timePoint];
+     }
+     */
 }
 - (void) dealloc {
     if (keyFrames != nil) { [keyFrames release]; keyFrames = nil; }
