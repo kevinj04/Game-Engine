@@ -19,7 +19,7 @@ NSString *const zOrderStr = @"zIndex";
 
 @implementation CocosComplexSpriteElement (hidden)
 - (void) updateBatchNodeWithInfo:(NSObject<SpriteUpdateProtocol> *) p {
-    [batchNode setPosition:[p position]];
+    [batchNode setPosition:[p position]]; 
     [batchNode setRotation:[p rotation]];
     
     [batchNode setScaleX:[p scaleX]];

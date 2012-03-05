@@ -36,7 +36,8 @@ NSString *const partZOrder = @"zOrder";
     double percentTween = [currentTimeLine percentThroughCurrentFrame];
     
     // remove if fail
-    CGPoint base = [parent childBasePosition];
+    // we assume that the parent is a container object?
+    
     // division by 2.0 here only needed if retina/ipad
     double xOffset = ([parent anchorPoint].x - 0.5f) * [parent boundingBox].size.width/2.0;
     double yOffset = ([parent anchorPoint].y - 0.5f) * [parent boundingBox].size.height/2.0;
@@ -46,17 +47,15 @@ NSString *const partZOrder = @"zOrder";
                                  (([nextKF position].x - [currentKF position].x) * percentTween), 
                                  [currentKF position].y + 
                                  (([nextKF position].y - [currentKF position].y) * percentTween));
-    CGPoint newPosition = CGPointMake(base.x+offset.x-offsetAP.x,
-                                      base.y+offset.y-offsetAP.y);
-    [self setPosition:newPosition];
-    //[spriteRep setPosition:newPosition];
+    CGPoint newPosition = CGPointMake(offset.x-offsetAP.x,
+                                      offset.y-offsetAP.y);
+    [self setPosition:newPosition];    
     
     // parent rotation gets confusing?
     
     float rotationRange = [nextKF rotation] - [currentKF rotation];
     float newRotation = [currentKF rotation] + rotationRange * percentTween;
     [self setRotation:newRotation];
-    //[spriteRep setRotation:[currentKF rotation] + rotationRange * percentTween];
     
     // parent scaling is multiplicative
     float baseScaleX = [parent scaleX];
@@ -69,8 +68,6 @@ NSString *const partZOrder = @"zOrder";
     float newScaleY = baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween));
     [self setScaleX:newScaleX];
     [self setScaleY:newScaleY];
-    //[spriteRep setScaleX:newScaleX];
-    //[spriteRep setScaleY:newScaleY];
     
 }
 @end
