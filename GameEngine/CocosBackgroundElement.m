@@ -105,7 +105,7 @@
     
     [self updateBackgroundWithInfo:bgObj];
     
-    for (SpritePart *part in [bgObj parts]) {
+    for (SpritePart *part in [[bgObj parts] allValues]) {
         
         CCSprite *s = [backgroundElements objectForKey:[part name]];
         [self updateSprite:s withInfo:part];
