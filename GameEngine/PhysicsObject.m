@@ -122,14 +122,13 @@ NSString *const physicsAnchorPointChange = @"physicsAnchorPointChange";
     size = CGSizeMake(r.size.width, r.size.height);
     
     CGPoint newOrigin = [self position];
-    double xOffset = (self.anchorPoint.x - 0.5f) * self.boundingBox.size.width;
-    double yOffset = (self.anchorPoint.y - 0.5f) * self.boundingBox.size.height;
+    double xOffset = (self.anchorPoint.x) * self.boundingBox.size.width;
+    double yOffset = (self.anchorPoint.y) * self.boundingBox.size.height;
     CGPoint offset = ccp(xOffset, yOffset);
     
     boundingBox.origin = ccpSub(newOrigin, offset);
-
-    [graphics setBoundingBox:boundingBox];
     
+    [graphics setBoundingBox:boundingBox];
 }
 - (void) setRotation:(float) r {
     rotation = r;
