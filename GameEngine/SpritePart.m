@@ -12,6 +12,7 @@ NSString *const partAnimations = @"animations";
 NSString *const partRunningAnimation = @"runningAnimation";
 NSString *const partVertexZ = @"vertexZ";
 NSString *const partZOrder = @"zOrder";
+NSString *const partAnchorPoint = @"anchorPoint";
 
 @interface SpritePart (private)
 - (void) tween;
@@ -144,6 +145,10 @@ NSString *const partZOrder = @"zOrder";
         zOrder = [[dictionary objectForKey:partZOrder] intValue];        
     } else {
         zOrder = 0;
+    }
+    
+    if ([dictionary objectForKey:partAnchorPoint] != nil) {
+        anchorPoint = CGPointFromString([dictionary objectForKey:partAnchorPoint]);
     }
     
     // call tween to boot the image info

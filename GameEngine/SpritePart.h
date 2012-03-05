@@ -20,6 +20,7 @@ extern NSString *const partAnimations;
 extern NSString *const partRunningAnimation;
 extern NSString *const partVertexZ;
 extern NSString *const partZOrder;
+extern NSString *const partAnchorPoint;
 
 @interface SpritePart : NSObject<GraphicsProtocol, SpriteUpdateProtocol> {
     
