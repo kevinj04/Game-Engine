@@ -59,8 +59,10 @@ NSString *const partAnchorPoint = @"anchorPoint";
     [self setRotation:newRotation];
     
     // parent scaling is multiplicative
-    float baseScaleX = [parent scaleX];
-    float baseScaleY = [parent scaleY];
+    // we may not want to scale multiplicatively, as this will be handled by the graphics...
+    // Typically we will be scaling the parent and not wanting to scale the children exponentially.
+    float baseScaleX = 1.0; //[parent scaleX];
+    float baseScaleY = 1.0; //[parent scaleY];
     
     float scaleRangeX = [nextKF scaleX] - [currentKF scaleX];
     float scaleRangeY = [nextKF scaleY] - [currentKF scaleY];
