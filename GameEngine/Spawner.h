@@ -43,7 +43,7 @@ extern NSString *const reclaimObject;
 - (void) setupWithDictionary:(NSDictionary *) dictionary;
 - (void) dealloc;
 
-- (void) addToSpawnablePool:(GameElement<Spawnable> *) obj;
+- (void) addToSpawnablePool:(NSObject<Spawnable> *) obj;
 
 - (void) update:(double) dt;
 
