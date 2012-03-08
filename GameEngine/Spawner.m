@@ -13,6 +13,7 @@
 NSString *const pSpawnChance = @"spawnChance";
 NSString *const pSpawnDelay = @"spawnDelay";
 NSString *const pSpawnRegion = @"spawnRegion";
+NSString *const pSpawnPool = @"spawnPool";
 
 NSString *const spawnObject = @"spawnObject";
 NSString *const reclaimObject = @"reclaimObject";

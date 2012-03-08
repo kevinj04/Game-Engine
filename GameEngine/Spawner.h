@@ -14,6 +14,7 @@
 extern NSString *const pSpawnChance;
 extern NSString *const pSpawnDelay;
 extern NSString *const pSpawnRegion;
+extern NSString *const pSpawnPool;
 
 extern NSString *const spawnObject;
 extern NSString *const reclaimObject;
