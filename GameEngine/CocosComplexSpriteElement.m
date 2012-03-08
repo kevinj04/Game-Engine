@@ -69,12 +69,6 @@ NSString *const zOrderStr = @"zIndex";
     return [[[CocosComplexSpriteElement alloc] initWithSpriteInfo:sObj] autorelease];
 }
 - (void) setupWithSpriteInfo:(SpriteObject *) sObj {
-
-    if (sObj == nil) {
-        batchNode = nil;
-        sprites = [[NSDictionary alloc] init];
-        return;
-    }
     
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]];
     
@@ -104,7 +98,12 @@ NSString *const zOrderStr = @"zIndex";
         [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
         
     }
-    [self addChild:batchNode z:0];
+   
+    // if batchNode is nil, then we have a graphicless object... this is ok.
+    if (batchNode != nil) {
+        [self addChild:batchNode z:0];
+    }
+    
     sprites = [temp retain];
 
 }
