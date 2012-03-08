@@ -40,10 +40,10 @@ extern NSString *const gameElementCreatedNotification;
     
     int length;
     
-    NSDictionary *objectDictionary;
-    NSDictionary *backgroundTileDictionary;
-    NSDictionary *cameraDictionary;
-    NSDictionary *hudDictionary;
+    NSMutableDictionary *objectDictionary;
+    NSMutableDictionary *backgroundTileDictionary;
+    NSMutableDictionary *cameraDictionary;
+    NSMutableDictionary *hudDictionary;
     
     @private
     NSArray *imageResources;
@@ -66,13 +66,13 @@ extern NSString *const gameElementCreatedNotification;
 @property int length;
 
 /** @brief A dictionary of all game elements. */
-@property (nonatomic, retain) NSDictionary *objectDictionary;
+@property (nonatomic, retain) NSMutableDictionary *objectDictionary;
 /** @brief A dictionary of all background tile elements. */
-@property (nonatomic, retain) NSDictionary *backgroundTileDictionary;
+@property (nonatomic, retain) NSMutableDictionary *backgroundTileDictionary;
 /** @brief A dictionary of all camera objects. */
-@property (nonatomic, retain) NSDictionary *cameraDictionary;
+@property (nonatomic, retain) NSMutableDictionary *cameraDictionary;
 /** @brief A dictionary of all HUD elements. */
-@property (nonatomic, retain) NSDictionary *hudDictionary;
+@property (nonatomic, retain) NSMutableDictionary *hudDictionary;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) levelWithDictionary:(NSDictionary *) dictionary;

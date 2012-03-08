@@ -10,11 +10,35 @@
 
 @interface Level (private)
 - (void) registerNotifications;
+- (void) handleElementCreatedNotification:(NSNotification *) notification;
 @end
 
 @implementation Level (private)
 - (void) registerNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleElementCreatedNotification:) name:gameElementCreatedNotification object:nil];
+}
+- (void) handleElementCreatedNotification:(NSNotification *) notification {
+    
+    NSObject<GameElementProtocol> *geObj = [notification object];
+    
+    switch ([geObj objectType]) {
+        case etObject:
+            [objectDictionary setObject:geObj forKey:[geObj objectId]];
+            break;
+        case etSpriteObject:
+            [objectDictionary setObject:geObj forKey:[geObj objectId]];
+            break;
+        case etCamera:
+            [cameraDictionary setObject:geObj forKey:[geObj objectId]];
+            break;
+        case etHUD:
+            [hudDictionary setObject:geObj forKey:[geObj objectId]];
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 @end
 
@@ -81,14 +105,15 @@ NSString *const gameElementCreatedNotification = @"gameElementCreatedNotificatio
     imageResources = [[[dictionary objectForKey:levelResources] objectForKey:levelGraphics] retain];
     soundFXResources = [[[[dictionary objectForKey:levelResources] objectForKey:levelSound] objectForKey:levelWAV] retain];
     musicResources = [[[[dictionary objectForKey:levelResources] objectForKey:levelSound] objectForKey:levelMP3] retain];
+    
+    objectDictionary = [[NSMutableDictionary alloc] initWithCapacity:1000];
+    hudDictionary = [[NSMutableDictionary alloc] initWithCapacity:100];
+    cameraDictionary = [[NSMutableDictionary alloc] initWithCapacity:100];
 }
 
 - (void) loadObjectsFromDictionary:(NSDictionary *) dictionary {
-    NSDictionary *objects = [[dictionary objectForKey:levelObjects] retain];
     
-    NSMutableDictionary *tempDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
-    NSMutableDictionary *tempCameraDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
-    NSMutableDictionary *tempHUDDictionary = [NSMutableDictionary dictionaryWithCapacity:[objects count]];
+    NSDictionary *objects = [[dictionary objectForKey:levelObjects] retain];    
     
     for (NSDictionary *objDictionary in objects) {
         
@@ -103,12 +128,10 @@ NSString *const gameElementCreatedNotification = @"gameElementCreatedNotificatio
                 
             case etCamera:
                 pObj = [CameraObject objectWithDictionary:objDictionary];
-                [tempCameraDictionary setObject:pObj forKey:[pObj objectId]];
                 break;
                 
             case etHUD:
                 pObj = [HUDObject objectWithDictionary:objDictionary];
-                [tempHUDDictionary setObject:pObj forKey:[pObj objectId]];
                 break;
                 
             default:
@@ -117,14 +140,12 @@ NSString *const gameElementCreatedNotification = @"gameElementCreatedNotificatio
         }                
         
         // maybe someday split out non-camera, non-hud?
-        
-        [tempDictionary setObject:pObj forKey:[pObj objectId]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:gameElementCreatedNotification            
+                                                            object:pObj
+                                                          userInfo:nil];
         
     }
     
-    objectDictionary = [[NSDictionary alloc] initWithDictionary:tempDictionary];
-    cameraDictionary = [[NSDictionary alloc] initWithDictionary:tempCameraDictionary];
-    hudDictionary = [[NSDictionary alloc] initWithDictionary:tempHUDDictionary];
 }
 - (void) loadBackgroundTilesFromDictionary:(NSDictionary *) dictionary {
     NSDictionary *bgs = [[dictionary objectForKey:levelBgs] retain];
