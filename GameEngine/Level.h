@@ -28,6 +28,8 @@ extern NSString *const levelSound;
 extern NSString *const levelWAV;
 extern NSString *const levelMP3;
 
+extern NSString *const gameElementCreatedNotification;
+
 @interface Level : NSObject {
     
     NSString *name;

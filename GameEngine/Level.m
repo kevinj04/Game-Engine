@@ -9,10 +9,13 @@
 #import "Level.h"
 
 @interface Level (private)
+- (void) registerNotifications;
 @end
 
 @implementation Level (private)
-
+- (void) registerNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleElementCreatedNotification:) name:gameElementCreatedNotification object:nil];
+}
 @end
 
 
@@ -32,6 +35,8 @@ NSString *const levelGraphics = @"Graphics";
 NSString *const levelSound = @"Sound";
 NSString *const levelWAV = @"WAV";
 NSString *const levelMP3 = @"MP3";
+
+NSString *const gameElementCreatedNotification = @"gameElementCreatedNotification";
 
 @synthesize name;
 @synthesize backgroundMusic;
@@ -56,6 +61,8 @@ NSString *const levelMP3 = @"MP3";
     return [[[Level alloc] initWithDictionary:dictionary] autorelease];
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
+    
+    [self registerNotifications];
     
     [self setupLevel:dictionary];
     
