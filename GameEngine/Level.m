@@ -159,7 +159,7 @@ NSString *const gameElementCreatedNotification = @"gameElementCreatedNotificatio
         
     }
     
-    backgroundTileDictionary= [[NSDictionary alloc] initWithDictionary:tempDictionary];
+    backgroundTileDictionary= [[NSMutableDictionary alloc] initWithDictionary:tempDictionary];
 }
 
 - (void) dealloc {
