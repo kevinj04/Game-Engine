@@ -70,6 +70,12 @@ NSString *const zOrderStr = @"zIndex";
 }
 - (void) setupWithSpriteInfo:(SpriteObject *) sObj {
 
+    if (sObj == nil) {
+        batchNode = nil;
+        sprites = [[NSDictionary alloc] init];
+        return;
+    }
+    
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]];
     
     for (SpritePart *part in [[sObj parts] allValues]) {
