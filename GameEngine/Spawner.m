@@ -33,7 +33,17 @@ NSString *const reclaimObject = @"reclaimObject";
     [self reclaim:obj];
 }
 - (void) spawnHandler:(NSNotification *) notification {
-    [self spawn];
+    
+    if ([spawnableObjects count] > 0) {
+        
+        NSObject<Spawnable> *obj = [spawnableObjects anyObject];
+        [spawnedObjects addObject:obj];
+        [spawnableObjects removeObject:obj];
+        
+        [self spawnObject:obj];
+    }
+    
+    
 }
 @end
 
@@ -163,19 +173,13 @@ NSString *const reclaimObject = @"reclaimObject";
 }
 /** end settings */
 
-- (void) spawn {
-    if ([spawnableObjects count] > 0) {
+- (void) spawnObject:(NSObject<Spawnable> *) obj {
         
-        NSObject<Spawnable> *obj = [spawnableObjects anyObject];
-        [spawnedObjects addObject:obj];
-        [spawnableObjects removeObject:obj];
-        
-        CGPoint startPoint = ccpInRect(spawnRegion);
-        [obj spawnAt:startPoint];
-        
-    }
+    CGPoint startPoint = ccpInRect(spawnRegion);
+    [obj spawnAt:startPoint];
+    
 }
-- (void) reclaim:(NSObject<GameElementProtocol> *) obj {
+- (void) reclaim:(NSObject<Spawnable> *) obj {
     //[obj reclaim];
     [spawnableObjects addObject:obj];
 }
