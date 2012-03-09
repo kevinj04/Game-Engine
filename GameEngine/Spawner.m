@@ -105,6 +105,8 @@ NSString *const reclaimObject = @"reclaimObject";
     
     [self setup];
     
+    [super setupWithDictionary:dictionary];
+    
     if ([dictionary objectForKey:parameters] != nil) {
         
         NSDictionary *params = [dictionary objectForKey:parameters];
