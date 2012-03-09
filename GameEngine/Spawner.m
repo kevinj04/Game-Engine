@@ -45,6 +45,7 @@ NSString *const reclaimObject = @"reclaimObject";
         [spawnableObjects removeObject:obj];
         
         CGPoint startPoint = ccpInRect(spawnRegion);
+        [obj setCanBeHit];
         [obj spawnAt:startPoint];
         
     }
