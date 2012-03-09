@@ -22,8 +22,6 @@ NSString *const reclaimObject = @"reclaimObject";
 - (void) registerNotifications;
 - (void) reclaimHandler:(NSNotification *) notification;
 - (void) spawnHandler:(NSNotification *) notification;
-- (void) spawn;
-- (void) reclaim:(NSObject<Spawnable> *) obj;
 @end
 
 @implementation Spawner (hidden)
@@ -36,22 +34,6 @@ NSString *const reclaimObject = @"reclaimObject";
 }
 - (void) spawnHandler:(NSNotification *) notification {
     [self spawn];
-}
-- (void) spawn {
-    if ([spawnableObjects count] > 0) {
-        
-        NSObject<Spawnable> *obj = [spawnableObjects anyObject];
-        [spawnedObjects addObject:obj];
-        [spawnableObjects removeObject:obj];
-        
-        CGPoint startPoint = ccpInRect(spawnRegion);
-        [obj spawnAt:startPoint];
-        
-    }
-}
-- (void) reclaim:(NSObject<GameElementProtocol> *) obj {
-    //[obj reclaim];
-    [spawnableObjects addObject:obj];
 }
 @end
 
@@ -180,6 +162,23 @@ NSString *const reclaimObject = @"reclaimObject";
     return spawnedObjects;
 }
 /** end settings */
+
+- (void) spawn {
+    if ([spawnableObjects count] > 0) {
+        
+        NSObject<Spawnable> *obj = [spawnableObjects anyObject];
+        [spawnedObjects addObject:obj];
+        [spawnableObjects removeObject:obj];
+        
+        CGPoint startPoint = ccpInRect(spawnRegion);
+        [obj spawnAt:startPoint];
+        
+    }
+}
+- (void) reclaim:(NSObject<GameElementProtocol> *) obj {
+    //[obj reclaim];
+    [spawnableObjects addObject:obj];
+}
 
 
 @end

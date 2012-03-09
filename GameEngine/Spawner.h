@@ -54,4 +54,7 @@ extern NSString *const reclaimObject;
 - (NSMutableSet *) spawnedObjects;
 /** end settings */
 
+- (void) spawn;
+- (void) reclaim:(NSObject<Spawnable> *) obj;
+
 @end
