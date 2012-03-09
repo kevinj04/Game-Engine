@@ -13,5 +13,6 @@
 
 - (void) spawnAt:(CGPoint) p;
 - (void) reclaim;
+- (bool) canBeHit;
 
 @end
