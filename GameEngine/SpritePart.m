@@ -56,7 +56,7 @@ NSString *const partAnchorPoint = @"anchorPoint";
     
     float rotationRange = [nextKF rotation] - [currentKF rotation];
     float newRotation = [currentKF rotation] + rotationRange * percentTween;
-    [self setRotation:newRotation];
+    [self setRotation:newRotation + m_rotation];
     
     // parent scaling is multiplicative
     // we may not want to scale multiplicatively, as this will be handled by the graphics...
