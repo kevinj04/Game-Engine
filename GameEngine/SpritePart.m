@@ -137,6 +137,9 @@ NSString *const partAnchorPoint = @"anchorPoint";
     anchorPoint = CGPointMake(0.5, 0.5);
     visible = YES;
     
+    // Master values
+    m_rotation = 0.0;
+    
     if ([dictionary objectForKey:partVertexZ] != nil) {        
         vertexZ = [[dictionary objectForKey:partVertexZ] floatValue];        
     } else {
@@ -184,6 +187,10 @@ NSString *const partAnchorPoint = @"anchorPoint";
     if ([animations objectForKey:animationName] != nil) {
         currentTimeLine = [animations objectForKey:animationName];
     }
+}
+
+- (void) setMasterRotation:(float) r {
+    m_rotation = r;
 }
 
 - (void) setParent:(SpriteObject *) spriteObj {

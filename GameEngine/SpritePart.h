@@ -35,7 +35,7 @@ extern NSString *const partAnchorPoint;
     SpriteObject *parent; 
 
     
-    /** Sprite Info */
+    /** Sprite Info  -- Read by sprites, modified by key frames tweening */
     NSString *spriteFrameName;    
     CGPoint position;
     CGRect boundingBox;
@@ -53,11 +53,17 @@ extern NSString *const partAnchorPoint;
     bool visible;
 
     
+    /** Master Part Properties: Modified by SpriteObject, adjusts the part itself.
+     Incorporated into SpriteInfo above during tween. We may add more properties here.**/
+    float m_rotation;
+    
+    
 }
 
 @property (nonatomic, retain) NSString *name;
 
 /** Sprite Representation Information **/
+
 @property (nonatomic, retain) NSString *spriteFrameName;    
 @property CGPoint position;
 @property float rotation;
@@ -73,6 +79,7 @@ extern NSString *const partAnchorPoint;
 @property bool flipY;
 @property CGPoint anchorPoint;
 @property bool visible;
+
 /** ------------------- **/
 
 
@@ -84,6 +91,8 @@ extern NSString *const partAnchorPoint;
 - (void) update:(double) dt;
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj;
 - (void) runAnimation:(NSString *) animationName;
+
+- (void) setMasterRotation:(float) r;
 
 - (void) setParent:(SpriteObject *) spriteObj;
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep;

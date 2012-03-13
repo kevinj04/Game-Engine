@@ -66,6 +66,8 @@ extern NSString *const spriteZOrder;
 - (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName;
 - (void) runAnimation:(NSString *) animationName;
 
+- (void) setRotation:(float)r forPart:(NSString *) partName;
+
 - (NSDictionary *) parts;
 
 - (CGPoint) childBasePosition;

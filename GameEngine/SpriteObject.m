@@ -136,6 +136,13 @@ NSString *const spriteZOrder = @"zOrder";
     
 }
 
+- (void) setRotation:(float)r forPart:(NSString *) partName {
+    
+    if ([parts objectForKey:partName] != nil) {
+        [[parts objectForKey:partName] setMasterRotation:r];
+    }
+    
+}
 
 - (NSDictionary *) parts {
     return parts;
