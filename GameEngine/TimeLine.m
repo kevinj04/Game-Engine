@@ -27,9 +27,16 @@ NSString *const timeLineDuration = @"duration";
     while (currentPosition > [[self nextKeyFrame] timePoint]) {
         keyFrameIndex = (keyFrameIndex + 1) % [keyFrames count];
         
+        // This should handle the double precision possible error...
+        if (keyFrameIndex == 0 & [keyFrames count] > 1) {
+            currentPosition -= duration;
+        }
+        
+        /* There can be a double precision error here...
         if (currentPosition > duration) {
             currentPosition -= duration;
         }
+         */
     }
     
 }
