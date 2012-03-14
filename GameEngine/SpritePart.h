@@ -56,8 +56,8 @@ extern NSString *const partAnchorPoint;
     /** Master Part Properties: Modified by SpriteObject, adjusts the part itself.
      Incorporated into SpriteInfo above during tween. We may add more properties here.**/
     float m_rotation;
-    float m_flipX;
-    float m_flipY;
+    bool m_flipX;
+    bool m_flipY;
     
 }
 

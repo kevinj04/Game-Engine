@@ -31,8 +31,9 @@ NSString *const partAnchorPoint = @"anchorPoint";
      [spriteRep setFlipX:[currentKF flipX]];
      [spriteRep setFlipY:[currentKF flipY]];
      */
-    [self setFlipX:[currentKF flipX]];
-    [self setFlipY:[currentKF flipY]];
+    
+    [self setFlipX:m_flipX ^ [currentKF flipX]];
+    [self setFlipY:m_flipY ^ [currentKF flipY]];
     
     double percentTween = [currentTimeLine percentThroughCurrentFrame];
     
@@ -192,10 +193,10 @@ NSString *const partAnchorPoint = @"anchorPoint";
 - (void) setMasterRotation:(float) r {
     m_rotation = r;
 }
-- (void) setMasterFlipX:(_Bool)b {
+- (void) setMasterFlipX:(bool)b {
     m_flipX = b;
 }
-- (void) setMasterFlipY:(_Bool)b {
+- (void) setMasterFlipY:(bool)b {
     m_flipY = b;
 }
 
