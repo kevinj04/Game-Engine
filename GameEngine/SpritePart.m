@@ -192,6 +192,12 @@ NSString *const partAnchorPoint = @"anchorPoint";
 - (void) setMasterRotation:(float) r {
     m_rotation = r;
 }
+- (void) setMasterFlipX:(_Bool)b {
+    m_flipX = b;
+}
+- (void) setMasterFlipY:(_Bool)b {
+    m_flipY = b;
+}
 
 - (void) setParent:(SpriteObject *) spriteObj {
     parent = [spriteObj retain];

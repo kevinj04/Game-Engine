@@ -56,7 +56,8 @@ extern NSString *const partAnchorPoint;
     /** Master Part Properties: Modified by SpriteObject, adjusts the part itself.
      Incorporated into SpriteInfo above during tween. We may add more properties here.**/
     float m_rotation;
-    
+    float m_flipX;
+    float m_flipY;
     
 }
 
@@ -93,6 +94,8 @@ extern NSString *const partAnchorPoint;
 - (void) runAnimation:(NSString *) animationName;
 
 - (void) setMasterRotation:(float) r;
+- (void) setMasterFlipX:(bool) b;
+- (void) setMasterFlipY:(bool) b;
 
 - (void) setParent:(SpriteObject *) spriteObj;
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep;
