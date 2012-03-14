@@ -49,8 +49,8 @@ NSString *const partAnchorPoint = @"anchorPoint";
                                  (([nextKF position].x - [currentKF position].x) * percentTween), 
                                  [currentKF position].y + 
                                  (([nextKF position].y - [currentKF position].y) * percentTween));
-    CGPoint newPosition = CGPointMake(offset.x-offsetAP.x,
-                                      offset.y-offsetAP.y);
+    CGPoint newPosition = CGPointMake(offset.x-offsetAP.x+m_position.x,
+                                      offset.y-offsetAP.y+m_position.y);
     [self setPosition:newPosition];    
     
     // parent rotation gets confusing?
@@ -190,6 +190,9 @@ NSString *const partAnchorPoint = @"anchorPoint";
     }
 }
 
+- (void) setMasterPosition:(CGPoint) p {
+    m_position = p;
+}
 - (void) setMasterRotation:(float) r {
     m_rotation = r;
 }

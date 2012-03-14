@@ -136,6 +136,12 @@ NSString *const spriteZOrder = @"zOrder";
     
 }
 
+- (void) setPosition:(CGPoint) p forPart:(NSString *) partName {
+    
+    if ([parts objectForKey:partName] == nil) return;
+    
+    [[parts objectForKey:partName] setMasterPosition:p];
+}
 - (void) setFlipX:(bool) b forPart:(NSString *) partName {
     
     if ([parts objectForKey:partName] == nil) return;
