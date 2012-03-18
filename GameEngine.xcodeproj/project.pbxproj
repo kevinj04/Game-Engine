@@ -223,7 +223,6 @@
 		0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
 		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
-		0A71914914BF690800071DBE /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0A71914814BF690800071DBE /* Config.xcconfig */; };
 		0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A9F344815014FC800DEAE4D /* CocosGraphicElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F344615014FC500DEAE4D /* CocosGraphicElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1263,7 +1262,7 @@
 		0A2499B914A267D000D5D7D3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 0A2499BC14A267D000D5D7D3 /* Build configuration list for PBXProject "GameEngine" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1297,7 +1296,6 @@
 				0A2499E514A267D100D5D7D3 /* Icon.png in Resources */,
 				0A2499E714A267D100D5D7D3 /* Icon@2x.png in Resources */,
 				0A2499EA14A267D100D5D7D3 /* iTunesArtwork in Resources */,
-				0A71914914BF690800071DBE /* Config.xcconfig in Resources */,
 				0AF8B56B14C87C1D005FCBF7 /* Graphics.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1512,6 +1510,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GameEngine/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = GameEngine/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1527,6 +1526,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GameEngine/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = GameEngine/Resources/Info.plist;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
