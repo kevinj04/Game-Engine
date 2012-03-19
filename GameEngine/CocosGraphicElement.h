@@ -10,7 +10,11 @@
 #import "GraphicsProtocol.h"
 #import "cocos2d.h"
 
-@interface CocosGraphicElement : CCNode<GraphicsProtocol>
+@interface CocosGraphicElement : NSObject<GraphicsProtocol> {
+    
+    CCNode *root;
+    
+}
 
 - (id) initWithNode:(CCNode *) n;
 + (id) nodeWithNode:(CCNode *) n;

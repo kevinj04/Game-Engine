@@ -11,28 +11,38 @@
 @implementation CocosGraphicElement
 
 - (id) initWithNode:(CCNode *) n {
-    self = (CocosGraphicElement *)[n retain];
-    return self;
+    
+    if (( self = [super init] )) {
+        
+        root = [n retain];
+        return self;
+    } else {
+        return nil;
+    }
 }
 + (id) nodeWithNode:(CCNode *) n {
-    return (CocosGraphicElement *)n;
+    return [[[CocosGraphicElement alloc] initWithNode:n] autorelease];
 }
 
 - (CCNode *) rootNode {
-    return self;
+    return root;
 }
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj {
     // override me
 }
 - (CGPoint) frameOffset {
     
-    if ([self isKindOfClass:[CCSprite class]]) {
+    if ([root isKindOfClass:[CCSprite class]]) {
         
-        return [[(CCSprite *)self displayedFrame] offsetInPixels];
+        return [[(CCSprite *)root displayedFrame] offsetInPixels];
         
     } else {
         return ccp(0.0,0.0);
     }
+}
+
+- (void) setVisible:(BOOL)v {
+    [root setVisible:v];
 }
 
 @end

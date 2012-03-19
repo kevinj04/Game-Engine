@@ -114,7 +114,7 @@ NSString *const zOrderStr = @"zIndex";
     
     // if batchNode is nil, then we have a graphicless object... this is ok.
     if (batchNode != nil) {
-        [self addChild:batchNode z:0];
+        [root addChild:batchNode z:0];
     }
     
     
@@ -145,7 +145,7 @@ NSString *const zOrderStr = @"zIndex";
 }
 
 - (void) attachToLayer:(CCLayer *) layer {
-    [layer addChild:self z:[batchNode zOrder]];
+    [layer addChild:root z:[batchNode zOrder]];
 }
 
 

@@ -92,7 +92,7 @@
     }
     
     backgroundElements = [temp retain];
-    [self addChild:backgroundSprite z:0];
+    [root addChild:backgroundSprite z:0];
 }
 
 - (void) dealloc {
@@ -121,7 +121,7 @@
 }
 
 - (void) attachToLayer:(CCLayer *) layer {    
-    [layer addChild:self z:0];    
+    [layer addChild:root z:0];    
 }
 
 - (void) setVisible:(BOOL)v {
