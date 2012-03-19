@@ -1,79 +1,39 @@
 //
-//  SpritePart.m
+//  SpriteObject.m
 //  GameEngine
 //
-//  Created by Kevin Jenkins on 1/20/12.
+//  Created by Kevin Jenkins on 1/19/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "SpriteObject.h"
+#import "TimeLine.h"
 #import "SpritePart.h"
 
-@interface SpritePart (private)
-- (void) tween;
+NSString *const spriteObjectParts = @"parts";
+NSString *const spriteObjectAnimations = @"animations";
+NSString *const spriteObjectRunningAnimation = @"runningAnimation";
+NSString *const spriteVertexZ = @"vertexZ";
+NSString *const spriteZOrder = @"zOrder";
+NSString *const spriteBody = @"spriteBody";
+
+@interface SpriteObject (hidden)
+- (CGPoint) calculateOffset;
 @end
 
-@implementation SpritePart (private)
-- (void) tween {
+@implementation SpriteObject (hidden)
+- (CGPoint) calculateOffset {
     
-    KeyFrame *currentKF = [currentTimeLine currentKeyFrame];
-    KeyFrame *nextKF = [currentTimeLine nextKeyFrame];
+    if ([primarySprite isEqualToString:[NSString stringWithFormat:@""]]) return CGPointMake(0.0, 0.0);
     
-    //[spriteRep setSpriteFrame:[currentKF frame]];
-    [self setSpriteFrameName:[currentKF frame]];
-    
-    /*
-     [spriteRep setFlipX:[currentKF flipX]];
-     [spriteRep setFlipY:[currentKF flipY]];
-     */
-    
-    [self setFlipX:m_flipX ^ [currentKF flipX]];
-    [self setFlipY:m_flipY ^ [currentKF flipY]];
-    
-    double percentTween = [currentTimeLine percentThroughCurrentFrame];
-    
-    // remove if fail
-    // we assume that the parent is a container object?
-    
-    // division by 2.0 here only needed if retina/ipad
-    double xOffset = ([parent anchorPoint].x - 0.5f) * [parent boundingBox].size.width/2.0;
-    double yOffset = ([parent anchorPoint].y - 0.5f) * [parent boundingBox].size.height/2.0;
-    CGPoint offsetAP = CGPointMake(xOffset, yOffset);
-    
-    CGPoint offset = CGPointMake([currentKF position].x + 
-                                 (([nextKF position].x - [currentKF position].x) * percentTween), 
-                                 [currentKF position].y + 
-                                 (([nextKF position].y - [currentKF position].y) * percentTween));
-    CGPoint newPosition = CGPointMake(offset.x-offsetAP.x+m_position.x,
-                                      offset.y-offsetAP.y+m_position.y);
-    [self setPosition:newPosition];    
-    
-    // parent rotation gets confusing?
-    
-    float rotationRange = [nextKF rotation] - [currentKF rotation];
-    float newRotation = [currentKF rotation] + rotationRange * percentTween;
-    [self setRotation:newRotation + m_rotation];
-    
-    // parent scaling is multiplicative
-    // we may not want to scale multiplicatively, as this will be handled by the graphics...
-    // Typically we will be scaling the parent and not wanting to scale the children exponentially.
-    float baseScaleX = 1.0; //[parent scaleX];
-    float baseScaleY = 1.0; //[parent scaleY];
-    
-    float scaleRangeX = [nextKF scaleX] - [currentKF scaleX];
-    float scaleRangeY = [nextKF scaleY] - [currentKF scaleY];
-    
-    float newScaleX = baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween));
-    float newScaleY = baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween));
-    [self setScaleX:newScaleX];
-    [self setScaleY:newScaleY];
+    return [[parts objectForKey:primarySprite] frameOffset];
     
 }
 @end
 
-@implementation SpritePart
+@implementation SpriteObject
 
-@synthesize name;
-@synthesize spriteFrameName, position, rotation, scaleX, scaleY, vertexZ, zOrder, flipX, flipY, anchorPoint, boundingBox, visible;
+@synthesize name, position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible, flipX, flipY;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -87,130 +47,161 @@
     }
     
 }
-+ (id) partWithDictionary:(NSDictionary *) dictionary {
-    return [[[SpritePart alloc] initWithDictionary:dictionary] autorelease];
++ (id) objectWithDictionary:(NSDictionary *) dictionary {
+    return [[[SpriteObject alloc] initWithDictionary:dictionary] autorelease];
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
     
-    spriteRep = nil;
-    
-    NSDictionary *animationsDictionary = [dictionary objectForKey:partAnimations];
-    
-    NSMutableDictionary *timeLines = [NSMutableDictionary dictionaryWithCapacity:[animationsDictionary count]];
-    
-    for (NSString *timeLineName in [animationsDictionary allKeys]) {
-        
-        NSDictionary *timeLineDictionary = [animationsDictionary objectForKey:timeLineName];
-        TimeLine *tl = [TimeLine timeLineWithDictionary:timeLineDictionary];
-        
-        [timeLines setObject:tl forKey:timeLineName];
-        
-    }
-    
-    animations = [[NSDictionary alloc] initWithDictionary:timeLines];
-    
-    if ([dictionary objectForKey:partRunningAnimation] != nil) {
-        NSString *runningAnimation = [dictionary objectForKey:partRunningAnimation];
-        currentTimeLine = [timeLines objectForKey:runningAnimation];
-        [currentTimeLine reset];
-    }
-    
-    // standard values
-    spriteFrameName = nil;    
     position = CGPointMake(0.0, 0.0);
-    boundingBox = CGRectMake(0.0, 0.0, 1.0, 1.0);
-    rotation = 0.0f;
-    
-    scaleX = 1.0f;
-    scaleY = 1.0f;
-    
-    vertexZ = 1.0f;
-    zOrder = 1;
-    
+    scaleX = 1.0;
+    scaleY = 1.0;
+    rotation = 0.0;
+    animationSpeed = 1.0;   
+    vertexZ = 0.0;
+    zOrder = 0;
+    anchorPoint = CGPointMake(0.5,0.5);
+    boundingBox = CGRectMake(0.0, 0.0, 10.0, 10.0);   
+    visible = YES;
     flipX = NO;
     flipY = NO;
-    anchorPoint = CGPointMake(0.5, 0.5);
-    visible = YES;
     
-    // Master values
-    m_rotation = 0.0;
+    primarySprite = [[NSString stringWithFormat:@""] retain];
     
-    if ([dictionary objectForKey:partVertexZ] != nil) {        
-        vertexZ = [[dictionary objectForKey:partVertexZ] floatValue];        
+    if ([dictionary objectForKey:spriteVertexZ] != nil) {
+        vertexZ = [[dictionary objectForKey:spriteVertexZ] floatValue];
+    }
+    
+    if ([dictionary objectForKey:spriteZOrder] != nil) {
+        zOrder = [[dictionary objectForKey:spriteZOrder] intValue];
+    }
+    
+    if ([dictionary objectForKey:spriteBody] != nil) {
+        primarySprite = [[dictionary objectForKey:spriteBody] retain];
+    }
+    
+    if ([dictionary objectForKey:spriteObjectParts] != nil) {
+        
+        NSDictionary *partsDictionary = [dictionary objectForKey:spriteObjectParts];
+        
+        NSMutableDictionary *tempParts = [NSMutableDictionary dictionaryWithCapacity:[partsDictionary count]];
+        
+        for (NSString *partName in [partsDictionary allKeys]) {
+            
+            SpritePart *part = [SpritePart partWithDictionary:[partsDictionary objectForKey:partName]];
+            [part setParent:self];
+            [part setName:partName];
+            [tempParts setObject:part forKey:partName];
+        }
+        
+        parts = [[NSDictionary alloc] initWithDictionary:tempParts];
+        
     } else {
-        vertexZ = 0.0;
+        parts = [[NSDictionary alloc] init];
     }
     
-    if ([dictionary objectForKey:partZOrder] != nil) {        
-        zOrder = [[dictionary objectForKey:partZOrder] intValue];        
-    } else {
-        zOrder = 0;
-    }
-    
-    if ([dictionary objectForKey:partAnchorPoint] != nil) {
-        anchorPoint = CGPointFromString([dictionary objectForKey:partAnchorPoint]);
-    }
-    
-    // call tween to boot the image info
-    [self tween];
     
 }
 - (void) dealloc {
     
-    if (name != nil) { [name release]; name = nil; }
-    if (animations != nil) { [animations release]; animations = nil; }
-    if (currentTimeLine != nil) { [currentTimeLine release]; currentTimeLine = nil; }
+    if (parts != nil) { [parts release]; parts = nil; }
     
     [super dealloc];
 }
 
 - (void) update:(double) dt {
     
-    [currentTimeLine update:dt];
+    dt = dt * animationSpeed;
     
-    if (spriteRep != nil) {
-        [self tween];
+    for (SpritePart *part in [parts allValues]) {
+        [part update:dt];
     }
     
 }
 
-- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj {
-    [spriteRep updateWithPhysicsInfo:self]; // changed? // CHECK THIS
+- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) pObj {
+    
+    [self setPosition:[pObj position]];
+    [self setRotation:[pObj rotation]];
+    
+    [self setAnchorPoint:[pObj anchorPoint]];
+    
+    [self setScaleX:[pObj scaleX]];
+    [self setScaleY:[pObj scaleY]];
+    
+    [self setVertexZ:[pObj vertexZ]];
+    [self setZOrder:[pObj zOrder]];
+    
+    [self setBoundingBox:[pObj boundingBox]];
+    
+    [self setFlipX:[pObj flipX]];
+    [self setFlipY:[pObj flipY]];
+    
+    for (SpritePart *part in [parts allValues]) {
+        [part updateWithPhysicsInfo:self];
+    }
 }
 
+- (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName {
+    
+    // make sure the part exists
+    if ([parts objectForKey:partName] != nil) {
+        [[parts objectForKey:partName] runAnimation:animationName];        
+    }
+    
+}
 - (void) runAnimation:(NSString *) animationName {
-    if ([animations objectForKey:animationName] != nil) {
-        currentTimeLine = [animations objectForKey:animationName];
+    
+    for (SpritePart *part in [parts allValues]) {
+        [part runAnimation:animationName];
     }
+    
 }
 
-- (void) setMasterPosition:(CGPoint) p {
-    m_position = p;
+- (void) setPosition:(CGPoint) p forPart:(NSString *) partName {
+    
+    if ([parts objectForKey:partName] == nil) return;
+    
+    [[parts objectForKey:partName] setMasterPosition:p];
 }
-- (void) setMasterRotation:(float) r {
-    m_rotation = r;
+- (void) setFlipX:(bool) b forPart:(NSString *) partName {
+    
+    if ([parts objectForKey:partName] == nil) return;
+    
+    [[parts objectForKey:partName] setMasterFlipX:b];
 }
-- (void) setMasterFlipX:(bool)b {
-    m_flipX = b;
-}
-- (void) setMasterFlipY:(bool)b {
-    m_flipY = b;
+- (void) setFlipY:(bool) b forPart:(NSString *) partName {
+    
+    if ([parts objectForKey:partName] == nil) return;
+    
+    [[parts objectForKey:partName] setMasterFlipY:b];
 }
 
-- (void) setParent:(SpriteObject *) spriteObj {
-    parent = [spriteObj retain];
-    [spriteRep updateWithPhysicsInfo:self];
+- (void) setRotation:(float)r forPart:(NSString *) partName {    
+    
+    if ([parts objectForKey:partName] == nil) return;
+    
+    [[parts objectForKey:partName] setMasterRotation:r];
+    
 }
 
-- (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep {
-    spriteRep = [rep retain];
+- (NSDictionary *) parts {
+    return parts;
 }
-- (NSObject<GraphicsProtocol> *) spriteRep {
-    return spriteRep;
+
+- (CGPoint) childBasePosition {
+    return position;
 }
+
+- (NSString *) spriteFrameName {
+    // this protocol method is ignored as sprites are parts
+    return nil;
+}
+
 - (CGPoint) frameOffset {
-    return [spriteRep frameOffset];
+    
+    return [self calculateOffset];
+    
 }
+
 
 @end
-
