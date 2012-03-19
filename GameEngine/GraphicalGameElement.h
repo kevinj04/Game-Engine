@@ -30,8 +30,7 @@
     
     bool visible;  
     
-    @private
-    NSMutableDictionary *spriteFrameOffsets;
+@private
 }
 
 @property (nonatomic, retain) NSString *name;

@@ -14,18 +14,18 @@
 
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj;
 - (void) setVisible:(BOOL) v;
-- (NSDictionary *) frameOffsets;
+- (CGPoint) frameOffset;
 /*
-- (void) setPosition:(CGPoint) p;
-- (void) setRotation:(float) r;
-- (void) setSpriteFrame:(NSString *) spriteFrameName;
-- (void) setScaleX:(float) s;
-- (void) setScaleY:(float) s;
-- (void) setZIndex:(float) z;
-- (void) setFlipX:(bool) fx;
-- (void) setFlipY:(bool) fy;
-- (void) setVisible:(BOOL) v;
-- (void) setAnchorPoint:(CGPoint) ap;
+ - (void) setPosition:(CGPoint) p;
+ - (void) setRotation:(float) r;
+ - (void) setSpriteFrame:(NSString *) spriteFrameName;
+ - (void) setScaleX:(float) s;
+ - (void) setScaleY:(float) s;
+ - (void) setZIndex:(float) z;
+ - (void) setFlipX:(bool) fx;
+ - (void) setFlipY:(bool) fy;
+ - (void) setVisible:(BOOL) v;
+ - (void) setAnchorPoint:(CGPoint) ap;
  */
 
 @end

@@ -47,7 +47,7 @@ NSString *const zOrderStr = @"zIndex";
     
     [s setPosition:[part position]];
     [s setRotation:[part rotation]];
-
+    
     [s setScaleX:[part scaleX]];
     [s setScaleY:[part scaleY]];
     
@@ -79,14 +79,20 @@ NSString *const zOrderStr = @"zIndex";
 }
 - (void) setupWithSpriteInfo:(SpriteObject *) sObj {
     
-    NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]];
-    NSMutableDictionary *temp2 = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]]; 
-    
+    NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]];    
     for (SpritePart *part in [[sObj parts] allValues]) {
-                            
-        CCSprite *s = [CCSprite node];
         
-        [self updateSpritePart:part];   // does nothing right now...         
+        CCSprite *s = [CCSprite node];
+        [temp setObject:s forKey:[part name]];
+    }
+    sprites = [temp retain];
+    
+    NSMutableDictionary *temp2 = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]]; 
+    for (SpritePart *part in [[sObj parts] allValues]) {                
+        
+        [self updateSpritePart:part];
+        
+        CCSprite *s = [sprites objectForKey:[part name]];
         
         if (batchNode == nil) {
             
@@ -104,20 +110,19 @@ NSString *const zOrderStr = @"zIndex";
             [s setVertexZ:[sObj vertexZ] + [part vertexZ]];
         }
         
-        [temp setObject:s forKey:[part name]];
+        
         [temp2 setObject:NSStringFromCGPoint([[s displayedFrame] offsetInPixels]) forKey:[part name]];
         [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
         
     }
-   
+    
     // if batchNode is nil, then we have a graphicless object... this is ok.
     if (batchNode != nil) {
         [self addChild:batchNode z:0];
     }
     
-    sprites = [temp retain];
     spriteFrameOffsets = [temp2 retain];
-
+    
 }
 - (void) dealloc {
     if (batchNode != nil) { [batchNode release]; batchNode = nil; }

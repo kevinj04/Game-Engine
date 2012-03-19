@@ -98,9 +98,6 @@ typedef struct _ccVertex2F
 - (void) setupWithSpriteObject:(SpriteObject *) sObj {
     
     name = [[sObj name] retain];
-    spriteFrameOffsets = [[NSMutableDictionary alloc] initWithCapacity:1];
-    
-    [spriteFrameOffsets setObject:NSStringFromCGPoint(CGPointMake(0.0, 0.0)) forKey:name];
     
     [self updateGraphicsWithInfo:sObj];         
     
@@ -123,8 +120,8 @@ typedef struct _ccVertex2F
     
 }
 
-- (NSDictionary *) frameOffsets {
-    return spriteFrameOffsets;
+- (CGPoint) frameOffset {
+    return CGPointMake(0.0, 0.0);
 }
 
 @end
