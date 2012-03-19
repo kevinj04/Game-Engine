@@ -12,6 +12,9 @@
 
 @interface CocosGraphicElement : CCNode<GraphicsProtocol>
 
+- (id) initWithNode:(CCNode *) n;
++ (id) nodeWithNode:(CCNode *) n;
+
 - (CCNode *) rootNode;
 
 @end

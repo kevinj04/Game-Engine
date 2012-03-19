@@ -10,6 +10,14 @@
 
 @implementation CocosGraphicElement
 
+- (id) initWithNode:(CCNode *) n {
+    self = (CocosGraphicElement *)[n retain];
+    return self;
+}
++ (id) nodeWithNode:(CCNode *) n {
+    return (CocosGraphicElement *)n;
+}
+
 - (CCNode *) rootNode {
     return self;
 }

@@ -22,9 +22,7 @@ extern NSString *const zOrderStr;
     
     @private
     CCSpriteBatchNode *batchNode;
-    NSDictionary *sprites;
-    
-    NSMutableDictionary *spriteFrameOffsets;
+    NSDictionary *sprites;    
     
 }
 

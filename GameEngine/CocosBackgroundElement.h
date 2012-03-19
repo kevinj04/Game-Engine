@@ -17,7 +17,6 @@
     CCSprite *backgroundSprite;
     NSDictionary *backgroundElements;
     
-    NSMutableDictionary *spriteFrameOffsets;
 }
 
 - (id) initWithSpriteBGObject:(SpriteBGObject *) bgObj;

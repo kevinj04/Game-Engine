@@ -41,7 +41,6 @@ NSString *const zOrderStr = @"zIndex";
     
     if (frame != [s displayedFrame]) {
         [s setDisplayFrame:frame];
-        [spriteFrameOffsets setObject:NSStringFromCGPoint([frame offsetInPixels]) forKey:[part name]];
     }
     
     
@@ -82,12 +81,11 @@ NSString *const zOrderStr = @"zIndex";
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]];    
     for (SpritePart *part in [[sObj parts] allValues]) {
         
-        CCSprite *s = [CCSprite node];
-        [temp setObject:s forKey:[part name]];
+        CocosGraphicElement *cge = [CocosGraphicElement nodeWithNode:[CCSprite node]];
+        [temp setObject:cge forKey:[part name]];
     }
     sprites = [temp retain];
     
-    NSMutableDictionary *temp2 = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]]; 
     for (SpritePart *part in [[sObj parts] allValues]) {                
         
         [self updateSpritePart:part];
@@ -109,9 +107,7 @@ NSString *const zOrderStr = @"zIndex";
             [s setBatchNode:batchNode];
             [s setVertexZ:[sObj vertexZ] + [part vertexZ]];
         }
-        
-        
-        [temp2 setObject:NSStringFromCGPoint([[s displayedFrame] offsetInPixels]) forKey:[part name]];
+                
         [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
         
     }
@@ -121,7 +117,6 @@ NSString *const zOrderStr = @"zIndex";
         [self addChild:batchNode z:0];
     }
     
-    spriteFrameOffsets = [temp2 retain];
     
 }
 - (void) dealloc {
@@ -153,8 +148,5 @@ NSString *const zOrderStr = @"zIndex";
     [layer addChild:self z:[batchNode zOrder]];
 }
 
-- (NSDictionary *) frameOffsets {
-    return spriteFrameOffsets;
-}
 
 @end

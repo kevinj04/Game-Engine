@@ -39,7 +39,6 @@
     
     if (frame != [s displayedFrame]) {
         [s setDisplayFrame:frame];
-        [spriteFrameOffsets setObject:NSStringFromCGPoint([frame offsetInPixels]) forKey:[p name]];
     }
     
     [s setDisplayFrame:frame];
@@ -77,7 +76,6 @@
 - (void) setupWithSpriteBGObject:(SpriteBGObject *) bgObj {
     
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[bgObj parts] allValues] count]];
-    NSMutableDictionary *temp2 = [NSMutableDictionary dictionaryWithCapacity:[[[bgObj parts] allValues] count]];
     
     backgroundSprite = [CCSprite spriteWithFile:[bgObj backgroundFileName]];
     [self updateBackgroundWithInfo:bgObj];
@@ -90,12 +88,10 @@
         [backgroundSprite addChild:s z:[part zOrder]];
         
         [temp setObject:s forKey:[part name]];
-        [temp2 setObject:NSStringFromCGPoint([[s displayedFrame] offsetInPixels]) forKey:[part name]];
         [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
     }
     
     backgroundElements = [temp retain];
-    spriteFrameOffsets = [temp2 retain];
     [self addChild:backgroundSprite z:0];
 }
 
@@ -132,8 +128,5 @@
     [backgroundSprite setVisible:v];
 }
 
-- (NSDictionary *) frameOffsets {
-    return spriteFrameOffsets;
-}
 
 @end
