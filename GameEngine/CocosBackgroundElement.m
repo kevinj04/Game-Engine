@@ -67,7 +67,7 @@
 
 - (id) initWithSpriteBGObject:(SpriteBGObject *) bgObj {
     
-    if (( self = [super init] )) {
+    if (( self = [super initWithNode:[CCNode node]] )) {
         
         [self setupWithSpriteBGObject:bgObj];
         return self;
@@ -87,6 +87,12 @@
     [self updateBackgroundWithInfo:bgObj];
     
     for (SpritePart *part in [[bgObj parts] allValues]) {
+        CocosGraphicElement *cge = [CocosGraphicElement nodeWithNode:[CCSprite node]];
+        [temp setObject:cge forKey:[part name]];
+    }
+    backgroundElements = [temp retain];
+    
+    for (SpritePart *part in [[bgObj parts] allValues]) {
         
         CCSprite *s = [CCSprite node];        
         [self updateSprite:part];            
@@ -97,7 +103,6 @@
         [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
     }
     
-    backgroundElements = [temp retain];
     [root addChild:backgroundSprite z:0];
 }
 
@@ -111,7 +116,7 @@
 }
 
 - (void) update:(double)dt {
- 
+    
 }
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj {
     

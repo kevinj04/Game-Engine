@@ -38,7 +38,7 @@ NSString *const zOrderStr = @"zIndex";
     if (cge == nil) { return; }
     
     CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[part spriteFrameName]];
-
+    
     CCSprite *s;
     if (![[cge rootNode] isKindOfClass:[CCSprite class]]) { return; } else {
         s = (CCSprite *)[cge rootNode];
@@ -71,7 +71,7 @@ NSString *const zOrderStr = @"zIndex";
 
 - (id) initWithSpriteInfo:(SpriteObject *) sObj {
     
-    if (( self = [super init] )) {        
+    if (( self = [super initWithNode:[CCNode node]] )) {        
         [self setupWithSpriteInfo:sObj];
         return self;
     } else {
@@ -112,7 +112,7 @@ NSString *const zOrderStr = @"zIndex";
             [s setBatchNode:batchNode];
             [s setVertexZ:[sObj vertexZ] + [part vertexZ]];
         }
-                
+        
         [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
         
     }
