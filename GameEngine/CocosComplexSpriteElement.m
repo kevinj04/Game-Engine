@@ -95,7 +95,8 @@ NSString *const zOrderStr = @"zIndex";
         
         [self updateSpritePart:part];
         
-        CCSprite *s = (CCSprite *)[[sprites objectForKey:[part name]] rootNode];
+        CocosGraphicElement *cge = [sprites objectForKey:[part name]];
+        CCSprite *s = (CCSprite *)[cge rootNode];
         
         if (batchNode == nil) {
             
@@ -113,7 +114,7 @@ NSString *const zOrderStr = @"zIndex";
             [s setVertexZ:[sObj vertexZ] + [part vertexZ]];
         }
         
-        [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
+        [part setSpriteRep:cge];
         
     }
     

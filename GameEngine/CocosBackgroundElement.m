@@ -94,13 +94,15 @@
     
     for (SpritePart *part in [[bgObj parts] allValues]) {
         
-        CCSprite *s = [CCSprite node];        
+        
+        CocosGraphicElement *cge = [backgroundElements objectForKey:[part name]];
+        CCSprite *s = (CCSprite *)[cge rootNode];
         [self updateSprite:part];            
         
         [backgroundSprite addChild:s z:[part zOrder]];
         
         [temp setObject:s forKey:[part name]];
-        [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
+        [part setSpriteRep:cge];
     }
     
     [root addChild:backgroundSprite z:0];
