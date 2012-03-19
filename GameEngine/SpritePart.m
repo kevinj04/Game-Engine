@@ -214,5 +214,11 @@ NSString *const partAnchorPoint = @"anchorPoint";
 - (NSObject<GraphicsProtocol> *) spriteRep {
     return spriteRep;
 }
+- (NSDictionary *) frameOffsets {
+    return [spriteRep frameOffsets];
+}
+- (CGPoint) frameOffset {
+    return CGPointFromString([[spriteRep frameOffsets] objectForKey:name]);
+}
 
 @end

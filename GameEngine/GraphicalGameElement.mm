@@ -78,7 +78,7 @@ typedef struct _ccVertex2F
 
 @implementation GraphicalGameElement
 
-@synthesize position, rotation, scaleX, scaleY, vertexZ, zOrder, anchorPoint, boundingBox, spriteFrameName, visible;    
+@synthesize name, position, rotation, scaleX, scaleY, vertexZ, zOrder, anchorPoint, boundingBox, spriteFrameName, visible;    
 
 - (id) initWithSpriteObject:(SpriteObject *) sObj {
     
@@ -96,6 +96,14 @@ typedef struct _ccVertex2F
     return [[[GraphicalGameElement alloc] initWithSpriteObject:sObj] autorelease];
 }
 - (void) setupWithSpriteObject:(SpriteObject *) sObj {
+    
+    name = [[sObj name] retain];
+    spriteFrameOffsets = [[NSMutableDictionary alloc] initWithCapacity:1];
+    
+    [spriteFrameOffsets setObject:NSStringFromCGPoint(CGPointMake(0.0, 0.0)) forKey:name];
+    
+    [self updateGraphicsWithInfo:sObj];         
+    
     
 }
 - (void) dealloc {
@@ -115,5 +123,8 @@ typedef struct _ccVertex2F
     
 }
 
+- (NSDictionary *) frameOffsets {
+    return spriteFrameOffsets;
+}
 
 @end

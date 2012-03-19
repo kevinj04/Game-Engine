@@ -14,6 +14,7 @@
 
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj;
 - (void) setVisible:(BOOL) v;
+- (NSDictionary *) frameOffsets;
 /*
 - (void) setPosition:(CGPoint) p;
 - (void) setRotation:(float) r;

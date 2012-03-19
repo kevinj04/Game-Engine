@@ -24,6 +24,8 @@ extern NSString *const zOrderStr;
     CCSpriteBatchNode *batchNode;
     NSDictionary *sprites;
     
+    NSMutableDictionary *spriteFrameOffsets;
+    
 }
 
 - (id) initWithSpriteInfo:(SpriteObject *) sObj;

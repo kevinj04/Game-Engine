@@ -14,6 +14,7 @@ extern NSString *const spriteObjectAnimations;
 extern NSString *const spriteObjectRunningAnimation; 
 extern NSString *const spriteVertexZ;
 extern NSString *const spriteZOrder;
+extern NSString *const spriteBody;
 
 /**
  
@@ -24,6 +25,8 @@ extern NSString *const spriteZOrder;
 @interface SpriteObject : NSObject<SpriteUpdateProtocol> {
     
     // SpriteObject is a 'container' of sprite parts.
+    NSString *name;
+    
     CGPoint position;
     float rotation;
     float scaleX;
@@ -39,8 +42,11 @@ extern NSString *const spriteZOrder;
     
     @private    
     NSDictionary *parts;
+    NSString *primarySprite;
     
 }
+
+@property (nonatomic, retain) NSString *name;
 
 @property CGPoint position;
 @property float rotation;
@@ -76,5 +82,7 @@ extern NSString *const spriteZOrder;
 - (CGPoint) childBasePosition;
 - (void) setScaleX:(float) sx;
 - (void) setScaleY:(float) sy;
+
+- (CGPoint) frameOffset;
 
 @end

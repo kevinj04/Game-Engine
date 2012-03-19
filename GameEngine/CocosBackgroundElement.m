@@ -12,7 +12,7 @@
 
 @interface CocosBackgroundElement (hidden)
 - (void) updateBackgroundWithInfo:(NSObject<SpriteUpdateProtocol> *) p;
-- (void) updateSprite:(CCSprite *) s withInfo:(NSObject<SpriteUpdateProtocol> *) p;
+- (void) updateSprite:(NSObject<SpriteUpdateProtocol> *) p;
 @end
 
 @implementation CocosBackgroundElement (hidden)
@@ -29,9 +29,18 @@
     
     [backgroundSprite setAnchorPoint:[p anchorPoint]];
 }
-- (void) updateSprite:(CCSprite *) s withInfo:(NSObject<SpriteUpdateProtocol> *) p {
+- (void) updateSprite:(NSObject<SpriteUpdateProtocol> *) p {
+    
+    CCSprite *s = [backgroundElements objectForKey:[p name]];
+    
+    if (s == nil) { return; }
     
     CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[p spriteFrameName]];
+    
+    if (frame != [s displayedFrame]) {
+        [s setDisplayFrame:frame];
+        [spriteFrameOffsets setObject:NSStringFromCGPoint([frame offsetInPixels]) forKey:[p name]];
+    }
     
     [s setDisplayFrame:frame];
     [s setPosition:[p position]];
@@ -68,6 +77,7 @@
 - (void) setupWithSpriteBGObject:(SpriteBGObject *) bgObj {
     
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[bgObj parts] allValues] count]];
+    NSMutableDictionary *temp2 = [NSMutableDictionary dictionaryWithCapacity:[[[bgObj parts] allValues] count]];
     
     backgroundSprite = [CCSprite spriteWithFile:[bgObj backgroundFileName]];
     [self updateBackgroundWithInfo:bgObj];
@@ -75,15 +85,17 @@
     for (SpritePart *part in [[bgObj parts] allValues]) {
         
         CCSprite *s = [CCSprite node];        
-        [self updateSprite:s withInfo:part];            
+        [self updateSprite:part];            
         
         [backgroundSprite addChild:s z:[part zOrder]];
         
         [temp setObject:s forKey:[part name]];
+        [temp2 setObject:NSStringFromCGPoint([[s displayedFrame] offsetInPixels]) forKey:[part name]];
         [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
     }
     
     backgroundElements = [temp retain];
+    spriteFrameOffsets = [temp2 retain];
     [self addChild:backgroundSprite z:0];
 }
 
@@ -107,8 +119,7 @@
     
     for (SpritePart *part in [[bgObj parts] allValues]) {
         
-        CCSprite *s = [backgroundElements objectForKey:[part name]];
-        [self updateSprite:s withInfo:part];
+        [self updateSprite:part];
     }
     
 }
@@ -121,5 +132,8 @@
     [backgroundSprite setVisible:v];
 }
 
+- (NSDictionary *) frameOffsets {
+    return spriteFrameOffsets;
+}
 
 @end

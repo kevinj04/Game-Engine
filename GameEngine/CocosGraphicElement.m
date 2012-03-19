@@ -16,5 +16,8 @@
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj {
     // override me
 }
+- (NSDictionary *) frameOffsets {
+    return [NSDictionary dictionary];
+}
 
 @end

@@ -15,10 +15,25 @@ NSString *const spriteObjectAnimations = @"animations";
 NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 NSString *const spriteVertexZ = @"vertexZ";
 NSString *const spriteZOrder = @"zOrder";
+NSString *const spriteBody = @"spriteBody";
+
+@interface SpriteObject (hidden)
+- (CGPoint) calculateOffset;
+@end
+
+@implementation SpriteObject (hidden)
+- (CGPoint) calculateOffset {
+    
+    if ([primarySprite isEqualToString:[NSString stringWithFormat:@""]]) return CGPointMake(0.0, 0.0);
+    
+    return [[parts objectForKey:primarySprite] frameOffset];
+    
+}
+@end
 
 @implementation SpriteObject
 
-@synthesize position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible, flipX, flipY;
+@synthesize name, position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible, flipX, flipY;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -50,12 +65,18 @@ NSString *const spriteZOrder = @"zOrder";
     flipX = NO;
     flipY = NO;
     
+    primarySprite = [[NSString stringWithFormat:@""] retain];
+    
     if ([dictionary objectForKey:spriteVertexZ] != nil) {
         vertexZ = [[dictionary objectForKey:spriteVertexZ] floatValue];
     }
     
     if ([dictionary objectForKey:spriteZOrder] != nil) {
         zOrder = [[dictionary objectForKey:spriteZOrder] intValue];
+    }
+
+    if ([dictionary objectForKey:spriteBody] != nil) {
+        primarySprite = [[dictionary objectForKey:spriteBody] retain];
     }
     
     if ([dictionary objectForKey:spriteObjectParts] != nil) {
@@ -174,6 +195,12 @@ NSString *const spriteZOrder = @"zOrder";
 - (NSString *) spriteFrameName {
     // this protocol method is ignored as sprites are parts
     return nil;
+}
+
+- (CGPoint) frameOffset {
+    
+    return [self calculateOffset];
+    
 }
 
 @end

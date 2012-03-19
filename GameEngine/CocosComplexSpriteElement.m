@@ -14,7 +14,7 @@ NSString *const zOrderStr = @"zIndex";
 
 @interface CocosComplexSpriteElement (hidden)
 - (void) updateBatchNodeWithInfo:(NSObject<SpriteUpdateProtocol> *) p;
-- (void) updateSprite:(CCSprite *) s withInfo:(NSObject<SpriteUpdateProtocol> *) p;
+- (void) updateSpritePart:(SpritePart *) part;
 @end
 
 @implementation CocosComplexSpriteElement (hidden)
@@ -31,25 +31,34 @@ NSString *const zOrderStr = @"zIndex";
     
     [batchNode setAnchorPoint:[p anchorPoint]];
 }
-- (void) updateSprite:(CCSprite *) s withInfo:(NSObject<SpriteUpdateProtocol> *) p {
+- (void) updateSpritePart:(NSObject<SpriteUpdateProtocol> *) part {
     
-    CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[p spriteFrameName]];
+    CCSprite *s = [sprites objectForKey:[part name]];
     
-    [s setDisplayFrame:frame];
-    [s setPosition:[p position]];
-    [s setRotation:[p rotation]];
+    if (s == nil) { return; }
+    
+    CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[part spriteFrameName]];
+    
+    if (frame != [s displayedFrame]) {
+        [s setDisplayFrame:frame];
+        [spriteFrameOffsets setObject:NSStringFromCGPoint([frame offsetInPixels]) forKey:[part name]];
+    }
+    
+    
+    [s setPosition:[part position]];
+    [s setRotation:[part rotation]];
 
-    [s setScaleX:[p scaleX]];
-    [s setScaleY:[p scaleY]];
+    [s setScaleX:[part scaleX]];
+    [s setScaleY:[part scaleY]];
     
-    [s setVertexZ:[p vertexZ]];
-    [s setZOrder:[p zOrder]]; // maybe slow?
-    [s setVisible:[p visible]];
+    [s setVertexZ:[part vertexZ]];
+    [s setZOrder:[part zOrder]]; // maybe slow?
+    [s setVisible:[part visible]];
     
-    [s setFlipX:[p flipX]];
-    [s setFlipY:[p flipY]];
+    [s setFlipX:[part flipX]];
+    [s setFlipY:[part flipY]];
     
-    [s setAnchorPoint:[p anchorPoint]];
+    [s setAnchorPoint:[part anchorPoint]];
     
 }
 @end
@@ -71,12 +80,13 @@ NSString *const zOrderStr = @"zIndex";
 - (void) setupWithSpriteInfo:(SpriteObject *) sObj {
     
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]];
+    NSMutableDictionary *temp2 = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]]; 
     
     for (SpritePart *part in [[sObj parts] allValues]) {
                             
         CCSprite *s = [CCSprite node];
         
-        [self updateSprite:s withInfo:part];            
+        [self updateSpritePart:part];   // does nothing right now...         
         
         if (batchNode == nil) {
             
@@ -95,6 +105,7 @@ NSString *const zOrderStr = @"zIndex";
         }
         
         [temp setObject:s forKey:[part name]];
+        [temp2 setObject:NSStringFromCGPoint([[s displayedFrame] offsetInPixels]) forKey:[part name]];
         [part setSpriteRep:(NSObject<GraphicsProtocol> *)s];
         
     }
@@ -105,6 +116,7 @@ NSString *const zOrderStr = @"zIndex";
     }
     
     sprites = [temp retain];
+    spriteFrameOffsets = [temp2 retain];
 
 }
 - (void) dealloc {
@@ -123,8 +135,7 @@ NSString *const zOrderStr = @"zIndex";
     
     for (SpritePart *part in [[sObj parts] allValues]) {
         
-        CCSprite *s = [sprites objectForKey:[part name]];
-        [self updateSprite:s withInfo:part];
+        [self updateSpritePart:part];
         
     }        
     
@@ -136,4 +147,9 @@ NSString *const zOrderStr = @"zIndex";
 - (void) attachToLayer:(CCLayer *) layer {
     [layer addChild:self z:[batchNode zOrder]];
 }
+
+- (NSDictionary *) frameOffsets {
+    return spriteFrameOffsets;
+}
+
 @end

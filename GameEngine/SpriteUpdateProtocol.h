@@ -11,6 +11,8 @@
 
 @protocol SpriteUpdateProtocol <NSObject> 
 
+- (NSString *) name; // the name of the sprite we are updating
+
 - (CGPoint) position;
 - (float) rotation;
 
@@ -28,5 +30,8 @@
 - (bool) flipY;
 
 - (bool) visible;
+
+// this is a return value set from the GraphicsProtocol object
+- (CGPoint) frameOffset;
 
 @end

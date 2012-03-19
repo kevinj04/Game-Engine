@@ -12,6 +12,8 @@
 
 @interface GraphicalGameElement : NSObject<GraphicsProtocol> {    
     
+    NSString *name;
+    
     CGPoint position;
     float rotation;
     
@@ -26,9 +28,13 @@
     
     NSString *spriteFrameName;
     
-    bool visible;        
+    bool visible;  
+    
+    @private
+    NSMutableDictionary *spriteFrameOffsets;
 }
 
+@property (nonatomic, retain) NSString *name;
 @property CGPoint position;
 @property float rotation;
 @property float scaleX;
