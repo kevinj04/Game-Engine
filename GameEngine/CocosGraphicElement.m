@@ -16,8 +16,15 @@
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj {
     // override me
 }
-- (NSDictionary *) frameOffsets {
-    return [NSDictionary dictionary];
+- (CGPoint) frameOffset {
+    
+    if ([self isKindOfClass:[CCSprite class]]) {
+        
+        return [[(CCSprite *)self displayedFrame] offsetInPixels];
+        
+    } else {
+        return ccp(0.0,0.0);
+    }
 }
 
 @end
