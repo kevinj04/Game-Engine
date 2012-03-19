@@ -33,11 +33,16 @@ NSString *const zOrderStr = @"zIndex";
 }
 - (void) updateSpritePart:(NSObject<SpriteUpdateProtocol> *) part {
     
-    CCSprite *s = [sprites objectForKey:[part name]];
+    CocosGraphicElement *cge = [sprites objectForKey:[part name]];
     
-    if (s == nil) { return; }
+    if (cge == nil) { return; }
     
     CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[part spriteFrameName]];
+
+    CCSprite *s;
+    if (![[cge rootNode] isKindOfClass:[CCSprite class]]) { return; } else {
+        s = (CCSprite *)[cge rootNode];
+    }
     
     if (frame != [s displayedFrame]) {
         [s setDisplayFrame:frame];

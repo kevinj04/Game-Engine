@@ -31,9 +31,15 @@
 }
 - (void) updateSprite:(NSObject<SpriteUpdateProtocol> *) p {
     
-    CCSprite *s = [backgroundElements objectForKey:[p name]];
+    CocosGraphicElement *cge = [backgroundElements objectForKey:[p name]];
     
-    if (s == nil) { return; }
+    if (cge == nil) { return; }
+    
+    if (![[cge rootNode] isKindOfClass:[CCSprite class]]) {
+        return;
+    }
+    
+    CCSprite *s = (CCSprite *)[cge rootNode];
     
     CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[p spriteFrameName]];
     
