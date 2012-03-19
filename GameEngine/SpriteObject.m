@@ -8,12 +8,6 @@
 
 #import "SpritePart.h"
 
-NSString *const partAnimations = @"animations";
-NSString *const partRunningAnimation = @"runningAnimation";
-NSString *const partVertexZ = @"vertexZ";
-NSString *const partZOrder = @"zOrder";
-NSString *const partAnchorPoint = @"anchorPoint";
-
 @interface SpritePart (private)
 - (void) tween;
 @end
