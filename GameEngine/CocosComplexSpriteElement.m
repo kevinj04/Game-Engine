@@ -95,7 +95,7 @@ NSString *const zOrderStr = @"zIndex";
         
         [self updateSpritePart:part];
         
-        CCSprite *s = [sprites objectForKey:[part name]];
+        CCSprite *s = (CCSprite *)[[sprites objectForKey:[part name]] rootNode];
         
         if (batchNode == nil) {
             
