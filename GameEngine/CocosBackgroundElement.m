@@ -101,7 +101,7 @@
         
         [backgroundSprite addChild:s z:[part zOrder]];
         
-        [temp setObject:s forKey:[part name]];
+        [temp setObject:cge forKey:[part name]];
         [part setSpriteRep:cge];
     }
     
