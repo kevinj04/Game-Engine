@@ -7,6 +7,7 @@
 //
 
 #import "CocosGraphicElement.h"
+#import "Universalizer.h"
 
 @implementation CocosGraphicElement
 
@@ -34,7 +35,7 @@
     
     if ([root isKindOfClass:[CCSprite class]]) {
         
-        return [[(CCSprite *)root displayedFrame] offsetInPixels];
+        return [Universalizer scalePointFromIPad:[[(CCSprite *)root displayedFrame] offsetInPixels]];
         
     } else {
         return ccp(0.0,0.0);
