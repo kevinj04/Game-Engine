@@ -88,7 +88,8 @@ NSString *const physicsAnchorPointChange = @"physicsAnchorPointChange";
 }
 
 - (void) setPosition:(CGPoint) p {
-    position = p;
+    CGPoint spriteOffset = [graphics frameOffset];
+    position = CGPointMake(p.x+spriteOffset.x, p.y+spriteOffset.y);
     [self setBoundingBox:[self boundingBox]];
     [graphics setPosition:p];
     [[NSNotificationCenter defaultCenter] postNotificationName:physicsPositionChange object:self];
