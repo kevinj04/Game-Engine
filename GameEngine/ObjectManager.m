@@ -11,6 +11,7 @@
 
 @interface ObjectManager (hidden)
 - (void) levelChanged;
+- (void) unloadCurrentLevel;
 @end
 
 @implementation ObjectManager (hidden)
@@ -34,6 +35,23 @@
         [alwaysActiveObjects addObject:ge];
     }
     
+}
+- (void) unloadCurrentLevel {
+    for (GameElement *ge in [[currentLevel objectDictionary] allValues]) {
+        [activeObjects removeObject:ge];
+    }
+    
+    for (GameElement *ge in [[currentLevel backgroundTileDictionary] allValues]) {
+        [activeObjects removeObject:ge];
+    }
+    
+    for (GameElement *ge in [[currentLevel hudDictionary] allValues]) {
+        [alwaysActiveObjects removeObject:ge];
+    }
+    
+    for (GameElement *ge in [[currentLevel cameraDictionary] allValues]) {
+        [alwaysActiveObjects removeObject:ge];
+    }
 }
 @end
 
@@ -96,7 +114,7 @@
 }
 
 - (void) setLevel:(Level *) l {
-    if (currentLevel != nil) { [currentLevel release]; currentLevel = nil; }
+    if (currentLevel != nil) { [self unloadCurrentLevel]; [currentLevel release]; currentLevel = nil; }
     currentLevel = [l retain];
     [self levelChanged];
 }
