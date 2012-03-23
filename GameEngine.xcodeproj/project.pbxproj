@@ -211,6 +211,14 @@
 		0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9514A267D200D5D7D3 /* CCTransitionPageTurn.h */; };
 		0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9814A267D200D5D7D3 /* CCTransitionRadial.h */; };
 		0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9B14A267D200D5D7D3 /* ccTypes.h */; };
+		0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94EC151C930C00BCD796 /* SoundManager.h */; };
+		0A2D94EF151C930C00BCD796 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94ED151C930C00BCD796 /* SoundManager.m */; };
+		0A2D94F0151C930C00BCD796 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94ED151C930C00BCD796 /* SoundManager.m */; };
+		0A2D94F2151C935700BCD796 /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F1151C935700BCD796 /* SynthesizeSingleton.h */; };
+		0A2D94F4151C93BD00BCD796 /* SoundEngineProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F3151C93BD00BCD796 /* SoundEngineProtocol.h */; };
+		0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F6151C990600BCD796 /* DenshionEngine.h */; };
+		0A2D94F9151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
+		0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
 		0A718E8D14BB653B00071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
 		0A718E9014BB654E00071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 		0A718E9414BB65E400071DBE /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9314BB65E400071DBE /* ObjectManager.m */; };
@@ -520,6 +528,12 @@
 		0A249B5A14A273F800D5D7D3 /* CGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGExtensions.h; sourceTree = "<group>"; };
 		0A249B6214A2750C00D5D7D3 /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A249B7014A2750C00D5D7D3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0A2D94EC151C930C00BCD796 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
+		0A2D94ED151C930C00BCD796 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
+		0A2D94F1151C935700BCD796 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		0A2D94F3151C93BD00BCD796 /* SoundEngineProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEngineProtocol.h; sourceTree = "<group>"; };
+		0A2D94F6151C990600BCD796 /* DenshionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DenshionEngine.h; sourceTree = "<group>"; };
+		0A2D94F7151C990700BCD796 /* DenshionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DenshionEngine.m; sourceTree = "<group>"; };
 		0A718E8B14BB653B00071DBE /* LevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelLoader.h; sourceTree = "<group>"; };
 		0A718E8C14BB653B00071DBE /* LevelLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelLoader.m; sourceTree = "<group>"; };
 		0A718E8E14BB654E00071DBE /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
@@ -670,6 +684,7 @@
 		0A2499EB14A267D100D5D7D3 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				0A2D94F1151C935700BCD796 /* SynthesizeSingleton.h */,
 				0A249AE414A267D300D5D7D3 /* LICENSE_cocos2d.txt */,
 				0A249AF314A267D300D5D7D3 /* LICENSE_CocosDenshion.txt */,
 				0A249AFE14A267D300D5D7D3 /* LICENSE_TouchJSON.txt */,
@@ -983,6 +998,7 @@
 		0A249B3A14A267EB00D5D7D3 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				0A2D94EA151C91A900BCD796 /* SoundManager */,
 				0AF8B55714C8790A005FCBF7 /* Graphics */,
 				0A718E9114BB65AF00071DBE /* ObjectManager */,
 				0A718E8914BB651900071DBE /* Level */,
@@ -1045,6 +1061,26 @@
 				0A71914814BF690800071DBE /* Config.xcconfig */,
 			);
 			name = Configurations;
+			sourceTree = "<group>";
+		};
+		0A2D94EA151C91A900BCD796 /* SoundManager */ = {
+			isa = PBXGroup;
+			children = (
+				0A2D94F5151C98B500BCD796 /* CocosDenshionEngine */,
+				0A2D94EC151C930C00BCD796 /* SoundManager.h */,
+				0A2D94ED151C930C00BCD796 /* SoundManager.m */,
+				0A2D94F3151C93BD00BCD796 /* SoundEngineProtocol.h */,
+			);
+			name = SoundManager;
+			sourceTree = "<group>";
+		};
+		0A2D94F5151C98B500BCD796 /* CocosDenshionEngine */ = {
+			isa = PBXGroup;
+			children = (
+				0A2D94F6151C990600BCD796 /* DenshionEngine.h */,
+				0A2D94F7151C990700BCD796 /* DenshionEngine.m */,
+			);
+			name = CocosDenshionEngine;
 			sourceTree = "<group>";
 		};
 		0A718E8914BB651900071DBE /* Level */ = {
@@ -1216,6 +1252,10 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
+				0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */,
+				0A2D94F2151C935700BCD796 /* SynthesizeSingleton.h in Headers */,
+				0A2D94F4151C93BD00BCD796 /* SoundEngineProtocol.h in Headers */,
+				0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1429,6 +1469,8 @@
 				0ACB987C14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */,
 				0A22615014FBFF6B001C35FA /* Universalizer.mm in Sources */,
 				0A9F344915014FC800DEAE4D /* CocosGraphicElement.m in Sources */,
+				0A2D94EF151C930C00BCD796 /* SoundManager.m in Sources */,
+				0A2D94F9151C990700BCD796 /* DenshionEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1459,6 +1501,8 @@
 				0ACB987D14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */,
 				0A22615114FBFF6B001C35FA /* Universalizer.mm in Sources */,
 				0A9F344A15014FC800DEAE4D /* CocosGraphicElement.m in Sources */,
+				0A2D94F0151C930C00BCD796 /* SoundManager.m in Sources */,
+				0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
