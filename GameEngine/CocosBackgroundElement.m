@@ -110,7 +110,7 @@
 
 - (void) dealloc {
     
-    if (backgroundSprite != nil) { [backgroundSprite release]; backgroundSprite = nil; }
+    if (backgroundSprite != nil) { [backgroundSprite removeFromParentAndCleanup:YES]; }
     if (backgroundElements != nil) { [backgroundElements release]; backgroundElements = nil; }
     
     [super dealloc];

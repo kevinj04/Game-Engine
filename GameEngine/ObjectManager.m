@@ -19,39 +19,76 @@
     
     // todo: Change this to reflect active/inactive, for now, everything is active
     
+    [self showActiveObjects];
+    [self showAlwaysActiveObjects];
+    NSLog(@"  BEFORE ^^^^^^^^^^^^^^^^ LOAD[%@] :: %@", currentLevel, [currentLevel name]);
+    
+    int oldCount = 0;
     for (GameElement *ge in [[currentLevel objectDictionary] allValues]) {
+        oldCount = [activeObjects count];
         [activeObjects addObject:ge];
+        NSLog(@"Adding Object[%@]: %@   (active object count was: %i   now: %i", ge, [ge objectName], oldCount, [activeObjects count]);
     }
     
     for (GameElement *ge in [[currentLevel backgroundTileDictionary] allValues]) {
+        oldCount = [activeObjects count];
         [activeObjects addObject:ge];
+        NSLog(@"Adding Object[%@]: %@   (active object count was: %i   now: %i", ge, [ge objectName], oldCount, [activeObjects count]);
     }
     
     for (GameElement *ge in [[currentLevel hudDictionary] allValues]) {
+        oldCount = [alwaysActiveObjects count];
         [alwaysActiveObjects addObject:ge];
+        NSLog(@"Adding HUD[%@]: %@   (always active object count was: %i   now: %i", ge, [ge objectName], oldCount, [alwaysActiveObjects count]);
     }
     
     for (GameElement *ge in [[currentLevel cameraDictionary] allValues]) {
+        oldCount = [alwaysActiveObjects count];
         [alwaysActiveObjects addObject:ge];
+        NSLog(@"Adding HUD[%@]: %@   (always active object count was: %i   now: %i", ge, [ge objectName], oldCount, [alwaysActiveObjects count]);
     }
+    
+    NSLog(@" AFTER VVVVVVVVVVVVV UNLOAD[%@] :: %@", currentLevel, [currentLevel name]);
+    [self showActiveObjects];
+    [self showAlwaysActiveObjects];
+    
     
 }
 - (void) unloadCurrentLevel {
+    
+    [self showActiveObjects];
+    [self showAlwaysActiveObjects];
+    NSLog(@"  BEFORE ^^^^^^^^^^^^^^^^ UNLOAD[%@] :: %@", currentLevel, [currentLevel name]);
+    
+    int oldCount = 0;
     for (GameElement *ge in [[currentLevel objectDictionary] allValues]) {
+        oldCount = [activeObjects count];
         [activeObjects removeObject:ge];
+        NSLog(@"Removing Object[%@]: %@   (active object count was: %i   now: %i", ge, [ge objectName], oldCount, [activeObjects count]);
     }
     
     for (GameElement *ge in [[currentLevel backgroundTileDictionary] allValues]) {
+        oldCount = [activeObjects count];
         [activeObjects removeObject:ge];
+        NSLog(@"Removing BG[%@]: %@   (active object count was: %i   now: %i", ge, [ge objectName], oldCount, [activeObjects count]);
     }
     
     for (GameElement *ge in [[currentLevel hudDictionary] allValues]) {
+        oldCount = [alwaysActiveObjects count];
         [alwaysActiveObjects removeObject:ge];
+        NSLog(@"Removing HUD[%@]: %@   (always active object count was: %i   now: %i", ge, [ge objectName], oldCount, [alwaysActiveObjects count]);
     }
     
     for (GameElement *ge in [[currentLevel cameraDictionary] allValues]) {
+        oldCount = [alwaysActiveObjects count];
         [alwaysActiveObjects removeObject:ge];
+        NSLog(@"Removing Camera[%@]: %@   (active object count was: %i   now: %i", ge, [ge objectName], oldCount, [alwaysActiveObjects count]);
     }
+    NSLog(@" AFTER VVVVVVVVVVVVV UNLOAD[%@] :: %@", currentLevel, [currentLevel name]);
+    [self showActiveObjects];
+    [self showAlwaysActiveObjects];
+
+    
 }
 @end
 
@@ -127,6 +164,24 @@
     for (NSObject<GameElementProtocol> *ge in activeObjects) {
         [ge update:dt];
     }
+}
+
+- (void) showActiveObjects {    
+    NSLog(@"There are %i active objects", [activeObjects count]);
+    for (NSObject<GameElementProtocol> *ge in activeObjects) {
+        NSLog(@"Active Object[%@]: %@", ge, [ge objectName]);
+    }
+}
+- (void) showAlwaysActiveObjects {
+    NSLog(@"There are %i always active objects", [alwaysActiveObjects count]);
+    for (NSObject<GameElementProtocol> *ge in alwaysActiveObjects) {
+        NSLog(@"Always Active Object[%@]: %@", ge, [ge objectName]);
+    }
+
+}
+
+- (Level *) currentLevel {
+    return currentLevel;
 }
 
 @end

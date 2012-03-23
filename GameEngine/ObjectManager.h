@@ -38,4 +38,9 @@
 
 - (void) update:(double) dt;
 
+- (void) showActiveObjects;
+- (void) showAlwaysActiveObjects;
+
+- (Level *) currentLevel;
+
 @end

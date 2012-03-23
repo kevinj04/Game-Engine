@@ -24,7 +24,11 @@
 + (id) nodeWithNode:(CCNode *) n {
     return [[[CocosGraphicElement alloc] initWithNode:n] autorelease];
 }
-
+- (void) dealloc {
+    [root removeFromParentAndCleanup:YES];
+    [root release];
+    [super dealloc];
+}
 - (CCNode *) rootNode {
     return root;
 }

@@ -18,7 +18,8 @@
 
 - (id) initWithNode:(CCNode *) n;
 + (id) nodeWithNode:(CCNode *) n;
-
+- (void) dealloc;
 - (CCNode *) rootNode;
+
 
 @end

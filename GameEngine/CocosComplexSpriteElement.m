@@ -126,7 +126,8 @@ NSString *const zOrderStr = @"zIndex";
     
 }
 - (void) dealloc {
-    if (batchNode != nil) { [batchNode release]; batchNode = nil; }
+    NSLog(@"Releasing BatchNode[%@]: %@", batchNode, [batchNode texture]);
+    //if (batchNode != nil) { [batchNode release]; batchNode = nil; }
     [super dealloc];
 }
 
