@@ -37,6 +37,7 @@ typedef enum {
 }
 
 - (id) init;
++ (id) engine;
 - (void) setupEngine;
 - (void) setupSound;
 - (void) setupAsync;

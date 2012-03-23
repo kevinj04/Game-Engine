@@ -43,6 +43,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SoundManager);
 }
 - (void) setupWithSoundEngine:(NSObject<SoundEngineProtocol> *) e {
     engine = [e retain];
+    [engine setupEngine];
 }
 - (void) dealloc {
     
@@ -53,6 +54,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SoundManager);
 - (void) setSoundEngine:(NSObject<SoundEngineProtocol> *) e {
     if (engine != nil) { [engine release]; engine = nil; }
     engine = [e retain];
+    [engine setupEngine];
 }
 
 - (void) preloadMusic:(NSString *) trackName {

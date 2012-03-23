@@ -26,6 +26,9 @@ static BOOL setupHasRun;
 	}
     
 }
++ (id) engine {
+    return [[[DenshionEngine alloc] init] autorelease];
+}
 - (void) setupEngine {
     //Make sure this only runs once
 	if (setupHasRun) {
