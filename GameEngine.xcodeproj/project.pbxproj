@@ -211,12 +211,12 @@
 		0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9514A267D200D5D7D3 /* CCTransitionPageTurn.h */; };
 		0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9814A267D200D5D7D3 /* CCTransitionRadial.h */; };
 		0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9B14A267D200D5D7D3 /* ccTypes.h */; };
-		0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94EC151C930C00BCD796 /* SoundManager.h */; };
+		0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94EC151C930C00BCD796 /* SoundManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A2D94EF151C930C00BCD796 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94ED151C930C00BCD796 /* SoundManager.m */; };
 		0A2D94F0151C930C00BCD796 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94ED151C930C00BCD796 /* SoundManager.m */; };
 		0A2D94F2151C935700BCD796 /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F1151C935700BCD796 /* SynthesizeSingleton.h */; };
-		0A2D94F4151C93BD00BCD796 /* SoundEngineProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F3151C93BD00BCD796 /* SoundEngineProtocol.h */; };
-		0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F6151C990600BCD796 /* DenshionEngine.h */; };
+		0A2D94F4151C93BD00BCD796 /* SoundEngineProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F3151C93BD00BCD796 /* SoundEngineProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F6151C990600BCD796 /* DenshionEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A2D94F9151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
 		0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
 		0A718E8D14BB653B00071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
@@ -1189,6 +1189,9 @@
 				0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */,
 				0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */,
 				0A9F344815014FC800DEAE4D /* CocosGraphicElement.h in Headers */,
+				0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */,
+				0A2D94F4151C93BD00BCD796 /* SoundEngineProtocol.h in Headers */,
+				0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */,
 				0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */,
 				0AFA4F6D14CDC17900077A83 /* cocos2d.h in Headers */,
 				0A249B9414A2760C00D5D7D3 /* CCAction.h in Headers */,
@@ -1252,10 +1255,7 @@
 				0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */,
 				0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */,
 				0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */,
-				0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */,
 				0A2D94F2151C935700BCD796 /* SynthesizeSingleton.h in Headers */,
-				0A2D94F4151C93BD00BCD796 /* SoundEngineProtocol.h in Headers */,
-				0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
