@@ -152,6 +152,7 @@ static BOOL setupHasRun;
 
 - (void) playMusic:(NSString *) trackName {
     currentMusic = [trackName retain];
+    [sae playBackgroundMusic:currentMusic loop:YES];
 }
 - (void) pauseMusic {
     [sae pauseBackgroundMusic];
