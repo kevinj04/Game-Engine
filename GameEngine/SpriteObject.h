@@ -76,6 +76,8 @@ extern NSString *const spriteBody;
 - (void) setRotation:(float)r forPart:(NSString *) partName;
 - (void) setFlipX:(_Bool) b forPart:(NSString *) partName;
 - (void) setFlipY:(_Bool) b forPart:(NSString *) partName;
+- (void) setScaleX:(float) f;
+- (void) setScaleY:(float) f;
 
 - (NSDictionary *) parts;
 

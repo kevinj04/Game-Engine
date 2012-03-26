@@ -68,8 +68,8 @@ NSString *const partAnchorPoint = @"anchorPoint";
     float scaleRangeX = [nextKF scaleX] - [currentKF scaleX];
     float scaleRangeY = [nextKF scaleY] - [currentKF scaleY];
     
-    float newScaleX = baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween));
-    float newScaleY = baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween));
+    float newScaleX = m_scaleX * baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween));
+    float newScaleY = m_scaleY * baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween));
     [self setScaleX:newScaleX];
     [self setScaleY:newScaleY];
     
@@ -202,7 +202,17 @@ NSString *const partAnchorPoint = @"anchorPoint";
 - (void) setMasterFlipY:(bool)b {
     m_flipY = b;
 }
+- (void) setMasterScaleX:(float) f {
+    m_scaleX = f;
+}
+- (void) setMasterScaleY:(float) f {
+    m_scaleY = f;
+}
 
+
+- (SpriteObject *) parent {
+    return parent;
+}
 - (void) setParent:(SpriteObject *) spriteObj {
     parent = [spriteObj retain];
     [spriteRep updateWithPhysicsInfo:self];

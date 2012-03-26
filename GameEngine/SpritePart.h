@@ -60,6 +60,9 @@ extern NSString *const partAnchorPoint;
     bool m_flipX;
     bool m_flipY;
     
+    float m_scaleX;
+    float m_scaleY;
+    
 }
 
 @property (nonatomic, retain) NSString *name;
@@ -98,8 +101,11 @@ extern NSString *const partAnchorPoint;
 - (void) setMasterRotation:(float) r;
 - (void) setMasterFlipX:(bool) b;
 - (void) setMasterFlipY:(bool) b;
+- (void) setMasterScaleX:(float) f;
+- (void) setMasterScaleY:(float) f;
 
 - (void) setParent:(SpriteObject *) spriteObj;
+- (SpriteObject *) parent;
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep;
 - (NSObject<GraphicsProtocol> *) spriteRep;
 

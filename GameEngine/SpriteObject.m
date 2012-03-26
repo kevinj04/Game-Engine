@@ -183,6 +183,16 @@ NSString *const spriteBody = @"spriteBody";
     [[parts objectForKey:partName] setMasterRotation:r];
     
 }
+- (void) setScaleX:(float) f forPart:(NSString *) partName {
+    if ([parts objectForKey:partName] == nil) return;
+    
+    [[parts objectForKey:partName] setMasterScaleX:f];
+}
+- (void) setScaleY:(float) f forPart:(NSString *) partName {
+    if ([parts objectForKey:partName] == nil) return;
+    
+    [[parts objectForKey:partName] setMasterScaleY:f];
+}
 
 - (NSDictionary *) parts {
     return parts;
