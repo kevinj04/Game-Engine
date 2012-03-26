@@ -23,7 +23,7 @@ extern NSString *const zOrderStr;
     @private
     CCSpriteBatchNode *batchNode;
     NSDictionary *sprites;    
-    
+
 }
 
 - (id) initWithSpriteInfo:(SpriteObject *) sObj;
@@ -35,5 +35,7 @@ extern NSString *const zOrderStr;
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj;
 
 - (void) attachToLayer:(CCLayer *) layer;
+- (void) setBatchNode:(CCSpriteBatchNode *) sbn;
+- (CCSpriteBatchNode *) batchNode;
 
 @end

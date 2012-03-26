@@ -55,8 +55,12 @@ NSString *const zOrderStr = @"zIndex";
     [s setScaleX:[part scaleX]];
     [s setScaleY:[part scaleY]];
     
-    [s setVertexZ:[part vertexZ]];
-    [s setZOrder:[part zOrder]]; // maybe slow?
+    int zOrder = (int)([part vertexZ] * 100);
+    float vz  = [[(SpritePart *)part parent]  vertexZ] + [part vertexZ];
+
+    
+    [s setVertexZ:vz];
+    [s setZOrder:zOrder]; // maybe slow?
     [s setVisible:[part visible]];
     
     [s setFlipX:[part flipX]];
@@ -112,6 +116,7 @@ NSString *const zOrderStr = @"zIndex";
             [s setUsesBatchNode:YES];
             [s setBatchNode:batchNode];
             [s setVertexZ:[sObj vertexZ] + [part vertexZ]];
+            //NSLog(@"Attaching sprite %@  with vertexZ:%2.2f and zOrder: %i", [part name], [s vertexZ], [s zOrder]);
         }
         
         [part setSpriteRep:cge];
@@ -126,7 +131,7 @@ NSString *const zOrderStr = @"zIndex";
     
 }
 - (void) dealloc {
-    NSLog(@"Releasing BatchNode[%@]: %@", batchNode, [batchNode texture]);
+    //NSLog(@"Releasing BatchNode[%@]: %@", batchNode, [batchNode texture]);
     //if (batchNode != nil) { [batchNode release]; batchNode = nil; }
     [super dealloc];
 }
@@ -155,5 +160,26 @@ NSString *const zOrderStr = @"zIndex";
     [layer addChild:root z:[batchNode zOrder]];
 }
 
+- (CCSpriteBatchNode *) batchNode {
+    return batchNode;
+}
+- (void) setBatchNode:(CCSpriteBatchNode *) sbn {
+    if (batchNode != nil) { [batchNode removeFromParentAndCleanup:YES]; batchNode = nil; }
+    
+    batchNode = [sbn retain];
 
+    for (CocosGraphicElement *cge in [sprites allValues]) {
+        
+        CCSprite *s = (CCSprite *)[cge rootNode];
+        
+        [s removeFromParentAndCleanup:YES];
+        
+        [batchNode addChild:s z:[s zOrder]];
+        [s setUsesBatchNode:YES];
+        [s setBatchNode:batchNode];
+        
+    }
+    
+}
+    
 @end

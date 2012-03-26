@@ -103,9 +103,13 @@
         
         [temp setObject:cge forKey:[part name]];
         [part setSpriteRep:cge];
+        
+        //NSLog(@"Attaching BG Sprite %@  with vertexZ:%2.2f and zOrder: %i", s, [s vertexZ], [s zOrder]);
     }
     
     [root addChild:backgroundSprite z:0];
+    //NSLog(@"Attaching BG Prime Sprite %@  with vertexZ:%2.2f and zOrder: %i", backgroundSprite, [backgroundSprite vertexZ], [backgroundSprite zOrder]);
+    
 }
 
 - (void) dealloc {

@@ -140,6 +140,8 @@ NSString *const partAnchorPoint = @"anchorPoint";
     
     // Master values
     m_rotation = 0.0;
+    m_scaleX = 1.0;
+    m_scaleY = 1.0;
     
     if ([dictionary objectForKey:partVertexZ] != nil) {        
         vertexZ = [[dictionary objectForKey:partVertexZ] floatValue];        
