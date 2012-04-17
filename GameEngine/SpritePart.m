@@ -78,7 +78,7 @@ NSString *const partAnchorPoint = @"anchorPoint";
 
 @implementation SpritePart
 
-@synthesize name;
+@synthesize objectName;
 @synthesize spriteFrameName, position, rotation, scaleX, scaleY, vertexZ, zOrder, flipX, flipY, anchorPoint, boundingBox, visible;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
@@ -165,7 +165,7 @@ NSString *const partAnchorPoint = @"anchorPoint";
 }
 - (void) dealloc {
     
-    if (name != nil) { [name release]; name = nil; }
+    if (objectName != nil) { [objectName release]; objectName = nil; }
     if (animations != nil) { [animations release]; animations = nil; }
     if (currentTimeLine != nil) { [currentTimeLine release]; currentTimeLine = nil; }
     
