@@ -24,7 +24,7 @@ extern NSString *const partAnchorPoint;
 
 @interface SpritePart : NSObject<GraphicsProtocol, SpriteUpdateProtocol> {
     
-    NSString *name;
+    NSString *objectName;
     
     @private
     NSObject<GraphicsProtocol> *spriteRep;
@@ -65,7 +65,7 @@ extern NSString *const partAnchorPoint;
     
 }
 
-@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *objectName;
 
 /** Sprite Representation Information **/
 
