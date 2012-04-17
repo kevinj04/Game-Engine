@@ -25,7 +25,7 @@ extern NSString *const spriteBody;
 @interface SpriteObject : NSObject<SpriteUpdateProtocol> {
     
     // SpriteObject is a 'container' of sprite parts.
-    NSString *name;
+    NSString *objectName;
     
     CGPoint position;
     float rotation;
@@ -46,7 +46,7 @@ extern NSString *const spriteBody;
     
 }
 
-@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *objectName;
 
 @property CGPoint position;
 @property float rotation;

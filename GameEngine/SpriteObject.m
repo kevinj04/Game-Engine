@@ -33,7 +33,7 @@ NSString *const spriteBody = @"spriteBody";
 
 @implementation SpriteObject
 
-@synthesize name, position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible, flipX, flipY;
+@synthesize objectName, position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible, flipX, flipY;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
