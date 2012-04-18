@@ -97,7 +97,7 @@ typedef struct _ccVertex2F
 }
 - (void) setupWithSpriteObject:(SpriteObject *) sObj {
     
-    name = [[sObj name] retain];
+    name = [[sObj objectName] retain];
     
     [self updateGraphicsWithInfo:sObj];         
     
