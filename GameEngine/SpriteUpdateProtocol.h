@@ -11,7 +11,7 @@
 
 @protocol SpriteUpdateProtocol <NSObject> 
 
-- (NSString *) name; // the name of the sprite we are updating
+- (NSString *) objectName; // the name of the sprite we are updating
 
 - (CGPoint) position;
 - (float) rotation;
