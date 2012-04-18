@@ -31,7 +31,7 @@
 }
 - (void) updateSprite:(NSObject<SpriteUpdateProtocol> *) p {
     
-    CocosGraphicElement *cge = [backgroundElements objectForKey:[p name]];
+    CocosGraphicElement *cge = [backgroundElements objectForKey:[p objectName]];
     
     if (cge == nil) { return; }
     
@@ -88,20 +88,20 @@
     
     for (SpritePart *part in [[bgObj parts] allValues]) {
         CocosGraphicElement *cge = [CocosGraphicElement nodeWithNode:[CCSprite node]];
-        [temp setObject:cge forKey:[part name]];
+        [temp setObject:cge forKey:[part objectName]];
     }
     backgroundElements = [temp retain];
     
     for (SpritePart *part in [[bgObj parts] allValues]) {
         
         
-        CocosGraphicElement *cge = [backgroundElements objectForKey:[part name]];
+        CocosGraphicElement *cge = [backgroundElements objectForKey:[part objectName]];
         CCSprite *s = (CCSprite *)[cge rootNode];
         [self updateSprite:part];            
         
         [backgroundSprite addChild:s z:[part zOrder]];
         
-        [temp setObject:cge forKey:[part name]];
+        [temp setObject:cge forKey:[part objectName]];
         [part setSpriteRep:cge];
         
         //NSLog(@"Attaching BG Sprite %@  with vertexZ:%2.2f and zOrder: %i", s, [s vertexZ], [s zOrder]);
@@ -134,7 +134,7 @@
         
         [self updateSprite:part];
     }
-    
+    [backgroundSprite setVisible:NO];
 }
 
 - (void) attachToLayer:(CCLayer *) layer {    

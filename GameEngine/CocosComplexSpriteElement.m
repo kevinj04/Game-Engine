@@ -33,7 +33,7 @@ NSString *const zOrderStr = @"zIndex";
 }
 - (void) updateSpritePart:(NSObject<SpriteUpdateProtocol> *) part {
     
-    CocosGraphicElement *cge = [sprites objectForKey:[part name]];
+    CocosGraphicElement *cge = [sprites objectForKey:[part objectName]];
     
     if (cge == nil) { return; }
     
@@ -91,7 +91,7 @@ NSString *const zOrderStr = @"zIndex";
     for (SpritePart *part in [[sObj parts] allValues]) {
         
         CocosGraphicElement *cge = [CocosGraphicElement nodeWithNode:[CCSprite node]];
-        [temp setObject:cge forKey:[part name]];
+        [temp setObject:cge forKey:[part objectName]];
     }
     sprites = [temp retain];
     
@@ -99,7 +99,7 @@ NSString *const zOrderStr = @"zIndex";
         
         [self updateSpritePart:part];
         
-        CocosGraphicElement *cge = [sprites objectForKey:[part name]];
+        CocosGraphicElement *cge = [sprites objectForKey:[part objectName]];
         CCSprite *s = (CCSprite *)[cge rootNode];
         
         if (batchNode == nil) {
