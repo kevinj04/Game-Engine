@@ -89,7 +89,7 @@ NSString *const spriteBody = @"spriteBody";
             
             SpritePart *part = [SpritePart partWithDictionary:[partsDictionary objectForKey:partName]];
             [part setParent:self];
-            [part setName:partName];
+            [part setObjectName:partName];
             [tempParts setObject:part forKey:partName];
         }
         
