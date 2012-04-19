@@ -134,7 +134,7 @@
         
         [self updateSprite:part];
     }
-    [backgroundSprite setVisible:NO];
+
 }
 
 - (void) attachToLayer:(CCLayer *) layer {    
