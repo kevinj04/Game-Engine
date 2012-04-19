@@ -21,6 +21,7 @@ extern NSString *const partRunningAnimation;
 extern NSString *const partVertexZ;
 extern NSString *const partZOrder;
 extern NSString *const partAnchorPoint;
+extern NSString *const partIgnoreBoundingBox;
 
 @interface SpritePart : NSObject<GraphicsProtocol, SpriteUpdateProtocol> {
     
@@ -62,6 +63,8 @@ extern NSString *const partAnchorPoint;
     
     float m_scaleX;
     float m_scaleY;
+    
+    bool shouldIgnoreBoundingBoxCalculation;
     
 }
 
@@ -108,5 +111,8 @@ extern NSString *const partAnchorPoint;
 - (SpriteObject *) parent;
 - (void) setSpriteRep:(NSObject<GraphicsProtocol> *) rep;
 - (NSObject<GraphicsProtocol> *) spriteRep;
+
+- (bool) shouldIgnoreBoundingBox;
+
 
 @end

@@ -13,6 +13,7 @@ NSString *const partRunningAnimation = @"runningAnimation";
 NSString *const partVertexZ = @"vertexZ";
 NSString *const partZOrder = @"zOrder";
 NSString *const partAnchorPoint = @"anchorPoint";
+NSString *const partIgnoreBoundingBox = @"ignoreBoundingBox";
 
 @interface SpritePart (private)
 - (void) tween;
@@ -119,6 +120,11 @@ NSString *const partAnchorPoint = @"anchorPoint";
         NSString *runningAnimation = [dictionary objectForKey:partRunningAnimation];
         currentTimeLine = [timeLines objectForKey:runningAnimation];
         [currentTimeLine reset];
+    }
+    
+    shouldIgnoreBoundingBoxCalculation = NO;
+    if ([dictionary objectForKey:partIgnoreBoundingBox] != nil) {
+        shouldIgnoreBoundingBoxCalculation = [[dictionary objectForKey:partIgnoreBoundingBox] boolValue];
     }
     
     // standard values
@@ -228,6 +234,9 @@ NSString *const partAnchorPoint = @"anchorPoint";
 }
 - (CGPoint) frameOffset {
     return [spriteRep frameOffset];
+}
+- (bool) shouldIgnoreBoundingBox {
+    return shouldIgnoreBoundingBoxCalculation;
 }
 
 @end

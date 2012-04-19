@@ -91,7 +91,9 @@ NSString *const zOrderStr = @"zIndex";
     for (SpritePart *part in [[sObj parts] allValues]) {
         
         CocosGraphicElement *cge = [CocosGraphicElement nodeWithNode:[CCSprite node]];
+        [cge setObjectName:[part objectName]];
         [temp setObject:cge forKey:[part objectName]];
+        [cge setShouldIgnoreBoundingBoxCalculation:[part shouldIgnoreBoundingBox]];
     }
     sprites = [temp retain];
     
@@ -128,6 +130,7 @@ NSString *const zOrderStr = @"zIndex";
         [root addChild:batchNode z:0];
     }
     
+    [self updateComplexBoundingBox];
     
 }
 - (void) dealloc {
@@ -152,6 +155,55 @@ NSString *const zOrderStr = @"zIndex";
     }        
     
 }
+
+- (void) updateComplexBoundingBox {
+    
+    
+    graphicBoundingBox.size = CGSizeMake(0.0, 0.0);
+    graphicBoundingBox.origin = ccp(0.0,0.0);
+    
+    for (CocosGraphicElement *cge in [sprites allValues]) {
+        
+        
+        // CHECK THIS !!!
+        
+        if (![cge shouldIgnoreBoundingBoxCalculation]) {
+            
+            CCSpriteFrame *frame = [(CCSprite *)[cge rootNode] displayedFrame];
+            CGRect fixedRect = CGRectMake(frame.rect.origin.x, frame.rect.origin.y, 
+                                          frame.rect.size.width, frame.rect.size.height);
+            
+            fixedRect.origin =  ccp([frame offsetInPixels].x/CC_CONTENT_SCALE_FACTOR(), [frame offsetInPixels].y/CC_CONTENT_SCALE_FACTOR());
+            if ([frame rotated]) {
+                float height = fixedRect.size.height;
+                fixedRect.size.height = fixedRect.size.width;
+                fixedRect.size.width = height;
+            }
+        
+            
+            if (graphicBoundingBox.size.width == 0) {
+                graphicBoundingBox = fixedRect;
+            } else {
+                graphicBoundingBox = CGRectUnion(graphicBoundingBox, fixedRect);                
+            }
+            //NSLog(@"Part[%@] has bounding box: %@", [cge objectName], NSStringFromCGRect(fixedRect));
+        }
+    }
+    
+    //CGSize spriteSize  = complexBoundingBox.size; 
+    
+    CGSize batchNodeSize = [batchNode contentSize];
+    CGPoint batchNodeAnchorPosition = ccp([batchNode anchorPoint].x*batchNodeSize.width, [batchNode anchorPoint].y*batchNodeSize.height);
+    
+    CGPoint complexBoundingBoxAPPosition = ccp([batchNode anchorPoint].x*graphicBoundingBox.size.width, [batchNode anchorPoint].y*graphicBoundingBox.size.height);
+    
+    graphicOffset = ccpSub(complexBoundingBoxAPPosition, batchNodeAnchorPosition);
+    
+    //NSLog(@"[%@] Final Complex Bounding Box: %@", self, NSStringFromCGRect(myBoundingBox));
+    
+}
+
+
 - (void) setVisible:(BOOL)v {
     [batchNode setVisible:v];
 }
