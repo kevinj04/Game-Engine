@@ -134,7 +134,7 @@
         
         [self updateSprite:part];
     }
-
+    
 }
 
 - (void) attachToLayer:(CCLayer *) layer {    

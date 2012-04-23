@@ -31,7 +31,7 @@ NSString *const spawnerZRange = @"zRange";
     
     for (int i=0; i<zRange; i++) {
         [zAvailable addObject:[NSNumber numberWithInt:i]];
-        [zUsed insertObject:[NSNull null] atIndex:i];
+        [zUsed insertObject:[NSNumber numberWithInt:-1] atIndex:i];
     }
     
 }
@@ -70,6 +70,7 @@ NSString *const spawnerZRange = @"zRange";
 - (void) spawnObject:(NSObject<SpawnableZ> *) obj {
     
     NSNumber *z = [zAvailable anyObject];
+    
     [zUsed replaceObjectAtIndex:[z intValue] withObject:z];
     [zAvailable removeObject:z];
     
@@ -82,8 +83,8 @@ NSString *const spawnerZRange = @"zRange";
     
     NSNumber *z = [zUsed objectAtIndex:[obj zOrder]];
     
-    [zUsed replaceObjectAtIndex:[z intValue] withObject:[NSNull null]];
     [zAvailable addObject:z];
+    [zUsed replaceObjectAtIndex:[z intValue] withObject:[NSNumber numberWithInt:-1]];
     
     [super reclaim:obj];
 }
