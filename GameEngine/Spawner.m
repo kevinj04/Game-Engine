@@ -54,6 +54,7 @@ NSString *const reclaimObject = @"reclaimObject";
     
     if (( self = [super init] )) {
         
+        [self setup];
         return self;
         
     } else {

@@ -236,6 +236,10 @@
 		0A9F344815014FC800DEAE4D /* CocosGraphicElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F344615014FC500DEAE4D /* CocosGraphicElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A9F344915014FC800DEAE4D /* CocosGraphicElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F344715014FC700DEAE4D /* CocosGraphicElement.m */; };
 		0A9F344A15014FC800DEAE4D /* CocosGraphicElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F344715014FC700DEAE4D /* CocosGraphicElement.m */; };
+		0AB8BB301545B8610064E75F /* SpawnerZManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB8BB2E1545B8610064E75F /* SpawnerZManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0AB8BB311545B8610064E75F /* SpawnerZManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8BB2F1545B8610064E75F /* SpawnerZManager.m */; };
+		0AB8BB321545B8610064E75F /* SpawnerZManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8BB2F1545B8610064E75F /* SpawnerZManager.m */; };
+		0AB8BB341545C0A30064E75F /* SpawnableZ.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB8BB331545C0A20064E75F /* SpawnableZ.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB984314D9A34100528DE7 /* SpriteBGObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0ACB984614D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
 		0ACB984714D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
@@ -547,6 +551,9 @@
 		0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackElementProtocol.h; sourceTree = "<group>"; };
 		0A9F344615014FC500DEAE4D /* CocosGraphicElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosGraphicElement.h; sourceTree = "<group>"; };
 		0A9F344715014FC700DEAE4D /* CocosGraphicElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosGraphicElement.m; sourceTree = "<group>"; };
+		0AB8BB2E1545B8610064E75F /* SpawnerZManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpawnerZManager.h; sourceTree = "<group>"; };
+		0AB8BB2F1545B8610064E75F /* SpawnerZManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpawnerZManager.m; sourceTree = "<group>"; };
+		0AB8BB331545C0A20064E75F /* SpawnableZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpawnableZ.h; sourceTree = "<group>"; };
 		0ACB984314D9A34100528DE7 /* SpriteBGObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBGObject.h; sourceTree = "<group>"; };
 		0ACB984414D9A34100528DE7 /* SpriteBGObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteBGObject.m; sourceTree = "<group>"; };
 		0ACB985E14E1A1EB00528DE7 /* CocosBackgroundElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosBackgroundElement.h; sourceTree = "<group>"; };
@@ -1028,8 +1035,7 @@
 			children = (
 				0A22614B14FBFF59001C35FA /* Universal Tools */,
 				0A249B5114A26CE800D5D7D3 /* Protocols */,
-				0A249B5314A272EF00D5D7D3 /* Spawner.h */,
-				0A249B5414A272F000D5D7D3 /* Spawner.m */,
+				0AB8BB2C1545B8440064E75F /* Spawners */,
 				0A249B4B14A26AE900D5D7D3 /* PhysicsObject.h */,
 				0A249B4C14A26AE900D5D7D3 /* PhysicsObject.m */,
 				0A249B4714A26AD400D5D7D3 /* GameElement.h */,
@@ -1047,7 +1053,6 @@
 		0A249B5114A26CE800D5D7D3 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				0A249B5214A26D0F00D5D7D3 /* Spawnable.h */,
 				0ACB9B1D14E41D0700528DE7 /* GameElementProtocol.h */,
 				0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */,
 				0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */,
@@ -1103,6 +1108,19 @@
 				0A718E9614BB65F600071DBE /* ObjectSelector.m */,
 			);
 			name = ObjectManager;
+			sourceTree = "<group>";
+		};
+		0AB8BB2C1545B8440064E75F /* Spawners */ = {
+			isa = PBXGroup;
+			children = (
+				0A249B5214A26D0F00D5D7D3 /* Spawnable.h */,
+				0AB8BB331545C0A20064E75F /* SpawnableZ.h */,
+				0A249B5314A272EF00D5D7D3 /* Spawner.h */,
+				0A249B5414A272F000D5D7D3 /* Spawner.m */,
+				0AB8BB2E1545B8610064E75F /* SpawnerZManager.h */,
+				0AB8BB2F1545B8610064E75F /* SpawnerZManager.m */,
+			);
+			name = Spawners;
 			sourceTree = "<group>";
 		};
 		0ACB985C14E1A1A900528DE7 /* Cocos2DObjectKit */ = {
@@ -1192,6 +1210,8 @@
 				0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */,
 				0A2D94F4151C93BD00BCD796 /* SoundEngineProtocol.h in Headers */,
 				0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */,
+				0AB8BB301545B8610064E75F /* SpawnerZManager.h in Headers */,
+				0AB8BB341545C0A30064E75F /* SpawnableZ.h in Headers */,
 				0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */,
 				0AFA4F6D14CDC17900077A83 /* cocos2d.h in Headers */,
 				0A249B9414A2760C00D5D7D3 /* CCAction.h in Headers */,
@@ -1471,6 +1491,7 @@
 				0A9F344915014FC800DEAE4D /* CocosGraphicElement.m in Sources */,
 				0A2D94EF151C930C00BCD796 /* SoundManager.m in Sources */,
 				0A2D94F9151C990700BCD796 /* DenshionEngine.m in Sources */,
+				0AB8BB311545B8610064E75F /* SpawnerZManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1503,6 +1524,7 @@
 				0A9F344A15014FC800DEAE4D /* CocosGraphicElement.m in Sources */,
 				0A2D94F0151C930C00BCD796 /* SoundManager.m in Sources */,
 				0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */,
+				0AB8BB321545B8610064E75F /* SpawnerZManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
