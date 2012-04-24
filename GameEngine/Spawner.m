@@ -150,11 +150,6 @@ NSString *const reclaimObject = @"reclaimObject";
         
     }
     
-    // maybe do this elsewhere?
-    for (GameElement *ge in spawnedObjects) {
-        [ge update:dt];
-    }
-    
     [super update:dt];
     
 }

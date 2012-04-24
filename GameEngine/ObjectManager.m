@@ -160,7 +160,7 @@
     for (NSObject<GameElementProtocol> *ge in alwaysActiveObjects) {
         [ge update:dt];
     }
-    
+
     for (NSObject<GameElementProtocol> *ge in activeObjects) {
         [ge update:dt];
     }

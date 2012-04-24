@@ -15,6 +15,7 @@ extern NSString *const spriteObjectRunningAnimation;
 extern NSString *const spriteVertexZ;
 extern NSString *const spriteZOrder;
 extern NSString *const spriteBody;
+extern NSString *const spriteShouldIgnoreBatchNodeUpdate;
 
 /**
  
@@ -36,9 +37,11 @@ extern NSString *const spriteBody;
     int zOrder;
     CGPoint anchorPoint;
     CGRect boundingBox;
-    bool visible;
+    BOOL visible;
     bool flipX;
-    bool flipY;
+    BOOL flipY;
+    
+    BOOL shouldIgnoreBatchNodeUpdate;
     
     @private    
     NSDictionary *parts;
@@ -57,9 +60,10 @@ extern NSString *const spriteBody;
 @property int zOrder;
 @property CGPoint anchorPoint;
 @property CGRect boundingBox;
-@property bool visible;
+@property BOOL visible;
 @property bool flipX;
-@property bool flipY;
+@property BOOL flipY;
+@property BOOL shouldIgnoreBatchNodeUpdate;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) objectWithDictionary:(NSDictionary *) dictionary;

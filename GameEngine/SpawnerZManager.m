@@ -84,6 +84,11 @@ NSString *const spawnerZRange = @"zRange";
     NSNumber *z = [zUsed objectAtIndex:[obj zOrder]];
     
     [zAvailable addObject:z];
+    
+    if ([z intValue] > [zUsed count]) {
+        NSLog(@"Insertion out of bounds for Object[%@] with index %i and zOrder %i", obj, [z intValue], [obj zOrder]);
+    }
+    
     [zUsed replaceObjectAtIndex:[z intValue] withObject:[NSNumber numberWithInt:-1]];
     
     [super reclaim:obj];

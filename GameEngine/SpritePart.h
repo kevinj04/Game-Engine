@@ -22,6 +22,7 @@ extern NSString *const partVertexZ;
 extern NSString *const partZOrder;
 extern NSString *const partAnchorPoint;
 extern NSString *const partIgnoreBoundingBox;
+extern NSString *const partShouldIgnoreBatchNodeUpdate;
 
 @interface SpritePart : NSObject<GraphicsProtocol, SpriteUpdateProtocol> {
     
@@ -52,6 +53,8 @@ extern NSString *const partIgnoreBoundingBox;
     bool flipY;
     CGPoint anchorPoint;
     bool visible;
+    
+    bool shouldIgnoreBatchNodeUpdate;
 
     
     /** Master Part Properties: Modified by SpriteObject, adjusts the part itself.
@@ -87,6 +90,8 @@ extern NSString *const partIgnoreBoundingBox;
 @property bool flipY;
 @property CGPoint anchorPoint;
 @property bool visible;
+
+@property bool shouldIgnoreBatchNodeUpdate;
 
 /** ------------------- **/
 

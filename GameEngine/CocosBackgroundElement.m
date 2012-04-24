@@ -134,7 +134,7 @@
         
         [self updateSprite:part];
     }
-    
+    //[self setVisible:NO];
 }
 
 - (void) attachToLayer:(CCLayer *) layer {    

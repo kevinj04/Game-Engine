@@ -19,17 +19,30 @@ NSString *const zOrderStr = @"zIndex";
 
 @implementation CocosComplexSpriteElement (hidden)
 - (void) updateBatchNodeWithInfo:(NSObject<SpriteUpdateProtocol> *) p {
-    [batchNode setPosition:[p position]]; 
-    [batchNode setRotation:[p rotation]];
     
-    [batchNode setScaleX:[p scaleX]];
-    [batchNode setScaleY:[p scaleY]];
-    
-    [batchNode setVertexZ:[p vertexZ]];
-    [batchNode setZOrder:[p zOrder]]; // maybe slow?
-    [batchNode setVisible:[p visible]];
-    
-    [batchNode setAnchorPoint:[p anchorPoint]];
+    if (![p shouldIgnoreBatchNodeUpdate]) {
+        
+        double xOffset = ([p anchorPoint].x - 0.5f) * [p boundingBox].size.width;
+        double yOffset = ([p anchorPoint].y - 0.5f) * [p boundingBox].size.height;
+        
+        CGPoint frameOffset = [self frameOffset];
+        frameOffset = ccpMult(frameOffset, 1.0/CC_CONTENT_SCALE_FACTOR());
+        
+        CGPoint offsetAP = CGPointMake(frameOffset.x - xOffset, frameOffset.y - yOffset);
+        
+        
+        [batchNode setPosition:ccpAdd([p position], offsetAP)]; 
+        [batchNode setRotation:[p rotation]];
+        
+        [batchNode setScaleX:[p scaleX]];
+        [batchNode setScaleY:[p scaleY]];
+        
+        [batchNode setVertexZ:[p vertexZ]];
+        [batchNode setZOrder:[p zOrder]]; // maybe slow?
+        [batchNode setVisible:[p visible]];
+        
+        [batchNode setAnchorPoint:[p anchorPoint]];
+    }
 }
 - (void) updateSpritePart:(NSObject<SpriteUpdateProtocol> *) part {
     
@@ -57,7 +70,7 @@ NSString *const zOrderStr = @"zIndex";
     
     int zOrder = (int)([part vertexZ] * 100);
     float vz  = [[(SpritePart *)part parent]  vertexZ] + [part vertexZ];
-
+    
     
     [s setVertexZ:vz];
     [s setZOrder:zOrder]; // maybe slow?
@@ -179,7 +192,7 @@ NSString *const zOrderStr = @"zIndex";
                 fixedRect.size.height = fixedRect.size.width;
                 fixedRect.size.width = height;
             }
-        
+            
             
             if (graphicBoundingBox.size.width == 0) {
                 graphicBoundingBox = fixedRect;
@@ -219,7 +232,7 @@ NSString *const zOrderStr = @"zIndex";
     if (batchNode != nil) { [batchNode removeFromParentAndCleanup:YES]; batchNode = nil; }
     
     batchNode = [sbn retain];
-
+    
     for (CocosGraphicElement *cge in [sprites allValues]) {
         
         CCSprite *s = (CCSprite *)[cge rootNode];
@@ -233,5 +246,5 @@ NSString *const zOrderStr = @"zIndex";
     }
     
 }
-    
+
 @end

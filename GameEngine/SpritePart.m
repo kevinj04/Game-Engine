@@ -14,6 +14,7 @@ NSString *const partVertexZ = @"vertexZ";
 NSString *const partZOrder = @"zOrder";
 NSString *const partAnchorPoint = @"anchorPoint";
 NSString *const partIgnoreBoundingBox = @"ignoreBoundingBox";
+NSString *const partShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
 
 @interface SpritePart (private)
 - (void) tween;
@@ -80,7 +81,7 @@ NSString *const partIgnoreBoundingBox = @"ignoreBoundingBox";
 @implementation SpritePart
 
 @synthesize objectName;
-@synthesize spriteFrameName, position, rotation, scaleX, scaleY, vertexZ, zOrder, flipX, flipY, anchorPoint, boundingBox, visible;
+@synthesize spriteFrameName, position, rotation, scaleX, scaleY, vertexZ, zOrder, flipX, flipY, anchorPoint, boundingBox, visible, shouldIgnoreBatchNodeUpdate;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -125,6 +126,11 @@ NSString *const partIgnoreBoundingBox = @"ignoreBoundingBox";
     shouldIgnoreBoundingBoxCalculation = NO;
     if ([dictionary objectForKey:partIgnoreBoundingBox] != nil) {
         shouldIgnoreBoundingBoxCalculation = [[dictionary objectForKey:partIgnoreBoundingBox] boolValue];
+    }
+    
+    shouldIgnoreBatchNodeUpdate = NO;
+    if ([dictionary objectForKey:partShouldIgnoreBatchNodeUpdate] != nil) {
+        shouldIgnoreBatchNodeUpdate = [[dictionary objectForKey:partShouldIgnoreBatchNodeUpdate] boolValue];
     }
     
     // standard values

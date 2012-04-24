@@ -34,4 +34,6 @@
 // this is a return value set from the GraphicsProtocol object
 - (CGPoint) frameOffset;
 
+- (bool) shouldIgnoreBatchNodeUpdate;
+
 @end

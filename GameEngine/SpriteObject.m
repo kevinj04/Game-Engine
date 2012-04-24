@@ -16,6 +16,7 @@ NSString *const spriteObjectRunningAnimation = @"runningAnimation";
 NSString *const spriteVertexZ = @"vertexZ";
 NSString *const spriteZOrder = @"zOrder";
 NSString *const spriteBody = @"spriteBody";
+NSString *const spriteShouldIgnoreBatchNodeUpdate = @"ignoreBatchNodeUpdate";;
 
 @interface SpriteObject (hidden)
 - (CGPoint) calculateOffset;
@@ -33,7 +34,7 @@ NSString *const spriteBody = @"spriteBody";
 
 @implementation SpriteObject
 
-@synthesize objectName, position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible, flipX, flipY;
+@synthesize objectName, position, rotation, scaleX, scaleY, animationSpeed, vertexZ, zOrder, anchorPoint, boundingBox, visible, flipX, flipY, shouldIgnoreBatchNodeUpdate;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary {
     
@@ -78,6 +79,12 @@ NSString *const spriteBody = @"spriteBody";
     if ([dictionary objectForKey:spriteBody] != nil) {
         primarySprite = [[dictionary objectForKey:spriteBody] retain];
     }
+    
+    shouldIgnoreBatchNodeUpdate = NO;
+    if ([dictionary objectForKey:spriteShouldIgnoreBatchNodeUpdate] != nil) {
+        shouldIgnoreBatchNodeUpdate = [[dictionary objectForKey:spriteShouldIgnoreBatchNodeUpdate] boolValue];
+    }
+    
     
     if ([dictionary objectForKey:spriteObjectParts] != nil) {
         
