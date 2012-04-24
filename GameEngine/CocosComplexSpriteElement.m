@@ -22,8 +22,14 @@ NSString *const zOrderStr = @"zIndex";
     
     if (![p shouldIgnoreBatchNodeUpdate]) {
         
+        //CGSize spriteBatchFrameSize = [[[[batchNode children] objectAtIndex:0] displayedFrame] originalSizeInPixels];
+        
+        //double xOffset = ([p anchorPoint].x - 0.5f) * spriteBatchFrameSize.width/CC_CONTENT_SCALE_FACTOR();
+        //double yOffset = ([p anchorPoint].y - 0.5f) * spriteBatchFrameSize.height/CC_CONTENT_SCALE_FACTOR();
+        
         double xOffset = ([p anchorPoint].x - 0.5f) * [p boundingBox].size.width;
         double yOffset = ([p anchorPoint].y - 0.5f) * [p boundingBox].size.height;
+         
         
         CGPoint frameOffset = [self frameOffset];
         frameOffset = ccpMult(frameOffset, 1.0/CC_CONTENT_SCALE_FACTOR());
@@ -100,6 +106,8 @@ NSString *const zOrderStr = @"zIndex";
 }
 - (void) setupWithSpriteInfo:(SpriteObject *) sObj {
     
+    [self setObjectName:[sObj objectName]];
+    
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]];    
     for (SpritePart *part in [[sObj parts] allValues]) {
         
@@ -157,6 +165,10 @@ NSString *const zOrderStr = @"zIndex";
 }
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj {
     
+    if ([[self objectName] isEqualToString:@"meowChow"]){
+        //NSLog(@"stop here");
+    }
+    
     SpriteObject *sObj = (SpriteObject *)updateObj; // must be true for this to run properly
     
     [self updateBatchNodeWithInfo:sObj];
@@ -175,10 +187,9 @@ NSString *const zOrderStr = @"zIndex";
     graphicBoundingBox.size = CGSizeMake(0.0, 0.0);
     graphicBoundingBox.origin = ccp(0.0,0.0);
     
+
+    
     for (CocosGraphicElement *cge in [sprites allValues]) {
-        
-        
-        // CHECK THIS !!!
         
         if (![cge shouldIgnoreBoundingBoxCalculation]) {
             
@@ -186,20 +197,25 @@ NSString *const zOrderStr = @"zIndex";
             CGRect fixedRect = CGRectMake(frame.rect.origin.x, frame.rect.origin.y, 
                                           frame.rect.size.width, frame.rect.size.height);
             
-            fixedRect.origin =  ccp([frame offsetInPixels].x/CC_CONTENT_SCALE_FACTOR(), [frame offsetInPixels].y/CC_CONTENT_SCALE_FACTOR());
             if ([frame rotated]) {
                 float height = fixedRect.size.height;
                 fixedRect.size.height = fixedRect.size.width;
                 fixedRect.size.width = height;
             }
             
-            
+            fixedRect.origin =  ccp([frame offsetInPixels].x/CC_CONTENT_SCALE_FACTOR(), [frame offsetInPixels].y/CC_CONTENT_SCALE_FACTOR());
+            fixedRect.origin = ccpSub(fixedRect.origin, ccp(fixedRect.size.width*0.5, fixedRect.size.height*0.5));
+                                    
             if (graphicBoundingBox.size.width == 0) {
                 graphicBoundingBox = fixedRect;
             } else {
                 graphicBoundingBox = CGRectUnion(graphicBoundingBox, fixedRect);                
             }
-            //NSLog(@"Part[%@] has bounding box: %@", [cge objectName], NSStringFromCGRect(fixedRect));
+            
+            if ([[self objectName] isEqualToString:@"meowChow"]) {
+                NSLog(@"Part[%@] has bounding box: %@ -> Aggregate: %@", [cge objectName], NSStringFromCGRect(fixedRect), NSStringFromCGRect(graphicBoundingBox));
+            }    
+            
         }
     }
     
