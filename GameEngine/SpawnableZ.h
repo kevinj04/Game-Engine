@@ -12,5 +12,6 @@
 
 - (int) zOrder;
 - (void) setZOrder:(int) z;
+- (float) vertexZ;
 
 @end

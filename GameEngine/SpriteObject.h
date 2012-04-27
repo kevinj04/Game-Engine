@@ -56,8 +56,10 @@ extern NSString *const spriteShouldIgnoreBatchNodeUpdate;
 @property float scaleX;
 @property float scaleY;
 @property double animationSpeed;
+
 @property float vertexZ;
 @property int zOrder;
+
 @property CGPoint anchorPoint;
 @property CGRect boundingBox;
 @property BOOL visible;

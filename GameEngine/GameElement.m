@@ -67,6 +67,7 @@ NSString *const geSelected = @"gameElementSelected";
     
     if (( self = [super init] )) {
         
+        [self registerNotifications];
         [self setupWithDictionary:dictionary];
         
         return self;
@@ -92,7 +93,7 @@ NSString *const geSelected = @"gameElementSelected";
     active = YES;
     //[self setupButton];
     
-    [self registerNotifications];
+    
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {
     

@@ -45,6 +45,15 @@ NSString *const zOrderStr = @"zIndex";
         
         [batchNode setVertexZ:[p vertexZ]];
         [batchNode setZOrder:[p zOrder]]; // maybe slow?
+        
+        [batchNode setVertexZ:[p vertexZ]];
+        [batchNode setZOrder:[p zOrder]];
+        
+        [[self rootNode] setVertexZ:[p vertexZ]];
+        [[self rootNode] setZOrder:[p zOrder]];
+        
+        [[root parent] reorderChild:root z:[p zOrder]]; // key!
+        
         [batchNode setVisible:[p visible]];
         
         [batchNode setAnchorPoint:[p anchorPoint]];
@@ -77,9 +86,12 @@ NSString *const zOrderStr = @"zIndex";
     int zOrder = (int)([part vertexZ] * 100);
     float vz  = [[(SpritePart *)part parent]  vertexZ] + [part vertexZ];
     
-    
     [s setVertexZ:vz];
     [s setZOrder:zOrder]; // maybe slow?
+    
+    //[s setVertexZ:[part vertexZ]];
+    //[s setZOrder:[part zOrder]];
+    
     [s setVisible:[part visible]];
     
     [s setFlipX:[part flipX]];
@@ -148,7 +160,7 @@ NSString *const zOrderStr = @"zIndex";
     
     // if batchNode is nil, then we have a graphicless object... this is ok.
     if (batchNode != nil) {
-        [root addChild:batchNode z:0];
+        [root addChild:batchNode z:[sObj zOrder]];
     }
     
     [self updateComplexBoundingBox];

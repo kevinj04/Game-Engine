@@ -67,6 +67,9 @@ extern NSString *const partShouldIgnoreBatchNodeUpdate;
     float m_scaleX;
     float m_scaleY;
     
+    float m_vertexZ;
+    int m_zOrder;
+    
     bool shouldIgnoreBoundingBoxCalculation;
     
 }

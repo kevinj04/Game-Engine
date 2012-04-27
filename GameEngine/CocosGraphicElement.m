@@ -53,6 +53,7 @@
 
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj {
     // override me
+    
 }
 - (CGPoint) frameOffset {
     

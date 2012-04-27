@@ -75,6 +75,9 @@ NSString *const partShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
     [self setScaleX:newScaleX];
     [self setScaleY:newScaleY];
     
+    zOrder = m_zOrder + [parent zOrder];
+    vertexZ = m_vertexZ + [parent vertexZ];
+    
 }
 @end
 
@@ -142,8 +145,8 @@ NSString *const partShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
     scaleX = 1.0f;
     scaleY = 1.0f;
     
-    vertexZ = 1.0f;
-    zOrder = 1;
+    m_vertexZ = 1.0f;
+    m_zOrder = 1;
     
     flipX = NO;
     flipY = NO;
@@ -156,23 +159,28 @@ NSString *const partShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
     m_scaleY = 1.0;
     
     if ([dictionary objectForKey:partVertexZ] != nil) {        
-        vertexZ = [[dictionary objectForKey:partVertexZ] floatValue];        
+        m_vertexZ = [[dictionary objectForKey:partVertexZ] floatValue];        
     } else {
-        vertexZ = 0.0;
+        m_vertexZ = 0.0;
     }
     
     if ([dictionary objectForKey:partZOrder] != nil) {        
-        zOrder = [[dictionary objectForKey:partZOrder] intValue];        
+        m_zOrder = [[dictionary objectForKey:partZOrder] intValue];        
     } else {
-        zOrder = 0;
+        m_zOrder = 0;
     }
     
     if ([dictionary objectForKey:partAnchorPoint] != nil) {
         anchorPoint = CGPointFromString([dictionary objectForKey:partAnchorPoint]);
     }
     
+    zOrder = m_zOrder + [parent zOrder];
+    vertexZ = m_vertexZ + [parent vertexZ];
+    
     // call tween to boot the image info
     [self tween];
+    
+    
     
 }
 - (void) dealloc {
@@ -191,10 +199,17 @@ NSString *const partShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
     if (spriteRep != nil) {
         [self tween];
     }
-    
+
 }
 
 - (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *) updateObj {
+    
+    vertexZ = [updateObj vertexZ];
+    
+    
+    
+    
+    
     [spriteRep updateWithPhysicsInfo:self]; // changed? // CHECK THIS
 }
 

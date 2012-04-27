@@ -119,6 +119,8 @@ NSString *const spriteShouldIgnoreBatchNodeUpdate = @"ignoreBatchNodeUpdate";;
     
     dt = dt * animationSpeed;
     
+    //NSLog(@"Updating[%@]: vertexZ: %2.2f   zOrder: %i", [self objectName], [self vertexZ], [self zOrder]);
+    
     for (SpritePart *part in [parts allValues]) {
         [part update:dt];
     }
@@ -219,6 +221,7 @@ NSString *const spriteShouldIgnoreBatchNodeUpdate = @"ignoreBatchNodeUpdate";;
     return [self calculateOffset];
     
 }
+
 
 
 @end

@@ -12,6 +12,7 @@
 @implementation SpawnerZManager
 
 NSString *const spawnerZRange = @"zRange";
+NSString *const spawnerZBase = @"zBase";
 
 - (id) init {
     if (( self = [super init])) {                
@@ -26,25 +27,33 @@ NSString *const spawnerZRange = @"zRange";
 - (void) setup {
     [super setup];
     
+}
+- (void) setupWithDictionary:(NSDictionary *) dictionary {
+    
+    zRange = 1;
+    zBase = 0;
+    
+    if ([dictionary objectForKey:parameters] != nil) {
+        
+        NSDictionary *params = [dictionary objectForKey:parameters];        
+        
+        
+        if ([params objectForKey:spawnerZRange] != nil) {
+            zRange = [[params objectForKey:spawnerZRange] intValue];
+        }
+        
+        if ([params objectForKey:spawnerZBase] != nil) {
+            zBase = [[params objectForKey:spawnerZBase] intValue];
+        }
+    }
+    
+    
     zAvailable = [[NSMutableSet alloc] initWithCapacity:zRange];
     zUsed = [[NSMutableArray alloc] initWithCapacity:zRange];
     
     for (int i=0; i<zRange; i++) {
         [zAvailable addObject:[NSNumber numberWithInt:i]];
         [zUsed insertObject:[NSNumber numberWithInt:-1] atIndex:i];
-    }
-    
-}
-- (void) setupWithDictionary:(NSDictionary *) dictionary {
-    
-    if ([dictionary objectForKey:parameters] != nil) {
-        
-        NSDictionary *params = [dictionary objectForKey:parameters];        
-        
-        zRange = 1;
-        if ([params objectForKey:spawnerZRange] != nil) {
-            zRange = [[params objectForKey:spawnerZRange] intValue];
-        }
     }
     
     [super setupWithDictionary:dictionary];
@@ -74,14 +83,16 @@ NSString *const spawnerZRange = @"zRange";
     [zUsed replaceObjectAtIndex:[z intValue] withObject:z];
     [zAvailable removeObject:z];
     
-    [obj setZOrder:[z intValue]];
+    [obj setZOrder:[z intValue]+zBase];
+    
+    NSLog(@"Spawning[%@] with zOrder: %i and vertexZ: %2.2f", obj, [obj zOrder], [obj vertexZ]);
     
     [super spawnObject:obj];
     
 }
 - (void) reclaim:(NSObject<SpawnableZ> *) obj {
     
-    NSNumber *z = [zUsed objectAtIndex:[obj zOrder]];
+    NSNumber *z = [zUsed objectAtIndex:[obj zOrder]-zBase];
     
     [zAvailable addObject:z];
     
@@ -101,6 +112,15 @@ NSString *const spawnerZRange = @"zRange";
 - (void) setZUsed:(NSMutableArray *) s {
     if (zUsed != nil) { [zUsed release]; zUsed = nil; }
     zUsed = [s retain];
+}
+- (void) setZRange:(int) z {
+    zRange = z;
+}
+- (void) setZBase:(int)z {
+    zBase = z;
+}
+- (void) update:(double)dt {
+    [super update:dt];
 }
 
 @end

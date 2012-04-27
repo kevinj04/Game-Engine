@@ -83,7 +83,7 @@ NSString *const reclaimObject = @"reclaimObject";
     
     if (( self = [super initWithDictionary:dictionary])) {
         
-        [self setupWithDictionary:dictionary];
+
         return self;
         
     } else {
@@ -141,8 +141,9 @@ NSString *const reclaimObject = @"reclaimObject";
         if (delayCounter > spawnDelay) {
             
             delayCounter = 0.0;
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:spawnObject object:self userInfo:nil];
+            if (CCRANDOM_0_1() < spawnChance) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:spawnObject object:self userInfo:nil];
+            }
             
             
         }
