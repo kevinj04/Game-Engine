@@ -1,75 +1,72 @@
 //
-//  CocosComplexSpriteElement.m
-//  TestGame
+//  KJCocosComplexSpriteObject.m
+//  GameEngine
 //
-//  Created by Kevin Jenkins on 1/27/12.
+//  Created by Kevin Jenkins on 5/3/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "CocosComplexSpriteElement.h"
-#import "SpritePart.h"
-#import "SpriteUpdateProtocol.h"
+#import "KJCocosComplexSpriteObject.h"
+#import "KJGraphicsPart.h"
 
-NSString *const zOrderStr = @"zIndex";
-
-@interface CocosComplexSpriteElement (hidden)
-- (void) updateBatchNodeWithInfo:(NSObject<SpriteUpdateProtocol> *) p;
-- (void) updateSpritePart:(SpritePart *) part;
+@interface KJCocosComplexSpriteObject (hidden)
+- (void) updateBatchNodeWithInfo:(KJGraphicalObject *) go;
+- (void) updateSpritePart:(KJGraphicsPart *) part;
 @end
 
-@implementation CocosComplexSpriteElement (hidden)
-- (void) updateBatchNodeWithInfo:(NSObject<SpriteUpdateProtocol> *) p {
+@implementation KJCocosComplexSpriteObject (hidden)
+- (void) updateBatchNodeWithInfo:(KJGraphicalObject *) go {
     
-    if (![p shouldIgnoreBatchNodeUpdate]) {
+    if (![go shouldIgnoreBatchNodeUpdate]) {
         
         //CGSize spriteBatchFrameSize = [[[[batchNode children] objectAtIndex:0] displayedFrame] originalSizeInPixels];
         
         //double xOffset = ([p anchorPoint].x - 0.5f) * spriteBatchFrameSize.width/CC_CONTENT_SCALE_FACTOR();
         //double yOffset = ([p anchorPoint].y - 0.5f) * spriteBatchFrameSize.height/CC_CONTENT_SCALE_FACTOR();
         
-        double xOffset = ([p anchorPoint].x - 0.5f) * [p boundingBox].size.width;
-        double yOffset = ([p anchorPoint].y - 0.5f) * [p boundingBox].size.height;
-         
+        double xOffset = ([go anchorPoint].x - 0.5f) * [go boundingBox].size.width;
+        double yOffset = ([go anchorPoint].y - 0.5f) * [go boundingBox].size.height;
+        
         
         CGPoint frameOffset = [self frameOffset];
+        //frameOffset = ccpMult(frameOffset, 1.0);
         frameOffset = ccpMult(frameOffset, 1.0/CC_CONTENT_SCALE_FACTOR());
         
-        CGPoint offsetAP = CGPointMake(frameOffset.x - xOffset, frameOffset.y - yOffset);
+        CGPoint offsetAP = CGPointMake(frameOffset.x - xOffset, frameOffset.y - yOffset);        
         
+        [batchNode setPosition:ccpAdd([go position], offsetAP)]; 
+        [batchNode setRotation:[go rotation]];
         
-        [batchNode setPosition:ccpAdd([p position], offsetAP)]; 
-        [batchNode setRotation:[p rotation]];
+        [batchNode setScaleX:[go scaleX]];
+        [batchNode setScaleY:[go scaleY]];
         
-        [batchNode setScaleX:[p scaleX]];
-        [batchNode setScaleY:[p scaleY]];
+        [batchNode setVertexZ:[go vertexZ]];
+        [batchNode setZOrder:[go zOrder]]; // maybe slow?
         
-        [batchNode setVertexZ:[p vertexZ]];
-        [batchNode setZOrder:[p zOrder]]; // maybe slow?
+        [batchNode setVertexZ:[go vertexZ]];
+        [batchNode setZOrder:[go zOrder]];
         
-        [batchNode setVertexZ:[p vertexZ]];
-        [batchNode setZOrder:[p zOrder]];
+        [[self rootNode] setVertexZ:[go vertexZ]];
+        [[self rootNode] setZOrder:[go zOrder]];
         
-        [[self rootNode] setVertexZ:[p vertexZ]];
-        [[self rootNode] setZOrder:[p zOrder]];
+        [[rootNode parent] reorderChild:rootNode z:[go zOrder]]; // key!
         
-        [[root parent] reorderChild:root z:[p zOrder]]; // key!
+        [batchNode setVisible:[go visible]];
         
-        [batchNode setVisible:[p visible]];
-        
-        [batchNode setAnchorPoint:[p anchorPoint]];
+        [batchNode setAnchorPoint:[go anchorPoint]];
     }
 }
-- (void) updateSpritePart:(NSObject<SpriteUpdateProtocol> *) part {
+- (void) updateSpritePart:(KJGraphicsPart *) part {
     
-    CocosGraphicElement *cge = [sprites objectForKey:[part objectName]];
+    KJCocosGraphicObject *cgo = [sprites objectForKey:[part objectName]];
     
-    if (cge == nil) { return; }
+    if (cgo == nil) { return; }
     
     CCSpriteFrame *frame = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:[part spriteFrameName]];
     
     CCSprite *s;
-    if (![[cge rootNode] isKindOfClass:[CCSprite class]]) { return; } else {
-        s = (CCSprite *)[cge rootNode];
+    if (![[cgo rootNode] isKindOfClass:[CCSprite class]]) { return; } else {
+        s = (CCSprite *)[cgo rootNode];
     }
     
     if (frame != [s displayedFrame]) {
@@ -84,7 +81,7 @@ NSString *const zOrderStr = @"zIndex";
     [s setScaleY:[part scaleY]];
     
     int zOrder = (int)([part vertexZ] * 100);
-    float vz  = [[(SpritePart *)part parent]  vertexZ] + [part vertexZ];
+    float vz  = [[(KJGraphicsPart *)part parent]  vertexZ] + [part vertexZ];
     
     [s setVertexZ:vz];
     [s setZOrder:zOrder]; // maybe slow?
@@ -102,40 +99,43 @@ NSString *const zOrderStr = @"zIndex";
 }
 @end
 
-@implementation CocosComplexSpriteElement
 
-- (id) initWithSpriteInfo:(SpriteObject *) sObj {
-    
+
+@implementation KJCocosComplexSpriteObject
+
+- (id) initWithGraphicalObject:(KJGraphicalObject *) sObj 
+{
     if (( self = [super initWithNode:[CCNode node]] )) {        
-        [self setupWithSpriteInfo:sObj];
+        [self setupWithGraphicalObject:sObj];
         return self;
     } else {
         return nil;
     }
 }
-+ (id) spriteElementWithSpriteInfo:(SpriteObject *) sObj {
-    return [[[CocosComplexSpriteElement alloc] initWithSpriteInfo:sObj] autorelease];
++ (id) objectWithGraphicalObject:(KJGraphicalObject *) sObj
+{
+    return [[[KJCocosComplexSpriteObject alloc] initWithGraphicalObject:sObj] autorelease];
 }
-- (void) setupWithSpriteInfo:(SpriteObject *) sObj {
-    
+- (void) setupWithGraphicalObject:(KJGraphicalObject *) sObj
+{
     [self setObjectName:[sObj objectName]];
     
     NSMutableDictionary *temp = [NSMutableDictionary dictionaryWithCapacity:[[[sObj parts] allValues] count]];    
-    for (SpritePart *part in [[sObj parts] allValues]) {
+    for (KJGraphicsPart *part in [[sObj parts] allValues]) {
         
-        CocosGraphicElement *cge = [CocosGraphicElement nodeWithNode:[CCSprite node]];
-        [cge setObjectName:[part objectName]];
-        [temp setObject:cge forKey:[part objectName]];
-        [cge setShouldIgnoreBoundingBoxCalculation:[part shouldIgnoreBoundingBox]];
+        KJCocosGraphicObject *cgo = [KJCocosGraphicObject nodeWithNode:[CCSprite node]];
+        [cgo setObjectName:[part objectName]];
+        [temp setObject:cgo forKey:[part objectName]];
+        [cgo setShouldIgnoreBoundingBoxCalculation:[part shouldIgnoreBoundingBox]];
     }
     sprites = [temp retain];
     
-    for (SpritePart *part in [[sObj parts] allValues]) {                
+    for (KJGraphicsPart *part in [[sObj parts] allValues]) {                
         
         [self updateSpritePart:part];
         
-        CocosGraphicElement *cge = [sprites objectForKey:[part objectName]];
-        CCSprite *s = (CCSprite *)[cge rootNode];
+        KJCocosGraphicObject *cgo = [sprites objectForKey:[part objectName]];
+        CCSprite *s = (CCSprite *)[cgo rootNode];
         
         if (batchNode == nil) {
             
@@ -154,42 +154,35 @@ NSString *const zOrderStr = @"zIndex";
             //NSLog(@"Attaching sprite %@  with vertexZ:%2.2f and zOrder: %i", [part name], [s vertexZ], [s zOrder]);
         }
         
-        [part setSpriteRep:cge];
+        [part setSpriteRep:cgo];
         
     }
     
     // if batchNode is nil, then we have a graphicless object... this is ok.
     if (batchNode != nil) {
-        [root addChild:batchNode z:[sObj zOrder]];
+        [rootNode addChild:batchNode z:[sObj zOrder]];
     }
     
     [self updateComplexBoundingBox];
-    
 }
-- (void) dealloc {
-    //NSLog(@"Releasing BatchNode[%@]: %@", batchNode, [batchNode texture]);
-    //if (batchNode != nil) { [batchNode release]; batchNode = nil; }
+- (void) dealloc
+{
     [super dealloc];
 }
 
-- (void) update:(double)dt {
-    // this is really not necessary?
+- (void) update:(double)dt
+{
 }
-- (void) updateWithPhysicsInfo:(NSObject<SpriteUpdateProtocol> *)updateObj {
+
+- (void) updateWithGraphical:(KJGraphicalObject *)updateObject {
     
-    if ([[self objectName] isEqualToString:@"meowChow"]){
-        //NSLog(@"stop here");
-    }
+    [self updateBatchNodeWithInfo:updateObject];
     
-    SpriteObject *sObj = (SpriteObject *)updateObj; // must be true for this to run properly
-    
-    [self updateBatchNodeWithInfo:sObj];
-    
-    for (SpritePart *part in [[sObj parts] allValues]) {
+    for (KJGraphicsPart *part in [[updateObject parts] allValues]) {
         
         [self updateSpritePart:part];
         
-    }        
+    }
     
 }
 
@@ -199,13 +192,13 @@ NSString *const zOrderStr = @"zIndex";
     graphicBoundingBox.size = CGSizeMake(0.0, 0.0);
     graphicBoundingBox.origin = ccp(0.0,0.0);
     
-
     
-    for (CocosGraphicElement *cge in [sprites allValues]) {
+    
+    for (KJCocosGraphicObject *cgo in [sprites allValues]) {
         
-        if (![cge shouldIgnoreBoundingBoxCalculation]) {
+        if (![cgo shouldIgnoreBoundingBoxCalculation]) {
             
-            CCSpriteFrame *frame = [(CCSprite *)[cge rootNode] displayedFrame];
+            CCSpriteFrame *frame = [(CCSprite *)[cgo rootNode] displayedFrame];
             CGRect fixedRect = CGRectMake(frame.rect.origin.x, frame.rect.origin.y, 
                                           frame.rect.size.width, frame.rect.size.height);
             
@@ -217,13 +210,12 @@ NSString *const zOrderStr = @"zIndex";
             
             fixedRect.origin =  ccp([frame offsetInPixels].x/CC_CONTENT_SCALE_FACTOR(), [frame offsetInPixels].y/CC_CONTENT_SCALE_FACTOR());
             fixedRect.origin = ccpSub(fixedRect.origin, ccp(fixedRect.size.width*0.5, fixedRect.size.height*0.5));
-                                    
+            
             if (graphicBoundingBox.size.width == 0) {
                 graphicBoundingBox = fixedRect;
             } else {
                 graphicBoundingBox = CGRectUnion(graphicBoundingBox, fixedRect);                
-            }
-            
+            }    
         }
     }
     
@@ -245,21 +237,19 @@ NSString *const zOrderStr = @"zIndex";
     [batchNode setVisible:v];
 }
 
-- (void) attachToLayer:(CCLayer *) layer {
-    [layer addChild:root z:[batchNode zOrder]];
+- (void) attachToLayer:(CCLayer *) layer
+{
+    [layer addChild:rootNode z:[batchNode zOrder]];
 }
-
-- (CCSpriteBatchNode *) batchNode {
-    return batchNode;
-}
-- (void) setBatchNode:(CCSpriteBatchNode *) sbn {
+- (void) setBatchNode:(CCSpriteBatchNode *) sbn
+{
     if (batchNode != nil) { [batchNode removeFromParentAndCleanup:YES]; batchNode = nil; }
     
     batchNode = [sbn retain];
     
-    for (CocosGraphicElement *cge in [sprites allValues]) {
+    for (KJCocosGraphicObject *cgo in [sprites allValues]) {
         
-        CCSprite *s = (CCSprite *)[cge rootNode];
+        CCSprite *s = (CCSprite *)[cgo rootNode];
         
         [s removeFromParentAndCleanup:YES];
         
@@ -268,7 +258,10 @@ NSString *const zOrderStr = @"zIndex";
         [s setBatchNode:batchNode];
         
     }
-    
+}
+- (CCSpriteBatchNode *) batchNode
+{
+    return batchNode;
 }
 
 @end

@@ -10,23 +10,6 @@
 
 @implementation LevelLoader
 
-/* Singleton code Option
-+ (LevelLoader *) sharedLevelLoader {
-    
-    static LevelLoader *sharedLevelLoader;
-    
-    @synchronized(self) {
-        if (!sharedLevelLoader) {
-            sharedLevelLoader = [[LevelLoader alloc] init];
-        }
-        
-        return sharedLevelLoader;
-    }
-    
-} 
-*/
-
-
 - (id) init {
     
     if (( self = [super init])) {
@@ -55,6 +38,10 @@
     return newLevel;
     
     
+}
+
+- (void) transitionToLevel:(Level *) newLevel {
+    // override this method
 }
 
 @end

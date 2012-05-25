@@ -10,6 +10,44 @@
 		0A03D20E14CF3DAB003191B0 /* BackgroundTile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A03D21014CF3DCC003191B0 /* CameraObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51714C76988005FCBF7 /* CameraObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A03D21114CF3DD1003191B0 /* HUDObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEAC15516E1100A88F92 /* KJBackgroundObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */; };
+		0A21CEAE15516E2400A88F92 /* KJBackgroundObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEAA15516E1100A88F92 /* KJBackgroundObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEAF15516E3300A88F92 /* KJBackgroundObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */; };
+		0A21CEB215516E6800A88F92 /* KJGraphicalObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEB015516E6800A88F92 /* KJGraphicalObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEB315516E6800A88F92 /* KJGraphicalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEB115516E6800A88F92 /* KJGraphicalObject.m */; };
+		0A21CEB415516E6800A88F92 /* KJGraphicalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEB115516E6800A88F92 /* KJGraphicalObject.m */; };
+		0A21CEB715517CD800A88F92 /* KJGraphical.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEB615517CD800A88F92 /* KJGraphical.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEC01551881D00A88F92 /* KJGraphicsPart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEBE1551881D00A88F92 /* KJGraphicsPart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEC11551881D00A88F92 /* KJGraphicsPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEBF1551881D00A88F92 /* KJGraphicsPart.m */; };
+		0A21CEC21551881D00A88F92 /* KJGraphicsPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEBF1551881D00A88F92 /* KJGraphicsPart.m */; };
+		0A21CEC41551891E00A88F92 /* kjEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEC31551891E00A88F92 /* kjEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEC615518A9800A88F92 /* KJGraphicalRepresentationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEC515518A9800A88F92 /* KJGraphicalRepresentationProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEC91551945E00A88F92 /* KJKeyFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEC71551945E00A88F92 /* KJKeyFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CECA1551945E00A88F92 /* KJKeyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEC81551945E00A88F92 /* KJKeyFrame.m */; };
+		0A21CECB1551945E00A88F92 /* KJKeyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEC81551945E00A88F92 /* KJKeyFrame.m */; };
+		0A21CECE155195CD00A88F92 /* KJTimeLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CECC155195CD00A88F92 /* KJTimeLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CECF155195CD00A88F92 /* KJTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CECD155195CD00A88F92 /* KJTimeLine.m */; };
+		0A21CED0155195CD00A88F92 /* KJTimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CECD155195CD00A88F92 /* KJTimeLine.m */; };
+		0A21CED315519DF200A88F92 /* KJCommonGameObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CED115519DF000A88F92 /* KJCommonGameObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CED415519DF200A88F92 /* KJCommonGameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CED215519DF000A88F92 /* KJCommonGameObject.m */; };
+		0A21CED515519DF200A88F92 /* KJCommonGameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CED215519DF000A88F92 /* KJCommonGameObject.m */; };
+		0A21CED715519E6200A88F92 /* KJModuleProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CED615519E6200A88F92 /* KJModuleProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEDB15519FB700A88F92 /* KJModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CED915519FB700A88F92 /* KJModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEDC15519FB700A88F92 /* KJModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEDA15519FB700A88F92 /* KJModule.m */; };
+		0A21CEDD15519FB700A88F92 /* KJModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEDA15519FB700A88F92 /* KJModule.m */; };
+		0A21CEE11551BB0500A88F92 /* KJLevel.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEDF1551BB0500A88F92 /* KJLevel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CEE21551BB0500A88F92 /* KJLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEE01551BB0500A88F92 /* KJLevel.m */; };
+		0A21CEE31551BB0500A88F92 /* KJLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEE01551BB0500A88F92 /* KJLevel.m */; };
+		0A21CEE51551BE6D00A88F92 /* KJGameObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEE41551BE6D00A88F92 /* KJGameObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CF001553097A00A88F92 /* KJCocosGraphicObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEFE1553097900A88F92 /* KJCocosGraphicObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CF011553097A00A88F92 /* KJCocosGraphicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEFF1553097900A88F92 /* KJCocosGraphicObject.m */; };
+		0A21CF021553097A00A88F92 /* KJCocosGraphicObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEFF1553097900A88F92 /* KJCocosGraphicObject.m */; };
+		0A21CF0615530CAA00A88F92 /* KJCocosComplexSpriteObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CF0415530CAA00A88F92 /* KJCocosComplexSpriteObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CF0715530CAA00A88F92 /* KJCocosComplexSpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CF0515530CAA00A88F92 /* KJCocosComplexSpriteObject.m */; };
+		0A21CF0815530CAA00A88F92 /* KJCocosComplexSpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CF0515530CAA00A88F92 /* KJCocosComplexSpriteObject.m */; };
+		0A21CF0C1553181600A88F92 /* KJObjectManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CF0A1553181600A88F92 /* KJObjectManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A21CF0D1553181600A88F92 /* KJObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CF0B1553181600A88F92 /* KJObjectManager.m */; };
+		0A21CF0E1553181600A88F92 /* KJObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CF0B1553181600A88F92 /* KJObjectManager.m */; };
 		0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A22614D14FBFF6B001C35FA /* Universalizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A22615014FBFF6B001C35FA /* Universalizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A22614E14FBFF6B001C35FA /* Universalizer.mm */; };
 		0A22615114FBFF6B001C35FA /* Universalizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0A22614E14FBFF6B001C35FA /* Universalizer.mm */; };
@@ -211,6 +249,9 @@
 		0A249BCE14A2760D00D5D7D3 /* CCTransitionPageTurn.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9514A267D200D5D7D3 /* CCTransitionPageTurn.h */; };
 		0A249BCF14A2760D00D5D7D3 /* CCTransitionRadial.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9814A267D200D5D7D3 /* CCTransitionRadial.h */; };
 		0A249BD014A2760D00D5D7D3 /* ccTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9B14A267D200D5D7D3 /* ccTypes.h */; };
+		0A2979881558332700E560B0 /* KJObjectSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2979861558332700E560B0 /* KJObjectSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A2979891558332700E560B0 /* KJObjectSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2979871558332700E560B0 /* KJObjectSelector.m */; };
+		0A29798A1558332700E560B0 /* KJObjectSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2979871558332700E560B0 /* KJObjectSelector.m */; };
 		0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94EC151C930C00BCD796 /* SoundManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A2D94EF151C930C00BCD796 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94ED151C930C00BCD796 /* SoundManager.m */; };
 		0A2D94F0151C930C00BCD796 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94ED151C930C00BCD796 /* SoundManager.m */; };
@@ -219,6 +260,12 @@
 		0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F6151C990600BCD796 /* DenshionEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A2D94F9151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
 		0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
+		0A5669C11550896600295EDE /* KJPhysicsObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5669BF1550896500295EDE /* KJPhysicsObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A5669C21550896600295EDE /* KJPhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C01550896500295EDE /* KJPhysicsObject.m */; };
+		0A5669C31550896600295EDE /* KJPhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C01550896500295EDE /* KJPhysicsObject.m */; };
+		0A5669C8155089A600295EDE /* KJGameObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5669C6155089A600295EDE /* KJGameObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A5669C9155089A600295EDE /* KJGameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C7155089A600295EDE /* KJGameObject.m */; };
+		0A5669CA155089A600295EDE /* KJGameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C7155089A600295EDE /* KJGameObject.m */; };
 		0A718E8D14BB653B00071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
 		0A718E9014BB654E00071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 		0A718E9414BB65E400071DBE /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9314BB65E400071DBE /* ObjectManager.m */; };
@@ -231,6 +278,30 @@
 		0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
 		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
+		0A745BEF15668870003207C9 /* KJLevelLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745BED15668870003207C9 /* KJLevelLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745BF015668870003207C9 /* KJLevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745BEE15668870003207C9 /* KJLevelLoader.m */; };
+		0A745BF115668870003207C9 /* KJLevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745BEE15668870003207C9 /* KJLevelLoader.m */; };
+		0A745BF615668E55003207C9 /* KJGameEventController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745BF415668E55003207C9 /* KJGameEventController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745BF715668E55003207C9 /* KJGameEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745BF515668E55003207C9 /* KJGameEventController.m */; };
+		0A745BF815668E55003207C9 /* KJGameEventController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745BF515668E55003207C9 /* KJGameEventController.m */; };
+		0A745C0215669417003207C9 /* KJLevelGoal.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C0015669417003207C9 /* KJLevelGoal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C0315669417003207C9 /* KJLevelGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C0115669417003207C9 /* KJLevelGoal.m */; };
+		0A745C0415669417003207C9 /* KJLevelGoal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C0115669417003207C9 /* KJLevelGoal.m */; };
+		0A745C0715669585003207C9 /* KJControllers.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C0615669585003207C9 /* KJControllers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C09156695D0003207C9 /* KJLevels.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C08156695D0003207C9 /* KJLevels.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C0B15669616003207C9 /* KJProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C0A15669616003207C9 /* KJProtocols.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C0D15669651003207C9 /* KJGraphics.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C0C15669651003207C9 /* KJGraphics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C0F1566967F003207C9 /* KJCocos2dKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C0E1566967F003207C9 /* KJCocos2dKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C11156696CA003207C9 /* KJModules.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C10156696CA003207C9 /* KJModules.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C1415669725003207C9 /* KJObjectManagement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C1315669725003207C9 /* KJObjectManagement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C1615669747003207C9 /* KJGameObjects.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C1515669747003207C9 /* KJGameObjects.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C1D1566A216003207C9 /* KJLevelStageProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C1C1566A216003207C9 /* KJLevelStageProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C271566DA70003207C9 /* KJCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C251566DA70003207C9 /* KJCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C281566DA70003207C9 /* KJCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C261566DA70003207C9 /* KJCamera.m */; };
+		0A745C291566DA70003207C9 /* KJCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C261566DA70003207C9 /* KJCamera.m */; };
+		0A745C2C1566DA81003207C9 /* KJLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C2A1566DA81003207C9 /* KJLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0A745C2D1566DA81003207C9 /* KJLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C2B1566DA81003207C9 /* KJLayer.m */; };
+		0A745C2E1566DA81003207C9 /* KJLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C2B1566DA81003207C9 /* KJLayer.m */; };
 		0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A9F344815014FC800DEAE4D /* CocosGraphicElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F344615014FC500DEAE4D /* CocosGraphicElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -253,6 +324,8 @@
 		0ACB987C14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */; };
 		0ACB987D14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */; };
 		0ACB9B1E14E41D0700528DE7 /* GameElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB9B1D14E41D0700528DE7 /* GameElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0AD7BFCD156ACA91000A4163 /* KJLayers.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD7BFCC156ACA91000A4163 /* KJLayers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0AD7BFCF156ACAAB000A4163 /* KJCameras.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD7BFCE156ACAAB000A4163 /* KJCameras.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
 		0AF8B51514C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
 		0AF8B51A14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
@@ -277,6 +350,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A21CEAA15516E1100A88F92 /* KJBackgroundObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJBackgroundObject.h; sourceTree = "<group>"; };
+		0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJBackgroundObject.m; sourceTree = "<group>"; };
+		0A21CEB015516E6800A88F92 /* KJGraphicalObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGraphicalObject.h; sourceTree = "<group>"; };
+		0A21CEB115516E6800A88F92 /* KJGraphicalObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGraphicalObject.m; sourceTree = "<group>"; };
+		0A21CEB615517CD800A88F92 /* KJGraphical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGraphical.h; sourceTree = "<group>"; };
+		0A21CEBE1551881D00A88F92 /* KJGraphicsPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGraphicsPart.h; sourceTree = "<group>"; };
+		0A21CEBF1551881D00A88F92 /* KJGraphicsPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGraphicsPart.m; sourceTree = "<group>"; };
+		0A21CEC31551891E00A88F92 /* kjEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kjEngine.h; sourceTree = "<group>"; };
+		0A21CEC515518A9800A88F92 /* KJGraphicalRepresentationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGraphicalRepresentationProtocol.h; sourceTree = "<group>"; };
+		0A21CEC71551945E00A88F92 /* KJKeyFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJKeyFrame.h; sourceTree = "<group>"; };
+		0A21CEC81551945E00A88F92 /* KJKeyFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJKeyFrame.m; sourceTree = "<group>"; };
+		0A21CECC155195CD00A88F92 /* KJTimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJTimeLine.h; sourceTree = "<group>"; };
+		0A21CECD155195CD00A88F92 /* KJTimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJTimeLine.m; sourceTree = "<group>"; };
+		0A21CED115519DF000A88F92 /* KJCommonGameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCommonGameObject.h; sourceTree = "<group>"; };
+		0A21CED215519DF000A88F92 /* KJCommonGameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCommonGameObject.m; sourceTree = "<group>"; };
+		0A21CED615519E6200A88F92 /* KJModuleProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJModuleProtocol.h; sourceTree = "<group>"; };
+		0A21CED915519FB700A88F92 /* KJModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJModule.h; sourceTree = "<group>"; };
+		0A21CEDA15519FB700A88F92 /* KJModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJModule.m; sourceTree = "<group>"; };
+		0A21CEDF1551BB0500A88F92 /* KJLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLevel.h; sourceTree = "<group>"; };
+		0A21CEE01551BB0500A88F92 /* KJLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJLevel.m; sourceTree = "<group>"; };
+		0A21CEE41551BE6D00A88F92 /* KJGameObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObjectProtocol.h; sourceTree = "<group>"; };
+		0A21CEFE1553097900A88F92 /* KJCocosGraphicObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCocosGraphicObject.h; sourceTree = "<group>"; };
+		0A21CEFF1553097900A88F92 /* KJCocosGraphicObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCocosGraphicObject.m; sourceTree = "<group>"; };
+		0A21CF0415530CAA00A88F92 /* KJCocosComplexSpriteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCocosComplexSpriteObject.h; sourceTree = "<group>"; };
+		0A21CF0515530CAA00A88F92 /* KJCocosComplexSpriteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCocosComplexSpriteObject.m; sourceTree = "<group>"; };
+		0A21CF0A1553181600A88F92 /* KJObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJObjectManager.h; sourceTree = "<group>"; };
+		0A21CF0B1553181600A88F92 /* KJObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJObjectManager.m; sourceTree = "<group>"; };
 		0A22614D14FBFF6B001C35FA /* Universalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Universalizer.h; sourceTree = "<group>"; };
 		0A22614E14FBFF6B001C35FA /* Universalizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Universalizer.mm; sourceTree = "<group>"; };
 		0A2499C214A267D000D5D7D3 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -532,12 +632,18 @@
 		0A249B5A14A273F800D5D7D3 /* CGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGExtensions.h; sourceTree = "<group>"; };
 		0A249B6214A2750C00D5D7D3 /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A249B7014A2750C00D5D7D3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		0A2979861558332700E560B0 /* KJObjectSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJObjectSelector.h; sourceTree = "<group>"; };
+		0A2979871558332700E560B0 /* KJObjectSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJObjectSelector.m; sourceTree = "<group>"; };
 		0A2D94EC151C930C00BCD796 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
 		0A2D94ED151C930C00BCD796 /* SoundManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundManager.m; sourceTree = "<group>"; };
 		0A2D94F1151C935700BCD796 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		0A2D94F3151C93BD00BCD796 /* SoundEngineProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEngineProtocol.h; sourceTree = "<group>"; };
 		0A2D94F6151C990600BCD796 /* DenshionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DenshionEngine.h; sourceTree = "<group>"; };
 		0A2D94F7151C990700BCD796 /* DenshionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DenshionEngine.m; sourceTree = "<group>"; };
+		0A5669BF1550896500295EDE /* KJPhysicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJPhysicsObject.h; sourceTree = "<group>"; };
+		0A5669C01550896500295EDE /* KJPhysicsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJPhysicsObject.m; sourceTree = "<group>"; };
+		0A5669C6155089A600295EDE /* KJGameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObject.h; sourceTree = "<group>"; };
+		0A5669C7155089A600295EDE /* KJGameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGameObject.m; sourceTree = "<group>"; };
 		0A718E8B14BB653B00071DBE /* LevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelLoader.h; sourceTree = "<group>"; };
 		0A718E8C14BB653B00071DBE /* LevelLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelLoader.m; sourceTree = "<group>"; };
 		0A718E8E14BB654E00071DBE /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
@@ -547,6 +653,25 @@
 		0A718E9514BB65F600071DBE /* ObjectSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSelector.h; sourceTree = "<group>"; };
 		0A718E9614BB65F600071DBE /* ObjectSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectSelector.m; sourceTree = "<group>"; };
 		0A71914814BF690800071DBE /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		0A745BED15668870003207C9 /* KJLevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLevelLoader.h; sourceTree = "<group>"; };
+		0A745BEE15668870003207C9 /* KJLevelLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJLevelLoader.m; sourceTree = "<group>"; };
+		0A745BF415668E55003207C9 /* KJGameEventController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameEventController.h; sourceTree = "<group>"; };
+		0A745BF515668E55003207C9 /* KJGameEventController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGameEventController.m; sourceTree = "<group>"; };
+		0A745C0015669417003207C9 /* KJLevelGoal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLevelGoal.h; sourceTree = "<group>"; };
+		0A745C0115669417003207C9 /* KJLevelGoal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJLevelGoal.m; sourceTree = "<group>"; };
+		0A745C0615669585003207C9 /* KJControllers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJControllers.h; sourceTree = "<group>"; };
+		0A745C08156695D0003207C9 /* KJLevels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLevels.h; sourceTree = "<group>"; };
+		0A745C0A15669616003207C9 /* KJProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJProtocols.h; sourceTree = "<group>"; };
+		0A745C0C15669651003207C9 /* KJGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGraphics.h; sourceTree = "<group>"; };
+		0A745C0E1566967F003207C9 /* KJCocos2dKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCocos2dKit.h; sourceTree = "<group>"; };
+		0A745C10156696CA003207C9 /* KJModules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJModules.h; sourceTree = "<group>"; };
+		0A745C1315669725003207C9 /* KJObjectManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJObjectManagement.h; sourceTree = "<group>"; };
+		0A745C1515669747003207C9 /* KJGameObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObjects.h; sourceTree = "<group>"; };
+		0A745C1C1566A216003207C9 /* KJLevelStageProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLevelStageProtocol.h; sourceTree = "<group>"; };
+		0A745C251566DA70003207C9 /* KJCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCamera.h; sourceTree = "<group>"; };
+		0A745C261566DA70003207C9 /* KJCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCamera.m; sourceTree = "<group>"; };
+		0A745C2A1566DA81003207C9 /* KJLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLayer.h; sourceTree = "<group>"; };
+		0A745C2B1566DA81003207C9 /* KJLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJLayer.m; sourceTree = "<group>"; };
 		0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteUpdateProtocol.h; sourceTree = "<group>"; };
 		0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackElementProtocol.h; sourceTree = "<group>"; };
 		0A9F344615014FC500DEAE4D /* CocosGraphicElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosGraphicElement.h; sourceTree = "<group>"; };
@@ -563,6 +688,8 @@
 		0ACB987714E1A21100528DE7 /* GraphicalGameElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicalGameElement.h; sourceTree = "<group>"; };
 		0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicalGameElement.mm; sourceTree = "<group>"; };
 		0ACB9B1D14E41D0700528DE7 /* GameElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameElementProtocol.h; sourceTree = "<group>"; };
+		0AD7BFCC156ACA91000A4163 /* KJLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLayers.h; sourceTree = "<group>"; };
+		0AD7BFCE156ACAAB000A4163 /* KJCameras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCameras.h; sourceTree = "<group>"; };
 		0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTile.h; sourceTree = "<group>"; };
 		0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTile.m; sourceTree = "<group>"; };
 		0AF8B51714C76988005FCBF7 /* CameraObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraObject.h; sourceTree = "<group>"; };
@@ -608,6 +735,81 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A21CEB515517CBE00A88F92 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0A21CEB615517CD800A88F92 /* KJGraphical.h */,
+				0A21CEC515518A9800A88F92 /* KJGraphicalRepresentationProtocol.h */,
+				0A21CED615519E6200A88F92 /* KJModuleProtocol.h */,
+				0A21CEE41551BE6D00A88F92 /* KJGameObjectProtocol.h */,
+				0A745C1C1566A216003207C9 /* KJLevelStageProtocol.h */,
+				0A745C0A15669616003207C9 /* KJProtocols.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		0A21CEB8155187D800A88F92 /* KJGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				0A745C0C15669651003207C9 /* KJGraphics.h */,
+				0A21CF031553098900A88F92 /* Cocos2d Kit */,
+				0A21CEBE1551881D00A88F92 /* KJGraphicsPart.h */,
+				0A21CEBF1551881D00A88F92 /* KJGraphicsPart.m */,
+				0A21CECC155195CD00A88F92 /* KJTimeLine.h */,
+				0A21CECD155195CD00A88F92 /* KJTimeLine.m */,
+				0A21CEC71551945E00A88F92 /* KJKeyFrame.h */,
+				0A21CEC81551945E00A88F92 /* KJKeyFrame.m */,
+			);
+			name = KJGraphics;
+			sourceTree = "<group>";
+		};
+		0A21CED815519F9C00A88F92 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				0A21CED915519FB700A88F92 /* KJModule.h */,
+				0A21CEDA15519FB700A88F92 /* KJModule.m */,
+				0A745C10156696CA003207C9 /* KJModules.h */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		0A21CEDE1551BAE600A88F92 /* Level */ = {
+			isa = PBXGroup;
+			children = (
+				0A745BFF15669356003207C9 /* Goals */,
+				0A21CEDF1551BB0500A88F92 /* KJLevel.h */,
+				0A21CEE01551BB0500A88F92 /* KJLevel.m */,
+				0A745BED15668870003207C9 /* KJLevelLoader.h */,
+				0A745BEE15668870003207C9 /* KJLevelLoader.m */,
+				0A745C08156695D0003207C9 /* KJLevels.h */,
+			);
+			name = Level;
+			sourceTree = "<group>";
+		};
+		0A21CF031553098900A88F92 /* Cocos2d Kit */ = {
+			isa = PBXGroup;
+			children = (
+				0A21CF0415530CAA00A88F92 /* KJCocosComplexSpriteObject.h */,
+				0A21CF0515530CAA00A88F92 /* KJCocosComplexSpriteObject.m */,
+				0A21CEFE1553097900A88F92 /* KJCocosGraphicObject.h */,
+				0A21CEFF1553097900A88F92 /* KJCocosGraphicObject.m */,
+				0A745C0E1566967F003207C9 /* KJCocos2dKit.h */,
+			);
+			name = "Cocos2d Kit";
+			sourceTree = "<group>";
+		};
+		0A21CF09155317ED00A88F92 /* Object Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0A21CF0A1553181600A88F92 /* KJObjectManager.h */,
+				0A21CF0B1553181600A88F92 /* KJObjectManager.m */,
+				0A2979861558332700E560B0 /* KJObjectSelector.h */,
+				0A2979871558332700E560B0 /* KJObjectSelector.m */,
+				0A745C1315669725003207C9 /* KJObjectManagement.h */,
+			);
+			name = "Object Manager";
+			sourceTree = "<group>";
+		};
 		0A22614B14FBFF59001C35FA /* Universal Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1005,6 +1207,7 @@
 		0A249B3A14A267EB00D5D7D3 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
+				0A5669C51550896E00295EDE /* KJ */,
 				0A2D94EA151C91A900BCD796 /* SoundManager */,
 				0AF8B55714C8790A005FCBF7 /* Graphics */,
 				0A718E9114BB65AF00071DBE /* ObjectManager */,
@@ -1088,6 +1291,24 @@
 			name = CocosDenshionEngine;
 			sourceTree = "<group>";
 		};
+		0A5669C51550896E00295EDE /* KJ */ = {
+			isa = PBXGroup;
+			children = (
+				0A21CEC31551891E00A88F92 /* kjEngine.h */,
+				0A745C241566DA1A003207C9 /* Cameras */,
+				0A745C231566DA10003207C9 /* Layers */,
+				0A745BF91566925E003207C9 /* Models */,
+				0A745BF315668E39003207C9 /* Controllers */,
+				0A21CEDE1551BAE600A88F92 /* Level */,
+				0A21CEB515517CBE00A88F92 /* Protocols */,
+				0A21CEB8155187D800A88F92 /* KJGraphics */,
+				0A21CED815519F9C00A88F92 /* Modules */,
+				0A21CF09155317ED00A88F92 /* Object Manager */,
+				0A745C12156696F8003207C9 /* Game Objects */,
+			);
+			name = KJ;
+			sourceTree = "<group>";
+		};
 		0A718E8914BB651900071DBE /* Level */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1329,70 @@
 				0A718E9614BB65F600071DBE /* ObjectSelector.m */,
 			);
 			name = ObjectManager;
+			sourceTree = "<group>";
+		};
+		0A745BF315668E39003207C9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A745BF415668E55003207C9 /* KJGameEventController.h */,
+				0A745BF515668E55003207C9 /* KJGameEventController.m */,
+				0A745C0615669585003207C9 /* KJControllers.h */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		0A745BF91566925E003207C9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0A745BFF15669356003207C9 /* Goals */ = {
+			isa = PBXGroup;
+			children = (
+				0A745C0015669417003207C9 /* KJLevelGoal.h */,
+				0A745C0115669417003207C9 /* KJLevelGoal.m */,
+			);
+			name = Goals;
+			sourceTree = "<group>";
+		};
+		0A745C12156696F8003207C9 /* Game Objects */ = {
+			isa = PBXGroup;
+			children = (
+				0A21CED115519DF000A88F92 /* KJCommonGameObject.h */,
+				0A21CED215519DF000A88F92 /* KJCommonGameObject.m */,
+				0A21CEAA15516E1100A88F92 /* KJBackgroundObject.h */,
+				0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */,
+				0A21CEB015516E6800A88F92 /* KJGraphicalObject.h */,
+				0A21CEB115516E6800A88F92 /* KJGraphicalObject.m */,
+				0A5669BF1550896500295EDE /* KJPhysicsObject.h */,
+				0A5669C01550896500295EDE /* KJPhysicsObject.m */,
+				0A5669C6155089A600295EDE /* KJGameObject.h */,
+				0A5669C7155089A600295EDE /* KJGameObject.m */,
+				0A745C1515669747003207C9 /* KJGameObjects.h */,
+			);
+			name = "Game Objects";
+			sourceTree = "<group>";
+		};
+		0A745C231566DA10003207C9 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				0A745C2A1566DA81003207C9 /* KJLayer.h */,
+				0A745C2B1566DA81003207C9 /* KJLayer.m */,
+				0AD7BFCC156ACA91000A4163 /* KJLayers.h */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		0A745C241566DA1A003207C9 /* Cameras */ = {
+			isa = PBXGroup;
+			children = (
+				0A745C251566DA70003207C9 /* KJCamera.h */,
+				0A745C261566DA70003207C9 /* KJCamera.m */,
+				0AD7BFCE156ACAAB000A4163 /* KJCameras.h */,
+			);
+			name = Cameras;
 			sourceTree = "<group>";
 		};
 		0AB8BB2C1545B8440064E75F /* Spawners */ = {
@@ -1213,6 +1498,41 @@
 				0AB8BB301545B8610064E75F /* SpawnerZManager.h in Headers */,
 				0AB8BB341545C0A30064E75F /* SpawnableZ.h in Headers */,
 				0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */,
+				0A5669C11550896600295EDE /* KJPhysicsObject.h in Headers */,
+				0A5669C8155089A600295EDE /* KJGameObject.h in Headers */,
+				0A21CEB215516E6800A88F92 /* KJGraphicalObject.h in Headers */,
+				0A21CEB715517CD800A88F92 /* KJGraphical.h in Headers */,
+				0A21CEC01551881D00A88F92 /* KJGraphicsPart.h in Headers */,
+				0A21CEC41551891E00A88F92 /* kjEngine.h in Headers */,
+				0A21CEC615518A9800A88F92 /* KJGraphicalRepresentationProtocol.h in Headers */,
+				0A21CEC91551945E00A88F92 /* KJKeyFrame.h in Headers */,
+				0A21CECE155195CD00A88F92 /* KJTimeLine.h in Headers */,
+				0A21CED315519DF200A88F92 /* KJCommonGameObject.h in Headers */,
+				0A21CED715519E6200A88F92 /* KJModuleProtocol.h in Headers */,
+				0A21CEDB15519FB700A88F92 /* KJModule.h in Headers */,
+				0A21CEE11551BB0500A88F92 /* KJLevel.h in Headers */,
+				0A21CEE51551BE6D00A88F92 /* KJGameObjectProtocol.h in Headers */,
+				0A21CEAE15516E2400A88F92 /* KJBackgroundObject.h in Headers */,
+				0A21CF001553097A00A88F92 /* KJCocosGraphicObject.h in Headers */,
+				0A21CF0615530CAA00A88F92 /* KJCocosComplexSpriteObject.h in Headers */,
+				0A2979881558332700E560B0 /* KJObjectSelector.h in Headers */,
+				0A21CF0C1553181600A88F92 /* KJObjectManager.h in Headers */,
+				0A745BEF15668870003207C9 /* KJLevelLoader.h in Headers */,
+				0A745BF615668E55003207C9 /* KJGameEventController.h in Headers */,
+				0A745C0215669417003207C9 /* KJLevelGoal.h in Headers */,
+				0A745C0715669585003207C9 /* KJControllers.h in Headers */,
+				0A745C09156695D0003207C9 /* KJLevels.h in Headers */,
+				0A745C0B15669616003207C9 /* KJProtocols.h in Headers */,
+				0A745C0D15669651003207C9 /* KJGraphics.h in Headers */,
+				0A745C0F1566967F003207C9 /* KJCocos2dKit.h in Headers */,
+				0A745C11156696CA003207C9 /* KJModules.h in Headers */,
+				0A745C1415669725003207C9 /* KJObjectManagement.h in Headers */,
+				0A745C1615669747003207C9 /* KJGameObjects.h in Headers */,
+				0A745C1D1566A216003207C9 /* KJLevelStageProtocol.h in Headers */,
+				0A745C271566DA70003207C9 /* KJCamera.h in Headers */,
+				0A745C2C1566DA81003207C9 /* KJLayer.h in Headers */,
+				0AD7BFCD156ACA91000A4163 /* KJLayers.h in Headers */,
+				0AD7BFCF156ACAAB000A4163 /* KJCameras.h in Headers */,
 				0AFA4F6D14CDC17900077A83 /* cocos2d.h in Headers */,
 				0A249B9414A2760C00D5D7D3 /* CCAction.h in Headers */,
 				0A249B9514A2760C00D5D7D3 /* CCActionCamera.h in Headers */,
@@ -1492,6 +1812,25 @@
 				0A2D94EF151C930C00BCD796 /* SoundManager.m in Sources */,
 				0A2D94F9151C990700BCD796 /* DenshionEngine.m in Sources */,
 				0AB8BB311545B8610064E75F /* SpawnerZManager.m in Sources */,
+				0A5669C21550896600295EDE /* KJPhysicsObject.m in Sources */,
+				0A5669C9155089A600295EDE /* KJGameObject.m in Sources */,
+				0A21CEAC15516E1100A88F92 /* KJBackgroundObject.m in Sources */,
+				0A21CEB315516E6800A88F92 /* KJGraphicalObject.m in Sources */,
+				0A21CEC11551881D00A88F92 /* KJGraphicsPart.m in Sources */,
+				0A21CECA1551945E00A88F92 /* KJKeyFrame.m in Sources */,
+				0A21CECF155195CD00A88F92 /* KJTimeLine.m in Sources */,
+				0A21CED415519DF200A88F92 /* KJCommonGameObject.m in Sources */,
+				0A21CEDC15519FB700A88F92 /* KJModule.m in Sources */,
+				0A21CEE21551BB0500A88F92 /* KJLevel.m in Sources */,
+				0A21CF011553097A00A88F92 /* KJCocosGraphicObject.m in Sources */,
+				0A21CF0715530CAA00A88F92 /* KJCocosComplexSpriteObject.m in Sources */,
+				0A21CF0D1553181600A88F92 /* KJObjectManager.m in Sources */,
+				0A2979891558332700E560B0 /* KJObjectSelector.m in Sources */,
+				0A745BF015668870003207C9 /* KJLevelLoader.m in Sources */,
+				0A745BF715668E55003207C9 /* KJGameEventController.m in Sources */,
+				0A745C0315669417003207C9 /* KJLevelGoal.m in Sources */,
+				0A745C281566DA70003207C9 /* KJCamera.m in Sources */,
+				0A745C2D1566DA81003207C9 /* KJLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1499,6 +1838,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A21CEAF15516E3300A88F92 /* KJBackgroundObject.m in Sources */,
 				0A249B8614A275CF00D5D7D3 /* Spawner.m in Sources */,
 				0A249B8714A275CF00D5D7D3 /* PhysicsObject.m in Sources */,
 				0A249B8814A275CF00D5D7D3 /* GameElement.m in Sources */,
@@ -1525,6 +1865,24 @@
 				0A2D94F0151C930C00BCD796 /* SoundManager.m in Sources */,
 				0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */,
 				0AB8BB321545B8610064E75F /* SpawnerZManager.m in Sources */,
+				0A5669C31550896600295EDE /* KJPhysicsObject.m in Sources */,
+				0A5669CA155089A600295EDE /* KJGameObject.m in Sources */,
+				0A21CEB415516E6800A88F92 /* KJGraphicalObject.m in Sources */,
+				0A21CEC21551881D00A88F92 /* KJGraphicsPart.m in Sources */,
+				0A21CECB1551945E00A88F92 /* KJKeyFrame.m in Sources */,
+				0A21CED0155195CD00A88F92 /* KJTimeLine.m in Sources */,
+				0A21CED515519DF200A88F92 /* KJCommonGameObject.m in Sources */,
+				0A21CEDD15519FB700A88F92 /* KJModule.m in Sources */,
+				0A21CEE31551BB0500A88F92 /* KJLevel.m in Sources */,
+				0A21CF021553097A00A88F92 /* KJCocosGraphicObject.m in Sources */,
+				0A21CF0815530CAA00A88F92 /* KJCocosComplexSpriteObject.m in Sources */,
+				0A21CF0E1553181600A88F92 /* KJObjectManager.m in Sources */,
+				0A29798A1558332700E560B0 /* KJObjectSelector.m in Sources */,
+				0A745BF115668870003207C9 /* KJLevelLoader.m in Sources */,
+				0A745BF815668E55003207C9 /* KJGameEventController.m in Sources */,
+				0A745C0415669417003207C9 /* KJLevelGoal.m in Sources */,
+				0A745C291566DA70003207C9 /* KJCamera.m in Sources */,
+				0A745C2E1566DA81003207C9 /* KJLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
