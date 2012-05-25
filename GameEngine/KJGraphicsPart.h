@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TimeLine.h"
+#import "KJTimeLine.h"
 #import "KJGraphical.h"
 #import "KJGraphicalRepresentationProtocol.h"
 
@@ -26,7 +26,7 @@ extern NSString *const kjPartShouldIgnoreBatchNodeUpdate;
     NSString *objectName;
     KJGraphicalObject *parent;
     
-    TimeLine *currentTimeLine;
+    KJTimeLine *currentTimeLine;
     NSDictionary *animations;
     
     NSObject<KJGraphicalRepresentationProtocol> *spriteRep;

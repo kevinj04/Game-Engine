@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A03D20E14CF3DAB003191B0 /* BackgroundTile.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A03D21014CF3DCC003191B0 /* CameraObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51714C76988005FCBF7 /* CameraObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A03D21114CF3DD1003191B0 /* HUDObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A21CEAC15516E1100A88F92 /* KJBackgroundObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */; };
 		0A21CEAE15516E2400A88F92 /* KJBackgroundObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEAA15516E1100A88F92 /* KJBackgroundObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A21CEAF15516E3300A88F92 /* KJBackgroundObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */; };
@@ -166,24 +163,13 @@
 		0A249B2A14A267D400D5D7D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B2914A267D400D5D7D3 /* main.m */; };
 		0A249B2D14A267D400D5D7D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B2C14A267D400D5D7D3 /* AppDelegate.m */; };
 		0A249B3014A267D400D5D7D3 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B2F14A267D400D5D7D3 /* RootViewController.m */; };
-		0A249B3314A267D400D5D7D3 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B3214A267D400D5D7D3 /* HelloWorldLayer.m */; };
 		0A249B3E14A2684C00D5D7D3 /* SortedStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B3D14A2684C00D5D7D3 /* SortedStack.m */; };
 		0A249B4514A268AA00D5D7D3 /* StackObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4414A268AA00D5D7D3 /* StackObject.m */; };
-		0A249B4914A26AD400D5D7D3 /* GameElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4814A26AD400D5D7D3 /* GameElement.m */; };
-		0A249B4D14A26AE900D5D7D3 /* PhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4C14A26AE900D5D7D3 /* PhysicsObject.m */; };
 		0A249B5014A26B0C00D5D7D3 /* StackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4F14A26B0C00D5D7D3 /* StackManager.m */; };
-		0A249B5514A272F000D5D7D3 /* Spawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B5414A272F000D5D7D3 /* Spawner.m */; };
 		0A249B6314A2750C00D5D7D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499D214A267D000D5D7D3 /* Foundation.framework */; };
-		0A249B8614A275CF00D5D7D3 /* Spawner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B5414A272F000D5D7D3 /* Spawner.m */; };
-		0A249B8714A275CF00D5D7D3 /* PhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4C14A26AE900D5D7D3 /* PhysicsObject.m */; };
-		0A249B8814A275CF00D5D7D3 /* GameElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4814A26AD400D5D7D3 /* GameElement.m */; };
 		0A249B8914A275CF00D5D7D3 /* SortedStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B3D14A2684C00D5D7D3 /* SortedStack.m */; };
 		0A249B8A14A275CF00D5D7D3 /* StackObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4414A268AA00D5D7D3 /* StackObject.m */; };
 		0A249B8B14A275CF00D5D7D3 /* StackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A249B4F14A26B0C00D5D7D3 /* StackManager.m */; };
-		0A249B8C14A275F100D5D7D3 /* Spawnable.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249B5214A26D0F00D5D7D3 /* Spawnable.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A249B8D14A275F100D5D7D3 /* Spawner.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249B5314A272EF00D5D7D3 /* Spawner.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A249B8E14A275F100D5D7D3 /* PhysicsObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249B4B14A26AE900D5D7D3 /* PhysicsObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A249B8F14A275F100D5D7D3 /* GameElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249B4714A26AD400D5D7D3 /* GameElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A249B9014A275F100D5D7D3 /* SortedStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249B3C14A2684C00D5D7D3 /* SortedStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A249B9114A275F100D5D7D3 /* StackObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249B4314A268AA00D5D7D3 /* StackObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A249B9214A275F100D5D7D3 /* StackManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249B4E14A26B0B00D5D7D3 /* StackManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -266,18 +252,6 @@
 		0A5669C8155089A600295EDE /* KJGameObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5669C6155089A600295EDE /* KJGameObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A5669C9155089A600295EDE /* KJGameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C7155089A600295EDE /* KJGameObject.m */; };
 		0A5669CA155089A600295EDE /* KJGameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C7155089A600295EDE /* KJGameObject.m */; };
-		0A718E8D14BB653B00071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
-		0A718E9014BB654E00071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
-		0A718E9414BB65E400071DBE /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9314BB65E400071DBE /* ObjectManager.m */; };
-		0A718E9714BB65F600071DBE /* ObjectSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9614BB65F600071DBE /* ObjectSelector.m */; };
-		0A718E9814BB660A00071DBE /* ObjectManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E9214BB65E400071DBE /* ObjectManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A718E9914BB660A00071DBE /* ObjectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9314BB65E400071DBE /* ObjectManager.m */; };
-		0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E9514BB65F600071DBE /* ObjectSelector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A718E9B14BB660A00071DBE /* ObjectSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E9614BB65F600071DBE /* ObjectSelector.m */; };
-		0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8B14BB653B00071DBE /* LevelLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8C14BB653B00071DBE /* LevelLoader.m */; };
-		0A718E9E14BB661000071DBE /* Level.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A718E8E14BB654E00071DBE /* Level.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A718E9F14BB661000071DBE /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A718E8F14BB654E00071DBE /* Level.m */; };
 		0A745BEF15668870003207C9 /* KJLevelLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745BED15668870003207C9 /* KJLevelLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A745BF015668870003207C9 /* KJLevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745BEE15668870003207C9 /* KJLevelLoader.m */; };
 		0A745BF115668870003207C9 /* KJLevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745BEE15668870003207C9 /* KJLevelLoader.m */; };
@@ -302,50 +276,10 @@
 		0A745C2C1566DA81003207C9 /* KJLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C2A1566DA81003207C9 /* KJLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A745C2D1566DA81003207C9 /* KJLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C2B1566DA81003207C9 /* KJLayer.m */; };
 		0A745C2E1566DA81003207C9 /* KJLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C2B1566DA81003207C9 /* KJLayer.m */; };
-		0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A9F344815014FC800DEAE4D /* CocosGraphicElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F344615014FC500DEAE4D /* CocosGraphicElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A9F344915014FC800DEAE4D /* CocosGraphicElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F344715014FC700DEAE4D /* CocosGraphicElement.m */; };
-		0A9F344A15014FC800DEAE4D /* CocosGraphicElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9F344715014FC700DEAE4D /* CocosGraphicElement.m */; };
-		0AB8BB301545B8610064E75F /* SpawnerZManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB8BB2E1545B8610064E75F /* SpawnerZManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0AB8BB311545B8610064E75F /* SpawnerZManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8BB2F1545B8610064E75F /* SpawnerZManager.m */; };
-		0AB8BB321545B8610064E75F /* SpawnerZManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB8BB2F1545B8610064E75F /* SpawnerZManager.m */; };
-		0AB8BB341545C0A30064E75F /* SpawnableZ.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AB8BB331545C0A20064E75F /* SpawnableZ.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB984314D9A34100528DE7 /* SpriteBGObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0ACB984614D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
-		0ACB984714D9A34100528DE7 /* SpriteBGObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB984414D9A34100528DE7 /* SpriteBGObject.m */; };
-		0ACB986814E1A1EB00528DE7 /* CocosBackgroundElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB985E14E1A1EB00528DE7 /* CocosBackgroundElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0ACB986914E1A1EB00528DE7 /* CocosBackgroundElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB985F14E1A1EB00528DE7 /* CocosBackgroundElement.m */; };
-		0ACB986A14E1A1EB00528DE7 /* CocosBackgroundElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB985F14E1A1EB00528DE7 /* CocosBackgroundElement.m */; };
-		0ACB986E14E1A1EB00528DE7 /* CocosComplexSpriteElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB986214E1A1EB00528DE7 /* CocosComplexSpriteElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0ACB986F14E1A1EB00528DE7 /* CocosComplexSpriteElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986314E1A1EB00528DE7 /* CocosComplexSpriteElement.m */; };
-		0ACB987014E1A1EB00528DE7 /* CocosComplexSpriteElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB986314E1A1EB00528DE7 /* CocosComplexSpriteElement.m */; };
-		0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB987714E1A21100528DE7 /* GraphicalGameElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0ACB987C14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */; };
-		0ACB987D14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */; };
-		0ACB9B1E14E41D0700528DE7 /* GameElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ACB9B1D14E41D0700528DE7 /* GameElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AD7BFCD156ACA91000A4163 /* KJLayers.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD7BFCC156ACA91000A4163 /* KJLayers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AD7BFCF156ACAAB000A4163 /* KJCameras.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD7BFCE156ACAAB000A4163 /* KJCameras.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
-		0AF8B51514C763E8005FCBF7 /* BackgroundTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */; };
-		0AF8B51A14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
-		0AF8B51B14C76989005FCBF7 /* CameraObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51814C76988005FCBF7 /* CameraObject.m */; };
-		0AF8B51F14C76A7A005FCBF7 /* HUDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */; };
-		0AF8B52014C76A7A005FCBF7 /* HUDObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */; };
-		0AF8B55C14C8793B005FCBF7 /* SpriteObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B55A14C8793B005FCBF7 /* SpriteObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0AF8B55D14C8793B005FCBF7 /* SpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B55B14C8793B005FCBF7 /* SpriteObject.m */; };
-		0AF8B55E14C8793B005FCBF7 /* SpriteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B55B14C8793B005FCBF7 /* SpriteObject.m */; };
-		0AF8B56614C87968005FCBF7 /* KeyFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B56414C87968005FCBF7 /* KeyFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0AF8B56714C87968005FCBF7 /* KeyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B56514C87968005FCBF7 /* KeyFrame.m */; };
-		0AF8B56814C87968005FCBF7 /* KeyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B56514C87968005FCBF7 /* KeyFrame.m */; };
 		0AF8B56B14C87C1D005FCBF7 /* Graphics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AF8B56A14C87C1D005FCBF7 /* Graphics.plist */; };
-		0AF8B57114C8809D005FCBF7 /* TimeLine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AF8B56F14C8809C005FCBF7 /* TimeLine.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0AF8B57214C8809D005FCBF7 /* TimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B57014C8809C005FCBF7 /* TimeLine.m */; };
-		0AF8B57314C8809D005FCBF7 /* TimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF8B57014C8809C005FCBF7 /* TimeLine.m */; };
-		0AFA4D4A14C9F90F00077A83 /* GraphicsProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0AFA4D4D14C9FA7300077A83 /* SpritePart.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AFA4D4B14C9FA7300077A83 /* SpritePart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0AFA4D4E14C9FA7300077A83 /* SpritePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA4D4C14C9FA7300077A83 /* SpritePart.m */; };
-		0AFA4D4F14C9FA7300077A83 /* SpritePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AFA4D4C14C9FA7300077A83 /* SpritePart.m */; };
 		0AFA4F6D14CDC17900077A83 /* cocos2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9C14A267D200D5D7D3 /* cocos2d.h */; };
 /* End PBXBuildFile section */
 
@@ -613,22 +547,13 @@
 		0A249B2C14A267D400D5D7D3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0A249B2E14A267D400D5D7D3 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		0A249B2F14A267D400D5D7D3 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		0A249B3114A267D400D5D7D3 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		0A249B3214A267D400D5D7D3 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		0A249B3414A267D400D5D7D3 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		0A249B3C14A2684C00D5D7D3 /* SortedStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortedStack.h; sourceTree = "<group>"; };
 		0A249B3D14A2684C00D5D7D3 /* SortedStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortedStack.m; sourceTree = "<group>"; };
 		0A249B4314A268AA00D5D7D3 /* StackObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackObject.h; sourceTree = "<group>"; };
 		0A249B4414A268AA00D5D7D3 /* StackObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackObject.m; sourceTree = "<group>"; };
-		0A249B4714A26AD400D5D7D3 /* GameElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameElement.h; sourceTree = "<group>"; };
-		0A249B4814A26AD400D5D7D3 /* GameElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameElement.m; sourceTree = "<group>"; };
-		0A249B4B14A26AE900D5D7D3 /* PhysicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsObject.h; sourceTree = "<group>"; };
-		0A249B4C14A26AE900D5D7D3 /* PhysicsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhysicsObject.m; sourceTree = "<group>"; };
 		0A249B4E14A26B0B00D5D7D3 /* StackManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackManager.h; sourceTree = "<group>"; };
 		0A249B4F14A26B0C00D5D7D3 /* StackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackManager.m; sourceTree = "<group>"; };
-		0A249B5214A26D0F00D5D7D3 /* Spawnable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spawnable.h; sourceTree = "<group>"; };
-		0A249B5314A272EF00D5D7D3 /* Spawner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spawner.h; sourceTree = "<group>"; };
-		0A249B5414A272F000D5D7D3 /* Spawner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Spawner.m; sourceTree = "<group>"; };
 		0A249B5A14A273F800D5D7D3 /* CGExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGExtensions.h; sourceTree = "<group>"; };
 		0A249B6214A2750C00D5D7D3 /* libEngine.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libEngine.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A249B7014A2750C00D5D7D3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -644,14 +569,6 @@
 		0A5669C01550896500295EDE /* KJPhysicsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJPhysicsObject.m; sourceTree = "<group>"; };
 		0A5669C6155089A600295EDE /* KJGameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObject.h; sourceTree = "<group>"; };
 		0A5669C7155089A600295EDE /* KJGameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGameObject.m; sourceTree = "<group>"; };
-		0A718E8B14BB653B00071DBE /* LevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelLoader.h; sourceTree = "<group>"; };
-		0A718E8C14BB653B00071DBE /* LevelLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelLoader.m; sourceTree = "<group>"; };
-		0A718E8E14BB654E00071DBE /* Level.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level.h; sourceTree = "<group>"; };
-		0A718E8F14BB654E00071DBE /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
-		0A718E9214BB65E400071DBE /* ObjectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectManager.h; sourceTree = "<group>"; };
-		0A718E9314BB65E400071DBE /* ObjectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectManager.m; sourceTree = "<group>"; };
-		0A718E9514BB65F600071DBE /* ObjectSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSelector.h; sourceTree = "<group>"; };
-		0A718E9614BB65F600071DBE /* ObjectSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectSelector.m; sourceTree = "<group>"; };
 		0A71914814BF690800071DBE /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		0A745BED15668870003207C9 /* KJLevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLevelLoader.h; sourceTree = "<group>"; };
 		0A745BEE15668870003207C9 /* KJLevelLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJLevelLoader.m; sourceTree = "<group>"; };
@@ -672,40 +589,10 @@
 		0A745C261566DA70003207C9 /* KJCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCamera.m; sourceTree = "<group>"; };
 		0A745C2A1566DA81003207C9 /* KJLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLayer.h; sourceTree = "<group>"; };
 		0A745C2B1566DA81003207C9 /* KJLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJLayer.m; sourceTree = "<group>"; };
-		0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteUpdateProtocol.h; sourceTree = "<group>"; };
 		0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackElementProtocol.h; sourceTree = "<group>"; };
-		0A9F344615014FC500DEAE4D /* CocosGraphicElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosGraphicElement.h; sourceTree = "<group>"; };
-		0A9F344715014FC700DEAE4D /* CocosGraphicElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosGraphicElement.m; sourceTree = "<group>"; };
-		0AB8BB2E1545B8610064E75F /* SpawnerZManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpawnerZManager.h; sourceTree = "<group>"; };
-		0AB8BB2F1545B8610064E75F /* SpawnerZManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpawnerZManager.m; sourceTree = "<group>"; };
-		0AB8BB331545C0A20064E75F /* SpawnableZ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpawnableZ.h; sourceTree = "<group>"; };
-		0ACB984314D9A34100528DE7 /* SpriteBGObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBGObject.h; sourceTree = "<group>"; };
-		0ACB984414D9A34100528DE7 /* SpriteBGObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteBGObject.m; sourceTree = "<group>"; };
-		0ACB985E14E1A1EB00528DE7 /* CocosBackgroundElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosBackgroundElement.h; sourceTree = "<group>"; };
-		0ACB985F14E1A1EB00528DE7 /* CocosBackgroundElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosBackgroundElement.m; sourceTree = "<group>"; };
-		0ACB986214E1A1EB00528DE7 /* CocosComplexSpriteElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosComplexSpriteElement.h; sourceTree = "<group>"; };
-		0ACB986314E1A1EB00528DE7 /* CocosComplexSpriteElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosComplexSpriteElement.m; sourceTree = "<group>"; };
-		0ACB987714E1A21100528DE7 /* GraphicalGameElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicalGameElement.h; sourceTree = "<group>"; };
-		0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GraphicalGameElement.mm; sourceTree = "<group>"; };
-		0ACB9B1D14E41D0700528DE7 /* GameElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameElementProtocol.h; sourceTree = "<group>"; };
 		0AD7BFCC156ACA91000A4163 /* KJLayers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLayers.h; sourceTree = "<group>"; };
 		0AD7BFCE156ACAAB000A4163 /* KJCameras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCameras.h; sourceTree = "<group>"; };
-		0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTile.h; sourceTree = "<group>"; };
-		0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTile.m; sourceTree = "<group>"; };
-		0AF8B51714C76988005FCBF7 /* CameraObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraObject.h; sourceTree = "<group>"; };
-		0AF8B51814C76988005FCBF7 /* CameraObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraObject.m; sourceTree = "<group>"; };
-		0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDObject.h; sourceTree = "<group>"; };
-		0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDObject.m; sourceTree = "<group>"; };
-		0AF8B55A14C8793B005FCBF7 /* SpriteObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteObject.h; sourceTree = "<group>"; };
-		0AF8B55B14C8793B005FCBF7 /* SpriteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpriteObject.m; sourceTree = "<group>"; };
-		0AF8B56414C87968005FCBF7 /* KeyFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyFrame.h; sourceTree = "<group>"; };
-		0AF8B56514C87968005FCBF7 /* KeyFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyFrame.m; sourceTree = "<group>"; };
 		0AF8B56A14C87C1D005FCBF7 /* Graphics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Graphics.plist; sourceTree = "<group>"; };
-		0AF8B56F14C8809C005FCBF7 /* TimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLine.h; sourceTree = "<group>"; };
-		0AF8B57014C8809C005FCBF7 /* TimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLine.m; sourceTree = "<group>"; };
-		0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsProtocol.h; sourceTree = "<group>"; };
-		0AFA4D4B14C9FA7300077A83 /* SpritePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpritePart.h; sourceTree = "<group>"; };
-		0AFA4D4C14C9FA7300077A83 /* SpritePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpritePart.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -862,8 +749,6 @@
 				0A249B2C14A267D400D5D7D3 /* AppDelegate.m */,
 				0A249B2E14A267D400D5D7D3 /* RootViewController.h */,
 				0A249B2F14A267D400D5D7D3 /* RootViewController.m */,
-				0A249B3114A267D400D5D7D3 /* HelloWorldLayer.h */,
-				0A249B3214A267D400D5D7D3 /* HelloWorldLayer.m */,
 				0A249B3414A267D400D5D7D3 /* GameConfig.h */,
 				0A2499D714A267D000D5D7D3 /* Resources */,
 				0A2499EB14A267D100D5D7D3 /* libs */,
@@ -1209,10 +1094,7 @@
 			children = (
 				0A5669C51550896E00295EDE /* KJ */,
 				0A2D94EA151C91A900BCD796 /* SoundManager */,
-				0AF8B55714C8790A005FCBF7 /* Graphics */,
-				0A718E9114BB65AF00071DBE /* ObjectManager */,
-				0A718E8914BB651900071DBE /* Level */,
-				0A249B4614A26AA600D5D7D3 /* GameObjects */,
+				0A22614B14FBFF59001C35FA /* Universal Tools */,
 				0A249B3B14A267FF00D5D7D3 /* StackManager */,
 				0A249B5A14A273F800D5D7D3 /* CGExtensions.h */,
 			);
@@ -1231,36 +1113,6 @@
 				0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */,
 			);
 			name = StackManager;
-			sourceTree = "<group>";
-		};
-		0A249B4614A26AA600D5D7D3 /* GameObjects */ = {
-			isa = PBXGroup;
-			children = (
-				0A22614B14FBFF59001C35FA /* Universal Tools */,
-				0A249B5114A26CE800D5D7D3 /* Protocols */,
-				0AB8BB2C1545B8440064E75F /* Spawners */,
-				0A249B4B14A26AE900D5D7D3 /* PhysicsObject.h */,
-				0A249B4C14A26AE900D5D7D3 /* PhysicsObject.m */,
-				0A249B4714A26AD400D5D7D3 /* GameElement.h */,
-				0A249B4814A26AD400D5D7D3 /* GameElement.m */,
-				0AF8B51114C763E8005FCBF7 /* BackgroundTile.h */,
-				0AF8B51214C763E8005FCBF7 /* BackgroundTile.m */,
-				0AF8B51714C76988005FCBF7 /* CameraObject.h */,
-				0AF8B51814C76988005FCBF7 /* CameraObject.m */,
-				0AF8B51C14C76A7A005FCBF7 /* HUDObject.h */,
-				0AF8B51D14C76A7A005FCBF7 /* HUDObject.m */,
-			);
-			name = GameObjects;
-			sourceTree = "<group>";
-		};
-		0A249B5114A26CE800D5D7D3 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				0ACB9B1D14E41D0700528DE7 /* GameElementProtocol.h */,
-				0AFA4D4914C9F90F00077A83 /* GraphicsProtocol.h */,
-				0A9F343A14FFD3C000DEAE4D /* SpriteUpdateProtocol.h */,
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 		0A249B5B14A274BC00D5D7D3 /* Configurations */ = {
@@ -1307,28 +1159,6 @@
 				0A745C12156696F8003207C9 /* Game Objects */,
 			);
 			name = KJ;
-			sourceTree = "<group>";
-		};
-		0A718E8914BB651900071DBE /* Level */ = {
-			isa = PBXGroup;
-			children = (
-				0A718E8B14BB653B00071DBE /* LevelLoader.h */,
-				0A718E8C14BB653B00071DBE /* LevelLoader.m */,
-				0A718E8E14BB654E00071DBE /* Level.h */,
-				0A718E8F14BB654E00071DBE /* Level.m */,
-			);
-			name = Level;
-			sourceTree = "<group>";
-		};
-		0A718E9114BB65AF00071DBE /* ObjectManager */ = {
-			isa = PBXGroup;
-			children = (
-				0A718E9214BB65E400071DBE /* ObjectManager.h */,
-				0A718E9314BB65E400071DBE /* ObjectManager.m */,
-				0A718E9514BB65F600071DBE /* ObjectSelector.h */,
-				0A718E9614BB65F600071DBE /* ObjectSelector.m */,
-			);
-			name = ObjectManager;
 			sourceTree = "<group>";
 		};
 		0A745BF315668E39003207C9 /* Controllers */ = {
@@ -1395,60 +1225,6 @@
 			name = Cameras;
 			sourceTree = "<group>";
 		};
-		0AB8BB2C1545B8440064E75F /* Spawners */ = {
-			isa = PBXGroup;
-			children = (
-				0A249B5214A26D0F00D5D7D3 /* Spawnable.h */,
-				0AB8BB331545C0A20064E75F /* SpawnableZ.h */,
-				0A249B5314A272EF00D5D7D3 /* Spawner.h */,
-				0A249B5414A272F000D5D7D3 /* Spawner.m */,
-				0AB8BB2E1545B8610064E75F /* SpawnerZManager.h */,
-				0AB8BB2F1545B8610064E75F /* SpawnerZManager.m */,
-			);
-			name = Spawners;
-			sourceTree = "<group>";
-		};
-		0ACB985C14E1A1A900528DE7 /* Cocos2DObjectKit */ = {
-			isa = PBXGroup;
-			children = (
-				0ACB985E14E1A1EB00528DE7 /* CocosBackgroundElement.h */,
-				0ACB985F14E1A1EB00528DE7 /* CocosBackgroundElement.m */,
-				0ACB986214E1A1EB00528DE7 /* CocosComplexSpriteElement.h */,
-				0ACB986314E1A1EB00528DE7 /* CocosComplexSpriteElement.m */,
-				0A9F344615014FC500DEAE4D /* CocosGraphicElement.h */,
-				0A9F344715014FC700DEAE4D /* CocosGraphicElement.m */,
-			);
-			name = Cocos2DObjectKit;
-			sourceTree = "<group>";
-		};
-		0ACB985D14E1A1BE00528DE7 /* openGLObjectKit */ = {
-			isa = PBXGroup;
-			children = (
-				0ACB987714E1A21100528DE7 /* GraphicalGameElement.h */,
-				0ACB987814E1A21100528DE7 /* GraphicalGameElement.mm */,
-			);
-			name = openGLObjectKit;
-			sourceTree = "<group>";
-		};
-		0AF8B55714C8790A005FCBF7 /* Graphics */ = {
-			isa = PBXGroup;
-			children = (
-				0ACB985D14E1A1BE00528DE7 /* openGLObjectKit */,
-				0ACB985C14E1A1A900528DE7 /* Cocos2DObjectKit */,
-				0AF8B55A14C8793B005FCBF7 /* SpriteObject.h */,
-				0AF8B55B14C8793B005FCBF7 /* SpriteObject.m */,
-				0AFA4D4B14C9FA7300077A83 /* SpritePart.h */,
-				0AFA4D4C14C9FA7300077A83 /* SpritePart.m */,
-				0AF8B56F14C8809C005FCBF7 /* TimeLine.h */,
-				0AF8B57014C8809C005FCBF7 /* TimeLine.m */,
-				0AF8B56414C87968005FCBF7 /* KeyFrame.h */,
-				0AF8B56514C87968005FCBF7 /* KeyFrame.m */,
-				0ACB984314D9A34100528DE7 /* SpriteBGObject.h */,
-				0ACB984414D9A34100528DE7 /* SpriteBGObject.m */,
-			);
-			name = Graphics;
-			sourceTree = "<group>";
-		};
 		0AF8B56914C87BFF005FCBF7 /* SamplePLists */ = {
 			isa = PBXGroup;
 			children = (
@@ -1464,40 +1240,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A249B8C14A275F100D5D7D3 /* Spawnable.h in Headers */,
-				0A249B8D14A275F100D5D7D3 /* Spawner.h in Headers */,
-				0A249B8E14A275F100D5D7D3 /* PhysicsObject.h in Headers */,
-				0AFA4D4D14C9FA7300077A83 /* SpritePart.h in Headers */,
-				0AF8B55C14C8793B005FCBF7 /* SpriteObject.h in Headers */,
-				0AF8B57114C8809D005FCBF7 /* TimeLine.h in Headers */,
-				0A718E9814BB660A00071DBE /* ObjectManager.h in Headers */,
-				0A718E9E14BB661000071DBE /* Level.h in Headers */,
-				0AF8B56614C87968005FCBF7 /* KeyFrame.h in Headers */,
-				0A718E9A14BB660A00071DBE /* ObjectSelector.h in Headers */,
-				0ACB984514D9A34100528DE7 /* SpriteBGObject.h in Headers */,
-				0A03D21114CF3DD1003191B0 /* HUDObject.h in Headers */,
-				0A03D20E14CF3DAB003191B0 /* BackgroundTile.h in Headers */,
-				0A718E9C14BB661000071DBE /* LevelLoader.h in Headers */,
-				0AFA4D4A14C9F90F00077A83 /* GraphicsProtocol.h in Headers */,
-				0A03D21014CF3DCC003191B0 /* CameraObject.h in Headers */,
-				0A249B8F14A275F100D5D7D3 /* GameElement.h in Headers */,
 				0A249B9014A275F100D5D7D3 /* SortedStack.h in Headers */,
 				0A249B9114A275F100D5D7D3 /* StackObject.h in Headers */,
 				0A249B9214A275F100D5D7D3 /* StackManager.h in Headers */,
 				0A249B9314A275F100D5D7D3 /* CGExtensions.h in Headers */,
-				0ACB986814E1A1EB00528DE7 /* CocosBackgroundElement.h in Headers */,
-				0ACB9B1E14E41D0700528DE7 /* GameElementProtocol.h in Headers */,
-				0ACB986E14E1A1EB00528DE7 /* CocosComplexSpriteElement.h in Headers */,
 				0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */,
-				0A9F343B14FFD3C000DEAE4D /* SpriteUpdateProtocol.h in Headers */,
 				0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */,
-				0A9F344815014FC800DEAE4D /* CocosGraphicElement.h in Headers */,
 				0A2D94EE151C930C00BCD796 /* SoundManager.h in Headers */,
 				0A2D94F4151C93BD00BCD796 /* SoundEngineProtocol.h in Headers */,
 				0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */,
-				0AB8BB301545B8610064E75F /* SpawnerZManager.h in Headers */,
-				0AB8BB341545C0A30064E75F /* SpawnableZ.h in Headers */,
-				0ACB987B14E1A21100528DE7 /* GraphicalGameElement.h in Headers */,
 				0A5669C11550896600295EDE /* KJPhysicsObject.h in Headers */,
 				0A5669C8155089A600295EDE /* KJGameObject.h in Headers */,
 				0A21CEB215516E6800A88F92 /* KJGraphicalObject.h in Headers */,
@@ -1785,33 +1536,12 @@
 				0A249B2A14A267D400D5D7D3 /* main.m in Sources */,
 				0A249B2D14A267D400D5D7D3 /* AppDelegate.m in Sources */,
 				0A249B3014A267D400D5D7D3 /* RootViewController.m in Sources */,
-				0A249B3314A267D400D5D7D3 /* HelloWorldLayer.m in Sources */,
 				0A249B3E14A2684C00D5D7D3 /* SortedStack.m in Sources */,
 				0A249B4514A268AA00D5D7D3 /* StackObject.m in Sources */,
-				0A249B4914A26AD400D5D7D3 /* GameElement.m in Sources */,
-				0A249B4D14A26AE900D5D7D3 /* PhysicsObject.m in Sources */,
 				0A249B5014A26B0C00D5D7D3 /* StackManager.m in Sources */,
-				0A249B5514A272F000D5D7D3 /* Spawner.m in Sources */,
-				0A718E8D14BB653B00071DBE /* LevelLoader.m in Sources */,
-				0A718E9014BB654E00071DBE /* Level.m in Sources */,
-				0A718E9414BB65E400071DBE /* ObjectManager.m in Sources */,
-				0A718E9714BB65F600071DBE /* ObjectSelector.m in Sources */,
-				0AF8B51414C763E8005FCBF7 /* BackgroundTile.m in Sources */,
-				0AF8B51A14C76989005FCBF7 /* CameraObject.m in Sources */,
-				0AF8B51F14C76A7A005FCBF7 /* HUDObject.m in Sources */,
-				0AF8B55D14C8793B005FCBF7 /* SpriteObject.m in Sources */,
-				0AF8B56714C87968005FCBF7 /* KeyFrame.m in Sources */,
-				0AF8B57214C8809D005FCBF7 /* TimeLine.m in Sources */,
-				0AFA4D4E14C9FA7300077A83 /* SpritePart.m in Sources */,
-				0ACB984614D9A34100528DE7 /* SpriteBGObject.m in Sources */,
-				0ACB986914E1A1EB00528DE7 /* CocosBackgroundElement.m in Sources */,
-				0ACB986F14E1A1EB00528DE7 /* CocosComplexSpriteElement.m in Sources */,
-				0ACB987C14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */,
 				0A22615014FBFF6B001C35FA /* Universalizer.mm in Sources */,
-				0A9F344915014FC800DEAE4D /* CocosGraphicElement.m in Sources */,
 				0A2D94EF151C930C00BCD796 /* SoundManager.m in Sources */,
 				0A2D94F9151C990700BCD796 /* DenshionEngine.m in Sources */,
-				0AB8BB311545B8610064E75F /* SpawnerZManager.m in Sources */,
 				0A5669C21550896600295EDE /* KJPhysicsObject.m in Sources */,
 				0A5669C9155089A600295EDE /* KJGameObject.m in Sources */,
 				0A21CEAC15516E1100A88F92 /* KJBackgroundObject.m in Sources */,
@@ -1839,32 +1569,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A21CEAF15516E3300A88F92 /* KJBackgroundObject.m in Sources */,
-				0A249B8614A275CF00D5D7D3 /* Spawner.m in Sources */,
-				0A249B8714A275CF00D5D7D3 /* PhysicsObject.m in Sources */,
-				0A249B8814A275CF00D5D7D3 /* GameElement.m in Sources */,
 				0A249B8914A275CF00D5D7D3 /* SortedStack.m in Sources */,
 				0A249B8A14A275CF00D5D7D3 /* StackObject.m in Sources */,
 				0A249B8B14A275CF00D5D7D3 /* StackManager.m in Sources */,
-				0A718E9914BB660A00071DBE /* ObjectManager.m in Sources */,
-				0A718E9B14BB660A00071DBE /* ObjectSelector.m in Sources */,
-				0A718E9D14BB661000071DBE /* LevelLoader.m in Sources */,
-				0A718E9F14BB661000071DBE /* Level.m in Sources */,
-				0AF8B51514C763E8005FCBF7 /* BackgroundTile.m in Sources */,
-				0AF8B51B14C76989005FCBF7 /* CameraObject.m in Sources */,
-				0AF8B52014C76A7A005FCBF7 /* HUDObject.m in Sources */,
-				0AF8B55E14C8793B005FCBF7 /* SpriteObject.m in Sources */,
-				0AF8B56814C87968005FCBF7 /* KeyFrame.m in Sources */,
-				0AF8B57314C8809D005FCBF7 /* TimeLine.m in Sources */,
-				0AFA4D4F14C9FA7300077A83 /* SpritePart.m in Sources */,
-				0ACB984714D9A34100528DE7 /* SpriteBGObject.m in Sources */,
-				0ACB986A14E1A1EB00528DE7 /* CocosBackgroundElement.m in Sources */,
-				0ACB987014E1A1EB00528DE7 /* CocosComplexSpriteElement.m in Sources */,
-				0ACB987D14E1A21100528DE7 /* GraphicalGameElement.mm in Sources */,
 				0A22615114FBFF6B001C35FA /* Universalizer.mm in Sources */,
-				0A9F344A15014FC800DEAE4D /* CocosGraphicElement.m in Sources */,
 				0A2D94F0151C930C00BCD796 /* SoundManager.m in Sources */,
 				0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */,
-				0AB8BB321545B8610064E75F /* SpawnerZManager.m in Sources */,
 				0A5669C31550896600295EDE /* KJPhysicsObject.m in Sources */,
 				0A5669CA155089A600295EDE /* KJGameObject.m in Sources */,
 				0A21CEB415516E6800A88F92 /* KJGraphicalObject.m in Sources */,

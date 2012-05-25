@@ -9,14 +9,14 @@
 #import "KJKeyFrame.h"
 #import "Universalizer.h"
 
-extern NSString *const kjKeyFrameTimePoint;
-extern NSString *const kjKeyFrameSpriteFrame;
-extern NSString *const kjKeyFrameSpritePosition;
-extern NSString *const kjKeyFrameSpriteRotation;
-extern NSString *const kjKeyFrameSpriteScaleX;
-extern NSString *const kjKeyFrameSpriteScaleY;
-extern NSString *const kjKeyFrameFlipX;
-extern NSString *const kjKeyFrameFlipY;
+NSString *const kjKeyFrameTimePoint = @"timePoint";
+NSString *const kjKeyFrameSpriteFrame = @"frame";
+NSString *const kjKeyFrameSpritePosition = @"position";
+NSString *const kjKeyFrameSpriteRotation = @"rotation";
+NSString *const kjKeyFrameSpriteScaleX = @"scaleX";
+NSString *const kjKeyFrameSpriteScaleY = @"scaleY";
+NSString *const kjKeyFrameFlipX = @"flipX";
+NSString *const kjKeyFrameFlipY = @"flipY";
 
 @implementation KJKeyFrame
 

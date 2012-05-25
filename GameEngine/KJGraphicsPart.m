@@ -25,8 +25,8 @@ NSString *const kjPartShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
     
 
     
-    KeyFrame *currentKF = [currentTimeLine currentKeyFrame];
-    KeyFrame *nextKF = [currentTimeLine nextKeyFrame];
+    KJKeyFrame *currentKF = [currentTimeLine currentKeyFrame];
+    KJKeyFrame *nextKF = [currentTimeLine nextKeyFrame];
     
     [self setSpriteFrameName:[currentKF frame]];
     
@@ -108,7 +108,7 @@ NSString *const kjPartShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
     for (NSString *timeLineName in [animationsDictionary allKeys]) {
         
         NSDictionary *timeLineDictionary = [animationsDictionary objectForKey:timeLineName];
-        TimeLine *tl = [TimeLine timeLineWithDictionary:timeLineDictionary];
+        KJTimeLine *tl = [KJTimeLine timeLineWithDictionary:timeLineDictionary];
         
         [timeLines setObject:tl forKey:timeLineName];
         
