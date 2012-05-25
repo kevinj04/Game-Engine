@@ -35,6 +35,7 @@
 - (void) dealloc;
 
 - (void) setLevel:(Level *) l;
+- (void) levelChanged;
 
 - (void) update:(double) dt;
 

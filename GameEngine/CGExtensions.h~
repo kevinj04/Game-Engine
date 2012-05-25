@@ -15,7 +15,11 @@
 static inline CGPoint
 ccpInRect(const CGRect r)
 {
+<<<<<<< HEAD
+    return CGPointMake(r.origin.x + arc4random() % (int) r.size.width, r.origin.y + arc4random() % (int) r.size.height);
+=======
     return CGPointMake((float)(r.origin.x + arc4random() % (int) r.size.width), (float)(r.origin.y + arc4random() % (int) r.size.height));
+>>>>>>> a7a26b569da2c59ed33336018efb38a92e7a3584
 }
 
 #endif
