@@ -78,8 +78,6 @@ NSString *const kjAlwaysActive = @"alwaysActive";
     
     [self setup];
     
-    NSLog(@"Dictionary: %@", dictionary);
-    
     if ([dictionary objectForKey:kjParentId] != nil) {
         self.parentId = [[dictionary objectForKey:kjParentId] retain];
     }
