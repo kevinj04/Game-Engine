@@ -88,7 +88,7 @@ static int kjModuleIdTag;
 }
 - (void) setupWithGameObject:(KJCommonGameObject *) obj {
     
-    parent = [obj retain];
+    [self setParent:[obj retain]];
     
     if ([moduleId hasSuffix:modAtSuffix]) {
         moduleId = [[moduleId stringByReplacingOccurrencesOfString:modAtSuffix withString:[NSString stringWithFormat:@"%@", [parent objectId]]] retain];
