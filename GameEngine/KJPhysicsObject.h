@@ -27,49 +27,24 @@ extern NSString *const kjSizeChange;
 
 @interface KJPhysicsObject : KJGameObject {
     
-    CGPoint position;
-    CGPoint velocity;
-    CGPoint acceleration;
-    CGPoint centerOfMass;
-    CGPoint anchorPoint;
-    
-    CGPoint force;
-    
-    CGRect boundingBox;
-    CGSize size;
-    
-    float mass;
-    float rotation;   
-    
-    @private 
-    float dampingValue;
-    float minimumVelocity;
 }
 
+@property (nonatomic, assign) CGPoint position;
+@property (nonatomic, assign) CGPoint velocity;
+@property (nonatomic, assign) CGPoint acceleration;
+@property (nonatomic, assign) CGPoint centerOfMass;
+@property (nonatomic, assign) CGPoint anchorPoint;
 
-// getters / setters
-- (CGPoint) position;
-- (CGPoint) velocity;
-- (CGPoint) acceleration;
-- (CGPoint) centerOfMass;
-- (CGPoint) force;
-- (float) mass;
-- (CGSize) size;
-- (CGRect) boundingBox;
-- (CGPoint) anchorPoint;
-- (float) rotation;
+@property (nonatomic, assign) CGPoint force;
 
-- (void) setPosition:(CGPoint) p;
-- (void) setVelocity:(CGPoint) v;
-- (void) setAcceleration:(CGPoint) a;
-- (void) setCenterOfMass:(CGPoint) com;
-- (void) setForce:(CGPoint) f;
-- (void) setMass:(float) m;
-- (void) setSize:(CGSize) s;
-- (void) setBoundingBox:(CGRect) r;
-- (void) setAnchorPoint:(CGPoint) ap;
-- (void) setRotation:(float) r;
+@property (nonatomic, assign) CGRect boundingBox;
+@property (nonatomic, assign) CGSize size;
 
+@property (nonatomic, assign) float mass;
+@property (nonatomic, assign) float rotation;
+
+@property (nonatomic, assign) float dampingValue;
+@property (nonatomic, assign) float minimumVelocity;
 
 // Physics Applications
 - (void) applyImpulse:(CGPoint) p;
