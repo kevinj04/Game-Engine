@@ -14,22 +14,15 @@ extern NSString *const kjObjectDeactivated;
 
 @interface KJObjectManager : NSObject {
     
-    NSMutableSet *activeObjects;
-    NSMutableSet *inactiveObjects;
-    NSMutableSet *alwaysActiveObjects;
-    NSMutableSet *impendingObjectsToActivate;
-    NSMutableSet *impendingObjectsToDeactivate;
-    
-    KJLevel *currentLevel;    
 }
 
+@property (nonatomic, retain) KJLevel *currentLevel;
 @property (nonatomic, retain) NSMutableSet *activeObjects;
 @property (nonatomic, retain) NSMutableSet *inactiveObjects;
 @property (nonatomic, retain) NSMutableSet *alwaysActiveObjects;
 @property (nonatomic, retain) NSMutableSet *impendingObjectsToActivate;
 @property (nonatomic, retain) NSMutableSet *impendingObjectsToDeactivate;
 
-- (id) init;
 + (id) manager;
 - (void) setup;
 
@@ -50,6 +43,7 @@ extern NSString *const kjObjectDeactivated;
 - (KJLevel *) currentLevel;
 - (void) levelChanged;
 - (void) unloadCurrentLevel;
+
 - (NSSet *) allObjects;
 
 @end
