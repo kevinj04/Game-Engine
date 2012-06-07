@@ -117,7 +117,7 @@ NSString *const kjAlwaysActive = @"alwaysActive";
 
 #pragma mark Tick Method
 - (void) update:(double) dt {
-    
+
 }
 #pragma mark -
 

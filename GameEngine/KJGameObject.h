@@ -13,7 +13,6 @@
 
 @class KJLayer;
 
-
 extern NSString *const kjParentId;
 extern NSString *const kjObjectType;
 extern NSString *const kjObjectId;
@@ -34,14 +33,12 @@ extern NSString *const kjSelected;
 @property (nonatomic, assign) bool isActive;
 @property (nonatomic, assign) bool isAlwaysActive;
 
-- (id) init;
 + (id) object;
 - (void) setup;
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) objectWithDictionary:(NSDictionary *) dictionary;
 - (void) setupWithDictionary:(NSDictionary *)dictionary;
 - (void) registerNotifications;
-- (void) dealloc;
 
 - (void) update:(double) dt;
 
