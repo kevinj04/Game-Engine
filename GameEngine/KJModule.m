@@ -18,11 +18,13 @@ NSString *const modAnimationRequest = @"animationRequest";
 
 static int kjModuleIdTag;
 
-@implementation KJModule 
-@synthesize moduleName, moduleId;
-#pragma mark -
+@implementation KJModule
 
-#pragma mark Initialization Methods
+@synthesize parent = _parent;
+@synthesize moduleName = _moduleName;
+@synthesize moduleId = _moduleId;
+
+#pragma mark - Initialization Methods
 +(void) initialize {
     kjModuleIdTag = 0;
     [super initialize];
@@ -30,105 +32,94 @@ static int kjModuleIdTag;
 +(int) kjModuleIdTag {
     return kjModuleIdTag++;
 }
-- (id) init 
+- (id) init
 {
-    
-    if ((self = [super init] )) 
-    {
-        
-        [self setup];
-        return self;
-        
-    }
-    return nil;
+    self = [super init];
+    if (self) { [self setup]; }
+    return self;
 }
-- (id) initWithDictionary:(NSDictionary *) dictionary {
-    
-    if (( self = [super init] )) {
-        
+- (id) initWithDictionary:(NSDictionary *) dictionary
+{
+    self = [super init];
+    if (self)
+    {
         [self setup];
         [self setupWithDictionary:dictionary];
-        return self;
-        
     }
-    return nil;
+    return self;
 }
-+ (id) module {
++ (id) module
+{
     return [[[KJModule alloc] init] autorelease];
 }
-+ (id) moduleWithDictionary:(NSDictionary *) dictionary {
++ (id) moduleWithDictionary:(NSDictionary *) dictionary
+{
     return [[[KJModule alloc] initWithDictionary:dictionary] autorelease];
 }
-- (void) setup {
-    // Subclass me.
-    
+- (void) setup
+{
+    // TODO: Rethink this logic
     // Allows the parent to listen to animation requests from all KJModules.
-    [[NSNotificationCenter defaultCenter] addObserver:(KJGraphicalObject *)parent 
+    [[NSNotificationCenter defaultCenter] addObserver:(KJGraphicalObject *)self.parent 
                                              selector:@selector(handleAnimationRequest:) 
                                                  name:modAnimationRequest 
                                                object:self];
 }
-- (void) setupWithDictionary:(NSDictionary *) dictionary {
-    // Subclass me.
-    
-    moduleName = [[NSString stringWithFormat:@"defaultModule"] retain];
-    moduleId = [[NSString stringWithFormat:@"defaultId"] retain];
+- (void) setupWithDictionary:(NSDictionary *) dictionary
+{
+    self.moduleName = [[NSString stringWithFormat:@"defaultModule"] retain];
+    self.moduleId = [[NSString stringWithFormat:@"defaultId"] retain];
 
     if ([dictionary objectForKey:modClass] != nil) {
-        moduleName = [[dictionary objectForKey:modClass] retain];
+        self.moduleName = [[dictionary objectForKey:modClass] retain];
     }    
     
     if ([dictionary objectForKey:modId] != nil) {
-        moduleId = [[dictionary objectForKey:modId] retain];
+        self.moduleId = [[dictionary objectForKey:modId] retain];
         
-        if ([moduleId hasSuffix:modHashSuffix]) {
-            moduleId = [[moduleId stringByReplacingOccurrencesOfString:modHashSuffix withString:[NSString stringWithFormat:@"%i", kjModuleIdTag++]] retain];
+        if ([self.moduleId hasSuffix:modHashSuffix]) {
+            self.moduleId = [[self.moduleId stringByReplacingOccurrencesOfString:modHashSuffix withString:[NSString stringWithFormat:@"%i", kjModuleIdTag++]] retain];
         }
     }
 }
-- (void) setupWithGameObject:(KJCommonGameObject *) obj {
-    
-    [self setParent:[obj retain]];
-    
-    if ([moduleId hasSuffix:modAtSuffix]) {
-        moduleId = [[moduleId stringByReplacingOccurrencesOfString:modAtSuffix withString:[NSString stringWithFormat:@"%@", [parent objectId]]] retain];
+- (void) setupWithGameObject:(KJCommonGameObject *) obj
+{
+    self.parent = [obj retain];
+
+    if ([self.moduleId hasSuffix:modAtSuffix]) {
+        self.moduleId = [[self.moduleId stringByReplacingOccurrencesOfString:modAtSuffix withString:[NSString stringWithFormat:@"%@", [self.parent objectId]]] retain];
     }
-    
-    // subclass me.
 }
-- (void) dealloc {
-    
+- (void) dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    if (parent != nil) { [parent release]; parent = nil; }
-    
+    if (self.parent != nil) { [self.parent release]; self.parent = nil; }    
     [super dealloc];
 }
-#pragma mark -
 
-#pragma mark Tick Update
-- (void) update:(double) dt {
-    
+#pragma mark - Update
+- (void) update:(double) dt
+{
     // Game logic goes here, subclass KJModule and attach modules to KJCommonGameObjects. Modules can reference their parents to adjust properties.
-    
 }
-#pragma mark -
 
-#pragma mark Setters and Getters
-- (void) setParent:(KJCommonGameObject *) p {
-    if (parent != nil) { [parent release]; parent = nil; }
+#pragma mark - Setters and Getters
+- (void) setParent:(KJCommonGameObject *) p
+{
+    if (self.parent != nil) { [self.parent release]; self.parent = nil; }
     if (p == nil) return;
-    parent = [p retain];
+    self.parent = [p retain];
 }
-- (KJCommonGameObject *) parent {
-    return parent;
+- (KJCommonGameObject *) parent
+{
+    return self.parent;
 }
-- (void) setLayer:(KJLayer *)l 
+- (void) setLayer:(KJLayer *)l
 {
     // override to handle this...
 }
-#pragma mark -
 
+#pragma mark - Clean Up
 - (void) detach {
     // override this to remove all components from any connections so that this deallocates nicely.
 }
