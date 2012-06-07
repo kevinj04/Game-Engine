@@ -23,37 +23,19 @@ extern NSString *const kjTargetPart;
 @interface KJGraphicalObject : KJPhysicsObject<KJGraphical> 
 {
     
-    float scaleX;
-    float scaleY;
-    
-    float vertexZ;
-    int zOrder;
-    
-    bool visible;
-    
-    bool flipX;
-    bool flipY;
-    
-    bool shouldIgnoreBatchNodeUpdate; // maybe this is handled in a subclass
-    
-    double animationSpeed;
-    
-    NSDictionary *parts;
-    NSString *primaryPart;
-    
 }
 
-@property float scaleX;
-@property float scaleY;
-@property float vertexZ;
-@property int zOrder;
+@property (nonatomic, assign) float scaleX;
+@property (nonatomic, assign) float scaleY;
+@property (nonatomic, assign) float vertexZ;
+@property (nonatomic, assign) int zOrder;
 
-@property bool visible;
-@property bool flipX;
-@property bool flipY;
-@property bool shouldIgnoreBatchNodeUpdate;
+@property (nonatomic, assign) bool visible;
+@property (nonatomic, assign) bool flipX;
+@property (nonatomic, assign) bool flipY;
+@property (nonatomic, assign) bool shouldIgnoreBatchNodeUpdate;
 
-@property double animationSpeed;
+@property (nonatomic, assign) double animationSpeed;
 
 @property (nonatomic, retain) NSDictionary *parts;
 @property (nonatomic, retain) NSString *primaryPart;
@@ -76,7 +58,7 @@ extern NSString *const kjTargetPart;
 - (void) setScaleX:(float) sx;
 - (void) setScaleY:(float) sy;
 
-- (CGPoint) primaryPartOffset; // Can we kill this?
+- (CGPoint) primaryPartOffset;
 
 - (void) detachParts;
 

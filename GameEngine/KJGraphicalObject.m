@@ -22,19 +22,23 @@ NSString *const kjTargetPart = @"targetPart";
 
 @implementation KJGraphicalObject
 
-@synthesize scaleX, scaleY, animationSpeed, vertexZ, zOrder, visible, flipX, flipY, shouldIgnoreBatchNodeUpdate,
-primaryPart, parts;
+@synthesize scaleX = _scaleX;
+@synthesize scaleY = _scaleY;
+@synthesize animationSpeed = _animationSpeed;
+@synthesize vertexZ = _vertexZ;
+@synthesize zOrder = _zOrder;
+@synthesize visible = _visible;
+@synthesize flipX = _flipX;
+@synthesize flipY = _flipY;
+@synthesize shouldIgnoreBatchNodeUpdate = _shouldIgnoreBatchNodeUpdate;
+@synthesize primaryPart = _primaryPart;
+@synthesize parts = _parts;
 
+#pragma mark - Initialization
 - (id) init 
 {
-    
-    if (( self = [super init] )) 
-    {
-        return self;
-    } 
-    
-    return nil;
-    
+    self = [super init];
+    return self;
 }
 + (id) object 
 {
@@ -42,32 +46,29 @@ primaryPart, parts;
 }
 - (void) setup 
 {
+    self.scaleX = 1.0;
+    self.scaleY = 1.0;
     
-    scaleX = 1.0;
-    scaleY = 1.0;
+    self.animationSpeed = 1.0;
+    self.vertexZ = 0.0;
+    self.zOrder = 0;
     
-    animationSpeed = 1.0;   
-    vertexZ = 0.0;
-    zOrder = 0;
+    self.visible = YES;
     
-    visible = YES;
+    self.flipX = NO;
+    self.flipY = NO;
     
-    flipX = NO;
-    flipY = NO;
+    self.primaryPart = [[NSString stringWithFormat:@""] retain];
     
-    primaryPart = [[NSString stringWithFormat:@""] retain];
-    parts = [[NSDictionary dictionary] retain]; // empty, only mutable through setupGraphicsWithDictionary method.
+    // empty, only mutable through setupGraphicsWithDictionary method.
+    self.parts = [[NSDictionary dictionary] retain];
     
     [super setup];
-    
 }
 - (id) initWithDictionary:(NSDictionary *) dictionary 
 {
-    if (( self = [super initWithDictionary:dictionary])) 
-    {
-        return self;
-    }
-    return nil;
+    self = [super initWithDictionary:dictionary];
+    return self;
 }
 + (id) objectWithDictionary:(NSDictionary *) dictionary 
 {
@@ -75,23 +76,20 @@ primaryPart, parts;
 }
 - (void) setupWithDictionary:(NSDictionary *)dictionary 
 {
-    
     [super setupWithDictionary:dictionary];
     
     NSDictionary *params;
     if ((params = [dictionary objectForKey:kjParameters])) {
         
         if ([params objectForKey:kjVertexZ] != nil) {
-            vertexZ = [[dictionary objectForKey:kjVertexZ] floatValue];
+            self.vertexZ = [[dictionary objectForKey:kjVertexZ] floatValue];
         }
         
         if ([params objectForKey:kjZOrder] != nil) {
-            zOrder = [[dictionary objectForKey:kjZOrder] intValue];
+            self.zOrder = [[dictionary objectForKey:kjZOrder] intValue];
         }
     }
-    
 }
-
 - (void) handleAnimationNotification:(NSNotification *) notification {
     
     NSString *animationRequest;
@@ -106,58 +104,44 @@ primaryPart, parts;
         
         [self runAnimation:animationRequest];
     }
-    
-}
-
-- (void) registerNotifications 
-{
-    [super registerNotifications];
 }
 - (void) dealloc 
 {
-    
-    if (parts != nil) { [parts release]; parts = nil; }
-    if (primaryPart != nil) { [primaryPart release]; primaryPart = nil; }
+    if (self.parts != nil) { [self.parts release]; self.parts = nil; }
+    if (self.primaryPart != nil) { [self.primaryPart release]; self.primaryPart = nil; }
     
     [super dealloc];
 }
-#pragma mark -
 
-
-#pragma mark Tick Method
+#pragma mark - Update Method
 - (void) update:(double) dt 
 {
-    
     [super update:dt];
     
-    for (KJGraphicsPart *part in [parts allValues]) 
+    for (KJGraphicsPart *part in [self.parts allValues])
     {
-        [part update:dt*animationSpeed];
+        [part update:dt*self.animationSpeed];
     }
-    
 }
-#pragma mark -
 
-
-#pragma mark Animation Methods
-
+#pragma mark - Animation Methods
 - (void) setupGraphicsWithDictionary:(NSDictionary *) animationDictionary 
 {
     if ([animationDictionary objectForKey:kjBody] != nil) {
-        primaryPart = [[animationDictionary objectForKey:kjBody] retain];
+        self.primaryPart = [[animationDictionary objectForKey:kjBody] retain];
     }
     
-    shouldIgnoreBatchNodeUpdate = NO;
+    self.shouldIgnoreBatchNodeUpdate = NO;
     if ([animationDictionary objectForKey:kjShouldIgnoreBatchNodeUpdate] != nil) {
-        shouldIgnoreBatchNodeUpdate = [[animationDictionary objectForKey:kjShouldIgnoreBatchNodeUpdate] boolValue];
+        self.shouldIgnoreBatchNodeUpdate = [[animationDictionary objectForKey:kjShouldIgnoreBatchNodeUpdate] boolValue];
     }
     
     if ([animationDictionary objectForKey:kjZOrder] != nil) {
-        zOrder = [[animationDictionary objectForKey:kjZOrder] intValue];
+        self.zOrder = [[animationDictionary objectForKey:kjZOrder] intValue];
     }
     
     if ([animationDictionary objectForKey:kjVertexZ] != nil) {
-        vertexZ = [[animationDictionary objectForKey:kjVertexZ] floatValue];
+        self.vertexZ = [[animationDictionary objectForKey:kjVertexZ] floatValue];
     }
     
     NSDictionary *partsDictionary;
@@ -173,94 +157,77 @@ primaryPart, parts;
             [tempParts setObject:part forKey:partName];
         }
         
-        parts = [[NSDictionary alloc] initWithDictionary:tempParts];
+        self.parts = [[NSDictionary alloc] initWithDictionary:tempParts];
         
     } else {
-        parts = [[NSDictionary alloc] init];
+        self.parts = [[NSDictionary alloc] init];
     }
 }
 
 - (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName 
 {
-    
-    if ([parts objectForKey:partName] != nil) 
+    if ([self.parts objectForKey:partName] != nil) 
     {
-        [[parts objectForKey:partName] runAnimation:animationName];        
+        [[self.parts objectForKey:partName] runAnimation:animationName];        
     }
 }
 - (void) runAnimation:(NSString *) animationName 
 {
-    
-    for (KJGraphicsPart *part in [parts allValues]) 
+    for (KJGraphicsPart *part in [self.parts allValues]) 
     {
         [part runAnimation:animationName];
     }
 }
-#pragma mark -
 
-#pragma mark Part Modifiers
+#pragma mark - Part Modifiers
 /** These are access methods to individual parts which can set a 'master' value. This value is applied relatively to the value stored in this instance. Ex: If the main sprite has flipX = YES, then all the parts will flip along the x-axis. If one part has a master value of flipX = YES (default would be no), then it will be flipped twice, unflipping the sprite. **/
-
-- (void) setPosition:(CGPoint) p forPart:(NSString *) partName {
-    
-    if ([parts objectForKey:partName] == nil) return;
-    
-    [[parts objectForKey:partName] setMasterPosition:p];
+- (void) setPosition:(CGPoint) p forPart:(NSString *) partName
+{
+    if ([self.parts objectForKey:partName] == nil) return;
+    [[self.parts objectForKey:partName] setMasterPosition:p];
 }
-- (void) setFlipX:(bool) b forPart:(NSString *) partName {
-    
-    if ([parts objectForKey:partName] == nil) return;
-    
-    [[parts objectForKey:partName] setMasterFlipX:b];
+- (void) setFlipX:(bool) b forPart:(NSString *) partName
+{
+    if ([self.parts objectForKey:partName] == nil) return;
+    [[self.parts objectForKey:partName] setMasterFlipX:b];
 }
-- (void) setFlipY:(bool) b forPart:(NSString *) partName {
-    
-    if ([parts objectForKey:partName] == nil) return;
-    
-    [[parts objectForKey:partName] setMasterFlipY:b];
+- (void) setFlipY:(bool) b forPart:(NSString *) partName
+{
+    if ([self.parts objectForKey:partName] == nil) return;
+    [[self.parts objectForKey:partName] setMasterFlipY:b];
 }
-
-- (void) setRotation:(float)r forPart:(NSString *) partName {    
-    
-    if ([parts objectForKey:partName] == nil) return;
-    
-    [[parts objectForKey:partName] setMasterRotation:r];
-    
+- (void) setRotation:(float)r forPart:(NSString *) partName
+{
+    if ([self.parts objectForKey:partName] == nil) return;
+    [[self.parts objectForKey:partName] setMasterRotation:r];
 }
-- (void) setScaleX:(float) f forPart:(NSString *) partName {
-    if ([parts objectForKey:partName] == nil) return;
-    
-    [[parts objectForKey:partName] setMasterScaleX:f];
+- (void) setScaleX:(float) f forPart:(NSString *) partName
+{
+    if ([self.parts objectForKey:partName] == nil) return;
+    [[self.parts objectForKey:partName] setMasterScaleX:f];
 }
-- (void) setScaleY:(float) f forPart:(NSString *) partName {
-    if ([parts objectForKey:partName] == nil) return;
-    
-    [[parts objectForKey:partName] setMasterScaleY:f];
+- (void) setScaleY:(float) f forPart:(NSString *) partName
+{
+    if ([self.parts objectForKey:partName] == nil) return;
+    [[self.parts objectForKey:partName] setMasterScaleY:f];
 }
-
-- (void) setIsActive:(bool)b {
-    [self setVisible:b];
+- (void) setIsActive:(bool)b
+{
     [super setIsActive:b];
 }
-#pragma mark -
-
-- (void) detachParts {
-    
-    for (KJGraphicsPart *p in [parts allValues]) {
-        
+- (void) detachParts
+{
+    for (KJGraphicsPart *p in [self.parts allValues])
+    {
         [p setParent:nil];
-        
     }
-    
 }
 
-#pragma mark Position Modifiers
-- (CGPoint) primaryPartOffset { 
-    if ([primaryPart isEqualToString:[NSString stringWithFormat:@""]]) return CGPointMake(0.0, 0.0);
-    
-    return [[parts objectForKey:primaryPart] frameOffset];
+#pragma mark - Position Modifiers
+- (CGPoint) primaryPartOffset
+{
+    if ([self.primaryPart isEqualToString:[NSString stringWithFormat:@""]]) return CGPointMake(0.0, 0.0);
+    return [[self.parts objectForKey:self.primaryPart] frameOffset];
 }
-#pragma mark -
-
 
 @end
