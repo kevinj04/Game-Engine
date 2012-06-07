@@ -14,91 +14,74 @@ NSString *const kjModuleList = @"modules";
 
 @implementation KJCommonGameObject
 
-@synthesize modules;
+@synthesize modules = _modules;
 
-#pragma mark -
-#pragma mark Initialization Methods
-- (id) init 
+#pragma mark - Initialization Methods
+- (id) init
 {
-    if (( self = [super init] )) 
-    {
-        
-        return self;
-        
-    }
-    
-    return nil;
+    self = [super init];
+    return self;
 }
-+ (id) object 
++ (id) object
 {
     return [[[KJCommonGameObject alloc] init] autorelease];
 }
-- (void) setup 
+- (void) setup
 {
     [super setup];
-    modules = [[NSMutableDictionary alloc] init];
+    self.modules = [[NSMutableDictionary alloc] init];
 }
-- (id) initWithDictionary:(NSDictionary *) dictionary 
+- (id) initWithDictionary:(NSDictionary *) dictionary
 {
-    
-    if (( self = [super initWithDictionary:dictionary] )) {
-        
-        return self;
-    }
+    self = [super initWithDictionary:dictionary];
     return nil;
 }
-+ (id) objectWithDictionary:(NSDictionary *) dictionary 
++ (id) objectWithDictionary:(NSDictionary *) dictionary
 {
     return [[[KJCommonGameObject alloc] initWithDictionary:dictionary] autorelease];
 }
-- (void) setupWithDictionary:(NSDictionary *)dictionary 
+- (void) setupWithDictionary:(NSDictionary *)dictionary
 {
     [super setupWithDictionary:dictionary];
 }
-- (void) setupModulesWithDictionary:(NSDictionary *) dictionary {
+- (void) setupModulesWithDictionary:(NSDictionary *) dictionary
+{
     // override this class, call after object is instantiated.
 }
-- (void) dealloc 
+- (void) dealloc
 {
-    
-    if ( modules != nil ) { [modules release]; modules = nil; }
-    
+    if ( self.modules != nil ) { [self.modules release]; self.modules = nil; }
     [super dealloc];
 }
-#pragma mark -
 
-
-- (void) detachAllModules {
-    
-    for (KJModule *mod in [modules allValues]) {
+#pragma mark - Clean up
+- (void) detachAllModules
+{
+    for (KJModule *mod in [self.modules allValues])
+    {
         [mod setParent:nil];
     }
-    
 }
 
-
-#pragma mark Tick Method
-- (void) update:(double) dt 
+#pragma mark - Update Method
+- (void) update:(double) dt
 {
-
-    for (KJModule *mod in [modules allValues]) 
+    for (KJModule *mod in [self.modules allValues])
     {
         [mod update:dt];
     }
     [super update:dt];
 }
 
+#pragma mark - Set Parent
 - (void) setParent:(KJLayer *)parent
 {
-    
     [super setParent:parent];
     
-    for (KJModule *module in [modules allValues]) 
+    for (KJModule *module in [self.modules allValues])
     {
         [module setLayer:parent];
     }
-    
-    
 }
 
 @end

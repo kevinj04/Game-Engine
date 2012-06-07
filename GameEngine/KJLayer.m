@@ -127,8 +127,8 @@ NSString *const moduleLayer = @"layer";
 
 - (KJModule *) layerModule 
 {
-    if ([modules objectForKey:moduleLayer] != nil) {
-        return [modules objectForKey:moduleLayer];
+    if ([self.modules objectForKey:moduleLayer] != nil) {
+        return [self.modules objectForKey:moduleLayer];
     }
     return nil;
 }

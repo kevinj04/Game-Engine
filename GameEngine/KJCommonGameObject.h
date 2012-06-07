@@ -16,8 +16,6 @@ extern NSString *const kjModuleList;
 
 @interface KJCommonGameObject : KJGraphicalObject {
     
-    NSMutableDictionary *modules;
-    
 }
 
 @property (nonatomic, retain) NSMutableDictionary *modules;
