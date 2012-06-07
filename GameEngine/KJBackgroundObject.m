@@ -13,55 +13,44 @@ NSString *const kjImage = @"image";
 
 @implementation KJBackgroundObject
 
-@synthesize backgroundFileName;
+@synthesize backgroundFileName = _backgroundFileName;
 
-#pragma mark -
-#pragma mark Initialization Methods
-- (id) initWithDictionary:(NSDictionary *) dictionary 
+#pragma mark - Initialization Methods
+- (id) initWithDictionary:(NSDictionary *) dictionary
 {
-    
-    if (( self = [super init] )) {
-        
+    self = [super init];
+
+    if (self)
+    {
         [self setupWithDictionary:dictionary];
-        return self;
     }
-    return nil;
+
+    return self;
 }
-+ (id) tileWithDictionary:(NSDictionary *) dictionary {
++ (id) tileWithDictionary:(NSDictionary *) dictionary
+{
     return [[[KJBackgroundObject alloc] initWithDictionary:dictionary] autorelease];
 }
-- (void) setupWithDictionary:(NSDictionary *) dictionary {
-    
+- (void) setupWithDictionary:(NSDictionary *) dictionary
+{
     [super setupWithDictionary:dictionary];
-    
+
     NSDictionary *params = [dictionary objectForKey:kjParameters];
-    
+
     if ([params objectForKey:kjImage] != nil) {
-        backgroundFileName = [[params objectForKey:kjImage] retain];
+        self.backgroundFileName = [[params objectForKey:kjImage] retain];
     } else {
         NSAssert(NO, @"Failed to load an image for this background object.");
     }
-    
-    position = CGPointMake(0.0, 0.0);
+
+    self.position = CGPointZero;
     if ([params objectForKey:kjParameters] != nil) {
-        position = [Universalizer scalePointForIPad:CGPointFromString([params objectForKey:kjObjectPosition])];
+        self.position = [Universalizer scalePointForIPad:CGPointFromString([params objectForKey:kjObjectPosition])];
     }
-    
-    
 }
 - (void) dealloc {
-    
-    if (backgroundFileName != nil) { [backgroundFileName release]; backgroundFileName = nil; }
-    
+    if (self.backgroundFileName != nil) { [self.backgroundFileName release]; self.backgroundFileName = nil; }
     [super dealloc];
-}
-#pragma mark -
-
-#pragma mark Tick Method
-- (void) update:(double) dt {
-    
-    
-    [super update:dt];
 }
 
 @end

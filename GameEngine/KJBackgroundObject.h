@@ -12,8 +12,6 @@ extern NSString *const kjImage;
 
 @interface KJBackgroundObject : KJGraphicalObject {
     
-    NSString *backgroundFileName;
-    
 }
 
 @property (nonatomic, retain) NSString *backgroundFileName;
