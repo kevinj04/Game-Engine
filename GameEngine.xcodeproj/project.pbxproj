@@ -1149,7 +1149,6 @@
 				0A21CEC31551891E00A88F92 /* kjEngine.h */,
 				0A745C241566DA1A003207C9 /* Cameras */,
 				0A745C231566DA10003207C9 /* Layers */,
-				0A745BF91566925E003207C9 /* Models */,
 				0A745BF315668E39003207C9 /* Controllers */,
 				0A21CEDE1551BAE600A88F92 /* Level */,
 				0A21CEB515517CBE00A88F92 /* Protocols */,
@@ -1169,13 +1168,6 @@
 				0A745C0615669585003207C9 /* KJControllers.h */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		0A745BF91566925E003207C9 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 		0A745BFF15669356003207C9 /* Goals */ = {

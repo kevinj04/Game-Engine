@@ -41,18 +41,6 @@ extern NSString *const eActiveWindowModified;
 
 @interface StackManager : NSObject {
     
-@private
-    CGRect window;
-    
-    SortedStack *leftStack;
-    SortedStack *rightStack;
-    SortedStack *upStack;
-    SortedStack *downStack;
-    
-    NSMutableSet *activeObjects; 
-    NSMutableSet *inactiveObjects;
-    
-    NSMutableSet *alwaysUpdate;
 }
 
 #pragma mark Initialization/Setup/Dealloc

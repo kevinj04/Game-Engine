@@ -16,6 +16,20 @@ NSString *const eCameraMovedUp = @"cameraMovedUp";
 NSString *const eCameraMovedDown = @"cameraMovedDown";
 NSString *const eActiveWindowModified = @"activeWindowModified";
 
+@interface StackManager ()
+
+@property (nonatomic, assign) CGRect window;
+
+@property (nonatomic, retain) SortedStack *leftStack;
+@property (nonatomic, retain) SortedStack *rightStack;
+@property (nonatomic, retain) SortedStack *upStack;
+@property (nonatomic, retain) SortedStack *downStack;
+
+@property (nonatomic, retain) NSMutableSet *activeObjects; 
+@property (nonatomic, retain) NSMutableSet *inactiveObjects;
+@property (nonatomic, retain) NSMutableSet *alwaysUpdate;
+
+@end
 
 @interface StackManager (private)
 - (void) sortElement:(NSObject<StackElementProtocol> *) elt;
@@ -30,6 +44,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 - (void) updateWithDownMovement:(NSNotification *) notification;
 
 - (void) updateActiveWindow:(NSNotification *) notification;
+
 @end
 
 @implementation StackManager (private)
@@ -37,13 +52,13 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     
     if ([self didMoveToLeftOrRightStack:elt] || [self didMoveToUpOrDownStack:elt]) {
         // There may be a problem here, check to make sure the above two functions only push the elt onto one stack.            
-        [inactiveObjects addObject:elt];
+        [self.inactiveObjects addObject:elt];
     } else {                
         
         // If we reach this point, the object must actually be in the rectangle still, activate it.
         // We may want to add a property in the element to handle cases where the object wants to destroy itself.
         [elt setActive:YES];
-        [activeObjects addObject:elt];
+        [self.activeObjects addObject:elt];
     }
     
 }
@@ -55,15 +70,15 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     float xRight = boundingBox.origin.x + boundingBox.size.width;
     float xLeft = boundingBox.origin.x;
     
-    if (xLeft > window.origin.x + window.size.width) {
+    if (xLeft > self.window.origin.x + self.window.size.width) {
         // add to up right
-        [rightStack push:elt];
+        [self.rightStack push:elt];
         return YES;
     }
     
-    if (xRight < window.origin.x) {
+    if (xRight < self.window.origin.x) {
         // add to down stack
-        [leftStack push:elt];
+        [self.leftStack push:elt];
         return YES;
     }
     
@@ -77,15 +92,15 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     float yHi = boundingBox.origin.y + boundingBox.size.height;
     float yLo = boundingBox.origin.y;
     
-    if (yLo > window.origin.y + window.size.height) {
+    if (yLo > self.window.origin.y + self.window.size.height) {
         // add to up stack
-        [upStack push:elt];
+        [self.upStack push:elt];
         return YES;
     }
     
-    if (yHi < window.origin.y) {
+    if (yHi < self.window.origin.y) {
         // add to down stack
-        [downStack push:elt];
+        [self.downStack push:elt];
         return YES;
     }
     
@@ -95,14 +110,14 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 - (void) updateWithLeftMovement:(NSNotification *) notification {
     // update left stack
     
-    NSSet *maybeActivate = [leftStack popSet];
+    NSSet *maybeActivate = [self.leftStack popSet];
     
     for (NSObject<StackElementProtocol> *elt in maybeActivate) {
         
         if (![self didMoveToUpOrDownStack:elt]) {
             [elt setActive:YES];
-            [activeObjects addObject:elt];
-            [inactiveObjects removeObject:elt];
+            [self.activeObjects addObject:elt];
+            [self.inactiveObjects removeObject:elt];
         }
         
     }
@@ -111,14 +126,14 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 - (void) updateWithRightMovement:(NSNotification *) notification {
     // update right stack
     
-    NSSet *maybeActivate = [rightStack popSet];
+    NSSet *maybeActivate = [self.rightStack popSet];
     
     for (NSObject<StackElementProtocol> *elt in maybeActivate) {
         
         if (![self didMoveToUpOrDownStack:elt]) {
             [elt setActive:YES];
-            [activeObjects addObject:elt];
-            [inactiveObjects removeObject:elt];
+            [self.activeObjects addObject:elt];
+            [self.inactiveObjects removeObject:elt];
         }
         
     }
@@ -126,14 +141,14 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 - (void) updateWithUpMovement:(NSNotification *) notification {
     // update up stack
     
-    NSSet *maybeActivate = [upStack popSet];
+    NSSet *maybeActivate = [self.upStack popSet];
     
     for (NSObject<StackElementProtocol> *elt in maybeActivate) {
         
         if (![self didMoveToLeftOrRightStack:elt]) {
             [elt setActive:YES];
-            [activeObjects addObject:elt];
-            [inactiveObjects removeObject:elt];
+            [self.activeObjects addObject:elt];
+            [self.inactiveObjects removeObject:elt];
         }
         
     }
@@ -141,14 +156,14 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 - (void) updateWithDownMovement:(NSNotification *) notification {
     // update down stack
     
-    NSSet *maybeActivate = [downStack popSet];
+    NSSet *maybeActivate = [self.downStack popSet];
     
     for (NSObject<StackElementProtocol> *elt in maybeActivate) {
         
         if (![self didMoveToLeftOrRightStack:elt]) {
             [elt setActive:YES];
-            [activeObjects addObject:elt];
-            [inactiveObjects removeObject:elt];
+            [self.activeObjects addObject:elt];
+            [self.inactiveObjects removeObject:elt];
         }
         
     }
@@ -162,12 +177,23 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 
 @implementation StackManager
 
+@synthesize window = _window;
+
+@synthesize leftStack = _leftStack;
+@synthesize rightStack = _rightStack;
+@synthesize upStack = _upStack;
+@synthesize downStack = _downStack;
+
+@synthesize activeObjects = _activeObjects;
+@synthesize inactiveObjects = _inactiveObjects;
+@synthesize alwaysUpdate = _alwaysUpdate;
+
 #pragma mark Initialization/Setup/Dealloc
 - (id) initWithWindow:(CGRect) rect {
     
     if (( self = [super init] )) {
         
-        window = rect;
+        self.window = rect;
         
         [self setup];
         
@@ -191,14 +217,14 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
      alwaysUpdate = [[NSMutableSet alloc] initWithCapacity:100];
      */
     
-    activeObjects = [[NSMutableSet alloc] initWithCapacity:1000];
-    inactiveObjects = [[NSMutableSet alloc] initWithCapacity:1000];
-    alwaysUpdate = [[NSMutableSet alloc] initWithCapacity:1000];
+    self.activeObjects = [[NSMutableSet alloc] initWithCapacity:1000];
+    self.inactiveObjects = [[NSMutableSet alloc] initWithCapacity:1000];
+    self.alwaysUpdate = [[NSMutableSet alloc] initWithCapacity:1000];
     
-    leftStack = [[SortedStack alloc] initWithDirection:ssdLeft andWindow:window];
-    rightStack = [[SortedStack alloc] initWithDirection:ssdRight andWindow:window];
-    upStack = [[SortedStack alloc] initWithDirection:ssdUp andWindow:window];
-    downStack = [[SortedStack alloc] initWithDirection:ssdDown andWindow:window];
+    self.leftStack = [[SortedStack alloc] initWithDirection:ssdLeft andWindow:self.window];
+    self.rightStack = [[SortedStack alloc] initWithDirection:ssdRight andWindow:self.window];
+    self.upStack = [[SortedStack alloc] initWithDirection:ssdUp andWindow:self.window];
+    self.downStack = [[SortedStack alloc] initWithDirection:ssdDown andWindow:self.window];
     
     // listen for notifications on cameraMovements (left, right, up, down)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWithLeftMovement:) name:eCameraMovedLeft object:nil];
@@ -210,34 +236,34 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateActiveWindow:) name:eActiveWindowModified object:nil];
 }
 - (void) setWindow:(CGRect) rect {
-    window = rect;
-    [leftStack setWindow:window];
-    [rightStack setWindow:window];
-    [upStack setWindow:window];
-    [downStack setWindow:window];
+    self.window = rect;
+    [self.leftStack setWindow:self.window];
+    [self.rightStack setWindow:self.window];
+    [self.upStack setWindow:self.window];
+    [self.downStack setWindow:self.window];
 }
 - (void) reset {
-    [activeObjects removeAllObjects];
-    [inactiveObjects removeAllObjects];
+    [self.activeObjects removeAllObjects];
+    [self.inactiveObjects removeAllObjects];
     
-    [alwaysUpdate removeAllObjects];
+    [self.alwaysUpdate removeAllObjects];
     
-    [leftStack reset];
-    [rightStack reset];
-    [upStack reset];
-    [downStack reset];
+    [self.leftStack reset];
+    [self.rightStack reset];
+    [self.upStack reset];
+    [self.downStack reset];
 }
 - (void) dealloc {
     
-    [activeObjects release];
-    [inactiveObjects release];
+    [self.activeObjects release];
+    [self.inactiveObjects release];
     
-    [alwaysUpdate release];
+    [self.alwaysUpdate release];
     
-    [leftStack release];
-    [rightStack release];
-    [upStack release];
-    [downStack release];
+    [self.leftStack release];
+    [self.rightStack release];
+    [self.upStack release];
+    [self.downStack release];
     
     [super dealloc];
 }
@@ -259,7 +285,7 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
     
 }
 - (void) addAlwaysUpdatingElements:(NSSet *) elementSet {    
-    [alwaysUpdate unionSet:elementSet];
+    [self.alwaysUpdate unionSet:elementSet];
 }
 #pragma mark -
 
@@ -267,26 +293,26 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 - (void) updateWithTime:(ccTime) dt {
     
     // update all active game elements
-    for (NSObject<StackElementProtocol> *elt in activeObjects) {
+    for (NSObject<StackElementProtocol> *elt in self.activeObjects) {
         if ([elt respondsToSelector:@selector(updateWithTime:)]) {
             NSLog(@"Updating %@ at %@", elt, NSStringFromCGPoint([elt position]));
             [elt update:dt];
             
             if (![elt isActive]) {
                 // element has deactivated itself
-                [activeObjects removeObject:elt];
+                [self.activeObjects removeObject:elt];
                 [self sortElement:elt];
                 
             }
         }
     }
     
-    for (NSObject<StackElementProtocol> *elt in inactiveObjects) {
+    for (NSObject<StackElementProtocol> *elt in self.inactiveObjects) {
         NSLog(@"Inactive: %@ at %@", elt, NSStringFromCGPoint([elt position]));
     }
     
     // update all elements in the always active set
-    for (NSObject<StackElementProtocol> *elt in alwaysUpdate) {
+    for (NSObject<StackElementProtocol> *elt in self.alwaysUpdate) {
         [elt update:dt];
     }
     
@@ -297,13 +323,13 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 - (int) objectsInStack:(sortedStackDirection) d {
     switch (d) {
         case ssdLeft:
-            return [leftStack count];
+            return [self.leftStack count];
         case ssdUp:
-            return [upStack count];            
+            return [self.upStack count];            
         case ssdRight:
-            return [rightStack count];
+            return [self.rightStack count];
         case ssdDown:
-            return [downStack count];
+            return [self.downStack count];
         default:
             return 0;            
     }
