@@ -46,7 +46,7 @@ NSString *const kjRetryLevelNotification = @"retryLevel";
     self = [super init];
     if (self) {
         
-        self.loader = [[KJLevelLoader loader] retain];
+        self.loader = [KJLevelLoader loader];
         
         [self registerNotifications];
         
@@ -69,7 +69,7 @@ NSString *const kjRetryLevelNotification = @"retryLevel";
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    if (self.loader != nil) { [self.loader release]; self.loader = nil; }
+    if (self.loader != nil) { [_loader release]; self.loader = nil; }
     
     [super dealloc];
 }

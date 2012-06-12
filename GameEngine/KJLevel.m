@@ -79,8 +79,8 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
     self.activeWindow = CGRectZero;
     
     NSDictionary *d = [dictionary objectForKey:kjLevelInfo];
-    self.name = [[d objectForKey:kjLevelName] retain];
-    self.backgroundMusic = [[d objectForKey:kjLevelBGMusic] retain];
+    self.name = [d objectForKey:kjLevelName];
+    self.backgroundMusic = [d objectForKey:kjLevelBGMusic];
     self.activeWindow = CGRectFromString([d objectForKey:kjLevelActiveWindow]);
     
     imageResources = [[[dictionary objectForKey:kjLevelResources] objectForKey:kjLevelGraphics] retain];
@@ -90,9 +90,9 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
     self.activeCamera = nil;
     self.defaultLayer = nil;
     
-    self.objectDictionary = [[NSMutableDictionary alloc] initWithCapacity:1000];    
-    self.layerDictionary  = [[NSMutableDictionary alloc] initWithCapacity:20];
-    self.cameraDictionary  = [[NSMutableDictionary alloc] initWithCapacity:20];
+    self.objectDictionary = [NSMutableDictionary dictionaryWithCapacity:1000];    
+    self.layerDictionary  = [NSMutableDictionary dictionaryWithCapacity:20];
+    self.cameraDictionary  = [NSMutableDictionary dictionaryWithCapacity:20];
 }
 - (void) registerNotifications
 {
@@ -102,12 +102,12 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    if (self.name != nil) { [self.name release]; self.name = nil; }
-    if (self.backgroundMusic != nil) { [self.backgroundMusic release]; self.name = nil; }
+    if (self.name != nil) { [_name release]; self.name = nil; }
+    if (self.backgroundMusic != nil) { [_backgroundMusic release]; self.name = nil; }
     
-    if (self.layerDictionary != nil) { [self.layerDictionary release]; self.layerDictionary = nil; }
-    if (self.objectDictionary != nil) { [self.objectDictionary release]; self.objectDictionary = nil; }
-    if (self.cameraDictionary != nil) { [self.cameraDictionary release]; self.cameraDictionary = nil; }
+    if (self.layerDictionary != nil) { [_layerDictionary release]; self.layerDictionary = nil; }
+    if (self.objectDictionary != nil) { [_objectDictionary release]; self.objectDictionary = nil; }
+    if (self.cameraDictionary != nil) { [_cameraDictionary release]; self.cameraDictionary = nil; }
     
     [super dealloc];
 }
@@ -146,9 +146,9 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 {
     // override if needed
     
-    KJLayer *layer = [[KJLayer layer] retain];
-    layer.objectId = [[NSString stringWithFormat:@"defaultLayer"] retain];
-    layer.objectName = [[NSString stringWithFormat:@"defaultLayer"] retain];
+    KJLayer *layer = [KJLayer layer];
+    layer.objectId = [NSString stringWithFormat:@"defaultLayer"];
+    layer.objectName = [NSString stringWithFormat:@"defaultLayer"];
     layer.objectType = 4; // this is probably wrong
     [self setDefaultLayer:layer];
     return layer;
@@ -184,9 +184,9 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 {
     // override if needed
     
-    KJCamera *camera = [[KJCamera camera] retain];
-    camera.objectId = [[NSString stringWithFormat:@"defaultCamera"] retain];
-    camera.objectName = [[NSString stringWithFormat:@"defaultCamera"] retain];
+    KJCamera *camera = [KJCamera camera];
+    camera.objectId = [NSString stringWithFormat:@"defaultCamera"];
+    camera.objectName = [NSString stringWithFormat:@"defaultCamera"];
     camera.objectType = 3;
     [self setActiveCamera:camera];
     return camera;

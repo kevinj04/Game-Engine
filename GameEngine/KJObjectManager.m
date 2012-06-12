@@ -67,11 +67,11 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 {
     self.currentLevel = nil;
     
-    self.activeObjects = [[NSMutableSet alloc] initWithCapacity:1000];
-    self.inactiveObjects = [[NSMutableSet alloc] initWithCapacity:1000];
-    self.alwaysActiveObjects = [[NSMutableSet alloc] initWithCapacity:200];
-    self.impendingObjectsToActivate = [[NSMutableSet alloc] initWithCapacity:50];
-    self.impendingObjectsToDeactivate = [[NSMutableSet alloc] initWithCapacity:50];
+    self.activeObjects = [NSMutableSet setWithCapacity:1000];
+    self.inactiveObjects = [NSMutableSet setWithCapacity:1000];
+    self.alwaysActiveObjects = [NSMutableSet setWithCapacity:200];
+    self.impendingObjectsToActivate = [NSMutableSet setWithCapacity:50];
+    self.impendingObjectsToDeactivate = [NSMutableSet setWithCapacity:50];
 }
 - (id) initWithLevel:(KJLevel *) l
 {
@@ -93,12 +93,12 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 }
 - (void) dealloc
 {
-    if (self.currentLevel != nil) { [self.currentLevel release]; self.currentLevel = nil; }
-    if (self.activeObjects != nil) { [self.activeObjects release]; self.activeObjects = nil; }
-    if (self.alwaysActiveObjects != nil) { [self.alwaysActiveObjects release]; self.alwaysActiveObjects = nil; }
-    if (self.inactiveObjects != nil) { [self.inactiveObjects release]; self.inactiveObjects = nil; }
-    if (self.impendingObjectsToActivate != nil) { [self.impendingObjectsToActivate release]; self.impendingObjectsToActivate = nil; }
-    if (self.impendingObjectsToDeactivate != nil) { [self.impendingObjectsToDeactivate release]; self.impendingObjectsToDeactivate = nil; }
+    if (self.currentLevel != nil) { [_currentLevel release]; self.currentLevel = nil; }
+    if (self.activeObjects != nil) { [_activeObjects release]; self.activeObjects = nil; }
+    if (self.alwaysActiveObjects != nil) { [_alwaysActiveObjects release]; self.alwaysActiveObjects = nil; }
+    if (self.inactiveObjects != nil) { [_inactiveObjects release]; self.inactiveObjects = nil; }
+    if (self.impendingObjectsToActivate != nil) { [_impendingObjectsToActivate release]; self.impendingObjectsToActivate = nil; }
+    if (self.impendingObjectsToDeactivate != nil) { [_impendingObjectsToDeactivate release]; self.impendingObjectsToDeactivate = nil; }
     
     [super dealloc];
 }
@@ -138,14 +138,11 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 }
 - (void) setLevel:(KJLevel *) l
 {
-    if (self.currentLevel != nil) { [self unloadCurrentLevel]; [self.currentLevel release]; self.currentLevel = nil; }
+    if (self.currentLevel != nil) { [self unloadCurrentLevel]; [_currentLevel release]; self.currentLevel = nil; }
     [self levelChanged];
     self.currentLevel = [l retain];
 }
-- (KJLevel *) currentLevel
-{
-    return self.currentLevel;
-}
+
 - (void) levelChanged
 {
     // todo: Change this to reflect active/inactive, for now, everything is active
@@ -154,9 +151,9 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
     //[self showAlwaysActiveObjects];
     //NSLog(@"  BEFORE ^^^^^^^^^^^^^^^^ LOAD[%@] :: %@", currentLevel, [currentLevel name]);
     
-    int oldCount = 0;
+    //int oldCount = 0;
     for (KJCommonGameObject *go in [[self.currentLevel objectDictionary] allValues]) {
-        oldCount = [self.activeObjects count];
+        //oldCount = [self.activeObjects count];
         
         if ([go isAlwaysActive]) {
             [self.alwaysActiveObjects addObject:go];

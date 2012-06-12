@@ -51,7 +51,7 @@ NSString *const moduleLayer = @"layer";
     [super setup];
     [super setupWithDictionary:dictionary];
     
-    self.children = [[NSMutableSet alloc] initWithCapacity:20];
+    self.children = [NSMutableSet setWithCapacity:20];
     self.activeCamera = nil;
     self.cameraScale = 1.0;
     self.cameraOffset = CGPointZero;
@@ -104,8 +104,8 @@ NSString *const moduleLayer = @"layer";
 - (void) dealloc 
 {
     
-    if (self.children != nil) { [self.children release]; self.children = nil;}
-    if (self.activeCamera != nil) { [self.activeCamera release]; self.activeCamera = nil; }
+    if (self.children != nil) { [_children release]; self.children = nil;}
+    if (self.activeCamera != nil) { [_activeCamera release]; self.activeCamera = nil; }
     
     [super dealloc];
 }

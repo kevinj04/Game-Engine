@@ -136,44 +136,44 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
 #pragma mark - Getters and Setters
 - (void) setPosition:(CGPoint) p
 {
-    self.position = p;
+    _position = p;
     self.boundingBox = [self boundingBox];
     [[NSNotificationCenter defaultCenter] postNotificationName:kjPositionChange object:self];
 }
 - (void) setVelocity:(CGPoint) v
 {
-    self.velocity = v;
+    _velocity = v;
     [[NSNotificationCenter defaultCenter] postNotificationName:kjVelocityChange object:self];
 }
 - (void) setAcceleration:(CGPoint) a
 {
-    self.acceleration = a;
+    _acceleration = a;
     [[NSNotificationCenter defaultCenter] postNotificationName:kjAccelerationChange object:self];
 }
 - (void) setForce:(CGPoint) f
 {
-    self.force = f;
+    _force = f;
     [[NSNotificationCenter defaultCenter] postNotificationName:kjForceChange object:self];
 }
 - (void) setCenterOfMass:(CGPoint) com
 {
-    self.centerOfMass = com;
+    _centerOfMass = com;
     [[NSNotificationCenter defaultCenter] postNotificationName:kjCenterOfMassChange object:self];
 }
 - (void) setMass:(float) m
 {
-    self.mass = m;
+    _mass = m;
     [[NSNotificationCenter defaultCenter] postNotificationName:kjMassChange object:self];
 }
 - (void) setSize:(CGSize) s
 {
-    self.size = s;
+    _size = s;
     self.boundingBox = CGRectMake(self.position.x-((self.size.width-1.0)/2.0), self.position.y-((self.size.height-1.0)/2.0), self.size.width, self.size.height);
     [[NSNotificationCenter defaultCenter] postNotificationName:kjSizeChange object:self];
 }
 - (void) setBoundingBox:(CGRect) r
 {
-    self.boundingBox = r;
+    _boundingBox = r;
     if (!CGSizeEqualToSize(r.size, self.size)) {
         self.size = CGSizeMake(r.size.width, r.size.height);
         [[NSNotificationCenter defaultCenter] postNotificationName:kjSizeChange object:self];
@@ -190,26 +190,15 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
 }
 - (void) setRotation:(float) r
 {
-    self.rotation = r;
+    _rotation = r;
     [[NSNotificationCenter defaultCenter] postNotificationName:kjRotationChange object:self];
 }
 - (void) setAnchorPoint:(CGPoint) ap
 {
-    self.anchorPoint = ap;
+    _anchorPoint = ap;
     [self setBoundingBox:[self boundingBox]];
     [[NSNotificationCenter defaultCenter] postNotificationName:kjAnchorPointChange object:self];
 }
-
-- (CGPoint) position { return self.position; }
-- (CGPoint) velocity { return self.velocity; }
-- (CGPoint) acceleration { return self.acceleration; }
-- (CGPoint) force { return self.force; }
-- (CGPoint) centerOfMass { return self.centerOfMass; }
-- (float) mass { return self.mass; }
-- (CGSize) size { return self.size; }
-- (CGRect) boundingBox { return self.boundingBox; }
-- (float) rotation { return self.rotation; }
-- (CGPoint) anchorPoint { return self.anchorPoint; }
 
 #pragma mark - Physics Methods
 - (void) applyImpulse:(CGPoint) impulse 

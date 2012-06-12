@@ -40,7 +40,6 @@ extern NSString *const kjObjectDeactivated;
 - (void) activateObjectsInWindow;
 
 - (void) setLevel:(KJLevel *) l;
-- (KJLevel *) currentLevel;
 - (void) levelChanged;
 - (void) unloadCurrentLevel;
 

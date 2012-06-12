@@ -38,7 +38,7 @@ NSString *const kjImage = @"image";
     NSDictionary *params = [dictionary objectForKey:kjParameters];
 
     if ([params objectForKey:kjImage] != nil) {
-        self.backgroundFileName = [[params objectForKey:kjImage] retain];
+        self.backgroundFileName = [params objectForKey:kjImage];
     } else {
         NSAssert(NO, @"Failed to load an image for this background object.");
     }
@@ -49,7 +49,7 @@ NSString *const kjImage = @"image";
     }
 }
 - (void) dealloc {
-    if (self.backgroundFileName != nil) { [self.backgroundFileName release]; self.backgroundFileName = nil; }
+    if (self.backgroundFileName != nil) { [_backgroundFileName release]; _backgroundFileName = nil; }
     [super dealloc];
 }
 

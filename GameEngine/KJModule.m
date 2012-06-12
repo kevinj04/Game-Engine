@@ -67,18 +67,18 @@ static int kjModuleIdTag;
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary
 {
-    self.moduleName = [[NSString stringWithFormat:@"defaultModule"] retain];
-    self.moduleId = [[NSString stringWithFormat:@"defaultId"] retain];
+    self.moduleName = [NSString stringWithFormat:@"defaultModule"];
+    self.moduleId = [NSString stringWithFormat:@"defaultId"];
 
     if ([dictionary objectForKey:modClass] != nil) {
-        self.moduleName = [[dictionary objectForKey:modClass] retain];
+        self.moduleName = [dictionary objectForKey:modClass];
     }    
     
     if ([dictionary objectForKey:modId] != nil) {
-        self.moduleId = [[dictionary objectForKey:modId] retain];
+        self.moduleId = [dictionary objectForKey:modId];
         
         if ([self.moduleId hasSuffix:modHashSuffix]) {
-            self.moduleId = [[self.moduleId stringByReplacingOccurrencesOfString:modHashSuffix withString:[NSString stringWithFormat:@"%i", kjModuleIdTag++]] retain];
+            self.moduleId = [self.moduleId stringByReplacingOccurrencesOfString:modHashSuffix withString:[NSString stringWithFormat:@"%i", kjModuleIdTag++]];
         }
     }
 }
@@ -87,13 +87,13 @@ static int kjModuleIdTag;
     self.parent = [obj retain];
 
     if ([self.moduleId hasSuffix:modAtSuffix]) {
-        self.moduleId = [[self.moduleId stringByReplacingOccurrencesOfString:modAtSuffix withString:[NSString stringWithFormat:@"%@", [self.parent objectId]]] retain];
+        self.moduleId = [self.moduleId stringByReplacingOccurrencesOfString:modAtSuffix withString:[NSString stringWithFormat:@"%@", [self.parent objectId]]];
     }
 }
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (self.parent != nil) { [self.parent release]; self.parent = nil; }    
+    if (self.parent != nil) { [_parent release]; self.parent = nil; }    
     [super dealloc];
 }
 
@@ -106,13 +106,13 @@ static int kjModuleIdTag;
 #pragma mark - Setters and Getters
 - (void) setParent:(KJCommonGameObject *) p
 {
-    if (self.parent != nil) { [self.parent release]; self.parent = nil; }
+    if (self.parent != nil) { [_parent release]; _parent = nil; }
     if (p == nil) return;
-    self.parent = [p retain];
+    _parent = [p retain];
 }
 - (KJCommonGameObject *) parent
 {
-    return self.parent;
+    return _parent;
 }
 - (void) setLayer:(KJLayer *)l
 {

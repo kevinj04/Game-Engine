@@ -29,12 +29,12 @@ NSString *const kjModuleList = @"modules";
 - (void) setup
 {
     [super setup];
-    self.modules = [[NSMutableDictionary alloc] init];
+    self.modules = [NSMutableDictionary dictionary];
 }
 - (id) initWithDictionary:(NSDictionary *) dictionary
 {
     self = [super initWithDictionary:dictionary];
-    return nil;
+    return self;
 }
 + (id) objectWithDictionary:(NSDictionary *) dictionary
 {
@@ -50,7 +50,7 @@ NSString *const kjModuleList = @"modules";
 }
 - (void) dealloc
 {
-    if ( self.modules != nil ) { [self.modules release]; self.modules = nil; }
+    if ( self.modules != nil ) { [_modules release]; _modules = nil; }
     [super dealloc];
 }
 

@@ -217,14 +217,14 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
      alwaysUpdate = [[NSMutableSet alloc] initWithCapacity:100];
      */
     
-    self.activeObjects = [[NSMutableSet alloc] initWithCapacity:1000];
-    self.inactiveObjects = [[NSMutableSet alloc] initWithCapacity:1000];
-    self.alwaysUpdate = [[NSMutableSet alloc] initWithCapacity:1000];
+    self.activeObjects = [NSMutableSet setWithCapacity:1000];
+    self.inactiveObjects = [NSMutableSet setWithCapacity:1000];
+    self.alwaysUpdate = [NSMutableSet setWithCapacity:1000];
     
-    self.leftStack = [[SortedStack alloc] initWithDirection:ssdLeft andWindow:self.window];
-    self.rightStack = [[SortedStack alloc] initWithDirection:ssdRight andWindow:self.window];
-    self.upStack = [[SortedStack alloc] initWithDirection:ssdUp andWindow:self.window];
-    self.downStack = [[SortedStack alloc] initWithDirection:ssdDown andWindow:self.window];
+    _leftStack = [[SortedStack alloc] initWithDirection:ssdLeft andWindow:self.window];
+    _rightStack =[[SortedStack alloc] initWithDirection:ssdRight andWindow:self.window];
+    _upStack = [[SortedStack alloc] initWithDirection:ssdUp andWindow:self.window];
+    _downStack =[[SortedStack alloc] initWithDirection:ssdDown andWindow:self.window];
     
     // listen for notifications on cameraMovements (left, right, up, down)
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateWithLeftMovement:) name:eCameraMovedLeft object:nil];
@@ -255,15 +255,15 @@ NSString *const eActiveWindowModified = @"activeWindowModified";
 }
 - (void) dealloc {
     
-    [self.activeObjects release];
-    [self.inactiveObjects release];
+    [_activeObjects release];
+    [_inactiveObjects release];
     
-    [self.alwaysUpdate release];
+    [_alwaysUpdate release];
     
-    [self.leftStack release];
-    [self.rightStack release];
-    [self.upStack release];
-    [self.downStack release];
+    [_leftStack release];
+    [_rightStack release];
+    [_upStack release];
+    [_downStack release];
     
     [super dealloc];
 }

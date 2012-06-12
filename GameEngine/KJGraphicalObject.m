@@ -58,10 +58,10 @@ NSString *const kjTargetPart = @"targetPart";
     self.flipX = NO;
     self.flipY = NO;
     
-    self.primaryPart = [[NSString stringWithFormat:@""] retain];
+    self.primaryPart = [NSString stringWithFormat:@""];
     
     // empty, only mutable through setupGraphicsWithDictionary method.
-    self.parts = [[NSDictionary dictionary] retain];
+    self.parts = [NSDictionary dictionary];
     
     [super setup];
 }
@@ -107,8 +107,8 @@ NSString *const kjTargetPart = @"targetPart";
 }
 - (void) dealloc 
 {
-    if (self.parts != nil) { [self.parts release]; self.parts = nil; }
-    if (self.primaryPart != nil) { [self.primaryPart release]; self.primaryPart = nil; }
+    if (self.parts != nil) { [_parts release]; self.parts = nil; }
+    if (self.primaryPart != nil) { [_primaryPart release]; self.primaryPart = nil; }
     
     [super dealloc];
 }
@@ -128,7 +128,7 @@ NSString *const kjTargetPart = @"targetPart";
 - (void) setupGraphicsWithDictionary:(NSDictionary *) animationDictionary 
 {
     if ([animationDictionary objectForKey:kjBody] != nil) {
-        self.primaryPart = [[animationDictionary objectForKey:kjBody] retain];
+        self.primaryPart = [animationDictionary objectForKey:kjBody];
     }
     
     self.shouldIgnoreBatchNodeUpdate = NO;
@@ -157,10 +157,10 @@ NSString *const kjTargetPart = @"targetPart";
             [tempParts setObject:part forKey:partName];
         }
         
-        self.parts = [[NSDictionary alloc] initWithDictionary:tempParts];
+        self.parts = [NSDictionary dictionaryWithDictionary:tempParts];
         
     } else {
-        self.parts = [[NSDictionary alloc] init];
+        self.parts = [NSDictionary dictionary];
     }
 }
 

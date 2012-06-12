@@ -79,7 +79,7 @@ NSString *const kjAlwaysActive = @"alwaysActive";
     [self setup];
     
     if ([dictionary objectForKey:kjParentId] != nil) {
-        self.parentId = [[dictionary objectForKey:kjParentId] retain];
+        self.parentId = [dictionary objectForKey:kjParentId];
     }
     
     if ([dictionary objectForKey:kjObjectType] != nil) {
@@ -87,11 +87,11 @@ NSString *const kjAlwaysActive = @"alwaysActive";
     }
     
     if ([dictionary objectForKey:kjObjectId] != nil) {
-        self.objectId = [[dictionary objectForKey:kjObjectId] retain];
+        self.objectId = [dictionary objectForKey:kjObjectId];
     }
     
     if ([dictionary objectForKey:kjObjectName] != nil) {
-        self.objectName = [[dictionary objectForKey:kjObjectName] retain];
+        self.objectName = [dictionary objectForKey:kjObjectName];
     }
     
     if ([dictionary objectForKey:kjAlwaysActive] != nil) {
@@ -106,10 +106,10 @@ NSString *const kjAlwaysActive = @"alwaysActive";
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    if (self.objectId != nil) { [self.objectId release]; self.objectId = nil; }
-    if (self.objectName != nil) { [self.objectName release]; self.objectName = nil; }
+    if (self.objectId != nil) { [_objectId release]; _objectId = nil; }
+    if (self.objectName != nil) { [_objectName release]; _objectName = nil; }
     if (self.parentId != nil) { [_parentId release]; _parentId = nil; }
-    if (self.parent != nil) { [self.parent release]; self.parent = nil; }
+    if (self.parent != nil) { [_parent release]; _parent = nil; }
     
     [super dealloc];
 }

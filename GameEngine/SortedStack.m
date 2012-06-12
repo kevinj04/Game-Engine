@@ -266,7 +266,7 @@
         base = top;
     } else {
         
-        StackObject *toAdd = [[StackObject objectWithElement:elt] retain]; 
+        StackObject *toAdd = [StackObject objectWithElement:elt]; 
         
         switch (direction) {
             case ssdLeft:                
