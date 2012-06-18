@@ -66,9 +66,12 @@ NSString *const kjModuleList = @"modules";
 #pragma mark - Update Method
 - (void) update:(double) dt
 {
-    for (KJModule *mod in [self.modules allValues])
+    if (self.inActiveWindow || self.isAlwaysActive)
     {
-        [mod update:dt];
+        for (KJModule *mod in [self.modules allValues])
+        {
+            [mod update:dt];
+        }
     }
     [super update:dt];
 }

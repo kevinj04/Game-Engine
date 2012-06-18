@@ -32,6 +32,7 @@ extern NSString *const kjSelected;
 
 @property (nonatomic, assign) bool isActive;
 @property (nonatomic, assign) bool isAlwaysActive;
+@property (nonatomic, assign) bool inActiveWindow;
 
 + (id) object;
 - (void) setup;

@@ -8,6 +8,7 @@
 
 #import "KJGraphicalObject.h"
 #import "KJGraphicsPart.h"
+#import "KJLayer.h"
 
 NSString *const kjObjectParts = @"parts";
 NSString *const kjObjectAnimations = @"animations";
@@ -82,11 +83,11 @@ NSString *const kjTargetPart = @"targetPart";
     if ((params = [dictionary objectForKey:kjParameters])) {
         
         if ([params objectForKey:kjVertexZ] != nil) {
-            self.vertexZ = [[dictionary objectForKey:kjVertexZ] floatValue];
+            self.vertexZ = [[params objectForKey:kjVertexZ] floatValue];
         }
         
         if ([params objectForKey:kjZOrder] != nil) {
-            self.zOrder = [[dictionary objectForKey:kjZOrder] intValue];
+            self.zOrder = [[params objectForKey:kjZOrder] intValue];
         }
     }
 }
@@ -118,9 +119,13 @@ NSString *const kjTargetPart = @"targetPart";
 {
     [super update:dt];
     
-    for (KJGraphicsPart *part in [self.parts allValues])
+    if (self.inActiveWindow || self.isAlwaysActive) 
     {
-        [part update:dt*self.animationSpeed];
+    
+        for (KJGraphicsPart *part in [self.parts allValues])
+        {
+            [part update:dt*self.animationSpeed];
+        }
     }
 }
 
@@ -221,6 +226,12 @@ NSString *const kjTargetPart = @"targetPart";
     {
         [p setParent:nil];
     }
+}
+- (void) setZOrder:(int)z
+{
+    _zOrder = z;
+    self.vertexZ = self.zOrder;
+    if (self.parent) { self.vertexZ += self.parent.vertexZ; }
 }
 
 #pragma mark - Position Modifiers

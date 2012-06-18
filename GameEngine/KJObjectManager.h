@@ -17,7 +17,8 @@ extern NSString *const kjObjectDeactivated;
 }
 
 @property (nonatomic, retain) KJLevel *currentLevel;
-@property (nonatomic, retain) NSMutableSet *activeObjects;
+@property (nonatomic, retain) NSMutableSet *activeAndInWindowObjects;
+@property (nonatomic, retain) NSMutableSet *activeButNotInWindowObjects;
 @property (nonatomic, retain) NSMutableSet *inactiveObjects;
 @property (nonatomic, retain) NSMutableSet *alwaysActiveObjects;
 @property (nonatomic, retain) NSMutableSet *impendingObjectsToActivate;

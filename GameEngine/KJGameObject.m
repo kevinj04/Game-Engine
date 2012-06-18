@@ -27,6 +27,7 @@ NSString *const kjAlwaysActive = @"alwaysActive";
 @synthesize objectType = _objectType;
 @synthesize isActive = _isActive;
 @synthesize isAlwaysActive = _isAlwaysActived;
+@synthesize inActiveWindow = _inActiveWindow;
 
 #pragma mark -
 #pragma mark Initialization
@@ -73,6 +74,7 @@ NSString *const kjAlwaysActive = @"alwaysActive";
     
     self.isActive = YES;
     self.isAlwaysActive = NO;
+    self.inActiveWindow = NO;
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary {    
     
@@ -128,7 +130,9 @@ NSString *const kjAlwaysActive = @"alwaysActive";
         return;
     }
     if (b && !self.isActive) { [[NSNotificationCenter defaultCenter] postNotificationName:kjObjectActivated object:self]; }
-    if (!b && self.isActive) { [[NSNotificationCenter defaultCenter] postNotificationName:kjObjectDeactivated object:self]; }
+    if (!b && self.isActive) { 
+        [[NSNotificationCenter defaultCenter] postNotificationName:kjObjectDeactivated object:self]; 
+    }
     _isActive = b;
 }
 - (void) setParent:(KJLayer *)parent

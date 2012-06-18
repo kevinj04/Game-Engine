@@ -27,10 +27,17 @@ extern NSString *const moduleLayer;
 @property (nonatomic, retain) KJCamera *activeCamera;
 @property (nonatomic, assign) float cameraScale;
 @property (nonatomic, assign) CGPoint cameraOffset;
+@property (nonatomic, assign) int maxVertexZ;
+@property (nonatomic, assign) bool shouldReOrderAbove;
 
 + (id) layer;
 + (id) layerWithDictionary:(NSDictionary *)dictionary;
 
 - (KJModule *) layerModule;
+- (void) addChild:(KJGraphicalObject *) object atZOrder:(int) zOrder;
+- (void) addChildAtRandomZ:(KJGraphicalObject *) object;
+
+- (int) randomZDepth;
+- (void) restoreZSpaceForObject:(KJGraphicalObject *) object;
 
 @end

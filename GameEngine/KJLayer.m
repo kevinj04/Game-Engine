@@ -21,6 +21,8 @@ NSString *const moduleLayer = @"layer";
 @synthesize activeCamera = _activeCamera;
 @synthesize cameraScale = _cameraScale;
 @synthesize cameraOffset = _cameraOffset;
+@synthesize maxVertexZ = _maxVertexZ;
+@synthesize shouldReOrderAbove = _shouldReOrderAbove;
 
 #pragma mark - Initialization/Setup/Dealloc
 - (id) init
@@ -132,4 +134,44 @@ NSString *const moduleLayer = @"layer";
     }
     return nil;
 }
+
+- (void) addChild:(KJGraphicalObject *) object atZOrder:(int) zOrder
+{
+    [self.children addObject:object];
+    
+    if (zOrder+self.vertexZ > self.maxVertexZ)
+    {
+        self.maxVertexZ = zOrder + self.vertexZ;
+    }
+}
+
+- (void) addChildAtRandomZ:(KJGraphicalObject *) object
+{
+    [self.children addObject:object];
+    object.zOrder = [self randomZDepth];
+}
+
+- (int) randomZDepth
+{
+    // override if special z management is taking place.
+    return 0;
+}
+
+- (void) restoreZSpaceForObject:(KJGraphicalObject *) object
+{
+    // override if special z management is taking place.
+    return;
+}
+
+- (void) setVertexZ:(float)z
+{
+    [super setVertexZ:z];
+    
+    // When the vertexZ of this layer is changed, all the children must shift as well.
+    [self.children enumerateObjectsUsingBlock:^(KJGraphicalObject *obj, BOOL *stop) {
+        obj.vertexZ = obj.zOrder + self.vertexZ;
+    }];
+    
+}
+
 @end

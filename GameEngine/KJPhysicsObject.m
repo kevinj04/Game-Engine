@@ -217,7 +217,8 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
 - (void) update:(double)dt
 {
 
-    if ([self isActive]) {
+    if (self.inActiveWindow || self.isAlwaysActive) 
+    {
         
         self.position = CGPointMake(self.position.x + self.velocity.x * dt, self.position.y + self.velocity.y * dt);
         self.velocity = CGPointMake(self.velocity.x + self.acceleration.x * dt, self.velocity.y + self.acceleration.y * dt);        
