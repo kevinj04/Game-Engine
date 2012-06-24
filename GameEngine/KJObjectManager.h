@@ -46,4 +46,7 @@ extern NSString *const kjObjectDeactivated;
 
 - (NSSet *) allObjects;
 
+- (void) addObject:(KJGameObject *) gameObject;
+- (void) removeObject:(KJGameObject *) gameObject;
+
 @end

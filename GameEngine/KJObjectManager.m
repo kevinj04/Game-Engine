@@ -16,6 +16,7 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 - (void) registerNotifications;
 - (void) handleObjectActivatedNotification:(NSNotification *) notification;
 - (void) handleObjectDeactivatedNotification:(NSNotification *) notification;
+- (void) removeObjectFromAllStateSets:(KJGameObject *) gameObject;
 @end
 
 @implementation KJObjectManager (hidden)
@@ -37,6 +38,15 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
     
     [self.impendingObjectsToActivate removeObject:go];
     [self.impendingObjectsToDeactivate addObject:go];
+}
+- (void) removeObjectFromAllStateSets:(KJGameObject *) gameObject
+{
+    [self.activeAndInWindowObjects removeObject:gameObject];
+    [self.activeButNotInWindowObjects removeObject:gameObject];
+    [self.inactiveObjects removeObject:gameObject];
+    [self.alwaysActiveObjects removeObject:gameObject];
+    [self.impendingObjectsToActivate removeObject:gameObject];
+    [self.impendingObjectsToDeactivate removeObject:gameObject];
 }
 @end
 
@@ -231,4 +241,30 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
     }    
 }
 
+#pragma mark - Add/Remove Object Management
+- (void) addObject:(KJGameObject *) gameObject
+{
+    if ([gameObject isKindOfClass:[KJCamera class]]) { [self.currentLevel addCamera:(KJCamera *)gameObject]; }
+    else if ([gameObject isKindOfClass:[KJLayer class]]) { [self.currentLevel addLayer:(KJLayer *)gameObject]; }
+    else [self.currentLevel addObject:gameObject];
+    
+    // Add object to either the inactive list or the activeButNotInWindowList
+    if ([gameObject isActive])
+    {
+        [self.activeButNotInWindowObjects addObject:gameObject];
+    } 
+    else 
+    {
+        [self.inactiveObjects addObject:gameObject];
+    }
+        
+}
+- (void) removeObject:(KJGameObject *) gameObject
+{
+    if ([gameObject isKindOfClass:[KJCamera class]]) { [self.currentLevel removeCamera:(KJCamera *)gameObject]; }
+    else if ([gameObject isKindOfClass:[KJLayer class]]) { [self.currentLevel removeLayer:(KJLayer *)gameObject]; }
+    else [self.currentLevel removeObject:gameObject];
+    
+    [self removeObjectFromAllStateSets:gameObject];
+}
 @end
