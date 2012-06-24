@@ -32,11 +32,11 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 
 @implementation KJLevel (hidden)
 - (void) handleObjectCreatedNotification:(NSNotification *) notification {
-    
+
     NSObject<KJGameObjectProtocol> *geObj = [notification object];
     NSLog(@"Level[%@] -- Notified of the creation of %@, adding to our list of objects.", self, [geObj objectId]);
     [self addObject:geObj];
-    
+
 }
 
 @end
@@ -51,18 +51,33 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 @synthesize layerDictionary = _layerDictionary;
 @synthesize cameraDictionary = _cameraDictionary;
 @synthesize activeWindow = _activeWindow;
+@synthesize imageResources = _imageResources;
+@synthesize musicResources = _musicResources;
+@synthesize soundFXResources = _soundFXResources;
 
 #pragma mark -
 
 #pragma mark Initialization Methods
-- (id) initWithDictionary:(NSDictionary *) dictionary 
+- (id) init
+{
+    self = [super init];
+    if (self) { [self setup]; }
+    return self;
+}
+
++ (id) level
+{
+    return [[[KJLevel alloc] init] autorelease];
+}
+
+- (id) initWithDictionary:(NSDictionary *) dictionary
 {
     if (( self = [super init] )) {
- 
+
         [self registerNotifications];
         [self setupWithDictionary:dictionary];
         return self;
-        
+
     }
     return nil;
 }
@@ -71,28 +86,60 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
     return [[[KJLevel alloc] initWithDictionary:dictionary] autorelease];
 }
 - (void) setup {
-    // future use?
-}
-- (void) setupWithDictionary:(NSDictionary *) dictionary 
-{    
-    
     self.activeWindow = CGRectZero;
-    
-    NSDictionary *d = [dictionary objectForKey:kjLevelInfo];
-    self.name = [d objectForKey:kjLevelName];
-    self.backgroundMusic = [d objectForKey:kjLevelBGMusic];
-    self.activeWindow = CGRectFromString([d objectForKey:kjLevelActiveWindow]);
-    
-    imageResources = [[[dictionary objectForKey:kjLevelResources] objectForKey:kjLevelGraphics] retain];
-    soundFXResources = [[[[dictionary objectForKey:kjLevelResources] objectForKey:kjLevelSound] objectForKey:kjLevelWAV] retain];
-    musicResources = [[[[dictionary objectForKey:kjLevelResources] objectForKey:kjLevelSound] objectForKey:kjLevelMP3] retain];
-    
+    self.name = [NSString stringWithFormat:@"defaultLevelName"];
+    self.backgroundMusic = nil;
+    self.imageResources = [NSDictionary dictionary];
+    self.soundFXResources = [NSDictionary dictionary];
+    self.musicResources = [NSDictionary dictionary];
     self.activeCamera = nil;
     self.defaultLayer = nil;
-    
-    self.objectDictionary = [NSMutableDictionary dictionaryWithCapacity:1000];    
+    self.objectDictionary = [NSMutableDictionary dictionaryWithCapacity:1000];
     self.layerDictionary  = [NSMutableDictionary dictionaryWithCapacity:20];
     self.cameraDictionary  = [NSMutableDictionary dictionaryWithCapacity:20];
+}
+- (void) setupWithDictionary:(NSDictionary *) dictionary
+{
+    [self setup];
+
+    NSDictionary *levelInfoDictionary = [dictionary objectForKey:kjLevelInfo];
+    if (nil == levelInfoDictionary) return;
+
+    if ([levelInfoDictionary objectForKey:kjLevelName])
+    {
+        self.name = [levelInfoDictionary objectForKey:kjLevelName];
+    }
+
+    if ([levelInfoDictionary objectForKey:kjLevelBGMusic])
+    {
+        self.backgroundMusic = [levelInfoDictionary objectForKey:kjLevelBGMusic];
+    }
+
+    if ([levelInfoDictionary objectForKey:kjLevelActiveWindow])
+    {
+        self.activeWindow = CGRectFromString([levelInfoDictionary objectForKey:kjLevelActiveWindow]);
+    }
+
+    NSDictionary *resourceDictionary = [dictionary objectForKey:kjLevelResources];
+    if (nil == resourceDictionary)
+    {
+        if ([resourceDictionary objectForKey:kjLevelGraphics])
+        {
+            self.imageResources = [resourceDictionary objectForKey:kjLevelGraphics];
+        }
+
+        NSDictionary *soundResources = [resourceDictionary objectForKey:kjLevelSound];
+        if ([soundResources objectForKey:kjLevelWAV])
+        {
+                self.soundFXResources = [soundResources objectForKey:kjLevelWAV];
+        }
+
+        if ([soundResources objectForKey:kjLevelBGMusic])
+        {
+            self.musicResources = [soundResources objectForKey:kjLevelMP3];
+        }
+
+    }
 }
 - (void) registerNotifications
 {
@@ -101,14 +148,18 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    if (self.name != nil) { [_name release]; self.name = nil; }
-    if (self.backgroundMusic != nil) { [_backgroundMusic release]; self.name = nil; }
-    
-    if (self.layerDictionary != nil) { [_layerDictionary release]; self.layerDictionary = nil; }
-    if (self.objectDictionary != nil) { [_objectDictionary release]; self.objectDictionary = nil; }
-    if (self.cameraDictionary != nil) { [_cameraDictionary release]; self.cameraDictionary = nil; }
-    
+
+    if (nil != self.name) { [_name release]; self.name = nil; }
+    if (nil != self.backgroundMusic) { [_backgroundMusic release]; self.name = nil; }
+
+    if (nil != self.layerDictionary) { [_layerDictionary release]; self.layerDictionary = nil; }
+    if (nil != self.objectDictionary) { [_objectDictionary release]; self.objectDictionary = nil; }
+    if (nil != self.cameraDictionary) { [_cameraDictionary release]; self.cameraDictionary = nil; }
+
+    if (nil != self.imageResources) { [_imageResources release]; self.imageResources = nil; }
+    if (nil != self.musicResources) { [_musicResources release]; self.musicResources = nil; }
+    if (nil != self.soundFXResources) { [_soundFXResources release]; self.soundFXResources = nil; }
+
     [super dealloc];
 }
 #pragma mark -
@@ -116,28 +167,28 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 
 #pragma mark Loading Methods
 - (void) loadObjects:(NSDictionary *) dictionary {
-    
-    for (NSDictionary *objectSpec in [dictionary allValues]) {                
+
+    for (NSDictionary *objectSpec in [dictionary allValues]) {
         KJCommonGameObject *cObj = [KJCommonGameObject objectWithDictionary:objectSpec];
         [[NSNotificationCenter defaultCenter] postNotificationName:kjGameObjectCreatedNotification object:cObj];
     }
-    
+
 }
 - (void) addObject:(NSObject<KJGameObjectProtocol> *) obj {
     [self.objectDictionary setObject:obj forKey:[obj objectId]];
 }
-- (void) loadLayers:(NSDictionary *) dictionary 
+- (void) loadLayers:(NSDictionary *) dictionary
 {
     for (NSDictionary *layerSpec in [dictionary allValues])
     {
         KJLayer *layer = [KJLayer layerWithDictionary:layerSpec];
         [self addLayer:layer];
     }
-    
+
     // A default layer is always created. Any object that does not specify a layer to be added to will end up on this one.
     [self addLayer:[self createDefaultLayer]];
 }
-- (void) addLayer:(KJLayer *) layer 
+- (void) addLayer:(KJLayer *) layer
 {
     [self.layerDictionary setObject:layer forKey:[layer objectId]];
 }
@@ -145,7 +196,7 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 - (KJLayer *) createDefaultLayer
 {
     // override if needed
-    
+
     KJLayer *layer = [KJLayer layer];
     layer.objectId = [NSString stringWithFormat:@"defaultLayer"];
     layer.objectName = [NSString stringWithFormat:@"defaultLayer"];
@@ -159,21 +210,21 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
     for (NSDictionary *cameraSpec in [dictionary allValues])
     {
         KJCamera *camera = [KJCamera cameraWithDictionary:cameraSpec];
-        
+
         if ([[[self cameraDictionary] allValues] count] == 0)
         {
             self.activeCamera = camera;
         }
-        
+
         [self addCamera:camera];
-        
+
     }
-    
+
     if ([[[self cameraDictionary] allValues] count] == 0)
     {
         [self addCamera:[self createDefaultCamera]];
     }
-    
+
     // If no cameras are created, a default camera is created. If multiple cameras are created, the first one is set to the active camera.
 }
 - (void) addCamera:(KJCamera *) camera
@@ -183,7 +234,7 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 - (KJCamera *) createDefaultCamera
 {
     // override if needed
-    
+
     KJCamera *camera = [KJCamera camera];
     camera.objectId = [NSString stringWithFormat:@"defaultCamera"];
     camera.objectName = [NSString stringWithFormat:@"defaultCamera"];
@@ -191,44 +242,27 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
     [self setActiveCamera:camera];
     return camera;
 }
-#pragma mark -
-
-
-#pragma mark Getters and Setters
-- (NSArray *) imageResources
-{
-    return imageResources;
-}
-- (NSArray *) soundFXResources
-{
-    return soundFXResources;
-}
-- (NSArray *) musicResources
-{
-    return musicResources;
-}
-#pragma mark -
 
 #pragma mark - Debug Aids
-- (void) logAllObjects 
+- (void) logAllObjects
 {
     NSLog(@"\n");
     NSLog(@"Level %@", self.name);
     NSLog(@"\n");
     NSLog(@"=====+++Cameras+++=====");
-    for (KJCamera *camera in [self.cameraDictionary allValues]) 
+    for (KJCamera *camera in [self.cameraDictionary allValues])
     {
         NSLog(@"\t%@[%@]", [camera objectId], camera);
     }
     NSLog(@"\n");
     NSLog(@"=====+++Layers+++=====");
-    for (KJLayer *layer in [self.layerDictionary allValues]) 
+    for (KJLayer *layer in [self.layerDictionary allValues])
     {
         NSLog(@"\t%@[%@]", [layer objectId], layer);
     }
     NSLog(@"\n");
     NSLog(@"=====+++Game Objects+++=====");
-    for (KJCommonGameObject *gameObj in [self.objectDictionary allValues]) 
+    for (KJCommonGameObject *gameObj in [self.objectDictionary allValues])
     {
         NSLog(@"\t%@[%@]", [gameObj objectId], gameObj);
     }

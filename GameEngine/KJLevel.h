@@ -29,11 +29,7 @@ extern NSString *const kjLevelMP3;
 extern NSString *const kjGameObjectCreatedNotification;
 
 @interface KJLevel : NSObject {
-    
-    @private
-    NSArray *imageResources;
-    NSArray *soundFXResources;
-    NSArray *musicResources;
+
 }
 
 @property (nonatomic, assign) CGRect activeWindow;
@@ -48,7 +44,12 @@ extern NSString *const kjGameObjectCreatedNotification;
 @property (nonatomic, retain) NSMutableDictionary *objectDictionary;
 @property (nonatomic, retain) NSMutableDictionary *cameraDictionary;
 
+@property (nonatomic, retain) NSArray *imageResources;
+@property (nonatomic, retain) NSArray *soundFXResources;
+@property (nonatomic, retain) NSArray *musicResources;
+
 - (id) initWithDictionary:(NSDictionary *) dictionary;
++ (id) level;
 + (id) levelWithDictionary:(NSDictionary *) dictionary;
 - (void) setup;
 - (void) setupWithDictionary:(NSDictionary *) dictionary;
