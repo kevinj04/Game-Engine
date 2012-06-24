@@ -28,16 +28,22 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 - (void) handleObjectActivatedNotification:(NSNotification *) notification
 {
     KJCommonGameObject *go = [notification object];
-    
-    [self.impendingObjectsToDeactivate removeObject:go];    
-    [self.impendingObjectsToActivate addObject:go];
+
+    if ([self.inactiveObjects containsObject:go] || [self.impendingObjectsToDeactivate containsObject:go])
+    {
+        [self.impendingObjectsToDeactivate removeObject:go];
+        [self.impendingObjectsToActivate addObject:go];
+    }
 }
 - (void) handleObjectDeactivatedNotification:(NSNotification *) notification
 {
     KJCommonGameObject *go = [notification object];
-    
-    [self.impendingObjectsToActivate removeObject:go];
-    [self.impendingObjectsToDeactivate addObject:go];
+
+    if ([self.activeAndInWindowObjects containsObject:go] || [self.activeButNotInWindowObjects containsObject:go] || [self.impendingObjectsToActivate containsObject:go])
+    {
+        [self.impendingObjectsToActivate removeObject:go];
+        [self.impendingObjectsToDeactivate addObject:go];
+    }
 }
 - (void) removeObjectFromAllStateSets:(KJGameObject *) gameObject
 {
@@ -77,7 +83,7 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 - (void) setup
 {
     self.currentLevel = nil;
-    
+
     self.activeAndInWindowObjects = [NSMutableSet setWithCapacity:1000];
     self.activeButNotInWindowObjects = [NSMutableSet setWithCapacity:1000];
     self.inactiveObjects = [NSMutableSet setWithCapacity:1000];
@@ -89,7 +95,7 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 {
     self = [[KJObjectManager alloc] init];
     if (self != nil) { [self setupWithLevel:l]; }
-    
+
     return self;
 }
 + (id) managerWithLevel:(KJLevel *) l
@@ -112,18 +118,18 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
     if (self.inactiveObjects != nil) { [_inactiveObjects release]; self.inactiveObjects = nil; }
     if (self.impendingObjectsToActivate != nil) { [_impendingObjectsToActivate release]; self.impendingObjectsToActivate = nil; }
     if (self.impendingObjectsToDeactivate != nil) { [_impendingObjectsToDeactivate release]; self.impendingObjectsToDeactivate = nil; }
-    
+
     [super dealloc];
 }
 - (void) update:(double) dt
 {
-    
+
     [self.activeButNotInWindowObjects unionSet:self.impendingObjectsToActivate];
     [self.impendingObjectsToActivate removeAllObjects];
-    
+
     [self activateObjectsInWindow];
     [self deactivateObjectsNotInWindow];
-    
+
     [self.inactiveObjects unionSet:self.impendingObjectsToDeactivate];
     [self.impendingObjectsToDeactivate removeAllObjects];
 
@@ -155,27 +161,27 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 {
     if (self.currentLevel != nil) { [self unloadCurrentLevel]; [_currentLevel release]; self.currentLevel = nil; }
     self.currentLevel = [l retain];
-    [self levelChanged];    
+    [self levelChanged];
 }
 
 - (void) levelChanged
 {
     // todo: Change this to reflect active/inactive, for now, everything is active
-    
+
     //[self showActiveObjects];
     //[self showAlwaysActiveObjects];
     //NSLog(@"  BEFORE ^^^^^^^^^^^^^^^^ LOAD[%@] :: %@", currentLevel, [currentLevel name]);
-    
+
     //int oldCount = 0;
     for (KJCommonGameObject *go in [[self.currentLevel objectDictionary] allValues]) {
         //oldCount = [self.activeObjects count];
-        
+
         if ([go isAlwaysActive]) {
             [self.alwaysActiveObjects addObject:go];
-        } 
-        else 
+        }
+        else
         {
-            if ([go isActive]) 
+            if ([go isActive])
             {
                 [self.activeButNotInWindowObjects addObject:go];
             } else {
@@ -184,12 +190,12 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
         }
         //NSLog(@"Adding Object[%@]: %@   (active object count was: %i   now: %i", ge, [ge objectName], oldCount, [activeObjects count]);
     }
-    
+
     [self update:0.0];
 
     //NSLog(@" AFTER VVVVVVVVVVVVV UNLOAD[%@] :: %@", currentLevel, [currentLevel name]);
     //[self showActiveObjects];
-    //[self showAlwaysActiveObjects];    
+    //[self showAlwaysActiveObjects];
 }
 - (void) unloadCurrentLevel
 {
@@ -201,7 +207,7 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
     [self.activeAndInWindowObjects removeAllObjects];
     [self.activeButNotInWindowObjects removeAllObjects];
     [self.inactiveObjects removeAllObjects];
-    
+
     //NSLog(@" AFTER VVVVVVVVVVVVV UNLOAD[%@] :: %@", currentLevel, [currentLevel name]);
     //[self showActiveObjects];
     //[self showAlwaysActiveObjects];
@@ -213,32 +219,32 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 - (void) activateObjectsInWindow
 {
     // this will be handled by the stackmanager in the future!
-    
+
     if (self.currentLevel == nil) return;
-    
+
     for (KJCommonGameObject *obj in self.activeButNotInWindowObjects)
-    {        
-        if (CGRectContainsPoint([self.currentLevel activeWindow], [obj position])) 
+    {
+        if (CGRectContainsPoint([self.currentLevel activeWindow], [obj position]))
         {
             [obj setInActiveWindow:YES];
             [self.activeAndInWindowObjects addObject:obj];
-        }        
-    }    
+        }
+    }
 }
 - (void) deactivateObjectsNotInWindow
 {
     // this will be handled by the stackmanager in the future!
-    
+
     if (self.currentLevel == nil) return;
-    
+
     for (KJCommonGameObject *obj in self.activeAndInWindowObjects)
-    {        
-        if (!CGRectContainsPoint([self.currentLevel activeWindow], [obj position])) 
+    {
+        if (!CGRectContainsPoint([self.currentLevel activeWindow], [obj position]))
         {
             [obj setInActiveWindow:NO];
             [self.activeButNotInWindowObjects addObject:obj];
-        }        
-    }    
+        }
+    }
 }
 
 #pragma mark - Add/Remove Object Management
@@ -247,24 +253,24 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
     if ([gameObject isKindOfClass:[KJCamera class]]) { [self.currentLevel addCamera:(KJCamera *)gameObject]; }
     else if ([gameObject isKindOfClass:[KJLayer class]]) { [self.currentLevel addLayer:(KJLayer *)gameObject]; }
     else [self.currentLevel addObject:gameObject];
-    
+
     // Add object to either the inactive list or the activeButNotInWindowList
     if ([gameObject isActive])
     {
         [self.activeButNotInWindowObjects addObject:gameObject];
-    } 
-    else 
+    }
+    else
     {
         [self.inactiveObjects addObject:gameObject];
     }
-        
+
 }
 - (void) removeObject:(KJGameObject *) gameObject
 {
     if ([gameObject isKindOfClass:[KJCamera class]]) { [self.currentLevel removeCamera:(KJCamera *)gameObject]; }
     else if ([gameObject isKindOfClass:[KJLayer class]]) { [self.currentLevel removeLayer:(KJLayer *)gameObject]; }
     else [self.currentLevel removeObject:gameObject];
-    
+
     [self removeObjectFromAllStateSets:gameObject];
 }
 @end
