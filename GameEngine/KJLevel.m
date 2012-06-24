@@ -177,6 +177,14 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 - (void) addObject:(NSObject<KJGameObjectProtocol> *) obj {
     [self.objectDictionary setObject:obj forKey:[obj objectId]];
 }
+- (void) removeObject:(NSObject<KJGameObjectProtocol> *)obj
+{
+    [self removeObjectWithId:[obj objectId]];
+}
+- (void) removeObjectWithId:(NSString *)objectId
+{
+    [self.objectDictionary removeObjectForKey:objectId];
+}
 - (void) loadLayers:(NSDictionary *) dictionary
 {
     for (NSDictionary *layerSpec in [dictionary allValues])
@@ -192,7 +200,14 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 {
     [self.layerDictionary setObject:layer forKey:[layer objectId]];
 }
-
+- (void) removeLayer:(KJLayer *)layer
+{
+    [self removeLayerWithId:[layer objectId]];
+}
+- (void) removeLayerWithId:(NSString *)objectId
+{
+    [self.layerDictionary removeObjectForKey:objectId];
+}
 - (KJLayer *) createDefaultLayer
 {
     // override if needed
@@ -230,6 +245,14 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
 - (void) addCamera:(KJCamera *) camera
 {
     [self.cameraDictionary setObject:camera forKey:[camera objectId]];
+}
+- (void) removeCamera:(KJCamera *)camera
+{
+    [self removeCameraWithId:[camera objectId]];
+}
+- (void) removeCameraWithId:(NSString *)objectId
+{
+    [self.cameraDictionary removeObjectForKey:objectId];
 }
 - (KJCamera *) createDefaultCamera
 {

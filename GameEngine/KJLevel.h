@@ -58,13 +58,19 @@ extern NSString *const kjGameObjectCreatedNotification;
 
 - (void) loadObjects:(NSDictionary *) dictionary;
 - (void) addObject:(NSObject<KJGameObjectProtocol> *) obj;
+- (void) removeObject:(NSObject<KJGameObjectProtocol> *) obj;
+- (void) removeObjectWithId:(NSString *) objectId;
 
 - (void) loadLayers:(NSDictionary *) dictionary;
 - (void) addLayer:(KJLayer *) layer;
+- (void) removeLayer:(KJLayer *) layer;
+- (void) removeLayerWithId:(NSString *) objectId;
 - (KJLayer *) createDefaultLayer;
 
 - (void) loadCameras:(NSDictionary *) dictionary;
 - (void) addCamera:(KJCamera *) camera;
+- (void) removeCamera:(KJCamera *) camera;
+- (void) removeCameraWithId:(NSString *) objectId;
 - (KJCamera *) createDefaultCamera;
 
 - (NSArray *) imageResources;
