@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <KJGameObjectProtocol.h>
+#import "KJGameObjectProtocol.h"
 
 // is this still needed?
 
