@@ -103,25 +103,28 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
     [self setup];
 
     NSDictionary *levelInfoDictionary = [dictionary objectForKey:kjLevelInfo];
-    if (nil == levelInfoDictionary) return;
-
-    if ([levelInfoDictionary objectForKey:kjLevelName])
+    if (nil != levelInfoDictionary)
     {
-        self.name = [levelInfoDictionary objectForKey:kjLevelName];
-    }
 
-    if ([levelInfoDictionary objectForKey:kjLevelBGMusic])
-    {
-        self.backgroundMusic = [levelInfoDictionary objectForKey:kjLevelBGMusic];
-    }
+        if ([levelInfoDictionary objectForKey:kjLevelName])
+        {
+            self.name = [levelInfoDictionary objectForKey:kjLevelName];
+        }
 
-    if ([levelInfoDictionary objectForKey:kjLevelActiveWindow])
-    {
-        self.activeWindow = CGRectFromString([levelInfoDictionary objectForKey:kjLevelActiveWindow]);
+        if ([levelInfoDictionary objectForKey:kjLevelBGMusic])
+        {
+            self.backgroundMusic = [levelInfoDictionary objectForKey:kjLevelBGMusic];
+        }
+
+        if ([levelInfoDictionary objectForKey:kjLevelActiveWindow])
+        {
+            self.activeWindow = CGRectFromString([levelInfoDictionary objectForKey:kjLevelActiveWindow]);
+        }
+
     }
 
     NSDictionary *resourceDictionary = [dictionary objectForKey:kjLevelResources];
-    if (nil == resourceDictionary)
+    if (nil != resourceDictionary)
     {
         if ([resourceDictionary objectForKey:kjLevelGraphics])
         {
@@ -131,14 +134,13 @@ NSString *const kjGameObjectCreatedNotification = @"gameElementCreatedNotificati
         NSDictionary *soundResources = [resourceDictionary objectForKey:kjLevelSound];
         if ([soundResources objectForKey:kjLevelWAV])
         {
-                self.soundFXResources = [soundResources objectForKey:kjLevelWAV];
+            self.soundFXResources = [soundResources objectForKey:kjLevelWAV];
         }
 
         if ([soundResources objectForKey:kjLevelBGMusic])
         {
             self.musicResources = [soundResources objectForKey:kjLevelMP3];
         }
-
     }
 }
 - (void) registerNotifications
