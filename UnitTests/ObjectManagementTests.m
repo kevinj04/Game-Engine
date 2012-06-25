@@ -111,8 +111,8 @@
     [gameObject2 setIsActive:YES];
 
     STAssertTrue(2 == self.objectManager.impendingObjectsToActivate.count &&
-                 0 == self.objectManager.inactiveObjects.count,
-                 @"Game objects should not be in the inactive set.");
+                 2 == self.objectManager.inactiveObjects.count,
+                 @"Game objects should REMAIN in the inactive set until an update.");
 }
 
 - (void)testShouldActivateImpendingObjectsOnUpdate
@@ -129,7 +129,8 @@
 
     STAssertTrue(1 == self.objectManager.activeAndInWindowObjects.count &&
                  1 == self.objectManager.activeButNotInWindowObjects.count &&
-                 0 == self.objectManager.impendingObjectsToActivate.count,
+                 0 == self.objectManager.impendingObjectsToActivate.count &&
+                 0 == self.objectManager.inactiveObjects.count,
                  @"Game object should leave the impending objects to add set");
 }
 
@@ -171,7 +172,8 @@
     [gameObject2 setIsActive:NO];
 
     STAssertTrue(2 == self.objectManager.impendingObjectsToDeactivate.count &&
-                 0 == self.objectManager.activeAndInWindowObjects.count,
+                 1 == self.objectManager.activeAndInWindowObjects.count &&
+                 1 == self.objectManager.activeButNotInWindowObjects.count,
                  @"Game objects should be set to impending deactivation");
 }
 
@@ -186,11 +188,10 @@
 
     [self.objectManager update:0.0];
     STAssertTrue(2 == self.objectManager.inactiveObjects.count &&
+                 0 == self.objectManager.impendingObjectsToDeactivate.count &&
                  0 == self.objectManager.activeAndInWindowObjects.count &&
                  0 == self.objectManager.activeButNotInWindowObjects.count,
                  @"Game objects should be in the inactive set.");
-
-
 }
 
 
