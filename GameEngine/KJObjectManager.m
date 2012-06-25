@@ -33,6 +33,7 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
     {
         [self.impendingObjectsToDeactivate removeObject:go];
         [self.impendingObjectsToActivate addObject:go];
+        [self.inactiveObjects removeObject:go];
     }
 }
 - (void) handleObjectDeactivatedNotification:(NSNotification *) notification
@@ -43,6 +44,8 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
     {
         [self.impendingObjectsToActivate removeObject:go];
         [self.impendingObjectsToDeactivate addObject:go];
+        if ([self.activeAndInWindowObjects containsObject:go]) { [self.activeAndInWindowObjects removeObject:go]; }
+        else if ([self.activeButNotInWindowObjects containsObject:go]) { [self.activeButNotInWindowObjects removeObject:go]; }
     }
 }
 - (void) removeObjectFromAllStateSets:(KJGameObject *) gameObject
