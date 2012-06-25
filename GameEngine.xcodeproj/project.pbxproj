@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A20D54C1597FC960065E15B /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A249B6214A2750C00D5D7D3 /* libEngine.a */; };
+		0A20D54D1597FCE50065E15B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499D414A267D000D5D7D3 /* CoreGraphics.framework */; };
 		0A21CEAC15516E1100A88F92 /* KJBackgroundObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */; };
 		0A21CEAE15516E2400A88F92 /* KJBackgroundObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A21CEAA15516E1100A88F92 /* KJBackgroundObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A21CEAF15516E3300A88F92 /* KJBackgroundObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */; };
@@ -283,11 +285,20 @@
 		0AF823A515967409009F41CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499D014A267D000D5D7D3 /* UIKit.framework */; };
 		0AF823A615967409009F41CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499D214A267D000D5D7D3 /* Foundation.framework */; };
 		0AF823AC15967409009F41CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0AF823AA15967409009F41CF /* InfoPlist.strings */; };
-		0AF823AF15967409009F41CF /* UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF823AE15967409009F41CF /* UnitTests.m */; };
 		0AF823B715967498009F41CF /* ObjectManagementTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF823B615967498009F41CF /* ObjectManagementTests.m */; };
 		0AF8B56B14C87C1D005FCBF7 /* Graphics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AF8B56A14C87C1D005FCBF7 /* Graphics.plist */; };
 		0AFA4F6D14CDC17900077A83 /* cocos2d.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A249A9C14A267D200D5D7D3 /* cocos2d.h */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A20D5341597C1D90065E15B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A2499B914A267D000D5D7D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A249B6114A2750C00D5D7D3;
+			remoteInfo = Engine;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0A21CEAA15516E1100A88F92 /* KJBackgroundObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJBackgroundObject.h; sourceTree = "<group>"; };
@@ -601,8 +612,6 @@
 		0AF823A315967409009F41CF /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF823A915967409009F41CF /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		0AF823AB15967409009F41CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0AF823AD15967409009F41CF /* UnitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitTests.h; sourceTree = "<group>"; };
-		0AF823AE15967409009F41CF /* UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnitTests.m; sourceTree = "<group>"; };
 		0AF823B015967409009F41CF /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
 		0AF823B515967498009F41CF /* ObjectManagementTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectManagementTests.h; sourceTree = "<group>"; };
 		0AF823B615967498009F41CF /* ObjectManagementTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectManagementTests.m; sourceTree = "<group>"; };
@@ -637,6 +646,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A20D54D1597FCE50065E15B /* CoreGraphics.framework in Frameworks */,
+				0A20D54C1597FC960065E15B /* libEngine.a in Frameworks */,
 				0AF823A415967409009F41CF /* SenTestingKit.framework in Frameworks */,
 				0AF823A515967409009F41CF /* UIKit.framework in Frameworks */,
 				0AF823A615967409009F41CF /* Foundation.framework in Frameworks */,
@@ -1246,8 +1257,6 @@
 		0AF823A715967409009F41CF /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				0AF823AD15967409009F41CF /* UnitTests.h */,
-				0AF823AE15967409009F41CF /* UnitTests.m */,
 				0AF823B515967498009F41CF /* ObjectManagementTests.h */,
 				0AF823B615967498009F41CF /* ObjectManagementTests.m */,
 				0AF823A815967409009F41CF /* Supporting Files */,
@@ -1283,6 +1292,7 @@
 				0A249B9014A275F100D5D7D3 /* SortedStack.h in Headers */,
 				0A249B9114A275F100D5D7D3 /* StackObject.h in Headers */,
 				0A249B9214A275F100D5D7D3 /* StackManager.h in Headers */,
+				0A21CEE51551BE6D00A88F92 /* KJGameObjectProtocol.h in Headers */,
 				0A249B9314A275F100D5D7D3 /* CGExtensions.h in Headers */,
 				0A22614F14FBFF6B001C35FA /* Universalizer.h in Headers */,
 				0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */,
@@ -1302,7 +1312,6 @@
 				0A21CED715519E6200A88F92 /* KJModuleProtocol.h in Headers */,
 				0A21CEDB15519FB700A88F92 /* KJModule.h in Headers */,
 				0A21CEE11551BB0500A88F92 /* KJLevel.h in Headers */,
-				0A21CEE51551BE6D00A88F92 /* KJGameObjectProtocol.h in Headers */,
 				0A21CEAE15516E2400A88F92 /* KJBackgroundObject.h in Headers */,
 				0A21CF001553097A00A88F92 /* KJCocosGraphicObject.h in Headers */,
 				0A21CF0615530CAA00A88F92 /* KJCocosComplexSpriteObject.h in Headers */,
@@ -1439,6 +1448,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0A20D5351597C1D90065E15B /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
@@ -1683,12 +1693,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AF823AF15967409009F41CF /* UnitTests.m in Sources */,
 				0AF823B715967498009F41CF /* ObjectManagementTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0A20D5351597C1D90065E15B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A249B6114A2750C00D5D7D3 /* Engine */;
+			targetProxy = 0A20D5341597C1D90065E15B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0AF823AA15967409009F41CF /* InfoPlist.strings */ = {
@@ -1788,7 +1805,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1806,7 +1823,7 @@
 				COPY_PHASE_STRIP = YES;
 				DSTROOT = /tmp/Engine.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -1820,6 +1837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUNDLE_LOADER)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1846,6 +1864,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUNDLE_LOADER)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1901,6 +1920,7 @@
 				0AF823B215967409009F41CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
