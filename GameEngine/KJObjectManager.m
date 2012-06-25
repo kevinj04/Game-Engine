@@ -222,12 +222,15 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 
     if (self.currentLevel == nil) return;
 
-    for (KJCommonGameObject *obj in self.activeButNotInWindowObjects)
+    NSSet *copyOfActiveButNotInWindowObjects = [NSSet setWithSet:self.activeButNotInWindowObjects];
+
+    for (KJCommonGameObject *obj in copyOfActiveButNotInWindowObjects)
     {
         if (CGRectContainsPoint([self.currentLevel activeWindow], [obj position]))
         {
             [obj setInActiveWindow:YES];
             [self.activeAndInWindowObjects addObject:obj];
+            [self.activeButNotInWindowObjects removeObject:obj];
         }
     }
 }
@@ -237,12 +240,15 @@ NSString *const kjObjectDeactivated = @"objectDeactivated";
 
     if (self.currentLevel == nil) return;
 
-    for (KJCommonGameObject *obj in self.activeAndInWindowObjects)
+    NSSet *copyOfActiveInWindowObjects = [NSSet setWithSet:self.activeAndInWindowObjects];
+
+    for (KJCommonGameObject *obj in copyOfActiveInWindowObjects)
     {
         if (!CGRectContainsPoint([self.currentLevel activeWindow], [obj position]))
         {
             [obj setInActiveWindow:NO];
             [self.activeButNotInWindowObjects addObject:obj];
+            [self.activeAndInWindowObjects removeObject:obj];
         }
     }
 }
