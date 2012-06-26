@@ -32,30 +32,30 @@ NSString *const kjAlwaysActive = @"alwaysActive";
 #pragma mark -
 #pragma mark Initialization
 - (id) init {
-    
+
     if (( self = [super init] )) {
-        
+
         [self registerNotifications];
         [self setup];
-        
+
         return self;
     } else {
         return nil;
     }
-    
+
 }
 - (id) initWithDictionary:(NSDictionary *)dictionary {
-    
+
     if (( self = [super init] )) {
-        
+
         [self registerNotifications];
         [self setupWithDictionary:dictionary];
-        
+
         return self;
     } else {
         return nil;
     }
-    
+
 }
 + (id) object {
     return [[[KJGameObject alloc] init] autorelease];
@@ -64,55 +64,55 @@ NSString *const kjAlwaysActive = @"alwaysActive";
     return [[[KJGameObject alloc] initWithDictionary:dictionary] autorelease];
 }
 - (void) setup {
-    
-    _parentId = nil;    
+
+    _parentId = nil;
     self.parent = nil;
-    
+
     self.objectType = 0;
     self.objectId = @"defaultObjectId";
     self.objectName = @"defaultObjectName";
-    
-    self.isActive = YES;
+
+    self.isActive = NO;
     self.isAlwaysActive = NO;
     self.inActiveWindow = NO;
 }
-- (void) setupWithDictionary:(NSDictionary *) dictionary {    
-    
+- (void) setupWithDictionary:(NSDictionary *) dictionary {
+
     [self setup];
-    
+
     if ([dictionary objectForKey:kjParentId] != nil) {
         self.parentId = [dictionary objectForKey:kjParentId];
     }
-    
+
     if ([dictionary objectForKey:kjObjectType] != nil) {
         self.objectType = [[dictionary objectForKey:kjObjectType] intValue];
     }
-    
+
     if ([dictionary objectForKey:kjObjectId] != nil) {
         self.objectId = [dictionary objectForKey:kjObjectId];
     }
-    
+
     if ([dictionary objectForKey:kjObjectName] != nil) {
         self.objectName = [dictionary objectForKey:kjObjectName];
     }
-    
+
     if ([dictionary objectForKey:kjAlwaysActive] != nil) {
         self.isAlwaysActive = [[dictionary objectForKey:kjAlwaysActive] boolValue];
     }
-    
+
 }
 - (void) registerNotifications {
     // handled by subclasses
 }
 - (void) dealloc {
-    
+
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
+
     if (self.objectId != nil) { [_objectId release]; _objectId = nil; }
     if (self.objectName != nil) { [_objectName release]; _objectName = nil; }
     if (self.parentId != nil) { [_parentId release]; _parentId = nil; }
     if (self.parent != nil) { [_parent release]; _parent = nil; }
-    
+
     [super dealloc];
 }
 #pragma mark -
@@ -125,13 +125,13 @@ NSString *const kjAlwaysActive = @"alwaysActive";
 
 #pragma mark Getters and Setters
 - (void) setIsActive:(bool) b {
-    if (self.isAlwaysActive) {        
+    if (self.isAlwaysActive) {
         NSLog(@"Attempting to set object's active level, but object is always active.");
         return;
     }
     if (b && !self.isActive) { [[NSNotificationCenter defaultCenter] postNotificationName:kjObjectActivated object:self]; }
-    if (!b && self.isActive) { 
-        [[NSNotificationCenter defaultCenter] postNotificationName:kjObjectDeactivated object:self]; 
+    if (!b && self.isActive) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kjObjectDeactivated object:self];
     }
     _isActive = b;
 }
