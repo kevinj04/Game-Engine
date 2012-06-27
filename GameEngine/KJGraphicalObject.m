@@ -36,92 +36,92 @@ NSString *const kjTargetPart = @"targetPart";
 @synthesize parts = _parts;
 
 #pragma mark - Initialization
-- (id) init 
+- (id) init
 {
     self = [super init];
     return self;
 }
-+ (id) object 
++ (id) object
 {
     return [[[KJGraphicalObject alloc] init] autorelease];
 }
-- (void) setup 
+- (void) setup
 {
     self.scaleX = 1.0;
     self.scaleY = 1.0;
-    
+
     self.animationSpeed = 1.0;
     self.vertexZ = 0.0;
     self.zOrder = 0;
-    
+
     self.visible = YES;
-    
+
     self.flipX = NO;
     self.flipY = NO;
-    
+
     self.primaryPart = [NSString stringWithFormat:@""];
-    
+
     // empty, only mutable through setupGraphicsWithDictionary method.
-    self.parts = [NSDictionary dictionary];
-    
+    self.parts = nil;
+
     [super setup];
 }
-- (id) initWithDictionary:(NSDictionary *) dictionary 
+- (id) initWithDictionary:(NSDictionary *) dictionary
 {
     self = [super initWithDictionary:dictionary];
     return self;
 }
-+ (id) objectWithDictionary:(NSDictionary *) dictionary 
++ (id) objectWithDictionary:(NSDictionary *) dictionary
 {
     return [[[KJGraphicalObject alloc] initWithDictionary:dictionary] autorelease];
 }
-- (void) setupWithDictionary:(NSDictionary *)dictionary 
+- (void) setupWithDictionary:(NSDictionary *)dictionary
 {
     [super setupWithDictionary:dictionary];
-    
+
     NSDictionary *params;
     if ((params = [dictionary objectForKey:kjParameters])) {
-        
+
         if ([params objectForKey:kjVertexZ] != nil) {
             self.vertexZ = [[params objectForKey:kjVertexZ] floatValue];
         }
-        
+
         if ([params objectForKey:kjZOrder] != nil) {
             self.zOrder = [[params objectForKey:kjZOrder] intValue];
         }
     }
 }
 - (void) handleAnimationNotification:(NSNotification *) notification {
-    
+
     NSString *animationRequest;
     NSString *targetPart;
-    
-    if (( animationRequest = [[notification userInfo] objectForKey:kjAnimationRequest])) 
+
+    if (( animationRequest = [[notification userInfo] objectForKey:kjAnimationRequest]))
     {
-        if (( targetPart = [[notification userInfo] objectForKey:kjTargetPart])) 
+        if (( targetPart = [[notification userInfo] objectForKey:kjTargetPart]))
         {
             [self runAnimation:animationRequest onPart:targetPart];
         }
-        
+
         [self runAnimation:animationRequest];
     }
 }
-- (void) dealloc 
+- (void) dealloc
 {
     if (self.parts != nil) { [_parts release]; self.parts = nil; }
     if (self.primaryPart != nil) { [_primaryPart release]; self.primaryPart = nil; }
-    
+
     [super dealloc];
 }
 
 #pragma mark - Update Method
-- (void) update:(double) dt 
+- (void) update:(double) dt
 {
     [super update:dt];
-    
-    if (self.inActiveWindow || self.isAlwaysActive) 
+
+    if (self.inActiveWindow || self.isAlwaysActive)
     {
-    
+
         for (KJGraphicsPart *part in [self.parts allValues])
         {
             [part update:dt*self.animationSpeed];
@@ -130,55 +130,55 @@ NSString *const kjTargetPart = @"targetPart";
 }
 
 #pragma mark - Animation Methods
-- (void) setupGraphicsWithDictionary:(NSDictionary *) animationDictionary 
+- (void) setupGraphicsWithDictionary:(NSDictionary *) animationDictionary
 {
     if ([animationDictionary objectForKey:kjBody] != nil) {
         self.primaryPart = [animationDictionary objectForKey:kjBody];
     }
-    
+
     self.shouldIgnoreBatchNodeUpdate = NO;
     if ([animationDictionary objectForKey:kjShouldIgnoreBatchNodeUpdate] != nil) {
         self.shouldIgnoreBatchNodeUpdate = [[animationDictionary objectForKey:kjShouldIgnoreBatchNodeUpdate] boolValue];
     }
-    
+
     if ([animationDictionary objectForKey:kjZOrder] != nil) {
         self.zOrder = [[animationDictionary objectForKey:kjZOrder] intValue];
     }
-    
+
     if ([animationDictionary objectForKey:kjVertexZ] != nil) {
         self.vertexZ = [[animationDictionary objectForKey:kjVertexZ] floatValue];
     }
-    
+
     NSDictionary *partsDictionary;
     if ((partsDictionary = [animationDictionary objectForKey:kjObjectParts])) {
-        
+
         NSMutableDictionary *tempParts = [NSMutableDictionary dictionaryWithCapacity:[partsDictionary count]];
-        
+
         for (NSString *partName in [partsDictionary allKeys]) {
-            
+
             KJGraphicsPart *part = [KJGraphicsPart partWithAnimationDictionary:[partsDictionary objectForKey:partName]];
             [part setParent:self];
             [part setObjectName:partName];
             [tempParts setObject:part forKey:partName];
         }
-        
+
         self.parts = [NSDictionary dictionaryWithDictionary:tempParts];
-        
+
     } else {
         self.parts = [NSDictionary dictionary];
     }
 }
 
-- (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName 
+- (void) runAnimation:(NSString *) animationName onPart:(NSString *) partName
 {
-    if ([self.parts objectForKey:partName] != nil) 
+    if ([self.parts objectForKey:partName] != nil)
     {
-        [[self.parts objectForKey:partName] runAnimation:animationName];        
+        [[self.parts objectForKey:partName] runAnimation:animationName];
     }
 }
-- (void) runAnimation:(NSString *) animationName 
+- (void) runAnimation:(NSString *) animationName
 {
-    for (KJGraphicsPart *part in [self.parts allValues]) 
+    for (KJGraphicsPart *part in [self.parts allValues])
     {
         [part runAnimation:animationName];
     }
