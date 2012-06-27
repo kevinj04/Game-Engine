@@ -248,6 +248,8 @@
 		0A2D94F8151C990700BCD796 /* DenshionEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A2D94F6151C990600BCD796 /* DenshionEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A2D94F9151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
 		0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
+		0A31139B159A56CA00BD168A /* KJGameObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A31139A159A56CA00BD168A /* KJGameObjectUnitTests.m */; };
+		0A3113C0159BAB8D00BD168A /* sampleObjectDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A3113A6159BA7B000BD168A /* sampleObjectDictionary.plist */; };
 		0A5669C11550896600295EDE /* KJPhysicsObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5669BF1550896500295EDE /* KJPhysicsObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A5669C21550896600295EDE /* KJPhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C01550896500295EDE /* KJPhysicsObject.m */; };
 		0A5669C31550896600295EDE /* KJPhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C01550896500295EDE /* KJPhysicsObject.m */; };
@@ -582,6 +584,9 @@
 		0A2D94F3151C93BD00BCD796 /* SoundEngineProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundEngineProtocol.h; sourceTree = "<group>"; };
 		0A2D94F6151C990600BCD796 /* DenshionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DenshionEngine.h; sourceTree = "<group>"; };
 		0A2D94F7151C990700BCD796 /* DenshionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DenshionEngine.m; sourceTree = "<group>"; };
+		0A311399159A56CA00BD168A /* KJGameObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObjectUnitTests.h; sourceTree = "<group>"; };
+		0A31139A159A56CA00BD168A /* KJGameObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGameObjectUnitTests.m; sourceTree = "<group>"; };
+		0A3113A6159BA7B000BD168A /* sampleObjectDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleObjectDictionary.plist; sourceTree = "<group>"; };
 		0A5669BF1550896500295EDE /* KJPhysicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJPhysicsObject.h; sourceTree = "<group>"; };
 		0A5669C01550896500295EDE /* KJPhysicsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJPhysicsObject.m; sourceTree = "<group>"; };
 		0A5669C6155089A600295EDE /* KJGameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObject.h; sourceTree = "<group>"; };
@@ -1180,6 +1185,23 @@
 			name = CocosDenshionEngine;
 			sourceTree = "<group>";
 		};
+		0A311397159A569C00BD168A /* GameObjectUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A311399159A56CA00BD168A /* KJGameObjectUnitTests.h */,
+				0A31139A159A56CA00BD168A /* KJGameObjectUnitTests.m */,
+			);
+			path = GameObjectUnitTests;
+			sourceTree = "<group>";
+		};
+		0A3113A4159BA79F00BD168A /* TestResources */ = {
+			isa = PBXGroup;
+			children = (
+				0A3113A6159BA7B000BD168A /* sampleObjectDictionary.plist */,
+			);
+			path = TestResources;
+			sourceTree = "<group>";
+		};
 		0A5669C51550896E00295EDE /* KJ */ = {
 			isa = PBXGroup;
 			children = (
@@ -1257,6 +1279,8 @@
 		0AF823A715967409009F41CF /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				0A3113A4159BA79F00BD168A /* TestResources */,
+				0A311397159A569C00BD168A /* GameObjectUnitTests */,
 				0AF823B515967498009F41CF /* ObjectManagementTests.h */,
 				0AF823B615967498009F41CF /* ObjectManagementTests.m */,
 				0AF823A815967409009F41CF /* Supporting Files */,
@@ -1504,6 +1528,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A3113C0159BAB8D00BD168A /* sampleObjectDictionary.plist in Resources */,
 				0AF823AC15967409009F41CF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1694,6 +1719,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AF823B715967498009F41CF /* ObjectManagementTests.m in Sources */,
+				0A31139B159A56CA00BD168A /* KJGameObjectUnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
