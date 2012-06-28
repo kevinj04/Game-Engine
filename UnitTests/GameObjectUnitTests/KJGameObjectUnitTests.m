@@ -16,22 +16,30 @@
 
 - (void) handleObjectActivation:(NSNotification *)notification;
 - (void) handleObjectDeactivation:(NSNotification *)notification;
+- (void) handleObjectSetAlwaysActive:(NSNotification *)notification;
+- (void) handleObjectSetNotAlwaysActive:(NSNotification *)notification;
 
-@property (nonatomic, assign) bool objectWasActivated;
-@property (nonatomic, assign) bool objectWasDeactivated;
+@property (nonatomic, assign) bool objectSentNotificationActivated;
+@property (nonatomic, assign) bool objectSentNotificationDeactivated;
+@property (nonatomic, assign) bool objectSentNotificationAlwaysActive;
+@property (nonatomic, assign) bool objectSentNotificationNotAlwaysActive;
 
 @end
 
 @implementation KJGameObjectUnitTests
 
-@synthesize objectWasActivated = _objectWasActivated;
-@synthesize objectWasDeactivated = _objectWasDeactivated;
+@synthesize objectSentNotificationDeactivated = _objectSentNotificationDeactivated;
+@synthesize objectSentNotificationActivated = _objectSentNotificationActivated;
+@synthesize objectSentNotificationAlwaysActive = _objectSentNotificationAlwaysActive;
+@synthesize objectSentNotificationNotAlwaysActive = _objectSentNotificationNotAlwaysActive;
 
 - (void)setUp
 {
     [super setUp];
-    self.objectWasActivated = NO;
-    self.objectWasDeactivated = NO;
+    self.objectSentNotificationActivated = NO;
+    self.objectSentNotificationDeactivated = NO;
+    self.objectSentNotificationAlwaysActive = NO;
+    self.objectSentNotificationNotAlwaysActive = NO;
 }
 
 - (void)tearDown
@@ -44,12 +52,20 @@
 #pragma mark - Event Handlers
 - (void) handleObjectActivation:(NSNotification *) notification
 {
-    self.objectWasActivated = YES;
+    self.objectSentNotificationActivated = YES;
 }
 
 - (void) handleObjectDeactivation:(NSNotification *) notification
 {
-    self.objectWasDeactivated = YES;
+    self.objectSentNotificationDeactivated = YES;
+}
+- (void) handleObjectSetAlwaysActive:(NSNotification *) notification
+{
+    self.objectSentNotificationAlwaysActive = YES;
+}
+- (void) handleObjectSetNotAlwaysActive:(NSNotification *) notification
+{
+    self.objectSentNotificationNotAlwaysActive = YES;
 }
 
 #pragma mark - Helper functions
@@ -60,6 +76,14 @@
 - (void) registerForDeactivationEvent
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleObjectDeactivation:) name:kjObjectDeactivated object:nil];
+}
+- (void) registerForSetAlwaysActiveEvent
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleObjectSetAlwaysActive:) name:kjObjectSetAlwaysActive object:nil];
+}
+- (void) registerForSetNotAlwaysActive
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleObjectSetNotAlwaysActive:) name:kjObjectSetNotAlwaysActive object:nil];
 }
 - (KJGameObject *) gameObjectFromDictionary
 {
@@ -146,8 +170,8 @@
 {
     [self registerForActivationEvent];
     [self gameObjectFromDictionary];
-    STAssertFalse(self.objectWasActivated, @"Object should not fire activation notification on creation.");
-    STAssertFalse(self.objectWasDeactivated, @"Object should not fire deactivation notification on creation.");
+    STAssertFalse(self.objectSentNotificationActivated, @"Object should not fire activation notification on creation.");
+    STAssertFalse(self.objectSentNotificationDeactivated, @"Object should not fire deactivation notification on creation.");
 }
 
 - (void)testActivatingObjectFiresNotification
@@ -155,7 +179,7 @@
     [self registerForActivationEvent];
     KJGameObject *newObject = [self gameObjectFromDictionary];
     newObject.isActive = YES;
-    STAssertTrue(self.objectWasActivated, @"Object should fire a notification when activated.");
+    STAssertTrue(self.objectSentNotificationActivated, @"Object should fire a notification when activated.");
 }
 
 - (void)testDeactivatingObjectFiresNotification
@@ -164,7 +188,25 @@
     KJGameObject *newObject = [self gameObjectFromDictionary];
     newObject.isActive = YES;
     newObject.isActive = NO;
-    STAssertTrue(self.objectWasDeactivated, @"Object should fire a notification when deactivated.");
+    STAssertTrue(self.objectSentNotificationDeactivated, @"Object should fire a notification when deactivated.");
 
 }
+
+- (void) testSetAlwaysActiveFiresNotification
+{
+    [self registerForSetAlwaysActiveEvent];
+    KJGameObject *newObject = [self gameObjectFromDictionary];
+    newObject.isAlwaysActive = YES;
+    STAssertTrue(self.objectSentNotificationAlwaysActive, @"Object should fire a notification when set always active.");
+}
+
+- (void) testSetNotAlwaysActiveFiresNotification
+{
+    [self registerForSetNotAlwaysActive];
+    KJGameObject *newObject = [self gameObjectFromDictionary];
+    newObject.isAlwaysActive = YES;
+    newObject.isAlwaysActive = NO;
+    STAssertTrue(self.objectSentNotificationNotAlwaysActive, @"Object should fire a notification when set not always active.");
+}
+
 @end
