@@ -21,7 +21,12 @@ extern NSString *const kjAlwaysActive;
 extern NSString *const kjParameters;
 extern NSString *const kjSelected;
 
-@interface KJGameObject : NSObject<KJGameObjectProtocol> 
+extern NSString *const kjObjectActivated;
+extern NSString *const kjObjectDeactivated;
+extern NSString *const kjObjectSetAlwaysActive;
+extern NSString *const kjObjectSetNotAlwaysActive;
+
+@interface KJGameObject : NSObject<KJGameObjectProtocol>
 
 @property (nonatomic, retain) KJLayer *parent;
 @property (nonatomic, retain) NSString *parentId;

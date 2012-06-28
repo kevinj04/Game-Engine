@@ -9,11 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "KJLevel.h"
 
-extern NSString *const kjObjectActivated;
-extern NSString *const kjObjectDeactivated;
-
 @interface KJObjectManager : NSObject {
-    
+
 }
 
 @property (nonatomic, retain) KJLevel *currentLevel;

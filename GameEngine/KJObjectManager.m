@@ -9,9 +9,6 @@
 #import "KJObjectManager.h"
 #import "KJCommonGameObject.h"
 
-NSString *const kjObjectActivated = @"objectActivated";
-NSString *const kjObjectDeactivated = @"objectDeactivated";
-
 @interface KJObjectManager (hidden)
 - (void) registerNotifications;
 - (void) handleObjectActivatedNotification:(NSNotification *) notification;

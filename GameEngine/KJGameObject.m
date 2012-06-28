@@ -17,6 +17,10 @@ NSString *const kjParameters = @"parameters";
 NSString *const kjSelected = @"gameElementSelected";
 NSString *const kjAlwaysActive = @"alwaysActive";
 
+NSString *const kjObjectActivated = @"objectActivated";
+NSString *const kjObjectDeactivated = @"objectDeactivated";
+NSString *const kjObjectSetAlwaysActive = @"setAlwaysActive";
+NSString *const kjObjectSetNotAlwaysActive = @"setNotAlwaysActive";
 
 @implementation KJGameObject
 
@@ -124,7 +128,21 @@ NSString *const kjAlwaysActive = @"alwaysActive";
 #pragma mark -
 
 #pragma mark Getters and Setters
-- (void) setIsActive:(bool) b {
+- (void) setIsAlwaysActive:(bool) b
+{
+    if (b == _isAlwaysActived) return;
+
+    if (b)
+    {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kjObjectSetAlwaysActive object:self];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kjObjectSetNotAlwaysActive object:self];
+    }
+
+    _isAlwaysActived = b;
+}
+- (void) setIsActive:(bool) b
+{
     if (self.isAlwaysActive) {
         NSLog(@"Attempting to set object's active level, but object is always active.");
         return;
