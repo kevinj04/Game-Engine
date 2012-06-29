@@ -12,7 +12,6 @@
 NSString *const kjObjectSize = @"size";
 NSString *const kjObjectPosition = @"position";
 NSString *const kjObjectAnchorPoint = @"anchorPoint";
-
 NSString *const kjPositionChange = @"physicsPositionChange";
 NSString *const kjVelocityChange = @"physicsVelocityChange";
 NSString *const kjAccelerationChange = @"physicsAccelerationChange";
@@ -48,22 +47,18 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
 @synthesize acceleration = _acceleration;
 @synthesize centerOfMass = _centerOfMass;
 @synthesize anchorPoint = _anchorPoint;
-
 @synthesize force = _force;
-
 @synthesize boundingBox = _boundingBox;
 @synthesize size = _size;
-
 @synthesize mass = _mass;
-@synthesize rotation = _rotation;   
-
+@synthesize rotation = _rotation;
 @synthesize dampingValue = _dampingValue;
 @synthesize minimumVelocity = _minimumVelocity;
 
 #pragma mark - Initialization
 - (id) init
 {
-    
+
     self = [super init];
     if (self)
     {
@@ -73,13 +68,13 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
 }
 - (id) initWithDictionary:(NSDictionary *) dictionary
 {
-    
+
     self = [super initWithDictionary:dictionary];
     if (self)
-    {    
+    {
         // do nothing for now...
     }
-        
+
     return self;
 }
 + (id) objectWithDictionary:(NSDictionary *) dictionary
@@ -92,41 +87,39 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
 }
 - (void) setup
 {
-    
+
     [super setup];
-    
+
     self.position = CGPointMake(0.0f, 0.0f);
     self.velocity = CGPointMake(0.0f, 0.0f);
     self.acceleration = CGPointMake(0.0f, 0.0f);
-    self.centerOfMass = CGPointMake(0.0f, 0.0f);
-    
+    self.centerOfMass = CGPointMake(0.5f, 0.5f);
     self.size = [Universalizer scaleSizeForIPad:CGSizeMake(5.0, 5.0)];
     self.boundingBox = [Universalizer scaleRectForIPad:CGRectMake(self.position.x-((self.size.width-1.0)/2.0), self.position.y-((self.size.height-1.0)/2.0), self.size.width, self.size.height)];
     self.anchorPoint = CGPointMake(0.5, 0.5);
-    
     self.mass = 1.0f;
-    
+    self.minimumVelocity = 0.1;
+    self.dampingValue = 0.95;
+
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary
 {
-    
+    [self setup];
+
     [super setupWithDictionary:dictionary];
-    
-    self.minimumVelocity = 0.1;
-    self.dampingValue = 0.95;
-    
+
     if ([dictionary objectForKey:kjObjectSize] != nil) {
         self.size = [Universalizer scaleSizeForIPad:CGSizeFromString([dictionary objectForKey:kjObjectSize])];
     }
-    
+
     if ([dictionary objectForKey:kjObjectPosition] != nil) {
         self.position = [Universalizer scalePointForIPad:CGPointFromString([dictionary objectForKey:kjObjectPosition])];
     }
-    
+
     if ([dictionary objectForKey:kjObjectAnchorPoint] != nil) {
         self.anchorPoint = CGPointFromString([dictionary objectForKey:kjObjectAnchorPoint]);
     }
-    
+
 }
 - (void) registerNotifications
 {
@@ -178,15 +171,15 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
         self.size = CGSizeMake(r.size.width, r.size.height);
         [[NSNotificationCenter defaultCenter] postNotificationName:kjSizeChange object:self];
     }
-    
+
     CGPoint newOrigin = self.position;
     double xOffset = self.anchorPoint.x * self.boundingBox.size.width;
     double yOffset = self.anchorPoint.y * self.boundingBox.size.height;
-    
+
     _boundingBox.origin = CGPointMake(newOrigin.x - xOffset, newOrigin.y - yOffset);
-    
+
     [[NSNotificationCenter defaultCenter] postNotificationName:kjBoundingBoxChange object:self];
-    
+
 }
 - (void) setRotation:(float) r
 {
@@ -201,7 +194,7 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
 }
 
 #pragma mark - Physics Methods
-- (void) applyImpulse:(CGPoint) impulse 
+- (void) applyImpulse:(CGPoint) impulse
 {
     CGPoint newVelocity = CGPointMake(impulse.x + self.velocity.x, impulse.y + self.velocity.y);
     self.velocity = newVelocity;
@@ -217,23 +210,23 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
 - (void) update:(double)dt
 {
 
-    if (self.inActiveWindow || self.isAlwaysActive) 
+    if (self.inActiveWindow || self.isAlwaysActive)
     {
-        
+
         self.position = CGPointMake(self.position.x + self.velocity.x * dt, self.position.y + self.velocity.y * dt);
-        self.velocity = CGPointMake(self.velocity.x + self.acceleration.x * dt, self.velocity.y + self.acceleration.y * dt);        
-        
+        self.velocity = CGPointMake(self.velocity.x + self.acceleration.x * dt, self.velocity.y + self.acceleration.y * dt);
+
         // some sense of friction/damping
-        if (kjFuzzyEqual(self.velocity, CGPointZero, self.minimumVelocity)) { 
-            self.velocity = CGPointZero; 
+        if (kjFuzzyEqual(self.velocity, CGPointZero, self.minimumVelocity)) {
+            self.velocity = CGPointZero;
         } else {
             self.velocity = CGPointMake(self.velocity.x * self.dampingValue, self.velocity.y * self.dampingValue);
         }
-        
+
         self.acceleration = CGPointMake(self.force.x / self.mass, self.force.y / self.mass);
-        
+
     }
-    
+
     [super update:dt];
 }
 
