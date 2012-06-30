@@ -220,8 +220,8 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
         if (kjFuzzyEqual(self.velocity, CGPointZero, self.minimumVelocity)) {
             self.velocity = CGPointZero;
         } else {
-            self.velocity = CGPointMake(self.velocity.x * self.dampingValue * (dt / (1.0f / 60.0f) ),
-                                        self.velocity.y * self.dampingValue * (dt / (1.0f / 60.0f) ));
+            self.velocity = CGPointMake(self.velocity.x * powf(self.dampingValue, (dt / (1.0f / 60.0f) )),
+                                        self.velocity.y * powf(self.dampingValue, (dt / (1.0f / 60.0f) )));
         }
 
         self.acceleration = CGPointMake(self.force.x / self.mass, self.force.y / self.mass);
