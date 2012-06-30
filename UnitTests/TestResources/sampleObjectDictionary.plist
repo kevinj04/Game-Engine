@@ -15,6 +15,25 @@
 		<key>alwaysActive</key>
 		<false/>
 	</dict>
+	<key>physicsGameObject</key>
+	<dict>
+		<key>id</key>
+		<string>objectId</string>
+		<key>name</key>
+		<string>objectName</string>
+		<key>type</key>
+		<integer>1</integer>
+		<key>parentId</key>
+		<string>parentId</string>
+		<key>alwaysActive</key>
+		<false/>
+		<key>position</key>
+		<string>{14,19}</string>
+		<key>size</key>
+		<string>{20,20}</string>
+		<key>anchorPoint</key>
+		<string>{0.5,0.0}</string>
+	</dict>
 	<key>gameLayer</key>
 	<dict>
 		<key>id</key>

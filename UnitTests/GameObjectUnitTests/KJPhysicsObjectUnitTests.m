@@ -144,8 +144,8 @@
     NSString *pathToObjectDictionary = [[NSBundle bundleForClass:[self class]] pathForResource:@"sampleObjectDictionary"
                                                                                         ofType:@"plist" ];
     NSDictionary *objectsDictionary = [NSDictionary dictionaryWithContentsOfFile:pathToObjectDictionary];
-    NSDictionary *objectDictionary = [objectsDictionary objectForKey:[NSString stringWithString:@"gameObject"]];
-    
+    NSDictionary *objectDictionary = [objectsDictionary objectForKey:[NSString stringWithString:@"physicsGameObject"]];
+
     KJPhysicsObject *newObject = [KJPhysicsObject objectWithDictionary:objectDictionary];
     return newObject;
 }
@@ -177,7 +177,7 @@
 - (void) testShouldCreateDefaultObjectWithEmptyDictionary
 {
     KJPhysicsObject *newObject = [self createDefaultObject];
-    
+
     STAssertTrue(CGPointEqualToPoint(newObject.position, CGPointZero), @"Default objects should be placed at CGPointZero");
     STAssertTrue(CGPointEqualToPoint(newObject.velocity, CGPointZero), @"Default objects should have zero velocity.");
     STAssertTrue(CGPointEqualToPoint(newObject.acceleration, CGPointZero), @"Default objects should have zero acceleration.");
@@ -187,107 +187,228 @@
     STAssertTrue(CGRectEqualToRect(newObject.boundingBox, CGRectMake(-2.5,-2.5,5.0,5.0)), @"Default objects should have bounding box [-2.5 -2.5 5.0 5.0].");
     STAssertTrue(CGPointEqualToPoint(newObject.anchorPoint, CGPointMake(0.5, 0.5)), @"Default objects should have centered anchor point.");
     STAssertTrue(1.0f == newObject.mass, @"Default objects should have 1.0f mass.");
-    
-    STAssertTrue(0.1 == newObject.minimumVelocity, @"New objects should have minimum velocity of 0.1.");
-    STAssertTrue(0.95 == newObject.dampingValue, @"New objects should have a damping value of 0.95.");
-                                                                                         
+
+    STAssertTrue(0.1f == newObject.minimumVelocity, @"New objects should have minimum velocity of 0.1.");
+    STAssertTrue(0.95f == newObject.dampingValue, @"New objects should have a damping value of 0.95.");
+
 }
 
 - (void) testShouldCreateObjectWithValuesFromDictionary
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createObjectWithDictionary];
+
+    STAssertTrue(CGSizeEqualToSize(CGSizeMake(20.0,20.0), newObject.size), @"Objects created with a dictionary that contains a size value should use that value.");
+    STAssertTrue(CGPointEqualToPoint(CGPointMake(14.0,19.0), newObject.position), @"Objects created with a dictionary that contains a position entry should use that value.");
+    STAssertTrue(CGPointEqualToPoint(CGPointMake(0.5,0.0), newObject.anchorPoint), @"Objects created with a dictionary that contains an anchorPoint entry should use that value.");
 }
 
 #pragma mark - Setter Tests
 - (void) testShouldAdjustBoundingBoxWhenSettingPosition
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createDefaultObject];
+    newObject.position = CGPointMake(2.5, 2.5);
+
+    STAssertTrue(CGRectEqualToRect(CGRectMake(0.0,0.0,5.0,5.0), newObject.boundingBox), @"Adjusting the position of an object should properly adjust its bounding box.");
 }
 
 - (void) testShouldAdjustBoundingBoxWhenSettingSize
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createDefaultObject];
+    newObject.size = CGSizeMake(10.0,10.0);
+
+    STAssertTrue(CGRectEqualToRect(CGRectMake(-5.0,-5.0,10.0,10.0), newObject.boundingBox), @"Adjusting the position of an object should properly adjust its bounding box.");
 }
 
 - (void) testShouldAdjustSizeWhenSettingBoundingBox
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createDefaultObject];
+    newObject.boundingBox = CGRectMake(10.0,10.0, 50.0, 50.0);
+
+    STAssertTrue(CGSizeEqualToSize(CGSizeMake(50.0,50.0), newObject.size), @"Adjusting the bounding box of an object should properly adjust its size.");
 }
 
 - (void) testShouldAdjustBoundingBoxWhenSettingAnchorPoint
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createDefaultObject];
+    newObject.anchorPoint = CGPointMake(0.0,0.0);
+
+    STAssertTrue(CGRectEqualToRect(CGRectMake(0.0,0.0,5.0,5.0), newObject.boundingBox), @"Adjusting the anchor point of an object should properly adjust its bounding box.");
 }
 
 #pragma mark - Notification Tests
 - (void) testShouldFireNotificationWhenPositionChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForPositionChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    /* Not sure if I want this behavior or not... trying no for now
+    STAssertFalse(self.objectSentPositionChangeNotification, @"Creating an object should not create a notification for position change.");
+    */
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentPositionChangeNotification = NO;
+
+    newObject.position = CGPointMake(20.0,20.0);
+    STAssertTrue(self.objectSentPositionChangeNotification, @"Changing an objects position should fire the position change notification.");
 }
 
 - (void) testShouldFireNotificationWhenVelocityChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForVelocityChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentVelocityChangeNotification = NO;
+
+    newObject.velocity = CGPointMake(20.0,20.0);
+    STAssertTrue(self.objectSentVelocityChangeNotification, @"Changing an objects velocity should fire the velocity change notification.");
 }
 
 - (void) testShouldFireNotificationWhenAccelerationChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForAccelerationChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentAccelerationChangeNotification = NO;
+
+    newObject.acceleration = CGPointMake(20.0,20.0);
+    STAssertTrue(self.objectSentAccelerationChangeNotification, @"Changing an objects acceleration should fire the acceleration change notification.");
 }
 
 - (void) testShouldFireNotificationWhenForceChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForForceChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentForceChangeNotification = NO;
+
+    newObject.force = CGPointMake(20.0,20.0);
+    STAssertTrue(self.objectSentForceChangeNotification, @"Changing the force should fire the force change notification.");
 }
 
 - (void) testShouldFireNotificationWhenCenterOfMassChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForCenterOfMassChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentCenterOfMassChangeNotification = NO;
+
+    newObject.centerOfMass = CGPointMake(1.0,0.0);
+    STAssertTrue(self.objectSentCenterOfMassChangeNotification, @"Changing an objects center of mass should fire the center of mass change notification.");
 }
 
 - (void) testShouldFireNotificationWhenMassChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForMassChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentMassChangeNotification = NO;
+
+    newObject.mass = 13.5f;
+    STAssertTrue(self.objectSentMassChangeNotification, @"Changing an objects mass should fire the mass change notification.");
 }
 
 - (void) testShouldFireNotificationWhenSizeChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForSizeChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentSizeChangeNotification = NO;
+
+    newObject.size = CGSizeMake(16.0,17.0);
+    STAssertTrue(self.objectSentSizeChangeNotification, @"Changing an objects size should fire the size change notification.");
 }
 
 - (void) testShouldFireNotificationWhenBoundingBoxChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForBoundingBoxChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentBoundingBoxChangeNotification = NO;
+
+    newObject.boundingBox = CGRectMake(45,3,13,56);
+    STAssertTrue(self.objectSentBoundingBoxChangeNotification, @"Changing an objects bounding box should fire the bounding box change notification.");
 }
 
 - (void) testShouldFireNotificationWhenRotationChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForRotationChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentRotationChangeNotification = NO;
+
+    newObject.rotation = 43.9f;
+    STAssertTrue(self.objectSentRotationChangeNotification, @"Changing an objects rotation should fire the rotation change notification.");
 }
 
 - (void) testShouldFireNotificationWhenAnchorPointChanges
 {
-    STFail(@"Unwritten test.");
+    [self registerForAnchorPointChangeNotification];
+    KJPhysicsObject *newObject = [self createDefaultObject];
+
+    // object creation currently will fire this notification, so the value is reset
+    self.objectSentAnchorPointChangeNotification = NO;
+
+    newObject.anchorPoint = CGPointMake(1.0,0.0);
+    STAssertTrue(self.objectSentAnchorPointChangeNotification, @"Changing an objects anchor point should fire the anchor point change notification.");
 }
 
 #pragma mark - Update Tests
 - (void) testShouldUpdatePositionWithVelocity
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createDefaultObject];
+    newObject.isActive = YES;
+    newObject.velocity = CGPointMake(10.0, 0.0);
+
+    STAssertTrue(CGPointEqualToPoint(CGPointZero, newObject.position), @"Setting a velocity should not change position until update is called.");
+
+    [newObject update:1.0];
+    STAssertFalse(CGPointEqualToPoint(CGPointZero, newObject.position), @"Updating an object with a velocity should change that object's position.");
 }
 
 - (void) testShouldUpdateVelocityWithAcceleration
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createDefaultObject];
+    newObject.isActive = YES;
+    newObject.acceleration = CGPointMake(10.0, 0.0);
+
+    STAssertTrue(CGPointEqualToPoint(CGPointZero, newObject.velocity), @"Setting an acceleration should not change velocity until update is called.");
+
+    [newObject update:1.0];
+    STAssertFalse(CGPointEqualToPoint(CGPointZero, newObject.velocity), @"Updating an object with an acceleration should change that object's velocity.");
 }
 
 - (void) testShouldUpdateAccelerationWithForce
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createDefaultObject];
+    newObject.isActive = YES;
+    newObject.force = CGPointMake(10.0, 0.0);
+
+    STAssertTrue(CGPointEqualToPoint(CGPointZero, newObject.acceleration), @"Setting a force should not change acceleration until update is called.");
+
+    [newObject update:1.0];
+    STAssertFalse(CGPointEqualToPoint(CGPointZero, newObject.acceleration), @"Updating an object with a force should change that object's acceleration.");
 }
 
 - (void) testShouldZeroVelocityWhenLessThanMinimumVelocity
 {
-    STFail(@"Unwritten test.");
+    KJPhysicsObject *newObject = [self createDefaultObject];
+    newObject.isActive = YES;
+    newObject.velocity = CGPointMake(1.0, 0.0);
+    // update with enough time for damping to reduce velocity
+    [newObject update:5.0];
+    STAssertTrue(newObject.minimumVelocity > sqrtf(newObject.velocity.x * newObject.velocity.x +
+                                                   newObject.velocity.y * newObject.velocity.y),
+                 @"Damping value of .95 should slow object enough after 5 seconds to reach minimum value.");
+    [newObject update:0.0];
+
+    STAssertTrue(CGPointEqualToPoint(CGPointZero, newObject.velocity), @"Updating an object with an acceleration should change that objects velocity.");
 }
 @end
