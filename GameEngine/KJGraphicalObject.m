@@ -38,6 +38,10 @@ NSString *const kjTargetPart = @"targetPart";
 - (id) init
 {
     self = [super init];
+    if (self)
+    {
+        [self setup];
+    }
     return self;
 }
 + (id) object
@@ -72,6 +76,8 @@ NSString *const kjTargetPart = @"targetPart";
 }
 - (void) setupWithDictionary:(NSDictionary *)dictionary
 {
+    [self setup];
+
     [super setupWithDictionary:dictionary];
 
     NSDictionary *params;
@@ -86,11 +92,15 @@ NSString *const kjTargetPart = @"targetPart";
         }
     }
 }
+- (void) registerNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAnimationNotification:) name:kjAnimationRequest object:self];
+}
 - (void) dealloc
 {
     if (self.parts != nil) { [_parts release]; self.parts = nil; }
     if (self.primaryPart != nil) { [_primaryPart release]; self.primaryPart = nil; }
-    
+
     [super dealloc];
 }
 
