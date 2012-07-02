@@ -8,6 +8,8 @@
 
 #import "KJGameObjectUnitTests.h"
 
+#import "ObjectCreationHelpers.h"
+
 #import "KJGameObject.h"
 #import "KJLayer.h"
 #import "KJObjectManager.h"
@@ -85,23 +87,6 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleObjectSetNotAlwaysActive:) name:kjObjectSetNotAlwaysActive object:nil];
 }
-- (KJGameObject *) gameObjectFromDictionary
-{
-    NSString *pathToObjectDictionary = [[NSBundle bundleForClass:[self class]] pathForResource:@"sampleObjectDictionary"
-                                                                       ofType:@"plist" ];
-    NSDictionary *objectsDictionary = [NSDictionary dictionaryWithContentsOfFile:pathToObjectDictionary];
-    NSDictionary *objectDictionary = [objectsDictionary objectForKey:[NSString stringWithString:@"gameObject"]];
-    return [KJGameObject objectWithDictionary:objectDictionary];
-}
-
-- (KJLayer *) layerObjectFromDictionary
-{
-    NSString *pathToObjectDictionary = [[NSBundle bundleForClass:[self class]] pathForResource:@"sampleObjectDictionary"
-                                                                                        ofType:@"plist" ];
-    NSDictionary *objectsDictionary = [NSDictionary dictionaryWithContentsOfFile:pathToObjectDictionary];
-    NSDictionary *layerDictionary = [objectsDictionary objectForKey:[NSString stringWithString:@"layerObject"]];
-    return [KJLayer objectWithDictionary:layerDictionary];
-}
 
 #pragma mark - Tests
 - (void)testCreateDefaultObjectWithDefaultId
@@ -137,7 +122,7 @@
 - (void)testShouldSetupWithDictionaryValues
 {
 
-    KJGameObject *newObject = [self gameObjectFromDictionary];
+    KJGameObject *newObject = [ObjectCreationHelpers gameObjectFromDictionary];
     STAssertTrue([@"objectId" isEqualToString:newObject.objectId], @"Object should load objectId from dictionary.");
     STAssertTrue([@"objectName" isEqualToString:newObject.objectName], @"Object should load objectName from dictionary.");
     STAssertTrue(1 == newObject.objectType, @"Object should load objectType from dictionary.");
@@ -148,8 +133,8 @@
 
 - (void)testSetParentAlsoSetsParentId
 {
-    KJGameObject *newObject = [self gameObjectFromDictionary];
-    KJLayer *newLayer = [self layerObjectFromDictionary];
+    KJGameObject *newObject = [ObjectCreationHelpers gameObjectFromDictionary];
+    KJLayer *newLayer = [ObjectCreationHelpers layerObjectFromDictionary];
 
     [newObject setParent:newLayer];
 
@@ -159,7 +144,7 @@
 
 - (void)testCannotAlterActiveStateOfAlwaysActiveObject
 {
-    KJGameObject *newObject = [self gameObjectFromDictionary];
+    KJGameObject *newObject = [ObjectCreationHelpers gameObjectFromDictionary];
     newObject.isAlwaysActive = YES;
 
     newObject.isActive = YES;
@@ -169,7 +154,7 @@
 - (void)testCreatingObjectDoesNotFireNotification
 {
     [self registerForActivationEvent];
-    [self gameObjectFromDictionary];
+    [ObjectCreationHelpers gameObjectFromDictionary];
     STAssertFalse(self.objectSentNotificationActivated, @"Object should not fire activation notification on creation.");
     STAssertFalse(self.objectSentNotificationDeactivated, @"Object should not fire deactivation notification on creation.");
 }
@@ -177,7 +162,7 @@
 - (void)testActivatingObjectFiresNotification
 {
     [self registerForActivationEvent];
-    KJGameObject *newObject = [self gameObjectFromDictionary];
+    KJGameObject *newObject = [ObjectCreationHelpers gameObjectFromDictionary];
     newObject.isActive = YES;
     STAssertTrue(self.objectSentNotificationActivated, @"Object should fire a notification when activated.");
 }
@@ -185,7 +170,7 @@
 - (void)testDeactivatingObjectFiresNotification
 {
     [self registerForDeactivationEvent];
-    KJGameObject *newObject = [self gameObjectFromDictionary];
+    KJGameObject *newObject = [ObjectCreationHelpers gameObjectFromDictionary];
     newObject.isActive = YES;
     newObject.isActive = NO;
     STAssertTrue(self.objectSentNotificationDeactivated, @"Object should fire a notification when deactivated.");
@@ -195,7 +180,7 @@
 - (void) testSetAlwaysActiveFiresNotification
 {
     [self registerForSetAlwaysActiveEvent];
-    KJGameObject *newObject = [self gameObjectFromDictionary];
+    KJGameObject *newObject = [ObjectCreationHelpers gameObjectFromDictionary];
     newObject.isAlwaysActive = YES;
     STAssertTrue(self.objectSentNotificationAlwaysActive, @"Object should fire a notification when set always active.");
 }
@@ -203,7 +188,7 @@
 - (void) testSetNotAlwaysActiveFiresNotification
 {
     [self registerForSetNotAlwaysActive];
-    KJGameObject *newObject = [self gameObjectFromDictionary];
+    KJGameObject *newObject = [ObjectCreationHelpers gameObjectFromDictionary];
     newObject.isAlwaysActive = YES;
     newObject.isAlwaysActive = NO;
     STAssertTrue(self.objectSentNotificationNotAlwaysActive, @"Object should fire a notification when set not always active.");

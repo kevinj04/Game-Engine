@@ -8,6 +8,7 @@
 
 #import "KJPhysicsObjectUnitTests.h"
 #import "KJPhysicsObject.h"
+#import "ObjectCreationHelpers.h"
 
 @interface KJPhysicsObjectUnitTests ()
 
@@ -132,24 +133,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleAnchorPointChangeNotification:) name:kjAnchorPointChange object:nil];
 }
 
-#pragma mark - Helpers
-- (KJPhysicsObject *) createDefaultObject
-{
-    KJPhysicsObject *newObject = [KJPhysicsObject object];
-    return newObject;
-}
-
-- (KJPhysicsObject *) createObjectWithDictionary
-{
-    NSString *pathToObjectDictionary = [[NSBundle bundleForClass:[self class]] pathForResource:@"sampleObjectDictionary"
-                                                                                        ofType:@"plist" ];
-    NSDictionary *objectsDictionary = [NSDictionary dictionaryWithContentsOfFile:pathToObjectDictionary];
-    NSDictionary *objectDictionary = [objectsDictionary objectForKey:[NSString stringWithString:@"physicsGameObject"]];
-
-    KJPhysicsObject *newObject = [KJPhysicsObject objectWithDictionary:objectDictionary];
-    return newObject;
-}
-
 #pragma mark - Test Life Cycle
 - (void) setUp
 {
@@ -176,7 +159,7 @@
 #pragma mark - Creation Tests
 - (void) testShouldCreateDefaultObjectWithEmptyDictionary
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     STAssertTrue(CGPointEqualToPoint(newObject.position, CGPointZero), @"Default objects should be placed at CGPointZero");
     STAssertTrue(CGPointEqualToPoint(newObject.velocity, CGPointZero), @"Default objects should have zero velocity.");
@@ -195,7 +178,7 @@
 
 - (void) testShouldCreateObjectWithValuesFromDictionary
 {
-    KJPhysicsObject *newObject = [self createObjectWithDictionary];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createPhysicsObjectWithDictionary];
 
     STAssertTrue(CGSizeEqualToSize(CGSizeMake(20.0,20.0), newObject.size), @"Objects created with a dictionary that contains a size value should use that value.");
     STAssertTrue(CGPointEqualToPoint(CGPointMake(14.0,19.0), newObject.position), @"Objects created with a dictionary that contains a position entry should use that value.");
@@ -205,7 +188,7 @@
 #pragma mark - Setter Tests
 - (void) testShouldAdjustBoundingBoxWhenSettingPosition
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.position = CGPointMake(2.5, 2.5);
 
     STAssertTrue(CGRectEqualToRect(CGRectMake(0.0,0.0,5.0,5.0), newObject.boundingBox), @"Adjusting the position of an object should properly adjust its bounding box.");
@@ -213,7 +196,7 @@
 
 - (void) testShouldAdjustBoundingBoxWhenSettingSize
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.size = CGSizeMake(10.0,10.0);
 
     STAssertTrue(CGRectEqualToRect(CGRectMake(-5.0,-5.0,10.0,10.0), newObject.boundingBox), @"Adjusting the position of an object should properly adjust its bounding box.");
@@ -221,7 +204,7 @@
 
 - (void) testShouldAdjustSizeWhenSettingBoundingBox
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.boundingBox = CGRectMake(10.0,10.0, 50.0, 50.0);
 
     STAssertTrue(CGSizeEqualToSize(CGSizeMake(50.0,50.0), newObject.size), @"Adjusting the bounding box of an object should properly adjust its size.");
@@ -229,7 +212,7 @@
 
 - (void) testShouldAdjustBoundingBoxWhenSettingAnchorPoint
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.anchorPoint = CGPointMake(0.0,0.0);
 
     STAssertTrue(CGRectEqualToRect(CGRectMake(0.0,0.0,5.0,5.0), newObject.boundingBox), @"Adjusting the anchor point of an object should properly adjust its bounding box.");
@@ -239,7 +222,7 @@
 - (void) testShouldFireNotificationWhenPositionChanges
 {
     [self registerForPositionChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     /* Not sure if I want this behavior or not... trying no for now
     STAssertFalse(self.objectSentPositionChangeNotification, @"Creating an object should not create a notification for position change.");
@@ -255,7 +238,7 @@
 - (void) testShouldFireNotificationWhenVelocityChanges
 {
     [self registerForVelocityChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentVelocityChangeNotification = NO;
@@ -267,7 +250,7 @@
 - (void) testShouldFireNotificationWhenAccelerationChanges
 {
     [self registerForAccelerationChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentAccelerationChangeNotification = NO;
@@ -279,7 +262,7 @@
 - (void) testShouldFireNotificationWhenForceChanges
 {
     [self registerForForceChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentForceChangeNotification = NO;
@@ -291,7 +274,7 @@
 - (void) testShouldFireNotificationWhenCenterOfMassChanges
 {
     [self registerForCenterOfMassChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentCenterOfMassChangeNotification = NO;
@@ -303,7 +286,7 @@
 - (void) testShouldFireNotificationWhenMassChanges
 {
     [self registerForMassChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentMassChangeNotification = NO;
@@ -315,7 +298,7 @@
 - (void) testShouldFireNotificationWhenSizeChanges
 {
     [self registerForSizeChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentSizeChangeNotification = NO;
@@ -327,7 +310,7 @@
 - (void) testShouldFireNotificationWhenBoundingBoxChanges
 {
     [self registerForBoundingBoxChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentBoundingBoxChangeNotification = NO;
@@ -339,7 +322,7 @@
 - (void) testShouldFireNotificationWhenRotationChanges
 {
     [self registerForRotationChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentRotationChangeNotification = NO;
@@ -351,7 +334,7 @@
 - (void) testShouldFireNotificationWhenAnchorPointChanges
 {
     [self registerForAnchorPointChangeNotification];
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
 
     // object creation currently will fire this notification, so the value is reset
     self.objectSentAnchorPointChangeNotification = NO;
@@ -363,7 +346,7 @@
 #pragma mark - Update Tests
 - (void) testShouldUpdatePositionWithVelocity
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.isActive = YES;
     newObject.velocity = CGPointMake(10.0, 0.0);
 
@@ -375,7 +358,7 @@
 
 - (void) testShouldUpdateVelocityWithAcceleration
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.isActive = YES;
     newObject.acceleration = CGPointMake(10.0, 0.0);
 
@@ -387,7 +370,7 @@
 
 - (void) testShouldUpdateAccelerationWithForce
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.isActive = YES;
     newObject.force = CGPointMake(10.0, 0.0);
 
@@ -399,7 +382,7 @@
 
 - (void) testShouldZeroVelocityWhenLessThanMinimumVelocity
 {
-    KJPhysicsObject *newObject = [self createDefaultObject];
+    KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.isActive = YES;
     newObject.velocity = CGPointMake(1.0, 0.0);
     // update with enough time for damping to reduce velocity

@@ -1,0 +1,21 @@
+//
+//  ObjectCreationHelpers.h
+//  GameEngine
+//
+//  Created by Kevin Jenkins on 7/3/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "kjEngine.h"
+
+@interface ObjectCreationHelpers : NSObject
+
++ (KJLayer *) layerObjectFromDictionary;
++ (KJGameObject *) gameObjectFromDictionary;
++ (KJPhysicsObject *) createPhysicsObjectWithDictionary;
++ (KJPhysicsObject *) createDefaultPhysicsObject;
++ (KJGraphicalObject *) createGraphicalObjectWithDictionary;
++ (KJGraphicalObject *) createDefaultGraphicalObject;
+
+@end

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A112C8A15A234D3002086BA /* KJGraphicalObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A112C8915A234D3002086BA /* KJGraphicalObjectUnitTests.m */; };
+		0A112CAD15A33045002086BA /* sampleAnimationDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A112CAC15A33045002086BA /* sampleAnimationDictionary.plist */; };
+		0A112CB215A33A19002086BA /* ObjectCreationHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A112CB115A33A19002086BA /* ObjectCreationHelpers.m */; };
 		0A20D54C1597FC960065E15B /* libEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A249B6214A2750C00D5D7D3 /* libEngine.a */; };
 		0A20D54D1597FCE50065E15B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2499D414A267D000D5D7D3 /* CoreGraphics.framework */; };
 		0A21CEAC15516E1100A88F92 /* KJBackgroundObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */; };
@@ -304,6 +307,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A112C8815A234D3002086BA /* KJGraphicalObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGraphicalObjectUnitTests.h; sourceTree = "<group>"; };
+		0A112C8915A234D3002086BA /* KJGraphicalObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGraphicalObjectUnitTests.m; sourceTree = "<group>"; };
+		0A112CAC15A33045002086BA /* sampleAnimationDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleAnimationDictionary.plist; sourceTree = "<group>"; };
+		0A112CB015A33A19002086BA /* ObjectCreationHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectCreationHelpers.h; sourceTree = "<group>"; };
+		0A112CB115A33A19002086BA /* ObjectCreationHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectCreationHelpers.m; sourceTree = "<group>"; };
 		0A21CEAA15516E1100A88F92 /* KJBackgroundObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJBackgroundObject.h; sourceTree = "<group>"; };
 		0A21CEAB15516E1100A88F92 /* KJBackgroundObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJBackgroundObject.m; sourceTree = "<group>"; };
 		0A21CEB015516E6800A88F92 /* KJGraphicalObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGraphicalObject.h; sourceTree = "<group>"; };
@@ -665,6 +673,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A112CAF15A339F6002086BA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0A112CB015A33A19002086BA /* ObjectCreationHelpers.h */,
+				0A112CB115A33A19002086BA /* ObjectCreationHelpers.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		0A21CEB515517CBE00A88F92 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,6 +1208,8 @@
 		0A311397159A569C00BD168A /* GameObjectUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				0A112C8815A234D3002086BA /* KJGraphicalObjectUnitTests.h */,
+				0A112C8915A234D3002086BA /* KJGraphicalObjectUnitTests.m */,
 				0AA6C590159E3CC20057BC57 /* KJPhysicsObjectUnitTests.h */,
 				0AA6C591159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m */,
 				0A311399159A56CA00BD168A /* KJGameObjectUnitTests.h */,
@@ -1203,6 +1222,7 @@
 			isa = PBXGroup;
 			children = (
 				0A3113A6159BA7B000BD168A /* sampleObjectDictionary.plist */,
+				0A112CAC15A33045002086BA /* sampleAnimationDictionary.plist */,
 			);
 			path = TestResources;
 			sourceTree = "<group>";
@@ -1284,6 +1304,7 @@
 		0AF823A715967409009F41CF /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				0A112CAF15A339F6002086BA /* Helpers */,
 				0A3113A4159BA79F00BD168A /* TestResources */,
 				0A311397159A569C00BD168A /* GameObjectUnitTests */,
 				0AF823B515967498009F41CF /* ObjectManagementTests.h */,
@@ -1535,6 +1556,7 @@
 			files = (
 				0A3113C0159BAB8D00BD168A /* sampleObjectDictionary.plist in Resources */,
 				0AF823AC15967409009F41CF /* InfoPlist.strings in Resources */,
+				0A112CAD15A33045002086BA /* sampleAnimationDictionary.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1726,6 +1748,8 @@
 				0AF823B715967498009F41CF /* ObjectManagementTests.m in Sources */,
 				0A31139B159A56CA00BD168A /* KJGameObjectUnitTests.m in Sources */,
 				0AA6C592159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m in Sources */,
+				0A112C8A15A234D3002086BA /* KJGraphicalObjectUnitTests.m in Sources */,
+				0A112CB215A33A19002086BA /* ObjectCreationHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
