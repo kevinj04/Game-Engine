@@ -17,7 +17,6 @@ NSString *const kjVertexZ = @"vertexZ";
 NSString *const kjZOrder = @"zOrder";
 NSString *const kjBody = @"spriteBody";
 NSString *const kjShouldIgnoreBatchNodeUpdate = @"ignoreBatchNodeUpdate";
-
 NSString *const kjAnimationRequest = @"animationRequest";
 NSString *const kjTargetPart = @"targetPart";
 
@@ -49,16 +48,12 @@ NSString *const kjTargetPart = @"targetPart";
 {
     self.scaleX = 1.0;
     self.scaleY = 1.0;
-
     self.animationSpeed = 1.0;
     self.vertexZ = 0.0;
     self.zOrder = 0;
-
     self.visible = YES;
-
     self.flipX = NO;
     self.flipY = NO;
-
     self.primaryPart = [NSString stringWithFormat:@""];
 
     // empty, only mutable through setupGraphicsWithDictionary method.
@@ -91,6 +86,15 @@ NSString *const kjTargetPart = @"targetPart";
         }
     }
 }
+- (void) dealloc
+{
+    if (self.parts != nil) { [_parts release]; self.parts = nil; }
+    if (self.primaryPart != nil) { [_primaryPart release]; self.primaryPart = nil; }
+    
+    [super dealloc];
+}
+
+#pragma mark - Event Handlers
 - (void) handleAnimationNotification:(NSNotification *) notification {
 
     NSString *animationRequest;
@@ -105,13 +109,6 @@ NSString *const kjTargetPart = @"targetPart";
 
         [self runAnimation:animationRequest];
     }
-}
-- (void) dealloc
-{
-    if (self.parts != nil) { [_parts release]; self.parts = nil; }
-    if (self.primaryPart != nil) { [_primaryPart release]; self.primaryPart = nil; }
-
-    [super dealloc];
 }
 
 #pragma mark - Update Method
