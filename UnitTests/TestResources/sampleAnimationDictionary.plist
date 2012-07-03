@@ -47,9 +47,9 @@
 					<key>animation1</key>
 					<dict>
 						<key>currentPosition</key>
-						<string>0</string>
+						<string>.6</string>
 						<key>duration</key>
-						<integer>1</integer>
+						<real>1.5</real>
 						<key>keyFrames</key>
 						<array>
 							<dict>
@@ -86,7 +86,7 @@
 							</dict>
 							<dict>
 								<key>timePoint</key>
-								<string>1</string>
+								<string>1.5</string>
 								<key>frame</key>
 								<string>part1_animation1_3.png</string>
 								<key>position</key>
