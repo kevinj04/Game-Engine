@@ -21,10 +21,8 @@ NSString *const kjPartShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
 @end
 
 @implementation KJGraphicsPart (private)
-- (void) tween {
-
-
-
+- (void) tween
+{
     KJKeyFrame *currentKF = [self.currentTimeLine currentKeyFrame];
     KJKeyFrame *nextKF = [self.currentTimeLine nextKeyFrame];
 
@@ -203,7 +201,8 @@ NSString *const kjPartShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
     [self tween];
 
 }
-- (void) dealloc {
+- (void) dealloc
+{
 
     if (_parent != nil) { [_parent release]; _parent = nil; }
     if (_animations != nil) { [_animations release]; _animations = nil; }
@@ -215,24 +214,24 @@ NSString *const kjPartShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
 #pragma mark -
 
 #pragma mark Tick Method
-- (void) update:(double) dt {
+- (void) update:(double) dt
+{
 
-    if (self.spriteRep != nil)
-    {
-        [self.currentTimeLine update:dt];
-        [self tween];
-        [self.spriteRep updateWithGraphical:self];
-    }
+    [self.currentTimeLine update:dt];
+    [self tween];
 
+    if (self.spriteRep) { [self.spriteRep updateWithGraphical:self]; }
 }
 
 #pragma mark Animation Methods
-- (void) runAnimation:(NSString *) animationName {
+- (void) runAnimation:(NSString *) animationName
+{
     if ([self.animations objectForKey:animationName] != nil) {
         self.currentTimeLine = [self.animations objectForKey:animationName];
     }
 }
-- (double) animationSpeed {
+- (double) animationSpeed
+{
     return [self.parent animationSpeed];
 }
 
