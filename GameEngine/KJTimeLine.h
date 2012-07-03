@@ -23,6 +23,7 @@ extern NSString *const kjTimeLineDuration;
 @property (nonatomic, assign) int keyFrameIndex;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
++ (id) timeLine;
 + (id) timeLineWithDictionary:(NSDictionary *) dictionary;
 - (void) setupWithDictionary:(NSDictionary *) dictionary;
 - (void) dealloc;
