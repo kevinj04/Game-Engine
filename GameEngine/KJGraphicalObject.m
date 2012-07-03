@@ -126,7 +126,7 @@ NSString *const kjTargetPart = @"targetPart";
 {
     [super update:dt];
 
-    if (self.inActiveWindow || self.isAlwaysActive)
+    if (self.isActive || self.isAlwaysActive)
     {
         for (KJGraphicsPart *part in [self.parts allValues])
         {
