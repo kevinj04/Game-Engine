@@ -18,122 +18,136 @@ NSString *const kjTimeLineDuration = @"duration";
 
 @implementation KJTimeLine (private)
 - (void) updateKeyFrames {
-    
-    if ([keyFrames count] == 1) {
-        keyFrameIndex = 0;
+
+    if ([self.keyFrames count] == 1) {
+        self.keyFrameIndex = 0;
         return; // avoids a loop below if we only have one keyframe
     }
-    
-    while (currentPosition > [[self nextKeyFrame] timePoint]) {
-        keyFrameIndex = (keyFrameIndex + 1) % [keyFrames count];
-        
-        if (keyFrameIndex == 0 & [keyFrames count] > 1) {
-            currentPosition -= duration;
-        }        
+
+    while (self.currentPosition > [[self nextKeyFrame] timePoint]) {
+        self.keyFrameIndex = (self.keyFrameIndex + 1) % [self.keyFrames count];
+
+        if (self.keyFrameIndex == 0 & [self.keyFrames count] > 1) {
+            self.currentPosition -= self.duration;
+        }
     }
-    
+
 }
 @end
 
 @implementation KJTimeLine
 
-#pragma mark -
+@synthesize keyFrames = _keyFrames;
+@synthesize currentPosition = _currentPosition;
+@synthesize duration = _duration;
+@synthesize keyFrameIndex = _keyFrameIndex;
+
 #pragma mark Initialization Methods
-- (id) initWithDictionary:(NSDictionary *) dictionary 
+- (id) init
+{
+    self = [super init];
+    if (self) [self setup];
+    return self;
+}
++ (id) timeLine
+{
+    return [[[KJTimeLine alloc] init] autorelease];
+}
+- (id) initWithDictionary:(NSDictionary *) dictionary
 {
     if (( self = [super init] )) {
-        
+
         [self setupWithDictionary:dictionary];
         return self;
-        
+
     } else {
         return nil;
     }
 }
-+ (id) timeLineWithDictionary:(NSDictionary *) dictionary 
++ (id) timeLineWithDictionary:(NSDictionary *) dictionary
 {
     return [[[KJTimeLine alloc] initWithDictionary:dictionary] autorelease];
 }
+- (void) setup
+{
+    self.keyFrames = [[NSArray alloc] init];
+    self.currentPosition = 0.0;
+    self.duration = 1.0;
+    self.keyFrameIndex = 0;
+}
 - (void) setupWithDictionary:(NSDictionary *) dictionary
 {
-    keyFrames = [[NSArray alloc] init];
-    currentPosition = 0.0;
-    duration = 1.0;
-    keyFrameIndex = 0;
-    
+    [self setup];
+
     if ([dictionary objectForKey:kjTimeLineCurrentPosition] != nil) {
-        currentPosition = [[dictionary objectForKey:kjTimeLineCurrentPosition] floatValue];
+        self.currentPosition = [[dictionary objectForKey:kjTimeLineCurrentPosition] floatValue];
     }
-    
+
     if ([dictionary objectForKey:kjTimeLineDuration] != nil) {
-        duration = [[dictionary objectForKey:kjTimeLineDuration] floatValue];
+        self.duration = [[dictionary objectForKey:kjTimeLineDuration] floatValue];
     }
-    
+
     if ([dictionary objectForKey:kjTimeLineKeyFrames] != nil) {
-        
-        [keyFrames release];
-        keyFrames = nil;
-        
+
+        [self.keyFrames release];
+        self.keyFrames = nil;
+
         NSArray *arr = [dictionary objectForKey:kjTimeLineKeyFrames];
-        
+
         NSMutableArray *tempFrames = [NSMutableArray arrayWithCapacity:[arr count]];
-        
+
         for (NSDictionary *d in arr) {
-            
+
             KJKeyFrame *frame = [KJKeyFrame frameWithDictionary:d];
             [tempFrames addObject:frame];
-            
+
         }
-        
-        keyFrames = [[NSArray alloc] initWithArray:tempFrames];
-        
+
+        self.keyFrames = [[NSArray alloc] initWithArray:tempFrames];
+
     }
 
 }
-- (void) dealloc 
+- (void) dealloc
 {
-    if (keyFrames != nil) { [keyFrames release]; keyFrames = nil; }
+    if (_keyFrames != nil) { [_keyFrames release]; _keyFrames = nil; }
     [super dealloc];
 }
 
-#pragma mark -
-
 #pragma mark Tick Method
-- (void) update:(double) dt 
+- (void) update:(double) dt
 {
-    currentPosition += dt;    
+    self.currentPosition += dt;
     [self updateKeyFrames];
 }
-#pragma mark -
 
 #pragma mark Helper Methods
-- (void) reset 
+- (void) reset
 {
-   currentPosition = 0.0; 
+   self.currentPosition = 0.0;
 }
 
-- (KJKeyFrame *) currentKeyFrame 
+- (KJKeyFrame *) currentKeyFrame
 {
-    if ([keyFrames count] == 0) return nil;
-    return [keyFrames objectAtIndex:keyFrameIndex];
+    if ([self.keyFrames count] == 0) return nil;
+    return [self.keyFrames objectAtIndex:self.keyFrameIndex];
 }
-- (KJKeyFrame *) nextKeyFrame 
+- (KJKeyFrame *) nextKeyFrame
 {
-    if ([keyFrames count] == 0) return nil;
-    return [keyFrames objectAtIndex:(keyFrameIndex+1)%[keyFrames count]];
+    if ([self.keyFrames count] == 0) return nil;
+    return [self.keyFrames objectAtIndex:(self.keyFrameIndex+1)%self.keyFrames.count];
 }
-- (double) percentThroughCurrentFrame 
+- (double) percentThroughCurrentFrame
 {
-    double base = currentPosition - [[self currentKeyFrame] timePoint];
+    double base = self.currentPosition - [[self currentKeyFrame] timePoint];
     double startOfNext = [[self nextKeyFrame] timePoint] - [[self currentKeyFrame] timePoint];
-    
+
     // check looping/mod condition
     if (startOfNext <= base) {
-        startOfNext = duration;
+        startOfNext = self.duration;
     }
-    
+
     return base/startOfNext;
 }
-#pragma mark -
 
 @end

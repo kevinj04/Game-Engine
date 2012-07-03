@@ -14,14 +14,13 @@ extern NSString *const kjTimeLineCurrentPosition;
 extern NSString *const kjTimeLineDuration;
 
 @interface KJTimeLine : NSObject {
-    
-    NSArray *keyFrames;
-    double currentPosition;
-    double duration;
-    
-    int keyFrameIndex;
-    
+
 }
+
+@property (nonatomic, retain) NSArray *keyFrames;
+@property (nonatomic, assign) double currentPosition;
+@property (nonatomic, assign) double duration;
+@property (nonatomic, assign) int keyFrameIndex;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
 + (id) timeLineWithDictionary:(NSDictionary *) dictionary;

@@ -20,20 +20,10 @@ extern NSString *const kjKeyFrameFlipY;
 
 @interface KJKeyFrame : NSObject {
 
-    double timePoint;
-    
-    NSString *frame;
-    CGPoint position;
-    float rotation;
-    float scaleX;
-    float scaleY;
-    bool flipX;
-    bool flipY;
 }
 
-@property double timePoint;
-
 @property (nonatomic, retain) NSString *frame;
+@property double timePoint;
 @property CGPoint position;
 @property float rotation;
 @property float scaleX;
@@ -42,9 +32,9 @@ extern NSString *const kjKeyFrameFlipY;
 @property bool flipY;
 
 - (id) initWithDictionary:(NSDictionary *) dictionary;
++ (id) frame;
 + (id) frameWithDictionary:(NSDictionary *) dictionary;
 - (void) setupWithDictionary:(NSDictionary *) dictionary;
 - (void) dealloc;
-
 
 @end
