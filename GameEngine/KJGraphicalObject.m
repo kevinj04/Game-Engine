@@ -15,7 +15,7 @@ NSString *const kjObjectAnimations = @"animations";
 NSString *const kjObjectRunningAnimation = @"runningAnimation";
 NSString *const kjVertexZ = @"vertexZ";
 NSString *const kjZOrder = @"zOrder";
-NSString *const kjBody = @"spriteBody";
+NSString *const kjPrimaryPart = @"primaryPart";
 NSString *const kjShouldIgnoreBatchNodeUpdate = @"ignoreBatchNodeUpdate";
 NSString *const kjAnimationRequest = @"animationRequest";
 NSString *const kjTargetPart = @"targetPart";
@@ -128,7 +128,6 @@ NSString *const kjTargetPart = @"targetPart";
 
     if (self.inActiveWindow || self.isAlwaysActive)
     {
-
         for (KJGraphicsPart *part in [self.parts allValues])
         {
             [part update:dt*self.animationSpeed];
@@ -139,21 +138,13 @@ NSString *const kjTargetPart = @"targetPart";
 #pragma mark - Animation Methods
 - (void) setupGraphicsWithDictionary:(NSDictionary *) animationDictionary
 {
-    if ([animationDictionary objectForKey:kjBody] != nil) {
-        self.primaryPart = [animationDictionary objectForKey:kjBody];
+    if ([animationDictionary objectForKey:kjPrimaryPart] != nil) {
+        self.primaryPart = [animationDictionary objectForKey:kjPrimaryPart];
     }
 
     self.shouldIgnoreBatchNodeUpdate = NO;
     if ([animationDictionary objectForKey:kjShouldIgnoreBatchNodeUpdate] != nil) {
         self.shouldIgnoreBatchNodeUpdate = [[animationDictionary objectForKey:kjShouldIgnoreBatchNodeUpdate] boolValue];
-    }
-
-    if ([animationDictionary objectForKey:kjZOrder] != nil) {
-        self.zOrder = [[animationDictionary objectForKey:kjZOrder] intValue];
-    }
-
-    if ([animationDictionary objectForKey:kjVertexZ] != nil) {
-        self.vertexZ = [[animationDictionary objectForKey:kjVertexZ] floatValue];
     }
 
     NSDictionary *partsDictionary;
