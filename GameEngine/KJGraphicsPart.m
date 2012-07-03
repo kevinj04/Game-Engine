@@ -22,250 +22,229 @@ NSString *const kjPartShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
 
 @implementation KJGraphicsPart (private)
 - (void) tween {
-    
 
-    
-    KJKeyFrame *currentKF = [currentTimeLine currentKeyFrame];
-    KJKeyFrame *nextKF = [currentTimeLine nextKeyFrame];
-    
+
+
+    KJKeyFrame *currentKF = [self.currentTimeLine currentKeyFrame];
+    KJKeyFrame *nextKF = [self.currentTimeLine nextKeyFrame];
+
     [self setSpriteFrameName:[currentKF frame]];
-    
-    [self setFlipX:mFlipX ^ [currentKF flipX]];
-    [self setFlipY:mFlipY ^ [currentKF flipY]];
-    
-    double percentTween = [currentTimeLine percentThroughCurrentFrame];
-    
-    
+
+    [self setFlipX:self.masterFlipX ^ [currentKF flipX]];
+    [self setFlipY:self.masterFlipY ^ [currentKF flipY]];
+
+    double percentTween = [self.currentTimeLine percentThroughCurrentFrame];
+
+
     // division by 2.0 here only needed if retina/ipad
-    double xOffset = ([parent anchorPoint].x - 0.5f) * [parent boundingBox].size.width/2.0;
-    double yOffset = ([parent anchorPoint].y - 0.5f) * [parent boundingBox].size.height/2.0;
+    double xOffset = ([self.parent anchorPoint].x - 0.5f) * [self.parent boundingBox].size.width/2.0;
+    double yOffset = ([self.parent anchorPoint].y - 0.5f) * [self.parent boundingBox].size.height/2.0;
     CGPoint offsetAP = CGPointMake(xOffset, yOffset);
-    
-    CGPoint offset = CGPointMake([currentKF position].x + 
-                                 (([nextKF position].x - [currentKF position].x) * percentTween), 
-                                 [currentKF position].y + 
+
+    CGPoint offset = CGPointMake([currentKF position].x +
+                                 (([nextKF position].x - [currentKF position].x) * percentTween),
+                                 [currentKF position].y +
                                  (([nextKF position].y - [currentKF position].y) * percentTween));
-    CGPoint newPosition = CGPointMake(offset.x-offsetAP.x+mPosition.x,
-                                      offset.y-offsetAP.y+mPosition.y);
-    [self setPosition:newPosition];    
-    
+    CGPoint newPosition = CGPointMake(offset.x-offsetAP.x+self.masterPosition.x,
+                                      offset.y-offsetAP.y+self.masterPosition.y);
+    [self setPosition:newPosition];
+
     // parent rotation gets confusing?
-    
+
     float rotationRange = [nextKF rotation] - [currentKF rotation];
     float newRotation = [currentKF rotation] + rotationRange * percentTween;
-    [self setRotation:newRotation + mRotation];
-    
+    [self setRotation:newRotation + self.masterRotation];
+
     // parent scaling is multiplicative
     // we may not want to scale multiplicatively, as this will be handled by the graphics...
     // Typically we will be scaling the parent and not wanting to scale the children multiplicatively.
     float baseScaleX = 1.0; //[parent scaleX];
     float baseScaleY = 1.0; //[parent scaleY];
-    
+
     float scaleRangeX = [nextKF scaleX] - [currentKF scaleX];
     float scaleRangeY = [nextKF scaleY] - [currentKF scaleY];
-    
-    float newScaleX = mScaleX * baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween));
-    float newScaleY = mScaleY * baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween));
+
+    float newScaleX = self.masterScaleX * baseScaleX * ([currentKF scaleX] + (scaleRangeX * percentTween));
+    float newScaleY = self.masterScaleY * baseScaleY * ([currentKF scaleY] + (scaleRangeY * percentTween));
     [self setScaleX:newScaleX];
     [self setScaleY:newScaleY];
-    
-    zOrder = mZOrder + [parent zOrder];
-    vertexZ = mVertexZ + [parent vertexZ];
-    
+
+    self.zOrder = self.masterZOrder + [self.parent zOrder];
+    self.vertexZ = self.masterVertexZ + [self.parent vertexZ];
+
 }
 @end
 
 @implementation KJGraphicsPart
 
-@synthesize objectName;
-@synthesize spriteFrameName, position, rotation, scaleX, scaleY, vertexZ, zOrder, flipX, flipY, anchorPoint, boundingBox, visible, shouldIgnoreBatchNodeUpdate;
+@synthesize objectName = _objectName;
+@synthesize parent = _parent;
+@synthesize currentTimeLine = _currentTimeLine;
+@synthesize animations = _animations;
+@synthesize spriteRep = _spriteRep;
 
-#pragma mark -
+@synthesize spriteFrameName = _spriteFrameName;
+@synthesize position = _position;
+@synthesize boundingBox = _boundingBox;
+@synthesize rotation = _rotation;
+@synthesize scaleX = _scaleX;
+@synthesize scaleY = _scaleY;
+@synthesize vertexZ = _vertexZ;
+@synthesize zOrder = _zOrder;
+@synthesize flipX = _flipX;
+@synthesize flipY = _flipY;
+@synthesize anchorPoint = _anchorPoint;
+@synthesize visible = _visible;
+@synthesize shouldIgnoreBatchNodeUpdate = _shouldIgnoreBatchNodeUpdate;
+
+@synthesize masterPosition = _mPosition;
+@synthesize masterRotation = _mRotation;
+@synthesize masterFlipX = _masterFlipX;
+@synthesize masterFlipY = _masterFlipY;
+@synthesize masterScaleX = _masterScaleX;
+@synthesize masterScaleY = _masterScaleY;
+@synthesize masterVertexZ = _masterVertexZ;
+@synthesize masterZOrder = _masterZOrder;
+@synthesize shouldIgnoreBoundingBoxCalculation = _shouldIgnoreBoundingBoxCalculation;
+
 #pragma mark Initialization Methods
-- (id) initWithAnimationDictionary:(NSDictionary *) animationDictionary 
+- (id) initWithAnimationDictionary:(NSDictionary *) animationDictionary
 {
-    
+
     if (( self = [super init] )) {
-        
+
         [self setupWithAnimationDictionary:animationDictionary];
         return self;
-        
+
     }
     return nil;
 }
-+ (id) partWithAnimationDictionary:(NSDictionary *) animationDictionary 
++ (id) partWithAnimationDictionary:(NSDictionary *) animationDictionary
 {
     return [[[KJGraphicsPart alloc] initWithAnimationDictionary:animationDictionary] autorelease];
 }
-- (void) setupWithAnimationDictionary:(NSDictionary *) animationDictionary 
+- (void) setupWithAnimationDictionary:(NSDictionary *) animationDictionary
 {
-    spriteRep = nil;
-    
+    self.spriteRep = nil;
+
     NSDictionary *animationsDictionary = [animationDictionary objectForKey:kjPartAnimations];
-    
+
     NSMutableDictionary *timeLines = [NSMutableDictionary dictionaryWithCapacity:[animationsDictionary count]];
-    
+
     for (NSString *timeLineName in [animationsDictionary allKeys]) {
-        
+
         NSDictionary *timeLineDictionary = [animationsDictionary objectForKey:timeLineName];
         KJTimeLine *tl = [KJTimeLine timeLineWithDictionary:timeLineDictionary];
-        
+
         [timeLines setObject:tl forKey:timeLineName];
-        
+
     }
-    
-    animations = [[NSDictionary alloc] initWithDictionary:timeLines];
-    
+
+    self.animations = [[NSDictionary alloc] initWithDictionary:timeLines];
+
     if ([animationDictionary objectForKey:kjPartRunningAnimation] != nil) {
         NSString *runningAnimation = [animationDictionary objectForKey:kjPartRunningAnimation];
-        currentTimeLine = [timeLines objectForKey:runningAnimation];
-        [currentTimeLine reset];
+        self.currentTimeLine = [timeLines objectForKey:runningAnimation];
+        [self.currentTimeLine reset];
     }
-    
-    shouldIgnoreBoundingBoxCalculation = NO;
+
+    self.shouldIgnoreBoundingBoxCalculation = NO;
     if ([animationDictionary objectForKey:kjPartIgnoreBoundingBox] != nil) {
-        shouldIgnoreBoundingBoxCalculation = [[animationDictionary objectForKey:kjPartIgnoreBoundingBox] boolValue];
+        self.shouldIgnoreBoundingBoxCalculation = [[animationDictionary objectForKey:kjPartIgnoreBoundingBox] boolValue];
     }
-    
-    shouldIgnoreBatchNodeUpdate = NO;
+
+    self.shouldIgnoreBatchNodeUpdate = NO;
     if ([animationDictionary objectForKey:kjPartShouldIgnoreBatchNodeUpdate] != nil) {
-        shouldIgnoreBatchNodeUpdate = [[animationDictionary objectForKey:kjPartShouldIgnoreBatchNodeUpdate] boolValue];
+        self.shouldIgnoreBatchNodeUpdate = [[animationDictionary objectForKey:kjPartShouldIgnoreBatchNodeUpdate] boolValue];
     }
-    
+
     // standard values
-    spriteFrameName = nil;    
-    position = CGPointMake(0.0, 0.0);
-    boundingBox = CGRectMake(0.0, 0.0, 1.0, 1.0);
-    rotation = 0.0f;
-    
-    scaleX = 1.0f;
-    scaleY = 1.0f;
-    
-    mVertexZ = 1.0f;
-    mZOrder = 1;
-    
-    flipX = NO;
-    flipY = NO;
-    anchorPoint = CGPointMake(0.5, 0.5);
-    visible = YES;
-    
+    self.spriteFrameName = nil;
+    self.position = CGPointMake(0.0, 0.0);
+    self.boundingBox = CGRectMake(0.0, 0.0, 1.0, 1.0);
+    self.rotation = 0.0f;
+
+    self.scaleX = 1.0f;
+    self.scaleY = 1.0f;
+
+    self.masterVertexZ = 1.0f;
+    self.masterZOrder = 1;
+
+    self.flipX = NO;
+    self.flipY = NO;
+    self.anchorPoint = CGPointMake(0.5, 0.5);
+    self.visible = YES;
+
     // Master values
-    mRotation = 0.0;
-    mScaleX = 1.0;
-    mScaleY = 1.0;
-    
-    if ([animationDictionary objectForKey:kjPartVertexZ] != nil) {        
-        mVertexZ = [[animationDictionary objectForKey:kjPartVertexZ] floatValue];        
+    self.masterRotation = 0.0;
+    self.masterScaleX = 1.0;
+    self.masterScaleY = 1.0;
+
+    if ([animationDictionary objectForKey:kjPartVertexZ] != nil) {
+        self.masterVertexZ = [[animationDictionary objectForKey:kjPartVertexZ] floatValue];
     } else {
-        mVertexZ = 0.0;
+        self.masterVertexZ = 0.0;
     }
-    
-    if ([animationDictionary objectForKey:kjPartZOrder] != nil) {        
-        mZOrder = [[animationDictionary objectForKey:kjPartZOrder] intValue];        
+
+    if ([animationDictionary objectForKey:kjPartZOrder] != nil) {
+        self.masterZOrder = [[animationDictionary objectForKey:kjPartZOrder] intValue];
     } else {
-        mZOrder = 0;
+        self.masterZOrder = 0;
     }
-    
+
     if ([animationDictionary objectForKey:kjPartAnchorPoint] != nil) {
-        anchorPoint = CGPointFromString([animationDictionary objectForKey:kjPartAnchorPoint]);
+        self.anchorPoint = CGPointFromString([animationDictionary objectForKey:kjPartAnchorPoint]);
     }
-    
-    zOrder = mZOrder + [parent zOrder];
-    vertexZ = mVertexZ + [parent vertexZ];
-    
+
+    self.zOrder = self.masterZOrder + [self.parent zOrder];
+    self.vertexZ = self.masterVertexZ + [self.parent vertexZ];
+
     // call tween to boot the image info
     [self tween];
-    
+
 }
 - (void) dealloc {
-    
-    if (parent != nil) { [parent release]; parent = nil; }
-    if (animations != nil) { [animations release]; animations = nil; }
-    if (spriteRep != nil) { [spriteRep release]; spriteRep = nil; }
-    if (spriteFrameName != nil) { [spriteFrameName release]; spriteFrameName = nil; }
-    
+
+    if (_parent != nil) { [_parent release]; _parent = nil; }
+    if (_animations != nil) { [_animations release]; _animations = nil; }
+    if (_spriteRep != nil) { [_spriteRep release]; _spriteRep = nil; }
+    if (_spriteFrameName != nil) { [_spriteFrameName release]; _spriteFrameName = nil; }
+
     [super dealloc];
 }
 #pragma mark -
 
 #pragma mark Tick Method
 - (void) update:(double) dt {
-    
-    if (spriteRep != nil) 
+
+    if (self.spriteRep != nil)
     {
-        [currentTimeLine update:dt];
+        [self.currentTimeLine update:dt];
         [self tween];
-        [spriteRep updateWithGraphical:self];
+        [self.spriteRep updateWithGraphical:self];
     }
-        
+
 }
-#pragma mark -
 
 #pragma mark Animation Methods
 - (void) runAnimation:(NSString *) animationName {
-    if ([animations objectForKey:animationName] != nil) {
-        currentTimeLine = [animations objectForKey:animationName];
+    if ([self.animations objectForKey:animationName] != nil) {
+        self.currentTimeLine = [self.animations objectForKey:animationName];
     }
 }
 - (double) animationSpeed {
-    return [parent animationSpeed];
+    return [self.parent animationSpeed];
 }
-#pragma mark -
-
-#pragma mark Master Modifiers
-- (void) setMasterPosition:(CGPoint) p {
-    mPosition = p;
-}
-- (void) setMasterRotation:(float) r {
-    mRotation = r;
-}
-- (void) setMasterFlipX:(bool) b {
-    mFlipX = b;
-}
-- (void) setMasterFlipY:(bool) b {
-    mFlipY = b;
-}
-- (void) setMasterScaleX:(float) f {
-    mScaleX = f;
-}
-- (void) setMasterScaleY:(float) f {
-    mScaleY = f; 
-}
-#pragma mark -
-
-
-#pragma mark Setters and Getters
-- (void) setParent:(KJGraphicalObject *) graphicalObject 
-{
-    if (parent != nil) { [parent release]; parent = nil; }
-    if (graphicalObject == nil) return;
-    parent = [graphicalObject retain];
-}
-- (KJGraphicalObject *) parent 
-{
-    return parent;
-}
-- (void) setSpriteRep:(NSObject<KJGraphicalRepresentationProtocol> *) rep
-{
-    spriteRep = [rep retain];
-}
-- (NSObject<KJGraphicalRepresentationProtocol> *) graphicalRepresentation 
-{
-    return spriteRep;
-}
-#pragma mark -
-
 
 #pragma mark Positioning Methods
-- (bool) shouldIgnoreBoundingBox 
-{    
-    return shouldIgnoreBoundingBoxCalculation;
+- (bool) shouldIgnoreBoundingBox
+{
+    return _shouldIgnoreBoundingBoxCalculation;
 }
 
-- (CGPoint) frameOffset 
+- (CGPoint) frameOffset
 {
-    return [spriteRep frameOffset];
+    return [self.spriteRep frameOffset];
 }
-#pragma mark -
 
 @end

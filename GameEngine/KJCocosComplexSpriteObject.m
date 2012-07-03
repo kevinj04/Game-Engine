@@ -126,7 +126,7 @@
         KJCocosGraphicObject *cgo = [KJCocosGraphicObject nodeWithNode:[CCSprite node]];
         [cgo setObjectName:[part objectName]];
         [temp setObject:cgo forKey:[part objectName]];
-        [cgo setShouldIgnoreBoundingBoxCalculation:[part shouldIgnoreBoundingBox]];
+        [cgo setShouldIgnoreBoundingBoxCalculation:[part shouldIgnoreBoundingBoxCalculation]];
     }
     sprites = [temp retain];
     
