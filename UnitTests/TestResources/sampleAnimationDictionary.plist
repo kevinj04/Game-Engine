@@ -27,7 +27,7 @@
 								<string>{0, 0}</string>
 								<key>rotation</key>
 								<integer>0</integer>
-								<key>scale</key>
+								<key>scaleX</key>
 								<integer>1</integer>
 							</dict>
 							<dict>
@@ -39,7 +39,7 @@
 								<string>{5, 5}</string>
 								<key>rotation</key>
 								<integer>5</integer>
-								<key>scale</key>
+								<key>scaleX</key>
 								<integer>2</integer>
 							</dict>
 						</array>
@@ -61,7 +61,7 @@
 								<string>{0, 0}</string>
 								<key>rotation</key>
 								<integer>0</integer>
-								<key>scale</key>
+								<key>scaleX</key>
 								<integer>1</integer>
 								<key>flipX</key>
 								<true/>
@@ -72,12 +72,16 @@
 								<key>frame</key>
 								<string>part1_animation1_2.png</string>
 								<key>position</key>
-								<string>{0, 0}</string>
+								<string>{-1, 1}</string>
 								<key>rotation</key>
 								<integer>2</integer>
-								<key>scale</key>
-								<integer>1</integer>
+								<key>scaleX</key>
+								<real>1.1</real>
+								<key>scaleY</key>
+								<real>1.1</real>
 								<key>flipX</key>
+								<true/>
+								<key>flipY</key>
 								<true/>
 							</dict>
 							<dict>
@@ -89,10 +93,14 @@
 								<string>{0, 0}</string>
 								<key>rotation</key>
 								<integer>-2</integer>
-								<key>scale</key>
+								<key>scaleX</key>
+								<integer>1</integer>
+								<key>scaleY</key>
 								<integer>1</integer>
 								<key>flipX</key>
 								<true/>
+								<key>flipY</key>
+								<false/>
 							</dict>
 						</array>
 					</dict>
@@ -123,7 +131,7 @@
 								<string>{0, 0}</string>
 								<key>rotation</key>
 								<integer>0</integer>
-								<key>scale</key>
+								<key>scaleX</key>
 								<integer>1</integer>
 							</dict>
 							<dict>
@@ -135,7 +143,7 @@
 								<string>{-10, -10}</string>
 								<key>rotation</key>
 								<integer>-10</integer>
-								<key>scale</key>
+								<key>scaleX</key>
 								<real>0.5</real>
 							</dict>
 						</array>
@@ -157,7 +165,7 @@
 								<string>{0, 0}</string>
 								<key>rotation</key>
 								<integer>0</integer>
-								<key>scale</key>
+								<key>scaleX</key>
 								<integer>1</integer>
 							</dict>
 							<dict>
@@ -169,7 +177,7 @@
 								<string>{0, -5}</string>
 								<key>rotation</key>
 								<integer>5</integer>
-								<key>scale</key>
+								<key>scaleX</key>
 								<integer>1</integer>
 							</dict>
 							<dict>
@@ -181,7 +189,7 @@
 								<string>{0, 0}</string>
 								<key>rotation</key>
 								<integer>0</integer>
-								<key>scale</key>
+								<key>scaleX</key>
 								<integer>1</integer>
 							</dict>
 						</array>

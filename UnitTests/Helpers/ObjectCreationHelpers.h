@@ -21,4 +21,9 @@
 + (KJGraphicalObject *) createGraphicalObjectWithDictionary;
 + (KJGraphicalObject *) createDefaultGraphicalObject;
 
++ (KJKeyFrame *) createDefaultKeyFrameObject;
++ (KJKeyFrame *) createKeyFrameWithDictionary;
++ (KJTimeLine *) createDefaultTimeLine;
++ (KJTimeLine *) createTimeLineWithDictionary;
+
 @end

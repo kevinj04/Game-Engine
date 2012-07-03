@@ -28,6 +28,21 @@
     return animationDictionary;
 }
 
++ (NSDictionary *) graphicPartDictionary
+{
+    return [[[self animationDictionary] objectForKey:kjObjectParts] objectForKey:@"part1"];
+}
+
++ (NSDictionary *) timeLineDictionary
+{
+    return [[[self graphicPartDictionary] objectForKey:kjPartAnimations] objectForKey:@"animation1"];
+}
+
++ (NSDictionary *) keyFrameDictionary
+{
+    return [[[self timeLineDictionary] objectForKey:kjTimeLineKeyFrames] objectAtIndex:1];
+}
+
 #pragma mark - Game Object Helpers
 + (KJGameObject *) gameObjectFromDictionary
 {
@@ -72,4 +87,30 @@
     return newObject;
 }
 
+#pragma mark - Graphics Objects Helpers
++ (KJKeyFrame *) createDefaultKeyFrameObject
+{
+    KJKeyFrame *defaultKeyFrame = [KJKeyFrame frame];
+    return defaultKeyFrame;
+}
+
++ (KJKeyFrame *) createKeyFrameWithDictionary
+{
+    NSDictionary *keyFrameDictionary = [self keyFrameDictionary];
+    KJKeyFrame *keyFrameWithDictionary = [KJKeyFrame frameWithDictionary:keyFrameDictionary];
+    return keyFrameWithDictionary;
+}
+
++ (KJTimeLine *) createDefaultTimeLine
+{
+    KJTimeLine *defaultTimeLine = [KJTimeLine timeLine];
+    return defaultTimeLine;
+}
+
++ (KJTimeLine *) createTimeLineWithDictionary
+{
+    NSDictionary *timeLineDictionary = [self timeLineDictionary];
+    KJTimeLine *timeLineFromDictionary = [KJTimeLine timeLineWithDictionary:timeLineDictionary];
+    return timeLineFromDictionary;
+}
 @end
