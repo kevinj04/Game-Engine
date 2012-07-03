@@ -253,6 +253,7 @@
 		0A2D94FA151C990700BCD796 /* DenshionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2D94F7151C990700BCD796 /* DenshionEngine.m */; };
 		0A31139B159A56CA00BD168A /* KJGameObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A31139A159A56CA00BD168A /* KJGameObjectUnitTests.m */; };
 		0A3113C0159BAB8D00BD168A /* sampleObjectDictionary.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A3113A6159BA7B000BD168A /* sampleObjectDictionary.plist */; };
+		0A3D22BC15A38AE3000971F5 /* KJGraphicPartUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3D22BB15A38AE3000971F5 /* KJGraphicPartUnitTests.m */; };
 		0A5669C11550896600295EDE /* KJPhysicsObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5669BF1550896500295EDE /* KJPhysicsObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A5669C21550896600295EDE /* KJPhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C01550896500295EDE /* KJPhysicsObject.m */; };
 		0A5669C31550896600295EDE /* KJPhysicsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C01550896500295EDE /* KJPhysicsObject.m */; };
@@ -598,6 +599,8 @@
 		0A311399159A56CA00BD168A /* KJGameObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObjectUnitTests.h; sourceTree = "<group>"; };
 		0A31139A159A56CA00BD168A /* KJGameObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGameObjectUnitTests.m; sourceTree = "<group>"; };
 		0A3113A6159BA7B000BD168A /* sampleObjectDictionary.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sampleObjectDictionary.plist; sourceTree = "<group>"; };
+		0A3D22BA15A38AE3000971F5 /* KJGraphicPartUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGraphicPartUnitTests.h; sourceTree = "<group>"; };
+		0A3D22BB15A38AE3000971F5 /* KJGraphicPartUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGraphicPartUnitTests.m; sourceTree = "<group>"; };
 		0A5669BF1550896500295EDE /* KJPhysicsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJPhysicsObject.h; sourceTree = "<group>"; };
 		0A5669C01550896500295EDE /* KJPhysicsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJPhysicsObject.m; sourceTree = "<group>"; };
 		0A5669C6155089A600295EDE /* KJGameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObject.h; sourceTree = "<group>"; };
@@ -1314,6 +1317,8 @@
 				0A85A3D915A3727B0077494B /* KJKeyFrameUnitTests.m */,
 				0A85A3DB15A373720077494B /* KJTimeLineTest.h */,
 				0A85A3DC15A373720077494B /* KJTimeLineTest.m */,
+				0A3D22BA15A38AE3000971F5 /* KJGraphicPartUnitTests.h */,
+				0A3D22BB15A38AE3000971F5 /* KJGraphicPartUnitTests.m */,
 			);
 			path = GraphicObjectUnitTests;
 			sourceTree = "<group>";
@@ -1770,6 +1775,7 @@
 				0A112CB215A33A19002086BA /* ObjectCreationHelpers.m in Sources */,
 				0A85A3DA15A3727B0077494B /* KJKeyFrameUnitTests.m in Sources */,
 				0A85A3DD15A373730077494B /* KJTimeLineTest.m in Sources */,
+				0A3D22BC15A38AE3000971F5 /* KJGraphicPartUnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

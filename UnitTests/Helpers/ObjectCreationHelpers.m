@@ -28,14 +28,14 @@
     return animationDictionary;
 }
 
-+ (NSDictionary *) graphicPartDictionary
++ (NSDictionary *) graphicsPartDictionary
 {
     return [[[self animationDictionary] objectForKey:kjObjectParts] objectForKey:@"part1"];
 }
 
 + (NSDictionary *) timeLineDictionary
 {
-    return [[[self graphicPartDictionary] objectForKey:kjPartAnimations] objectForKey:@"animation1"];
+    return [[[self graphicsPartDictionary] objectForKey:kjPartAnimations] objectForKey:@"animation1"];
 }
 
 + (NSDictionary *) keyFrameDictionary
@@ -112,5 +112,18 @@
     NSDictionary *timeLineDictionary = [self timeLineDictionary];
     KJTimeLine *timeLineFromDictionary = [KJTimeLine timeLineWithDictionary:timeLineDictionary];
     return timeLineFromDictionary;
+}
+
++ (KJGraphicsPart *) createDefaultGraphicsPart
+{
+    KJGraphicsPart *defaultGraphicsPart = [KJGraphicsPart part];
+    return defaultGraphicsPart;
+}
+
++ (KJGraphicsPart *) createGraphicsPartWithDictionary
+{
+    NSDictionary *graphicsPartDictionary = [self graphicsPartDictionary];
+    KJGraphicsPart *graphicsPartFromDictionary = [KJGraphicsPart partWithAnimationDictionary:graphicsPartDictionary];
+    return graphicsPartFromDictionary;
 }
 @end

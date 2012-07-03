@@ -25,5 +25,7 @@
 + (KJKeyFrame *) createKeyFrameWithDictionary;
 + (KJTimeLine *) createDefaultTimeLine;
 + (KJTimeLine *) createTimeLineWithDictionary;
++ (KJGraphicsPart *) createDefaultGraphicsPart;
++ (KJGraphicsPart *) createGraphicsPartWithDictionary;
 
 @end
