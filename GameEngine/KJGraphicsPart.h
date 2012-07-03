@@ -31,7 +31,6 @@ extern NSString *const kjPartShouldIgnoreBatchNodeUpdate;
 @property (nonatomic, retain) NSDictionary *animations;
 @property (nonatomic, retain) NSObject<KJGraphicalRepresentationProtocol> *spriteRep;
 
-// Current Graphic State -- extract?
 @property (nonatomic, retain) NSString *spriteFrameName;
 @property (nonatomic, assign) CGPoint position;
 @property (nonatomic, assign) CGRect boundingBox;
@@ -59,6 +58,7 @@ extern NSString *const kjPartShouldIgnoreBatchNodeUpdate;
 @property (nonatomic, assign) bool shouldIgnoreBoundingBoxCalculation;
 
 - (id) initWithAnimationDictionary:(NSDictionary *) animationDictionary;
++ (id) part;
 + (id) partWithAnimationDictionary:(NSDictionary *) animationDictionary;
 - (void) setupWithAnimationDictionary:(NSDictionary *) animationDictionary;
 - (void) dealloc;

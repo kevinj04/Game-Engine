@@ -106,24 +106,60 @@ NSString *const kjPartShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
 @synthesize shouldIgnoreBoundingBoxCalculation = _shouldIgnoreBoundingBoxCalculation;
 
 #pragma mark Initialization Methods
+- (id) init
+{
+    self = [super init];
+    if (self) [self setup];
+    return self;
+}
 - (id) initWithAnimationDictionary:(NSDictionary *) animationDictionary
 {
-
-    if (( self = [super init] )) {
-
-        [self setupWithAnimationDictionary:animationDictionary];
-        return self;
-
-    }
-    return nil;
+    self = [super init];
+    if (self) [self setupWithAnimationDictionary:animationDictionary];
+    return self;
+}
++ (id) part
+{
+    return [[[KJGraphicsPart alloc] init] autorelease];
 }
 + (id) partWithAnimationDictionary:(NSDictionary *) animationDictionary
 {
     return [[[KJGraphicsPart alloc] initWithAnimationDictionary:animationDictionary] autorelease];
 }
-- (void) setupWithAnimationDictionary:(NSDictionary *) animationDictionary
+- (void) setup
 {
     self.spriteRep = nil;
+    self.animations = [NSDictionary dictionary];
+    self.currentTimeLine = nil;
+    self.shouldIgnoreBoundingBoxCalculation = NO;
+    self.shouldIgnoreBatchNodeUpdate = NO;
+
+    self.masterPosition = CGPointZero;
+    self.masterRotation = 0.0;
+    self.masterScaleX = 1.0;
+    self.masterScaleY = 1.0;
+    self.masterFlipX = NO;
+    self.masterFlipY = NO;
+    self.masterVertexZ = 0.0f;
+    self.masterZOrder = 0;
+
+    self.spriteFrameName = nil;
+    self.position = CGPointMake(0.0, 0.0);
+    self.boundingBox = CGRectMake(0.0, 0.0, 1.0, 1.0);
+    self.rotation = 0.0f;
+    self.scaleX = 1.0f;
+    self.scaleY = 1.0f;
+    self.flipX = NO;
+    self.flipY = NO;
+    self.anchorPoint = CGPointMake(0.5, 0.5);
+    self.visible = YES;
+    self.zOrder = 0;
+    self.vertexZ = 0.0f;
+
+}
+- (void) setupWithAnimationDictionary:(NSDictionary *) animationDictionary
+{
+    [self setup];
 
     NSDictionary *animationsDictionary = [animationDictionary objectForKey:kjPartAnimations];
 
@@ -146,37 +182,13 @@ NSString *const kjPartShouldIgnoreBatchNodeUpdate = @"ignoreBatchNode";
         [self.currentTimeLine reset];
     }
 
-    self.shouldIgnoreBoundingBoxCalculation = NO;
     if ([animationDictionary objectForKey:kjPartIgnoreBoundingBox] != nil) {
         self.shouldIgnoreBoundingBoxCalculation = [[animationDictionary objectForKey:kjPartIgnoreBoundingBox] boolValue];
     }
 
-    self.shouldIgnoreBatchNodeUpdate = NO;
     if ([animationDictionary objectForKey:kjPartShouldIgnoreBatchNodeUpdate] != nil) {
         self.shouldIgnoreBatchNodeUpdate = [[animationDictionary objectForKey:kjPartShouldIgnoreBatchNodeUpdate] boolValue];
     }
-
-    // standard values
-    self.spriteFrameName = nil;
-    self.position = CGPointMake(0.0, 0.0);
-    self.boundingBox = CGRectMake(0.0, 0.0, 1.0, 1.0);
-    self.rotation = 0.0f;
-
-    self.scaleX = 1.0f;
-    self.scaleY = 1.0f;
-
-    self.masterVertexZ = 1.0f;
-    self.masterZOrder = 1;
-
-    self.flipX = NO;
-    self.flipY = NO;
-    self.anchorPoint = CGPointMake(0.5, 0.5);
-    self.visible = YES;
-
-    // Master values
-    self.masterRotation = 0.0;
-    self.masterScaleX = 1.0;
-    self.masterScaleY = 1.0;
 
     if ([animationDictionary objectForKey:kjPartVertexZ] != nil) {
         self.masterVertexZ = [[animationDictionary objectForKey:kjPartVertexZ] floatValue];
