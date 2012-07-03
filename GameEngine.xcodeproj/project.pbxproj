@@ -283,6 +283,8 @@
 		0A745C2C1566DA81003207C9 /* KJLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745C2A1566DA81003207C9 /* KJLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A745C2D1566DA81003207C9 /* KJLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C2B1566DA81003207C9 /* KJLayer.m */; };
 		0A745C2E1566DA81003207C9 /* KJLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C2B1566DA81003207C9 /* KJLayer.m */; };
+		0A85A3DA15A3727B0077494B /* KJKeyFrameUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85A3D915A3727B0077494B /* KJKeyFrameUnitTests.m */; };
+		0A85A3DD15A373730077494B /* KJTimeLineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85A3DC15A373720077494B /* KJTimeLineTest.m */; };
 		0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AA6C592159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA6C591159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m */; };
 		0AD7BFCD156ACA91000A4163 /* KJLayers.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD7BFCC156ACA91000A4163 /* KJLayers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -620,6 +622,10 @@
 		0A745C261566DA70003207C9 /* KJCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCamera.m; sourceTree = "<group>"; };
 		0A745C2A1566DA81003207C9 /* KJLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLayer.h; sourceTree = "<group>"; };
 		0A745C2B1566DA81003207C9 /* KJLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJLayer.m; sourceTree = "<group>"; };
+		0A85A3D815A3727B0077494B /* KJKeyFrameUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJKeyFrameUnitTests.h; sourceTree = "<group>"; };
+		0A85A3D915A3727B0077494B /* KJKeyFrameUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJKeyFrameUnitTests.m; sourceTree = "<group>"; };
+		0A85A3DB15A373720077494B /* KJTimeLineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJTimeLineTest.h; sourceTree = "<group>"; };
+		0A85A3DC15A373720077494B /* KJTimeLineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJTimeLineTest.m; sourceTree = "<group>"; };
 		0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackElementProtocol.h; sourceTree = "<group>"; };
 		0AA6C590159E3CC20057BC57 /* KJPhysicsObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJPhysicsObjectUnitTests.h; sourceTree = "<group>"; };
 		0AA6C591159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJPhysicsObjectUnitTests.m; sourceTree = "<group>"; };
@@ -1301,9 +1307,21 @@
 			name = Cameras;
 			sourceTree = "<group>";
 		};
+		0A85A3D615A372430077494B /* GraphicObjectUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A85A3D815A3727B0077494B /* KJKeyFrameUnitTests.h */,
+				0A85A3D915A3727B0077494B /* KJKeyFrameUnitTests.m */,
+				0A85A3DB15A373720077494B /* KJTimeLineTest.h */,
+				0A85A3DC15A373720077494B /* KJTimeLineTest.m */,
+			);
+			path = GraphicObjectUnitTests;
+			sourceTree = "<group>";
+		};
 		0AF823A715967409009F41CF /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				0A85A3D615A372430077494B /* GraphicObjectUnitTests */,
 				0A112CAF15A339F6002086BA /* Helpers */,
 				0A3113A4159BA79F00BD168A /* TestResources */,
 				0A311397159A569C00BD168A /* GameObjectUnitTests */,
@@ -1750,6 +1768,8 @@
 				0AA6C592159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m in Sources */,
 				0A112C8A15A234D3002086BA /* KJGraphicalObjectUnitTests.m in Sources */,
 				0A112CB215A33A19002086BA /* ObjectCreationHelpers.m in Sources */,
+				0A85A3DA15A3727B0077494B /* KJKeyFrameUnitTests.m in Sources */,
+				0A85A3DD15A373730077494B /* KJTimeLineTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
