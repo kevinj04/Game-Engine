@@ -11,6 +11,9 @@
 
 @interface ObjectCreationHelpers : NSObject
 
++ (NSDictionary *) sampleObjectDictionary;
++ (NSDictionary *) animationDictionary;
+
 + (KJLayer *) layerObjectFromDictionary;
 + (KJGameObject *) gameObjectFromDictionary;
 + (KJPhysicsObject *) createPhysicsObjectWithDictionary;

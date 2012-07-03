@@ -49,44 +49,144 @@
 
 - (void) testShouldSetUpObjectFromDictionary
 {
-    KJGraphicalObject *newObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
 
-    STAssertTrue(newObject.zOrder == newObject.vertexZ, @"Objects created with a vertexZ paramter should have that value overwritten by the zOrder value if it exists.");
-    STAssertTrue(1 == newObject.zOrder, @"Objects created with a zOrder paramter should initialize with that value.");
-
+    STAssertTrue(graphicalObject.zOrder == graphicalObject.vertexZ, @"Objects created with a vertexZ paramter should have that value overwritten by the zOrder value if it exists.");
+    STAssertTrue(1 == graphicalObject.zOrder, @"Objects created with a zOrder paramter should initialize with that value.");
+    STAssertFalse([@"part1" isEqualToString:graphicalObject.primaryPart], @"Primary part should NOT be set from the object dictionary.");
+    STAssertFalse(graphicalObject.shouldIgnoreBatchNodeUpdate, @"ShouldIgnoreBatchNodeUpdate should NOT be set from the object dictionary.");
 }
 
 - (void) testShouldSetupAnimationsFromDictionary
 {
-    STFail(@"Unwritten test.");
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+
+    NSDictionary *animationDictionary = [ObjectCreationHelpers animationDictionary];
+    [graphicalObject setupGraphicsWithDictionary:animationDictionary];
+
+    STAssertTrue([@"part1" isEqualToString:graphicalObject.primaryPart], @"Primary part should be set from the animation dictionary.");
+    STAssertTrue(graphicalObject.shouldIgnoreBatchNodeUpdate, @"ShouldIgnoreBatchNodeUpdate should be set from the animation dictionary.");
+    STAssertTrue(2 == graphicalObject.parts.count, @"Parts should be created and added to the parts dictionary.");
+
 }
 
 - (void) testShouldSetSelfAsParentOfParts
 {
-    KJLayer *parentLayer = [ObjectCreationHelpers layerObjectFromDictionary];
-    STFail(@"Unwritten test.");
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+
+    NSDictionary *animationDictionary = [ObjectCreationHelpers animationDictionary];
+    [graphicalObject setupGraphicsWithDictionary:animationDictionary];
+
+    for (KJGraphicsPart *part in [[graphicalObject parts] allValues])
+    {
+        STAssertTrue(graphicalObject == [part parent], @"All parts should have their parent set to their containing KJGraphicalObject.");
+    }
 }
 
 - (void) testShouldAdjustVertexZBasedOnParentLayer
 {
-    STFail(@"Unwritten test.");
+    KJLayer *parentLayer = [ObjectCreationHelpers layerObjectFromDictionary];
+    parentLayer.zOrder = 3;
+
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+
+    float graphicalObjectVertexZ = graphicalObject.vertexZ;
+    float layerObjectVertexZ = parentLayer.vertexZ;
+
+    [graphicalObject setParent:parentLayer];
+
+    STAssertTrue(graphicalObjectVertexZ + layerObjectVertexZ == graphicalObject.vertexZ, @"Graphical object should set vertexZ to include offset of parent layer.");
 }
 
 #pragma mark - Notification Handler Tests
-- (void) testShouldRunNotificationOnSpecifiedPart
+- (void) testShouldRunAnimationOnSpecifiedPart
 {
-    STFail(@"Unwritten test.");
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+
+    NSDictionary *animationDictionary = [ObjectCreationHelpers animationDictionary];
+    [graphicalObject setupGraphicsWithDictionary:animationDictionary];
+
+    KJGraphicsPart *targetPart = [graphicalObject.parts objectForKey:@"part2"];
+
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    [info setObject:[NSString stringWithString:@"animation2"] forKey:kjAnimationRequest];
+    [info setObject:[NSString stringWithString:@"part2"] forKey:kjTargetPart];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kjAnimationRequest object:graphicalObject userInfo:info];
+
+    STAssertTrue(3 == targetPart.currentTimeLine.keyFrames.count, @"Target part should run an animation when requested.");
 }
 
-- (void) testShouldRunNotificationOnAllParts
+- (void) testShouldDoNothingWhenAnimationRequestedDoesNotExist
 {
-    STFail(@"Unwritten test.");
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+
+    NSDictionary *animationDictionary = [ObjectCreationHelpers animationDictionary];
+    [graphicalObject setupGraphicsWithDictionary:animationDictionary];
+
+    KJGraphicsPart *targetPart = [graphicalObject.parts objectForKey:@"part2"];
+
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    [info setObject:[NSString stringWithString:@"animation3"] forKey:kjAnimationRequest];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kjAnimationRequest object:graphicalObject userInfo:info];
+
+    STAssertTrue(2 == targetPart.currentTimeLine.keyFrames.count, @"Should not run an animation when requested.");
+}
+
+- (void) testShouldDoNothingWhenAnimationRequestedDoesNotExistForPart
+{
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+
+    NSDictionary *animationDictionary = [ObjectCreationHelpers animationDictionary];
+    [graphicalObject setupGraphicsWithDictionary:animationDictionary];
+
+    KJGraphicsPart *targetPart = [graphicalObject.parts objectForKey:@"part2"];
+
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    [info setObject:[NSString stringWithString:@"animation3"] forKey:kjAnimationRequest];
+    [info setObject:[NSString stringWithString:@"part2"] forKey:kjTargetPart];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kjAnimationRequest object:graphicalObject userInfo:info];
+
+    STAssertTrue(2 == targetPart.currentTimeLine.keyFrames.count, @"Target part should run an animation when requested.");
+}
+
+- (void) testShouldRunAnimationOnAllParts
+{
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+
+    NSDictionary *animationDictionary = [ObjectCreationHelpers animationDictionary];
+    [graphicalObject setupGraphicsWithDictionary:animationDictionary];
+
+    KJGraphicsPart *targetPartDoesNotHaveAnimation = [graphicalObject.parts objectForKey:@"part1"];
+    KJGraphicsPart *targetPartHasAnimation = [graphicalObject.parts objectForKey:@"part2"];
+
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    [info setObject:[NSString stringWithString:@"animation2"] forKey:kjAnimationRequest];
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:kjAnimationRequest object:graphicalObject userInfo:info];
+
+    STAssertTrue(2 == targetPartDoesNotHaveAnimation.currentTimeLine.keyFrames.count, @"Part should not run an animation when requested if the animation does not exist for this part.");
+    STAssertTrue(3 == targetPartHasAnimation.currentTimeLine.keyFrames.count, @"Part should run an animation when requested if the animation does exist for this part.");
 }
 
 #pragma mark - Update Tests
 - (void) testShouldCallUpdateOnAllParts
 {
-    STFail(@"Unwritten test.");
+    KJGraphicalObject *graphicalObject = [ObjectCreationHelpers createGraphicalObjectWithDictionary];
+
+    NSDictionary *animationDictionary = [ObjectCreationHelpers animationDictionary];
+    [graphicalObject setupGraphicsWithDictionary:animationDictionary];
+    [graphicalObject setIsActive:YES];
+
+    KJGraphicsPart *part1 = [graphicalObject.parts objectForKey:@"part1"];
+    KJGraphicsPart *part2 = [graphicalObject.parts objectForKey:@"part2"];
+
+    [graphicalObject update:.1];
+
+    STAssertTrue(.1 == part1.currentTimeLine.currentPosition, @"All sub-parts should update when this object updates.");
+    STAssertTrue(.1 == part2.currentTimeLine.currentPosition, @"All sub-parts should update when this object updates.");
 }
 
 @end

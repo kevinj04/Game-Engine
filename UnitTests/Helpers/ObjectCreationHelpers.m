@@ -10,6 +10,7 @@
 
 @implementation ObjectCreationHelpers
 
+#pragma mark - Dictionary Creation
 + (NSDictionary *) sampleObjectDictionary
 {
     NSString *pathToObjectDictionary = [[NSBundle bundleForClass:[self class]] pathForResource:@"sampleObjectDictionary"
@@ -18,12 +19,12 @@
     return objectsDictionary;
 }
 
-- (NSDictionary *) animationDictionary
++ (NSDictionary *) animationDictionary
 {
     NSString *pathToObjectDictionary = [[NSBundle bundleForClass:[self class]] pathForResource:@"sampleAnimationDictionary"
                                                                                         ofType:@"plist" ];
     NSDictionary *animationsDictionary = [NSDictionary dictionaryWithContentsOfFile:pathToObjectDictionary];
-    NSDictionary *animationDictionary = [animationsDictionary objectForKey:[NSString stringWithString:@"graphicSet1"]];
+    NSDictionary *animationDictionary = [animationsDictionary objectForKey:[NSString stringWithString:@"animationSet1"]];
     return animationDictionary;
 }
 

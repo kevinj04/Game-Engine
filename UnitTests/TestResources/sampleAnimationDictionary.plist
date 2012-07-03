@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>animation</key>
+	<key>animationSet1</key>
 	<dict>
 		<key>parts</key>
 		<dict>
@@ -193,10 +193,10 @@
 				<real>0.11</real>
 			</dict>
 		</dict>
-		<key>vertexZ</key>
-		<integer>5</integer>
-		<key>zOrder</key>
-		<integer>3</integer>
+		<key>primaryPart</key>
+		<string>part1</string>
+		<key>ignoreBatchNodeUpdate</key>
+		<true/>
 	</dict>
 </dict>
 </plist>
