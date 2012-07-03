@@ -147,14 +147,6 @@ NSString *const kjTargetPart = @"targetPart";
         self.shouldIgnoreBatchNodeUpdate = [[animationDictionary objectForKey:kjShouldIgnoreBatchNodeUpdate] boolValue];
     }
 
-    if ([animationDictionary objectForKey:kjZOrder] != nil) {
-        self.zOrder = [[animationDictionary objectForKey:kjZOrder] intValue];
-    }
-
-    if ([animationDictionary objectForKey:kjVertexZ] != nil) {
-        self.vertexZ = [[animationDictionary objectForKey:kjVertexZ] floatValue];
-    }
-
     NSDictionary *partsDictionary;
     if ((partsDictionary = [animationDictionary objectForKey:kjObjectParts])) {
 
