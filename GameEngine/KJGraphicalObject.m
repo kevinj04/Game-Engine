@@ -241,6 +241,11 @@ NSString *const kjTargetPart = @"targetPart";
     if (self.parent) { self.vertexZ += self.parent.vertexZ; }
 }
 
+- (void) setParent:(KJLayer *)parent
+{
+    if (self.parent) { self.vertexZ += self.parent.vertexZ; }
+}
+
 #pragma mark - Position Modifiers
 - (CGPoint) primaryPartOffset
 {
