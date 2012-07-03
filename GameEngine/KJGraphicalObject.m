@@ -243,6 +243,7 @@ NSString *const kjTargetPart = @"targetPart";
 
 - (void) setParent:(KJLayer *)parent
 {
+    [super setParent:parent];
     if (self.parent) { self.vertexZ += self.parent.vertexZ; }
 }
 
