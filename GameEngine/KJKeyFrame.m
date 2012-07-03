@@ -20,75 +20,85 @@ NSString *const kjKeyFrameFlipY = @"flipY";
 
 @implementation KJKeyFrame
 
-@synthesize timePoint, frame, position, rotation, scaleX, scaleY, flipX, flipY;
+@synthesize frame = _frame;
+@synthesize timePoint = _timePoint;
+@synthesize position = _position;
+@synthesize rotation = _rotation;
+@synthesize scaleX = _scaleX;
+@synthesize scaleY = _scaleY;
+@synthesize flipX = _flipX;
+@synthesize flipY = _flipY;
 
-#pragma mark -
 #pragma mark Initialization Methods
-- (id) initWithDictionary:(NSDictionary *) dictionary 
+- (id) init
 {
-    if (( self = [super init] )) 
-    {
-        
-        [self setupWithDictionary:dictionary];
-        return self;
-        
-    } else {
-        return nil;
-    }
+    self = [super init];
+    if (self) [self setup];
+    return self;
 }
-+ (id) frameWithDictionary:(NSDictionary *) dictionary 
+- (id) initWithDictionary:(NSDictionary *) dictionary
 {
-   return [[[KJKeyFrame alloc] initWithDictionary:dictionary] autorelease]; 
+    self = [super init];
+    if (self) [self setupWithDictionary:dictionary];
+    return self;
 }
-- (void) setupWithDictionary:(NSDictionary *) dictionary 
++ (id) frameWithDictionary:(NSDictionary *) dictionary
 {
-    timePoint = 0.0;
-    frame = kjKeyFrameSpriteFrame;
-    position = CGPointMake(0.0,0.0);
-    rotation = 0.0;
-    scaleX = 1.0;    
-    scaleY = 1.0;
-    flipX = NO;
-    flipY = NO;
-    
+   return [[[KJKeyFrame alloc] initWithDictionary:dictionary] autorelease];
+}
++ (id) frame
+{
+    return [[[KJKeyFrame alloc] init] autorelease];
+}
+- (void) setup
+{
+    self.timePoint = 0.0;
+    self.frame = kjKeyFrameSpriteFrame;
+    self.position = CGPointMake(0.0,0.0);
+    self.rotation = 0.0;
+    self.scaleX = 1.0;
+    self.scaleY = 1.0;
+    self.flipX = NO;
+    self.flipY = NO;
+}
+- (void) setupWithDictionary:(NSDictionary *) dictionary
+{
     if ([dictionary objectForKey:kjKeyFrameTimePoint] != nil) {
-        timePoint = [[dictionary objectForKey:kjKeyFrameTimePoint] doubleValue];
+        self.timePoint = [[dictionary objectForKey:kjKeyFrameTimePoint] doubleValue];
     }
-    
+
     if ([dictionary objectForKey:kjKeyFrameSpriteFrame] != nil) {
-        frame = [[dictionary objectForKey:kjKeyFrameSpriteFrame] retain];
+        self.frame = [[dictionary objectForKey:kjKeyFrameSpriteFrame] retain];
     }
-    
+
     if ([dictionary objectForKey:kjKeyFrameSpritePosition] != nil) {
-        position = [Universalizer scalePointForIPad:CGPointFromString([dictionary objectForKey:kjKeyFrameSpritePosition])];
+        self.position = [Universalizer scalePointForIPad:CGPointFromString([dictionary objectForKey:kjKeyFrameSpritePosition])];
     }
-    
+
     if ([dictionary objectForKey:kjKeyFrameSpriteRotation] != nil) {
-        rotation = [[dictionary objectForKey:kjKeyFrameSpriteRotation] floatValue];
+        self.rotation = [[dictionary objectForKey:kjKeyFrameSpriteRotation] floatValue];
     }
-    
+
     if ([dictionary objectForKey:kjKeyFrameSpriteScaleX] != nil) {
-        scaleX = [[dictionary objectForKey:kjKeyFrameSpriteScaleY] floatValue];
+        self.scaleX = [[dictionary objectForKey:kjKeyFrameSpriteScaleY] floatValue];
     }
-    
+
     if ([dictionary objectForKey:kjKeyFrameSpriteScaleY] != nil) {
-        scaleY = [[dictionary objectForKey:kjKeyFrameSpriteScaleY] floatValue];
+        self.scaleY = [[dictionary objectForKey:kjKeyFrameSpriteScaleY] floatValue];
     }
-    
+
     if ([dictionary objectForKey:kjKeyFrameFlipX] != nil) {
-        flipX = [[dictionary objectForKey:kjKeyFrameFlipX] boolValue];
+        self.flipX = [[dictionary objectForKey:kjKeyFrameFlipX] boolValue];
     }
-    
+
     if ([dictionary objectForKey:kjKeyFrameFlipY] != nil) {
-        flipY = [[dictionary objectForKey:kjKeyFrameFlipY] boolValue];
+        self.flipY = [[dictionary objectForKey:kjKeyFrameFlipY] boolValue];
     }
 }
-- (void) dealloc 
+- (void) dealloc
 {
-    if (frame != nil) { [frame release]; frame = nil; }
+    if (_frame != nil) { [_frame release]; _frame = nil; }
     [super dealloc];
 }
-#pragma mark -
-
 
 @end
