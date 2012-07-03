@@ -106,6 +106,8 @@ NSString *const kjTimeLineDuration = @"duration";
         self.keyFrames = [[NSArray alloc] initWithArray:tempFrames];
 
     }
+    
+    [self updateKeyFrames];
 
 }
 - (void) dealloc
