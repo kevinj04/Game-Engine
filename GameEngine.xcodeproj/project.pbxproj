@@ -287,6 +287,7 @@
 		0A85A3DA15A3727B0077494B /* KJKeyFrameUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85A3D915A3727B0077494B /* KJKeyFrameUnitTests.m */; };
 		0A85A3DD15A373730077494B /* KJTimeLineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85A3DC15A373720077494B /* KJTimeLineTest.m */; };
 		0A9BF9C315AC6DAD004F479E /* KJBackgroundObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BF9C215AC6DAD004F479E /* KJBackgroundObjectUnitTests.m */; };
+		0A9BF9E515ACA192004F479E /* KJModuleUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BF9E415ACA192004F479E /* KJModuleUnitTests.m */; };
 		0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AA6C592159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA6C591159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m */; };
 		0AD7BFCD156ACA91000A4163 /* KJLayers.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD7BFCC156ACA91000A4163 /* KJLayers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -632,6 +633,8 @@
 		0A85A3DC15A373720077494B /* KJTimeLineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJTimeLineTest.m; sourceTree = "<group>"; };
 		0A9BF9C115AC6DAD004F479E /* KJBackgroundObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJBackgroundObjectUnitTests.h; sourceTree = "<group>"; };
 		0A9BF9C215AC6DAD004F479E /* KJBackgroundObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJBackgroundObjectUnitTests.m; sourceTree = "<group>"; };
+		0A9BF9E315ACA192004F479E /* KJModuleUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJModuleUnitTests.h; sourceTree = "<group>"; };
+		0A9BF9E415ACA192004F479E /* KJModuleUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJModuleUnitTests.m; sourceTree = "<group>"; };
 		0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackElementProtocol.h; sourceTree = "<group>"; };
 		0AA6C590159E3CC20057BC57 /* KJPhysicsObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJPhysicsObjectUnitTests.h; sourceTree = "<group>"; };
 		0AA6C591159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJPhysicsObjectUnitTests.m; sourceTree = "<group>"; };
@@ -1328,9 +1331,19 @@
 			path = GraphicObjectUnitTests;
 			sourceTree = "<group>";
 		};
+		0A9BF9E215ACA165004F479E /* KJModuleUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				0A9BF9E315ACA192004F479E /* KJModuleUnitTests.h */,
+				0A9BF9E415ACA192004F479E /* KJModuleUnitTests.m */,
+			);
+			path = KJModuleUnitTests;
+			sourceTree = "<group>";
+		};
 		0AF823A715967409009F41CF /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				0A9BF9E215ACA165004F479E /* KJModuleUnitTests */,
 				0A85A3D615A372430077494B /* GraphicObjectUnitTests */,
 				0A112CAF15A339F6002086BA /* Helpers */,
 				0A3113A4159BA79F00BD168A /* TestResources */,
@@ -1782,6 +1795,7 @@
 				0A85A3DD15A373730077494B /* KJTimeLineTest.m in Sources */,
 				0A3D22BC15A38AE3000971F5 /* KJGraphicPartUnitTests.m in Sources */,
 				0A9BF9C315AC6DAD004F479E /* KJBackgroundObjectUnitTests.m in Sources */,
+				0A9BF9E515ACA192004F479E /* KJModuleUnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
