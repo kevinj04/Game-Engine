@@ -39,13 +39,6 @@ NSString *const kjImage = @"image";
 
     if ([params objectForKey:kjImage] != nil) {
         self.backgroundFileName = [params objectForKey:kjImage];
-    } else {
-        NSAssert(NO, @"Failed to load an image for this background object.");
-    }
-
-    self.position = CGPointZero;
-    if ([params objectForKey:kjParameters] != nil) {
-        self.position = [Universalizer scalePointForIPad:CGPointFromString([params objectForKey:kjObjectPosition])];
     }
 }
 - (void) dealloc {
