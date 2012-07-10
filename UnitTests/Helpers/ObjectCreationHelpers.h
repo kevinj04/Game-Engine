@@ -20,6 +20,8 @@
 + (KJPhysicsObject *) createDefaultPhysicsObject;
 + (KJGraphicalObject *) createGraphicalObjectWithDictionary;
 + (KJGraphicalObject *) createDefaultGraphicalObject;
++ (KJBackgroundObject *) createDefaultBackgroundObject;
++ (KJBackgroundObject *) createBackgroundObjectWithDictionary;
 
 + (KJKeyFrame *) createDefaultKeyFrameObject;
 + (KJKeyFrame *) createKeyFrameWithDictionary;

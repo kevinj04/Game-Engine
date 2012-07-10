@@ -286,6 +286,7 @@
 		0A745C2E1566DA81003207C9 /* KJLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745C2B1566DA81003207C9 /* KJLayer.m */; };
 		0A85A3DA15A3727B0077494B /* KJKeyFrameUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85A3D915A3727B0077494B /* KJKeyFrameUnitTests.m */; };
 		0A85A3DD15A373730077494B /* KJTimeLineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A85A3DC15A373720077494B /* KJTimeLineTest.m */; };
+		0A9BF9C315AC6DAD004F479E /* KJBackgroundObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A9BF9C215AC6DAD004F479E /* KJBackgroundObjectUnitTests.m */; };
 		0A9F343D14FFD51700DEAE4D /* StackElementProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0AA6C592159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AA6C591159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m */; };
 		0AD7BFCD156ACA91000A4163 /* KJLayers.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD7BFCC156ACA91000A4163 /* KJLayers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -629,6 +630,8 @@
 		0A85A3D915A3727B0077494B /* KJKeyFrameUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJKeyFrameUnitTests.m; sourceTree = "<group>"; };
 		0A85A3DB15A373720077494B /* KJTimeLineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJTimeLineTest.h; sourceTree = "<group>"; };
 		0A85A3DC15A373720077494B /* KJTimeLineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJTimeLineTest.m; sourceTree = "<group>"; };
+		0A9BF9C115AC6DAD004F479E /* KJBackgroundObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJBackgroundObjectUnitTests.h; sourceTree = "<group>"; };
+		0A9BF9C215AC6DAD004F479E /* KJBackgroundObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJBackgroundObjectUnitTests.m; sourceTree = "<group>"; };
 		0A9F343C14FFD51700DEAE4D /* StackElementProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackElementProtocol.h; sourceTree = "<group>"; };
 		0AA6C590159E3CC20057BC57 /* KJPhysicsObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJPhysicsObjectUnitTests.h; sourceTree = "<group>"; };
 		0AA6C591159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJPhysicsObjectUnitTests.m; sourceTree = "<group>"; };
@@ -1223,6 +1226,8 @@
 				0AA6C591159E3CC20057BC57 /* KJPhysicsObjectUnitTests.m */,
 				0A311399159A56CA00BD168A /* KJGameObjectUnitTests.h */,
 				0A31139A159A56CA00BD168A /* KJGameObjectUnitTests.m */,
+				0A9BF9C115AC6DAD004F479E /* KJBackgroundObjectUnitTests.h */,
+				0A9BF9C215AC6DAD004F479E /* KJBackgroundObjectUnitTests.m */,
 			);
 			path = GameObjectUnitTests;
 			sourceTree = "<group>";
@@ -1776,6 +1781,7 @@
 				0A85A3DA15A3727B0077494B /* KJKeyFrameUnitTests.m in Sources */,
 				0A85A3DD15A373730077494B /* KJTimeLineTest.m in Sources */,
 				0A3D22BC15A38AE3000971F5 /* KJGraphicPartUnitTests.m in Sources */,
+				0A9BF9C315AC6DAD004F479E /* KJBackgroundObjectUnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

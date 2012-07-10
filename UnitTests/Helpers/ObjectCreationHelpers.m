@@ -87,6 +87,20 @@
     return newObject;
 }
 
+#pragma mark - Background Object Helpers
++ (KJBackgroundObject *) createDefaultBackgroundObject
+{
+    KJBackgroundObject *newBackgroundObject = [KJBackgroundObject object];
+    return newBackgroundObject;
+}
++ (KJBackgroundObject *) createBackgroundObjectWithDictionary
+{
+    NSDictionary *objectDictionary = [[self sampleObjectDictionary] objectForKey:[NSString stringWithString:@"backgroundGameObject"]];
+
+    KJBackgroundObject *newBackgroundObject = [KJBackgroundObject objectWithDictionary:objectDictionary];
+    return newBackgroundObject;
+}
+
 #pragma mark - Graphics Objects Helpers
 + (KJKeyFrame *) createDefaultKeyFrameObject
 {
