@@ -16,6 +16,19 @@ NSString *const kjImage = @"image";
 @synthesize backgroundFileName = _backgroundFileName;
 
 #pragma mark - Initialization Methods
+- (id) init
+{
+    self = [super init];
+    return self;
+}
++ (id) object
+{
+    return [[[KJBackgroundObject alloc] init] autorelease];
+}
++ (id) objectWithDictionary:(NSDictionary *)dictionary
+{
+    return [[[KJBackgroundObject alloc] initWithDictionary:dictionary] autorelease];
+}
 - (id) initWithDictionary:(NSDictionary *) dictionary
 {
     self = [super init];
