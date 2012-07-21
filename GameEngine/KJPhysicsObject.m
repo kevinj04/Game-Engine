@@ -94,7 +94,7 @@ BOOL kjFuzzyEqual(CGPoint a, CGPoint b, float var)
     self.velocity = CGPointMake(0.0f, 0.0f);
     self.acceleration = CGPointMake(0.0f, 0.0f);
     self.centerOfMass = CGPointMake(0.5f, 0.5f);
-    self.size = [Universalizer scaleSizeForIPad:CGSizeMake(5.0, 5.0)];
+    self.size = CGSizeMake(5.0, 5.0); // scaling will be handled when setting the bounding box
     self.boundingBox = [Universalizer scaleRectForIPad:CGRectMake(self.position.x-((self.size.width-1.0)/2.0), self.position.y-((self.size.height-1.0)/2.0), self.size.width, self.size.height)];
     self.anchorPoint = CGPointMake(0.5, 0.5);
     self.mass = 1.0f;
