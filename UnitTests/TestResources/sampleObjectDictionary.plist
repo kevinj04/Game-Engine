@@ -99,5 +99,19 @@
 		<key>alwaysActive</key>
 		<false/>
 	</dict>
+	<key>module1</key>
+	<dict>
+		<key>class</key>
+		<string>baseModuleName</string>
+		<key>id</key>
+		<string>moduleId1</string>
+	</dict>
+	<key>module2</key>
+	<dict>
+		<key>class</key>
+		<string>baseModuleName2</string>
+		<key>id</key>
+		<string>moduleId#</string>
+	</dict>
 </dict>
 </plist>

@@ -43,6 +43,19 @@
     return [[[self timeLineDictionary] objectForKey:kjTimeLineKeyFrames] objectAtIndex:1];
 }
 
++ (NSDictionary*) moduleDictionary
+{
+    NSDictionary *moduleDictionary =  [[self sampleObjectDictionary] objectForKey:@"module1"];
+    return moduleDictionary;
+}
+
++ (NSDictionary*) incrementingModuleDictionary
+{
+    NSDictionary *moduleDictionary =  [[self sampleObjectDictionary] objectForKey:@"module2"];
+    return moduleDictionary;
+}
+
+
 #pragma mark - Game Object Helpers
 + (KJGameObject *) gameObjectFromDictionary
 {
@@ -139,5 +152,24 @@
     NSDictionary *graphicsPartDictionary = [self graphicsPartDictionary];
     KJGraphicsPart *graphicsPartFromDictionary = [KJGraphicsPart partWithAnimationDictionary:graphicsPartDictionary];
     return graphicsPartFromDictionary;
+}
+
+#pragma mark - Module Helpers
++ (KJModule*) createDefaultModule
+{
+    KJModule *defaultModule = [KJModule module];
+    return defaultModule;
+}
+
++ (KJModule*) createModuleWithDictionary
+{
+    KJModule* initializedModule = [KJModule moduleWithDictionary:[self moduleDictionary]];
+    return initializedModule;
+}
+
++ (KJModule*) createIncrementingModuleWithDictionary
+{
+    KJModule* incrementingModule = [KJModule moduleWithDictionary:[self incrementingModuleDictionary]];
+    return incrementingModule;
 }
 @end

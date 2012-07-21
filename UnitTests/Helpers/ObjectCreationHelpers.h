@@ -30,4 +30,7 @@
 + (KJGraphicsPart *) createDefaultGraphicsPart;
 + (KJGraphicsPart *) createGraphicsPartWithDictionary;
 
++ (KJModule*) createDefaultModule;
++ (KJModule*) createModuleWithDictionary;
++ (KJModule*) createIncrementingModuleWithDictionary;
 @end
