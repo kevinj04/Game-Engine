@@ -9,6 +9,7 @@
 #import "KJPhysicsObjectUnitTests.h"
 #import "KJPhysicsObject.h"
 #import "ObjectCreationHelpers.h"
+#import "Universalizer.h"
 
 @interface KJPhysicsObjectUnitTests ()
 
@@ -166,8 +167,8 @@
     STAssertTrue(CGPointEqualToPoint(newObject.acceleration, CGPointZero), @"Default objects should have zero acceleration.");
     STAssertTrue(CGPointEqualToPoint(newObject.force, CGPointZero), @"Default objects should have no applied force vector when created.");
     STAssertTrue(CGPointEqualToPoint(newObject.centerOfMass, CGPointMake(0.5, 0.5)), @"Default objects should have centered center of mass.");
-    STAssertTrue(CGSizeEqualToSize(newObject.size, CGSizeMake(5.0, 5.0)), @"Default object should have size 5.0x5.0.");
-    STAssertTrue(CGRectEqualToRect(newObject.boundingBox, CGRectMake(-2.5,-2.5,5.0,5.0)), @"Default objects should have bounding box [-2.5 -2.5 5.0 5.0].");
+    STAssertTrue(CGSizeEqualToSize(newObject.size, [Universalizer scaleSizeForIPad:CGSizeMake(5.0, 5.0)]), @"Default object should have size 5.0x5.0 -- scaled appropriately.");
+    STAssertTrue(CGRectEqualToRect(newObject.boundingBox, [Universalizer scaleRectForIPad:CGRectMake(-2.5,-2.5,5.0,5.0)]), @"Default objects should have bounding box [-2.5 -2.5 5.0 5.0] -- scaled appropriately.");
     STAssertTrue(CGPointEqualToPoint(newObject.anchorPoint, CGPointMake(0.5, 0.5)), @"Default objects should have centered anchor point.");
     STAssertTrue(1.0f == newObject.mass, @"Default objects should have 1.0f mass.");
 
@@ -180,8 +181,8 @@
 {
     KJPhysicsObject *newObject = [ObjectCreationHelpers createPhysicsObjectWithDictionary];
 
-    STAssertTrue(CGSizeEqualToSize(CGSizeMake(20.0,20.0), newObject.size), @"Objects created with a dictionary that contains a size value should use that value.");
-    STAssertTrue(CGPointEqualToPoint(CGPointMake(14.0,19.0), newObject.position), @"Objects created with a dictionary that contains a position entry should use that value.");
+    STAssertTrue(CGSizeEqualToSize([Universalizer scaleSizeForIPad:CGSizeMake(20.0,20.0)], newObject.size), @"Objects created with a dictionary that contains a size value should use that value.");
+    STAssertTrue(CGPointEqualToPoint([Universalizer scalePointForIPad:CGPointMake(14.0,19.0)], newObject.position), @"Objects created with a dictionary that contains a position entry should use that value.");
     STAssertTrue(CGPointEqualToPoint(CGPointMake(0.5,0.0), newObject.anchorPoint), @"Objects created with a dictionary that contains an anchorPoint entry should use that value.");
 }
 
@@ -191,7 +192,7 @@
     KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.position = CGPointMake(2.5, 2.5);
 
-    STAssertTrue(CGRectEqualToRect(CGRectMake(0.0,0.0,5.0,5.0), newObject.boundingBox), @"Adjusting the position of an object should properly adjust its bounding box.");
+    STAssertTrue(CGRectEqualToRect(CGRectMake(-2.5,-2.5,newObject.size.width,newObject.size.height), newObject.boundingBox), @"Adjusting the position of an object should properly adjust its bounding box.");
 }
 
 - (void) testShouldAdjustBoundingBoxWhenSettingSize
@@ -215,7 +216,7 @@
     KJPhysicsObject *newObject = [ObjectCreationHelpers createDefaultPhysicsObject];
     newObject.anchorPoint = CGPointMake(0.0,0.0);
 
-    STAssertTrue(CGRectEqualToRect(CGRectMake(0.0,0.0,5.0,5.0), newObject.boundingBox), @"Adjusting the anchor point of an object should properly adjust its bounding box.");
+    STAssertTrue(CGRectEqualToRect(CGRectMake(0.0,0.0,newObject.size.width,newObject.size.height), newObject.boundingBox), @"Adjusting the anchor point of an object should properly adjust its bounding box.");
 }
 
 #pragma mark - Notification Tests
