@@ -9,6 +9,7 @@
 #import "KJKeyFrameUnitTests.h"
 #import "KJKeyFrame.h"
 #import "ObjectCreationHelpers.h"
+#import "Universalizer.h"
 
 @implementation KJKeyFrameUnitTests
 
@@ -41,7 +42,7 @@
     KJKeyFrame *initializedKeyFrame = [ObjectCreationHelpers createKeyFrameWithDictionary];
     STAssertTrue(0.5 == initializedKeyFrame.timePoint, @"Default key frames should have time point 0.0.");
     STAssertTrue([@"part1_animation1_2.png" isEqualToString:initializedKeyFrame.frame], @"Default key frames should have their frame set to a default string kjKeyFrameSpriteFrame.");
-    STAssertTrue(CGPointEqualToPoint(CGPointMake(-1.0f, 1.0f), initializedKeyFrame.position), @"Default key frames should have their position set to CGPointZero.");
+    STAssertTrue(CGPointEqualToPoint([Universalizer scalePointForIPad:CGPointMake(-1.0f, 1.0f)], initializedKeyFrame.position), @"Default key frames should have their position set to CGPointZero.");
     STAssertTrue(2.0f == initializedKeyFrame.rotation, @"Default key frames should have their rotation set to 0.0f");
     STAssertTrue(1.1f == initializedKeyFrame.scaleX, @"Default key frames should have their x-scale set to 1.0f.");
     STAssertTrue(1.1f == initializedKeyFrame.scaleY, @"Default key frames should have their y-scale set to 1.0f.");
