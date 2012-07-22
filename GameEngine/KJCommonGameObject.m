@@ -42,11 +42,39 @@ NSString *const kjModuleList = @"modules";
 }
 - (void) setupWithDictionary:(NSDictionary *)dictionary
 {
+    if (nil == dictionary) return;
     [super setupWithDictionary:dictionary];
+
+    NSDictionary *params;
+    NSDictionary *moduleList;
+    if ((params = [dictionary objectForKey:kjParameters]))
+    {
+        if ((moduleList = [params objectForKey:kjModuleList]))
+        {
+            [self setupModulesWithDictionary:moduleList];
+        }
+    }
 }
 - (void) setupModulesWithDictionary:(NSDictionary *) dictionary
 {
-    // override this class, call after object is instantiated.
+    for (NSDictionary *moduleInfo in [dictionary allValues])
+    {
+        NSString *moduleClass;
+        KJModule *module;
+        if ((moduleClass = [moduleInfo objectForKey:kjParamClass]))
+        {
+
+            module = [NSClassFromString(moduleClass) moduleWithDictionary:moduleInfo];
+
+            if (module != nil) {
+
+                [module setupWithGameObject:self];
+                [self.modules setObject:module forKey:[module moduleId]];
+            } else {
+                NSLog(@"Attempted to create module of class %@", moduleClass);
+            }
+        }
+    }
 }
 - (void) dealloc
 {
@@ -54,13 +82,42 @@ NSString *const kjModuleList = @"modules";
     [super dealloc];
 }
 
-#pragma mark - Clean up
+#pragma mark - Module Management
+- (void) attachModule:(KJModule *)module
+{
+    [module setParent:self];
+
+    if ([self.modules objectForKey:module.moduleId])
+    {
+        NSLog(@"KJCommongGameObject Warning: Adding duplicate module %@", module.moduleId);
+    }
+
+    [self.modules setObject:module forKey:module.moduleId];
+}
+- (void) detachModule:(KJModule*)module
+{
+    if ([[self.modules allValues] containsObject:module])
+    {
+        [module setParent:nil];
+        [self.modules removeObjectForKey:module.moduleId];
+    }
+}
+- (void) detachModuleWithId:(NSString*)moduleId
+{
+    if ([self.modules objectForKey:moduleId])
+    {
+        KJModule* module = [self.modules objectForKey:moduleId];
+        [module setParent:nil];
+        [self.modules removeObjectForKey:module.moduleId];
+    }
+}
 - (void) detachAllModules
 {
     for (KJModule *mod in [self.modules allValues])
     {
         [mod setParent:nil];
     }
+    [self.modules removeAllObjects];
 }
 
 #pragma mark - Update Method
@@ -80,10 +137,10 @@ NSString *const kjModuleList = @"modules";
 - (void) setParent:(KJLayer *)parent
 {
     [super setParent:parent];
-    
+
     for (KJModule *module in [self.modules allValues])
     {
-        [module setLayer:parent];
+        [module setParentLayer:parent];
     }
 }
 

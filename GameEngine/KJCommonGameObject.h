@@ -21,7 +21,9 @@ extern NSString *const kjModuleList;
 @property (nonatomic, retain) NSMutableDictionary *modules;
 
 - (void) setupModulesWithDictionary:(NSDictionary *) dictionary;
-
+- (void) attachModule:(KJModule*)module;
+- (void) detachModule:(KJModule*)module;
+- (void) detachModuleWithId:(NSString*)moduleId;
 - (void) detachAllModules;
 
 @end
