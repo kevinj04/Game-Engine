@@ -35,7 +35,7 @@ static int kjModuleIdTag;
 - (id) init
 {
     self = [super init];
-    if (self) { [self setup]; }
+    if (self) { [self setupWithDictionary:nil]; }
     return self;
 }
 - (id) initWithDictionary:(NSDictionary *) dictionary
@@ -43,7 +43,6 @@ static int kjModuleIdTag;
     self = [super init];
     if (self)
     {
-        [self setup];
         [self setupWithDictionary:dictionary];
     }
     return self;
@@ -58,25 +57,29 @@ static int kjModuleIdTag;
 }
 - (void) setup
 {
+    self.moduleId = [NSString stringWithFormat:@"defaultId"];
+    self.moduleName = [NSString stringWithFormat:@"defaultClassName"];
+
     // TODO: Rethink this logic
     // Allows the parent to listen to animation requests from all KJModules.
-    [[NSNotificationCenter defaultCenter] addObserver:(KJGraphicalObject *)self.parent 
-                                             selector:@selector(handleAnimationRequest:) 
-                                                 name:modAnimationRequest 
+    [[NSNotificationCenter defaultCenter] addObserver:(KJGraphicalObject *)self.parent
+                                             selector:@selector(handleAnimationRequest:)
+                                                 name:modAnimationRequest
                                                object:self];
 }
 - (void) setupWithDictionary:(NSDictionary *) dictionary
 {
-    self.moduleName = [NSString stringWithFormat:@"defaultModule"];
-    self.moduleId = [NSString stringWithFormat:@"defaultId"];
+    [self setup];
+
+    if (nil == dictionary) return;
 
     if ([dictionary objectForKey:modClass] != nil) {
         self.moduleName = [dictionary objectForKey:modClass];
-    }    
-    
+    }
+
     if ([dictionary objectForKey:modId] != nil) {
         self.moduleId = [dictionary objectForKey:modId];
-        
+
         if ([self.moduleId hasSuffix:modHashSuffix]) {
             self.moduleId = [self.moduleId stringByReplacingOccurrencesOfString:modHashSuffix withString:[NSString stringWithFormat:@"%i", kjModuleIdTag++]];
         }
@@ -93,7 +96,7 @@ static int kjModuleIdTag;
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    if (self.parent != nil) { [_parent release]; self.parent = nil; }    
+    if (self.parent != nil) { [_parent release]; self.parent = nil; }
     [super dealloc];
 }
 

@@ -43,24 +43,13 @@
 {
     KJModule *initializedModule1 = [ObjectCreationHelpers createIncrementingModuleWithDictionary];
     KJModule *initializedModule2 = [ObjectCreationHelpers createIncrementingModuleWithDictionary];
-    STAssertTrue([@"moduleId1" isEqualToString:initializedModule1.moduleId], @"Initialized modules should have moduleId# as their ID where # is an incrementing value based on the number of modules created.");
+    STAssertTrue([@"moduleId0" isEqualToString:initializedModule1.moduleId], @"Initialized modules should have moduleId# as their ID where # is an incrementing value based on the number of modules created previously.");
     STAssertTrue([@"baseModuleName2" isEqualToString:initializedModule1.moduleName], @"Initialized modules should have baseModuleName2 set as their name.");
     STAssertTrue(nil == initializedModule1.parent, @"Initialized modules should have no parent.");
 
-    STAssertTrue([@"moduleId2" isEqualToString:initializedModule2.moduleId], @"Initialized modules should have moduleId# as their ID where # is an incrementing value based on the number of modules created.");
+    STAssertTrue([@"moduleId1" isEqualToString:initializedModule2.moduleId], @"Initialized modules should have moduleId# as their ID where # is an incrementing value based on the number of modules created previously.");
     STAssertTrue([@"baseModuleName2" isEqualToString:initializedModule2.moduleName], @"Initialized modules should have baseModuleName2 set as their name.");
     STAssertTrue(nil == initializedModule2.parent, @"Initialized modules should have no parent.");
 }
 
-#pragma mark - Setters and Getters
-- (void) testShouldAttachToParent
-{
-    STFail(@"Test not written.");
-}
-
-#pragma mark - Detach
-- (void) testShouldDetachFromEverything
-{
-    STFail(@"Test not written.");
-}
 @end
