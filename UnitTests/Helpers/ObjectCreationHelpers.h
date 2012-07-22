@@ -33,4 +33,8 @@
 + (KJModule*) createDefaultModule;
 + (KJModule*) createModuleWithDictionary;
 + (KJModule*) createIncrementingModuleWithDictionary;
+
++ (KJCommonGameObject*) createDefaultCommonGameObject;
++ (KJCommonGameObject*) createCommonGameObjectWithDictionary;
+
 @end

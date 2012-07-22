@@ -42,12 +42,16 @@
 - (void) testShouldIncrementDefaultId
 {
     KJModule *initializedModule1 = [ObjectCreationHelpers createIncrementingModuleWithDictionary];
+    NSString *module1Id = [NSString stringWithFormat:@"moduleId%i", [KJModule lastIdTag]];
     KJModule *initializedModule2 = [ObjectCreationHelpers createIncrementingModuleWithDictionary];
-    STAssertTrue([@"moduleId0" isEqualToString:initializedModule1.moduleId], @"Initialized modules should have moduleId# as their ID where # is an incrementing value based on the number of modules created previously.");
+    NSString *module2Id = [NSString stringWithFormat:@"moduleId%i", [KJModule lastIdTag]];
+
+
+    STAssertTrue([module1Id isEqualToString:initializedModule1.moduleId], @"Initialized modules should have moduleId# as their ID where # is an incrementing value based on the number of modules created previously.");
     STAssertTrue([@"baseModuleName2" isEqualToString:initializedModule1.moduleName], @"Initialized modules should have baseModuleName2 set as their name.");
     STAssertTrue(nil == initializedModule1.parent, @"Initialized modules should have no parent.");
 
-    STAssertTrue([@"moduleId1" isEqualToString:initializedModule2.moduleId], @"Initialized modules should have moduleId# as their ID where # is an incrementing value based on the number of modules created previously.");
+    STAssertTrue([module2Id isEqualToString:initializedModule2.moduleId], @"Initialized modules should have moduleId# as their ID where # is an incrementing value based on the number of modules created previously.");
     STAssertTrue([@"baseModuleName2" isEqualToString:initializedModule2.moduleName], @"Initialized modules should have baseModuleName2 set as their name.");
     STAssertTrue(nil == initializedModule2.parent, @"Initialized modules should have no parent.");
 }

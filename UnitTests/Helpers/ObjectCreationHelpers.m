@@ -45,16 +45,21 @@
 
 + (NSDictionary*) moduleDictionary
 {
-    NSDictionary *moduleDictionary =  [[self sampleObjectDictionary] objectForKey:@"module1"];
+    NSDictionary *moduleDictionary = [[self sampleObjectDictionary] objectForKey:@"module1"];
     return moduleDictionary;
 }
 
 + (NSDictionary*) incrementingModuleDictionary
 {
-    NSDictionary *moduleDictionary =  [[self sampleObjectDictionary] objectForKey:@"module2"];
+    NSDictionary *moduleDictionary = [[self sampleObjectDictionary] objectForKey:@"module2"];
     return moduleDictionary;
 }
 
++ (NSDictionary*) commonGameObjectDictionary
+{
+    NSDictionary *dictionary = [[self sampleObjectDictionary] objectForKey:@"commonGameObject"];
+    return dictionary;
+}
 
 #pragma mark - Game Object Helpers
 + (KJGameObject *) gameObjectFromDictionary
@@ -172,4 +177,18 @@
     KJModule* incrementingModule = [KJModule moduleWithDictionary:[self incrementingModuleDictionary]];
     return incrementingModule;
 }
+
+#pragma mark - Common Game Object Helpers
++ (KJCommonGameObject*) createDefaultCommonGameObject
+{
+    KJCommonGameObject* commonGameObject = [KJCommonGameObject object];
+    return commonGameObject;
+}
+
++ (KJCommonGameObject*) createCommonGameObjectWithDictionary
+{
+    KJCommonGameObject* commonGameObject = [KJCommonGameObject objectWithDictionary:[self commonGameObjectDictionary]];
+    return commonGameObject;
+}
+
 @end
