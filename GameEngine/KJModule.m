@@ -21,6 +21,7 @@ static int kjModuleIdTag;
 @implementation KJModule
 
 @synthesize parent = _parent;
+@synthesize parentLayer = _parentLayer;
 @synthesize moduleName = _moduleName;
 @synthesize moduleId = _moduleId;
 
@@ -31,6 +32,10 @@ static int kjModuleIdTag;
 }
 +(int) kjModuleIdTag {
     return kjModuleIdTag++;
+}
++(int) lastIdTag
+{
+    return kjModuleIdTag-1;
 }
 - (id) init
 {
@@ -116,10 +121,6 @@ static int kjModuleIdTag;
 - (KJCommonGameObject *) parent
 {
     return _parent;
-}
-- (void) setLayer:(KJLayer *)l
-{
-    // override to handle this...
 }
 
 #pragma mark - Clean Up

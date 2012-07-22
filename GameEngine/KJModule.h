@@ -19,10 +19,11 @@ extern NSString *const modAnimationRequest;
 @class KJLayer;
 
 @interface KJModule : NSObject {
- 
+
 }
 
 @property (nonatomic, retain) KJCommonGameObject *parent;
+@property (nonatomic, retain) KJLayer *parentLayer;
 @property (nonatomic, retain) NSString *moduleName;
 @property (nonatomic, retain) NSString *moduleId;
 
@@ -30,6 +31,7 @@ extern NSString *const modAnimationRequest;
 + (id) module;
 + (id) moduleWithDictionary:(NSDictionary *) dictionary;
 + (int) kjModuleIdTag;
++ (int) lastIdTag;
 
 - (void) setup;
 - (void) setupWithDictionary:(NSDictionary *) dictionary;
@@ -40,7 +42,6 @@ extern NSString *const modAnimationRequest;
 - (void) update:(double) dt;
 
 - (void) setParent:(KJCommonGameObject *) p;
-- (void) setLayer:(KJLayer *) l;
 - (KJCommonGameObject *) parent;
 
 - (void) detach;
