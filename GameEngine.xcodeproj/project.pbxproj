@@ -260,6 +260,7 @@
 		0A5669C8155089A600295EDE /* KJGameObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A5669C6155089A600295EDE /* KJGameObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A5669C9155089A600295EDE /* KJGameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C7155089A600295EDE /* KJGameObject.m */; };
 		0A5669CA155089A600295EDE /* KJGameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5669C7155089A600295EDE /* KJGameObject.m */; };
+		0A62EEAC15BB7D2600627A86 /* KJCommonObjectUnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A62EEAB15BB7D2600627A86 /* KJCommonObjectUnitTests.m */; };
 		0A745BEF15668870003207C9 /* KJLevelLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A745BED15668870003207C9 /* KJLevelLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0A745BF015668870003207C9 /* KJLevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745BEE15668870003207C9 /* KJLevelLoader.m */; };
 		0A745BF115668870003207C9 /* KJLevelLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A745BEE15668870003207C9 /* KJLevelLoader.m */; };
@@ -607,6 +608,8 @@
 		0A5669C01550896500295EDE /* KJPhysicsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJPhysicsObject.m; sourceTree = "<group>"; };
 		0A5669C6155089A600295EDE /* KJGameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJGameObject.h; sourceTree = "<group>"; };
 		0A5669C7155089A600295EDE /* KJGameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJGameObject.m; sourceTree = "<group>"; };
+		0A62EEAA15BB7D2600627A86 /* KJCommonObjectUnitTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJCommonObjectUnitTests.h; sourceTree = "<group>"; };
+		0A62EEAB15BB7D2600627A86 /* KJCommonObjectUnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJCommonObjectUnitTests.m; sourceTree = "<group>"; };
 		0A71914814BF690800071DBE /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		0A745BED15668870003207C9 /* KJLevelLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KJLevelLoader.h; sourceTree = "<group>"; };
 		0A745BEE15668870003207C9 /* KJLevelLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KJLevelLoader.m; sourceTree = "<group>"; };
@@ -1231,6 +1234,8 @@
 				0A31139A159A56CA00BD168A /* KJGameObjectUnitTests.m */,
 				0A9BF9C115AC6DAD004F479E /* KJBackgroundObjectUnitTests.h */,
 				0A9BF9C215AC6DAD004F479E /* KJBackgroundObjectUnitTests.m */,
+				0A62EEAA15BB7D2600627A86 /* KJCommonObjectUnitTests.h */,
+				0A62EEAB15BB7D2600627A86 /* KJCommonObjectUnitTests.m */,
 			);
 			path = GameObjectUnitTests;
 			sourceTree = "<group>";
@@ -1796,6 +1801,7 @@
 				0A3D22BC15A38AE3000971F5 /* KJGraphicPartUnitTests.m in Sources */,
 				0A9BF9C315AC6DAD004F479E /* KJBackgroundObjectUnitTests.m in Sources */,
 				0A9BF9E515ACA192004F479E /* KJModuleUnitTests.m in Sources */,
+				0A62EEAC15BB7D2600627A86 /* KJCommonObjectUnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
